@@ -13,14 +13,14 @@ TagManager:
   - UI
   - 
   - Ground
+  - BG_Only
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player_Body
+  - Player_Feet
+  - Enemy_Body
+  - Enemy_Feet
   - 
   - 
   - 

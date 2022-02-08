@@ -9,6 +9,7 @@ public class CameraFollower : MonoBehaviour
     public float camSpeedX;
     public float camSpeedY;
     public Vector2 camOffSet;
+    public DepthBeUController controls;
 
 
     // Update is called once per frame
@@ -16,7 +17,10 @@ public class CameraFollower : MonoBehaviour
     {
         move = transform.position;
         move.x = Mathf.Lerp(move.x, target.position.x+camOffSet.x, camSpeedX * Time.deltaTime);
-        move.y = Mathf.Lerp(move.y, target.position.y+camOffSet.y, camSpeedY * Time.deltaTime);
+        if (!controls.airborne)
+        {
+            move.y = Mathf.Lerp(move.y, target.position.y + camOffSet.y, camSpeedY * Time.deltaTime);
+        }
         transform.position = move;
     }
 }

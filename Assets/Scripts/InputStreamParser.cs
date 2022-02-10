@@ -21,9 +21,9 @@ public class InputStreamParser : MonoBehaviour
     public class MoveProperties
     {
         public string animationTrigger = "";
-        public string enemyAnimationTrigger = "";
         public int allowNextMove = 50;
         public int preventMovement = 10;
+        public int followUpAllowFrom = 0;
         public Vector3 characterVelocity = Vector3.zero;
         public int hurtBoxDamage = 10;
         public float hitStunDuration = 0.25f;
@@ -41,6 +41,7 @@ public class InputStreamParser : MonoBehaviour
             moveAllowedDuration = copy.moveAllowedDuration;
             if (moveAllowedDuration == 0) { moveAllowedDuration = 800; }
             moveName = copy.moveName;
+            followUpTo = copy.followUpTo;
             properties = copy.properties;
             currentError = 0;
             currentDuration = 0;
@@ -83,6 +84,7 @@ public class InputStreamParser : MonoBehaviour
         }
 
         public string moveName = "";
+        public string followUpTo = "";
         public List<string> moveDefinition = new List<string>();
         public int moveAllowedError;
         public int moveAllowedDuration;
@@ -101,8 +103,13 @@ public class InputStreamParser : MonoBehaviour
         public int framesFromLast;
     }
 
+    public DepthBeUController player;
     public const int INPUTMEMORY = 13;
     public const int TURNAROUNDDUR = 16;
+    public string savedMoveName = "";
+    int followUpDelay = 0;
+    int followUpValue = 0;
+    public int followUpAllow = 0;
     public int movePrevention = 0;
     public int dirPrevention = 0;
 
@@ -128,7 +135,7 @@ public class InputStreamParser : MonoBehaviour
     {
         void CheckFacing()
         {
-            if (!DepthBeUController.playerFacingRight)
+            if (!player.playerFacingRight)
             {
                 invertX = true;
             }
@@ -151,8 +158,8 @@ public class InputStreamParser : MonoBehaviour
         {
             CheckFacing();
         }
-        bool A = Input.GetKey(KeyCode.Z);
-        bool B = Input.GetKey(KeyCode.X);
+        bool A = Input.GetKeyDown(KeyCode.Z);
+        bool B = Input.GetKeyDown(KeyCode.X);
         string definB = res.ToString();
         if (A) { definB += "A"; }
         if (B) { definB += "B"; }
@@ -173,6 +180,8 @@ public class InputStreamParser : MonoBehaviour
             }
             if (definition.Contains("A")) { ParseInput(); }
         }
+        if (followUpDelay > 0) { followUpDelay--; if (followUpDelay == 0) { followUpAllow = followUpValue; followUpValue = 0; } }
+        else if (followUpAllow > 0) { followUpAllow--; if (followUpAllow == 0) { savedMoveName = ""; } }
         if (movePrevention > 0) { movePrevention--; }
         if (dirPrevention > 0) { dirPrevention--; playerController.frozen = true; if (dirPrevention == 0) { playerController.frozen = false; } }
         if (StreamingInputList.Count == 0)
@@ -195,7 +204,7 @@ public class InputStreamParser : MonoBehaviour
         {
             for (int j = 0; j < moveList.Length; j++)
             {
-                if (moveList[j].moveDefinition[0] == start)
+                if (moveList[j].moveDefinition[0] == start && (moveList[j].followUpTo == savedMoveName))
                 {
                     if ((!playerController.airborne && moveList[j].allowOnGround) || (playerController.airborne && moveList[j].allowOnAir))
                     {
@@ -294,7 +303,7 @@ public class InputStreamParser : MonoBehaviour
             return highestInd;
         }
 
-        if (movePrevention > 0) { StreamingInputList.Clear(); return; }
+        if (movePrevention > 0 && followUpAllow == 0 && followUpDelay == 0) { Debug.Log("CLEAR"); StreamingInputList.Clear(); return; }
 
         for (int i = 0; i < StreamingInputList.Count; i++)
         {
@@ -305,15 +314,24 @@ public class InputStreamParser : MonoBehaviour
         IterateMissedEnds();
 
         int prior = FindHighestPriority();
-        if (prior >= 0) { Debug.Log(iterationList[prior].moveName); ActivateMove(iterationList[prior].properties); }
+        if (prior == -1) { StreamingInputList.Clear(); return; }
+        if (movePrevention > 0 && followUpAllow > 0)
+        {
+            if (iterationList[prior].followUpTo != savedMoveName)
+            {
+                Debug.Log(iterationList[prior].followUpTo + " Does not equal:" + savedMoveName);
+                StreamingInputList.Clear(); return;
+            }
+        }
+        
+        if (prior >= 0) { Debug.Log(iterationList[prior].moveName); ActivateMove(iterationList[prior].properties, iterationList[prior].moveName); }
 
         StreamingInputList.Clear();
     }
 
-    void ActivateMove(MoveProperties mp)
+    void ActivateMove(MoveProperties mp, string name)
     {
         if (playerController == null) { Debug.Log("No Controller!"); return; }
-
         if (mp.animationTrigger != "") { playerController.animator.SetTrigger(mp.animationTrigger); }
         playerController.rb.velocity += mp.characterVelocity;
         if (mp.characterVelocity.y > 1f) { playerController.airborne = true; }
@@ -323,5 +341,9 @@ public class InputStreamParser : MonoBehaviour
         playerController.hb.knockDownVelocity = mp.knockDownVelocity;
         dirPrevention = mp.preventMovement;
         movePrevention = mp.allowNextMove;
+        if (mp.allowNextMove <= mp.followUpAllowFrom || mp.followUpAllowFrom == 0) { return; }
+        savedMoveName = name;
+        followUpDelay = mp.followUpAllowFrom;
+        followUpValue = mp.allowNextMove - mp.followUpAllowFrom;
     }
 }

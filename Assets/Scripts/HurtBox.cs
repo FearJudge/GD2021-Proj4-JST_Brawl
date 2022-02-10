@@ -13,11 +13,9 @@ public class HurtBox : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Enter!");
         if ((1 << other.gameObject.layer & activeOn) != 0)
         {
             other.transform.parent.gameObject.TryGetComponent(out DepthBeUController enemy);
-            Debug.Log(enemy.name);
             if (enemy == null) { return; }
             bool dirIsLeft = false;
             if (other.transform.position.x - transform.position.x > 0) { dirIsLeft = true; }

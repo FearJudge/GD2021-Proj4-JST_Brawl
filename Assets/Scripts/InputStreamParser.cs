@@ -116,8 +116,8 @@ public class InputStreamParser : MonoBehaviour
     [SerializeField] public MoveDetails[] moveList = new MoveDetails[0];
     [SerializeField] public List<StreamedIn> StreamingInputList = new List<StreamedIn>();
     int framesFrom = 0;
-    public DepthBeUController playerController;
     public TMPro.TextMeshProUGUI stream;
+    public TMPro.TextMeshProUGUI move;
     string defin = "";
 
     void Update()
@@ -172,18 +172,21 @@ public class InputStreamParser : MonoBehaviour
         void AddInList(string definition)
         {
             StreamingInputList.Add(new StreamedIn { Input = definition, framesFromLast = framesFrom });
-            stream.text = "";
             framesFrom = 0;
-            foreach (StreamedIn inp in StreamingInputList)
+            if (stream != null)
             {
-                stream.text += inp.Input;
+                stream.text = "";
+                foreach (StreamedIn inp in StreamingInputList)
+                {
+                    stream.text += inp.Input;
+                }
             }
             if (definition.Contains("A")) { ParseInput(); }
         }
         if (followUpDelay > 0) { followUpDelay--; if (followUpDelay == 0) { followUpAllow = followUpValue; followUpValue = 0; } }
         else if (followUpAllow > 0) { followUpAllow--; if (followUpAllow == 0) { savedMoveName = ""; } }
-        if (movePrevention > 0) { movePrevention--; }
-        if (dirPrevention > 0) { dirPrevention--; playerController.frozen = true; if (dirPrevention == 0) { playerController.frozen = false; } }
+        if (movePrevention > 0) { movePrevention--; if (movePrevention == 0 && move != null) { move.text = ""; } }
+        if (dirPrevention > 0) { dirPrevention--; player.frozen = true; if (dirPrevention == 0) { player.frozen = false; } }
         if (StreamingInputList.Count == 0)
         {
             AddInList(defin);
@@ -206,7 +209,7 @@ public class InputStreamParser : MonoBehaviour
             {
                 if (moveList[j].moveDefinition[0] == start && (moveList[j].followUpTo == savedMoveName))
                 {
-                    if ((!playerController.airborne && moveList[j].allowOnGround) || (playerController.airborne && moveList[j].allowOnAir))
+                    if ((!player.airborne && moveList[j].allowOnGround) || (player.airborne && moveList[j].allowOnAir))
                     {
                         AddToIterationList(moveList[j]);
                     }
@@ -331,14 +334,15 @@ public class InputStreamParser : MonoBehaviour
 
     void ActivateMove(MoveProperties mp, string name)
     {
-        if (playerController == null) { Debug.Log("No Controller!"); return; }
-        if (mp.animationTrigger != "") { playerController.animator.SetTrigger(mp.animationTrigger); }
-        playerController.rb.velocity += mp.characterVelocity;
-        if (mp.characterVelocity.y > 1f) { playerController.airborne = true; }
-        playerController.hb.damage = mp.hurtBoxDamage;
-        playerController.hb.hitStun = mp.hitStunDuration;
-        playerController.hb.knockDown = mp.knockDown;
-        playerController.hb.knockDownVelocity = mp.knockDownVelocity;
+        if (move != null) { move.text = name; }
+        if (player == null) { Debug.Log("No Controller!"); return; }
+        if (mp.animationTrigger != "") { player.animator.SetTrigger(mp.animationTrigger); }
+        player.rb.velocity += mp.characterVelocity;
+        if (mp.characterVelocity.y > 1f) { player.airborne = true; }
+        player.hb.damage = mp.hurtBoxDamage;
+        player.hb.hitStun = mp.hitStunDuration;
+        player.hb.knockDown = mp.knockDown;
+        player.hb.knockDownVelocity = mp.knockDownVelocity;
         dirPrevention = mp.preventMovement;
         movePrevention = mp.allowNextMove;
         if (mp.allowNextMove <= mp.followUpAllowFrom || mp.followUpAllowFrom == 0) { return; }

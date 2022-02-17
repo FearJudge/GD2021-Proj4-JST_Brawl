@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Level_Mockup.unity
-    guid: f4e3036e51c0a964cbe63fa0a6a516fc
+    path: Assets/Scenes/CodingSanctuary.unity
+    guid: 43a8061e3195f354491c87b18c60ed9f
   - enabled: 1
     path: Assets/Scenes/PauseMenuScene.unity
     guid: 7f59ef5c97292b34ba4da5f02eb80fae

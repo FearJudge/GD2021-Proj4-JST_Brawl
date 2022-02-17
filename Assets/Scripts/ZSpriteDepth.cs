@@ -15,6 +15,7 @@ public class ZSpriteDepth : MonoBehaviour
     int prevZDepth = 0;
     public int zDepth = 0;
     public Transform root;
+
     // Start is called before the first frame update
     void Start()
     {

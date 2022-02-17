@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : DepthBeUController
 {
@@ -17,6 +18,7 @@ public class PlayerController : DepthBeUController
         float X = Input.GetAxis("Horizontal");
         float Z = Input.GetAxis("Vertical");
         jumpRequested = Input.GetButtonDown("Submit");
+        if (Input.GetButtonDown("Cancel") && !MenuPauser.paused) { SceneManager.LoadSceneAsync("PauseMenuScene", LoadSceneMode.Additive); }
 
         ControlledCharacterMovement(X, Z);
     }

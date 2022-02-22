@@ -90,6 +90,7 @@ public class InputStreamParser : MonoBehaviour
     }
 
     public DepthBeUController player;
+    public MoveListCurator curator;
     public const int INPUTMEMORY = 13;
     public const int TURNAROUNDDUR = 16;
     public string savedMoveName = "";
@@ -101,7 +102,6 @@ public class InputStreamParser : MonoBehaviour
     public const int MOVEBUFFDUR = 9;
     public int buffer = 0;
 
-    [SerializeField] public MoveDetails[] moveList = new MoveDetails[0];
     [SerializeField] public List<StreamedIn> StreamingInputList = new List<StreamedIn>();
     int framesFrom = 0;
     public TMPro.TextMeshProUGUI stream;
@@ -148,6 +148,7 @@ public class InputStreamParser : MonoBehaviour
         }
         bool A = Input.GetKeyDown(KeyCode.Z);
         bool B = Input.GetKeyDown(KeyCode.X);
+        if (Input.GetKeyDown(KeyCode.C)) { curator.ChangeList(1); }
         string definB = res.ToString();
         if (A) { definB += "A"; }
         if (B) { definB += "B"; }
@@ -194,6 +195,7 @@ public class InputStreamParser : MonoBehaviour
 
         void FindAllWithStartInput(string start)
         {
+            MoveDetails[] moveList = curator.ReturnCurrentMoves();
             for (int j = 0; j < moveList.Length; j++)
             {
                 if (CheckAgainstInput(moveList[j].moveDefinition[0], start) && (moveList[j].followUpTo == savedMoveName))

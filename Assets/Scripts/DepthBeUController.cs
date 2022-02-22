@@ -249,6 +249,7 @@ public class DepthBeUController : MonoBehaviour
 
     public virtual void Kill()
     {
+        EncounterManager.IDied(gameObject);
         playerCollisionBox.enabled = false;
         rb_body.isKinematic = true;
         stunnedFor = 0f;

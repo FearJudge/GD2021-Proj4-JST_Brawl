@@ -64,6 +64,7 @@ public class EnemyAI : DepthBeUController
 
     public AIBehaviour[] behaviour = new AIBehaviour[0];
 
+    private uint upgradeIdentifier = 0;
     private State memoryAct = State.Standing;
     public State currentAct = State.Standing;
     public Condition exitReason = Condition.Always;
@@ -273,5 +274,10 @@ public class EnemyAI : DepthBeUController
         currentAct = State.Dead;
         base.Kill();
         Invoke("Dissolve", 2f);
+    }
+
+    public void SetUpgradeId(uint id)
+    {
+        upgradeIdentifier = id;
     }
 }

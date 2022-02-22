@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4066788327009483529}
   - component: {fileID: 4066788327009483528}
+  - component: {fileID: 524750975}
   m_Layer: 0
   m_Name: CharacterInput
   m_TagString: Untagged
@@ -44,209 +45,112 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  curator: {fileID: 524750975}
   savedMoveName: 
   followUpAllow: 0
   movePrevention: 0
   dirPrevention: 0
-  moveList:
-  - moveName: DP Motion
+  buffer: 0
+  StreamingInputList: []
+  stream: {fileID: 0}
+  move: {fileID: 0}
+--- !u!114 &524750975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4066788327009483531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87a95d8b4581d23468df0a4a23081262, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveListSword:
+  - moveName: Sword Slash
     followUpTo: 
     moveDefinition:
-    - 6
-    - 2
-    - 3
-    - 3A
-    moveAllowedError: 2
-    moveAllowedDuration: 0
-    movePriority: 27
-    allowOnGround: 1
-    allowOnAir: 0
-    properties:
-      animationTrigger: 
-      allowNextMove: 70
-      preventMovement: 100
-      followUpAllowFrom: 0
-      characterVelocity: {x: 0, y: 12, z: 0}
-      hurtBoxDamage: 10
-      hitStunDuration: 0.25
-      knockDown: 0
-      knockDownVelocity: {x: 0, y: 0, z: 0}
-  - moveName: HalfCircle Motion
-    followUpTo: 
-    moveDefinition:
-    - 4
-    - 1
-    - 2
-    - 3
-    - 6
-    - 6A
-    moveAllowedError: 7
-    moveAllowedDuration: 0
-    movePriority: 31
-    allowOnGround: 1
-    allowOnAir: 0
-    properties:
-      animationTrigger: 
-      allowNextMove: 50
-      preventMovement: 10
-      followUpAllowFrom: 0
-      characterVelocity: {x: 0, y: 0, z: 0}
-      hurtBoxDamage: 10
-      hitStunDuration: 0.25
-      knockDown: 0
-      knockDownVelocity: {x: 0, y: 0, z: 0}
-  - moveName: DownDown Motion
-    followUpTo: 
-    moveDefinition:
-    - 2
-    - 5
-    - 2
-    - 2A
-    moveAllowedError: 2
-    moveAllowedDuration: 0
-    movePriority: 21
-    allowOnGround: 1
-    allowOnAir: 0
-    properties:
-      animationTrigger: 
-      allowNextMove: 50
-      preventMovement: 10
-      followUpAllowFrom: 0
-      characterVelocity: {x: 0, y: 0, z: 0}
-      hurtBoxDamage: 10
-      hitStunDuration: 0.25
-      knockDown: 0
-      knockDownVelocity: {x: 0, y: 0, z: 0}
-  - moveName: QCB motion
-    followUpTo: 
-    moveDefinition:
-    - 2
-    - 1
-    - 4
-    - 4A
+    - (12456789)A
     moveAllowedError: 3
-    moveAllowedDuration: 0
-    movePriority: 24
-    allowOnGround: 1
-    allowOnAir: 0
-    properties:
-      animationTrigger: 
-      allowNextMove: 50
-      preventMovement: 10
-      followUpAllowFrom: 0
-      characterVelocity: {x: 0, y: 0, z: 0}
-      hurtBoxDamage: 10
-      hitStunDuration: 0.25
-      knockDown: 0
-      knockDownVelocity: {x: 0, y: 0, z: 0}
-  - moveName: Fireball Motion
-    followUpTo: 
-    moveDefinition:
-    - 2
-    - 3
-    - 6
-    - 6A
-    moveAllowedError: 5
-    moveAllowedDuration: 60
-    movePriority: 21
-    allowOnGround: 1
-    allowOnAir: 0
-    properties:
-      animationTrigger: 
-      allowNextMove: 50
-      preventMovement: 10
-      followUpAllowFrom: 0
-      characterVelocity: {x: 0, y: 0, z: 0}
-      hurtBoxDamage: 55
-      hitStunDuration: 0.5
-      knockDown: 0
-      knockDownVelocity: {x: 0, y: 0, z: 0}
-  - moveName: Fireball Motion (Air)
-    followUpTo: 
-    moveDefinition:
-    - 2
-    - 3
-    - 6
-    - 6A
-    moveAllowedError: 5
-    moveAllowedDuration: 60
-    movePriority: 21
-    allowOnGround: 0
-    allowOnAir: 1
-    properties:
-      animationTrigger: 
-      allowNextMove: 50
-      preventMovement: 10
-      followUpAllowFrom: 0
-      characterVelocity: {x: 0, y: 0, z: 0}
-      hurtBoxDamage: 55
-      hitStunDuration: 0.5
-      knockDown: 0
-      knockDownVelocity: {x: 0, y: 0, z: 0}
-  - moveName: PretzelMotion
-    followUpTo: 
-    moveDefinition:
-    - 3
-    - 4
-    - 1
-    - 2
-    - 3
-    - 6
-    - 1
-    - 1A
-    moveAllowedError: 8
-    moveAllowedDuration: 121
-    movePriority: 54
-    allowOnGround: 1
-    allowOnAir: 0
-    properties:
-      animationTrigger: 
-      allowNextMove: 65
-      preventMovement: 12
-      followUpAllowFrom: 0
-      characterVelocity: {x: 0, y: 0, z: 0}
-      hurtBoxDamage: 15
-      hitStunDuration: 0.5
-      knockDown: 0
-      knockDownVelocity: {x: 0, y: 0, z: 0}
-  - moveName: Standing A
-    followUpTo: 
-    moveDefinition:
-    - 5A
-    moveAllowedError: 2
-    moveAllowedDuration: 10
-    movePriority: 1
+    moveAllowedDuration: 12
+    movePriority: 9
     allowOnGround: 1
     allowOnAir: 0
     properties:
       animationTrigger: Attack_Slash_Front
-      allowNextMove: 25
-      preventMovement: 5
-      followUpAllowFrom: 10
+      animationSpeedMod: 1
+      allowNextMove: 30
+      preventMovement: 12
+      followUpAllowFrom: 18
       characterVelocity: {x: 0, y: 0, z: 0}
-      hurtBoxDamage: 15
-      hitStunDuration: 0.5
+      hurtBoxDamage: 21
+      lifeSteal: 0
+      hitStunDuration: 0.7
       knockDown: 0
-      knockDownVelocity: {x: 0, y: 0, z: 0}
-  - moveName: Standing FollowUp A
-    followUpTo: Standing A
+      knockDownVelocity: {x: 1, y: 0.2, z: 0}
+  - moveName: Sword Slash II
+    followUpTo: Sword Slash
     moveDefinition:
-    - 5A
-    moveAllowedError: 2
-    moveAllowedDuration: 10
-    movePriority: 3
+    - (123456789)A
+    moveAllowedError: 3
+    moveAllowedDuration: 12
+    movePriority: 21
     allowOnGround: 1
     allowOnAir: 0
     properties:
       animationTrigger: Attack_Slash_Front2
-      allowNextMove: 10
-      preventMovement: 5
+      animationSpeedMod: 1
+      allowNextMove: 23
+      preventMovement: 18
+      followUpAllowFrom: 0
+      characterVelocity: {x: 0, y: 0, z: 0}
+      hurtBoxDamage: 36
+      lifeSteal: 0
+      hitStunDuration: 1.2
+      knockDown: 1
+      knockDownVelocity: {x: 8, y: 0.9, z: 0}
+  - moveName: Sword Uppercut
+    followUpTo: 
+    moveDefinition:
+    - (3)A
+    moveAllowedError: 5
+    moveAllowedDuration: 12
+    movePriority: 22
+    allowOnGround: 1
+    allowOnAir: 0
+    properties:
+      animationTrigger: Attack_Slash_Front2
+      animationSpeedMod: 1
+      allowNextMove: 8
+      preventMovement: 15
+      followUpAllowFrom: 0
+      characterVelocity: {x: 0, y: 0, z: 0}
+      hurtBoxDamage: 18
+      lifeSteal: 0
+      hitStunDuration: 1.3
+      knockDown: 1
+      knockDownVelocity: {x: 0.3, y: 9, z: 0}
+  - moveName: Aerial Sword
+    followUpTo: 
+    moveDefinition:
+    - (123456789)A
+    moveAllowedError: 4
+    moveAllowedDuration: 12
+    movePriority: 20
+    allowOnGround: 0
+    allowOnAir: 1
+    properties:
+      animationTrigger: Attack_Slash_Aerial
+      animationSpeedMod: 1
+      allowNextMove: 12
+      preventMovement: 4
       followUpAllowFrom: 0
       characterVelocity: {x: 0, y: 0, z: 0}
       hurtBoxDamage: 15
-      hitStunDuration: 0.5
+      lifeSteal: 0
+      hitStunDuration: 1
       knockDown: 1
-      knockDownVelocity: {x: 2, y: 0, z: 0}
-  StreamingInputList: []
-  stream: {fileID: 0}
-  move: {fileID: 0}
+      knockDownVelocity: {x: 0.2, y: 3, z: 0}
+  moveListGun: []
+  moveListSpells: []
+  currentList: 0

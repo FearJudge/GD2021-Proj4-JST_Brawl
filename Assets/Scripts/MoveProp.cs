@@ -33,17 +33,5 @@ public class MoveProp
 
 public class MoveUpgrade : MonoBehaviour
 {
-    public string upgradeName = "";
-    public string onMove = "";
-    public float changeSpeedOfAnimation = 0f;
-    public int changeAttackPrevention = 0;
-    public int changeMovementPrevention = 0;
-    public int changeFollowUpTiming = 0;
-    public Vector3 playerVelChange = Vector3.zero;
-    public int damageChange = 0;
-    public int lifeStealChange = 0;
-    public float hitStunChange = 0f;
-    // knockdown: 0 = no change, 1 = change to FALSE, 2 = change to TRUE, 3 = SWAP
-    public int changeKnockDown = 0;
-    public Vector3 knockdownChange = Vector3.zero;
+    
 }

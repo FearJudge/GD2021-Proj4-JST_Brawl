@@ -99,13 +99,14 @@ public class EnemyAI : DepthBeUController
         if (currentAct == State.Dead) { return; }
         base.FixedUpdate();
         ForwardRules();
-        TransitionBetweenRules();
+        TransitionBetweenRules(behaviourInd);
     }
 
     void ActAccordingToRules()
     {
         if (behaviour.Length == 0 || inProgress) { return; }
         transitioning = false;
+        gotStuckX = BASESTUCK;
         if (behaviour.Length <= behaviourInd) { behaviourInd = 0; }
         AIBehaviour curBehaviour = behaviour[behaviourInd];
         if (curBehaviour.performAMove)
@@ -121,7 +122,6 @@ public class EnemyAI : DepthBeUController
             if (curBehaviour.relateSpotToPlayer) { movingDestination = PlayerController.GetRandomPlayer().transform; destination = movingDestination.position; destinationOffset = new Vector3(curBehaviour.moveToSpot.x, 0, curBehaviour.moveToSpot.z); }
             else if (curBehaviour.relateSpotToSelf) { destination = Vector3.Scale(transform.position + curBehaviour.moveToSpot, new Vector3(1, 0, 1)); }
             else { destination = new Vector3(curBehaviour.moveToSpot.x, 0, curBehaviour.moveToSpot.z); }
-            gotStuckX = BASESTUCK;
         }
         else if (curBehaviour.waitAction != Vector2.zero)
         {
@@ -155,10 +155,12 @@ public class EnemyAI : DepthBeUController
                 idle -= Time.fixedDeltaTime;
                 break;
             case State.Moving:
+                if (frozen) { return; }
                 if ((destination - new Vector3(transform.position.x, 0, transform.position.z)).magnitude < 0.6f) { NextRule(Condition.ReachedDestination); return;  }
                 MoveToDestinationSpot();
                 break;
             case State.Attacking:
+                if (frozen) { return; }
                 if (moveDelay == 0) { NextRule(Condition.MoveRecoveredFrom); return; }
                 moveDelay--;
                 break;
@@ -233,16 +235,16 @@ public class EnemyAI : DepthBeUController
         float destStepZ = Mathf.Clamp(destination.z - transform.position.z, -1, 1);
         ControlledCharacterMovement(destStepX, destStepZ, Time.fixedDeltaTime);
         if (Mathf.Abs(prevDestination.x - transform.position.x) <= 0.07f && Mathf.Abs(destStepX) >= 0.15f)
-        { gotStuckX--; if (gotStuckX == 0) { NextRule(Condition.ReachedDestination); } }
+        { gotStuckX--; if (gotStuckX == 0) { gotStuckX = BASESTUCK; NextRule(Condition.ReachedDestination); } }
     }
 
     public override void GetHit(int dmg, float stun, bool knockBack, Vector3 knockback, bool fromLeft)
     {
         if (currentAct != State.Hit)
         {
-            memoryAct = currentAct;
             currentAct = State.Hit;
-        } 
+            NextRule(Condition.GotHit);
+        }
         base.GetHit(dmg, stun, knockBack, knockback, fromLeft);
     }
 
@@ -265,19 +267,24 @@ public class EnemyAI : DepthBeUController
 
     protected override void UnFreeze()
     {
-        currentAct = memoryAct;
         base.UnFreeze();
     }
 
     public override void Kill()
     {
         currentAct = State.Dead;
+        EncounterManager.IDied(gameObject, this);
+        EncounterManager.EncounterCleared += Dissolve;
         base.Kill();
-        Invoke("Dissolve", 2f);
     }
 
     public void SetUpgradeId(uint id)
     {
         upgradeIdentifier = id;
+    }
+
+    public uint GetUpgradeId()
+    {
+        return upgradeIdentifier;
     }
 }

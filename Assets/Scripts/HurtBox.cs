@@ -7,6 +7,7 @@ public class HurtBox : MonoBehaviour
     public Transform body;
     public float hitStun = 0.25f;
     public int damage = 10;
+    public int lifeSteal = 0;
     public bool knockDown = false;
     public bool parry = false;
     public Vector3 knockDownVelocity = Vector3.zero;

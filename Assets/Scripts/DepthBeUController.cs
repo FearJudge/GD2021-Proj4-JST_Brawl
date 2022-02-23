@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using ToonBoom.Harmony;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,6 +17,8 @@ public class DepthBeUController : MonoBehaviour
         public bool bodyZplus;
         public bool bodyZneg;
     }
+
+    protected List<UpgradeLibrary.IUpgrade> addedUpgrades = new List<UpgradeLibrary.IUpgrade>();
 
     public Health hpScript;
     [HideInInspector] public bool playerFacingRight = true;
@@ -42,7 +45,7 @@ public class DepthBeUController : MonoBehaviour
     [SerializeField] private Transform cameraFocus;
     private CameraLock cameraLocking;
 
-    SpriteRenderer sr;
+    public HarmonyRenderer sr;
     [HideInInspector] public Rigidbody rb_root;
     [HideInInspector] public Rigidbody rb_body;
     [HideInInspector] public BoxCollider playerCollisionBox;
@@ -52,6 +55,7 @@ public class DepthBeUController : MonoBehaviour
     [SerializeField] LayerMask groundMask;
     [SerializeField] LayerMask collideWith;
     private LayerMask hitBoxLayer = new LayerMask();
+    private Color baseCol = Color.white;
 
     Collider[] feetCheckPosX;
     Collider[] feetCheckNegX;
@@ -81,8 +85,9 @@ public class DepthBeUController : MonoBehaviour
         rb_root = feet.GetComponent<Rigidbody>();
         rb_body = body.GetComponent<Rigidbody>();
         playerCollisionBox = body.GetComponent<BoxCollider>();
-        sr = body.GetComponentInChildren<SpriteRenderer>();
+        sr = body.GetComponentInChildren<HarmonyRenderer>();
         animator = body.GetComponentInChildren<Animator>();
+        baseCol = sr.Color;
     }
 
     // Update is called once per frame
@@ -234,22 +239,47 @@ public class DepthBeUController : MonoBehaviour
 
     public virtual void GetHit(int dmg, float stun, bool knockBack, Vector3 knockBackV, bool fromLeft)
     {
+        sr.Color = Color.red;
         hpScript.Hp -= dmg;
-        frozen = true;
+        if (stunnedFor > 0.01f) { frozen = true; }
         stunnedFor = stun;
         int dir = 1;
         if (!fromLeft) { dir = -1; knockBackV.x *= dir; }
-        rb_body.velocity += knockBackV; rb_root.velocity += new Vector3(knockBackV.x, 0, knockBackV.z);
+        SetVelocity(knockBackV);
     }
+
+    public virtual void SetVelocity(Vector3 direction, bool flipX = false)
+    {
+        if (flipX && !playerFacingRight) { direction.x *= -1; }
+        rb_body.velocity += direction; rb_root.velocity += new Vector3(direction.x, 0, direction.z);
+    }
+
+    public virtual void AddUpgradeToCharacter(UpgradeLibrary.IUpgrade up)
+    {
+        addedUpgrades.Add(up);
+        if (up.upgradeId >= UpgradeLibrary.BREAKPOINT)
+        {
+            UpgradeLibrary.MoveUpgrade movePlus = (UpgradeLibrary.MoveUpgrade)up;
+            ParseUpgrade(movePlus);
+        }
+        else
+        {
+            UpgradeLibrary.PlayerUpgrade playerPlus = (UpgradeLibrary.PlayerUpgrade)up;
+            ParseUpgrade(playerPlus);
+        }
+    }
+
+    protected virtual void ParseUpgrade(UpgradeLibrary.PlayerUpgrade up) { }
+    protected virtual void ParseUpgrade(UpgradeLibrary.MoveUpgrade up) { }
 
     protected virtual void UnFreeze()
     {
+        sr.Color = baseCol;
         frozen = false;
     }
 
     public virtual void Kill()
     {
-        EncounterManager.IDied(gameObject);
         playerCollisionBox.enabled = false;
         rb_body.isKinematic = true;
         stunnedFor = 0f;

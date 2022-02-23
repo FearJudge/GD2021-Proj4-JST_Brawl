@@ -31,4 +31,15 @@ public class MoveListCurator : MonoBehaviour
     {
         return moveLists[currentList];
     }
+
+    public void Upgrade(UpgradeLibrary.MoveUpgrade moveupgrade)
+    {
+        for (int a = 0; a < moveLists.Length; a++)
+        {
+            for (int b = 0; b < moveLists[a].Length; b++)
+            {
+                moveLists[a][b].AddUpgrade(moveupgrade);
+            }
+        }
+    }
 }

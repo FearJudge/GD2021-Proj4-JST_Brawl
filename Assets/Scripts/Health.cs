@@ -41,4 +41,19 @@ public class Health : MonoBehaviour
     {
         return maxhealth;
     }
+
+    public void AddMaxHealth(int value)
+    {
+        maxhealth += value;
+    }
+
+    public void ModMaxHealth(float value)
+    {
+        maxhealth = (int)(maxhealth * value);
+    }
+
+    public void FullRecover()
+    {
+        Hp = maxhealth;
+    }
 }

@@ -69,6 +69,23 @@ public class InputStreamParser : MonoBehaviour
             return currentError;
         }
 
+        public void AddUpgrade(UpgradeLibrary.MoveUpgrade moveUpgrade)
+        {
+            if (moveUpgrade.onMove != moveName) { return; }
+            if (moveUpgrade.damageModifier != 0f) { properties.hurtBoxDamage = Mathf.FloorToInt(properties.hurtBoxDamage * moveUpgrade.damageModifier); }
+            if (moveUpgrade.stunModifier != 0f) { properties.hitStunDuration *= moveUpgrade.stunModifier; }
+            if (moveUpgrade.playerVelChange != Vector3.zero) { properties.characterVelocity += moveUpgrade.playerVelChange; }
+            if (moveUpgrade.knockdownChange != Vector3.zero) { properties.knockDownVelocity += moveUpgrade.knockdownChange; }
+            if (moveUpgrade.knockBackModifier != 0f) { properties.knockDownVelocity *= moveUpgrade.knockBackModifier; }
+            if (moveUpgrade.changeAttackPrevention != 0) { properties.allowNextMove += moveUpgrade.changeAttackPrevention; if (properties.allowNextMove < 0) { properties.allowNextMove = 0; } }
+            if (moveUpgrade.changeFollowUpTiming != 0) { properties.followUpAllowFrom += moveUpgrade.changeFollowUpTiming; if (properties.followUpAllowFrom < 0) { properties.followUpAllowFrom = 0; } }
+            if (moveUpgrade.changeMovementPrevention != 0) { properties.preventMovement += moveUpgrade.changeMovementPrevention; }
+            if (moveUpgrade.addLifeSteal != 0) { properties.lifeSteal += moveUpgrade.addLifeSteal; }
+            if (moveUpgrade.changeSpeedOfAnimation != 0f) { properties.animationSpeedMod += moveUpgrade.changeSpeedOfAnimation; if (properties.animationSpeedMod <= 0f) { properties.animationSpeedMod = 0.1f; } }
+            if (moveUpgrade.addFollowUps != "") { string prefix = ""; if (followUpTo != "") { prefix = "|"; } followUpTo += prefix + moveUpgrade.addFollowUps; }
+            if (moveUpgrade.removeFollowUps != "") { followUpTo.Replace(moveUpgrade.removeFollowUps, ""); }
+        }
+
         public string moveName = "";
         public string followUpTo = "";
         public List<string> moveDefinition = new List<string>();
@@ -90,6 +107,7 @@ public class InputStreamParser : MonoBehaviour
     }
 
     public DepthBeUController player;
+    protected PlayerController pcont;
     public MoveListCurator curator;
     public const int INPUTMEMORY = 13;
     public const int TURNAROUNDDUR = 16;
@@ -108,6 +126,11 @@ public class InputStreamParser : MonoBehaviour
     public TMPro.TextMeshProUGUI move;
     string defin = "";
 
+    private void Awake()
+    {
+        pcont = (PlayerController)player;
+    }
+
     void Update()
     {
         GetInput();
@@ -117,6 +140,12 @@ public class InputStreamParser : MonoBehaviour
     void FixedUpdate()
     {
         CaptureInput();
+    }
+
+    public void AddUpgrade(UpgradeLibrary.MoveUpgrade up)
+    {
+        curator.Upgrade(up);
+        curator.ChangeList(0);
     }
 
     void GetInput()
@@ -192,13 +221,27 @@ public class InputStreamParser : MonoBehaviour
     void ParseInput()
     {
         List<MoveDetails> iterationList = new List<MoveDetails>();
+        List<string> allowedToFollowUp = new List<string>();
 
+
+        List<string> PopulateAllows(MoveDetails moveToExamine)
+        {
+            string[] moves = moveToExamine.followUpTo.Split('|');
+            List<string> movesFound = new List<string>();
+            for (int z = 0; z < moves.Length; z++)
+            {
+                string trim = moves[z].Trim(' ');
+                movesFound.Add(trim);
+            }
+            if (movesFound.Count <= 0) { movesFound.Add(moveToExamine.followUpTo); }
+            return movesFound;
+        }
         void FindAllWithStartInput(string start)
         {
             MoveDetails[] moveList = curator.ReturnCurrentMoves();
             for (int j = 0; j < moveList.Length; j++)
             {
-                if (CheckAgainstInput(moveList[j].moveDefinition[0], start) && (moveList[j].followUpTo == savedMoveName))
+                if (CheckAgainstInput(moveList[j].moveDefinition[0], start) && (PopulateAllows(moveList[j]).Contains(savedMoveName)))
                 {
                     if ((!player.airborne && moveList[j].allowOnGround) || (player.airborne && moveList[j].allowOnAir))
                     {
@@ -329,7 +372,7 @@ public class InputStreamParser : MonoBehaviour
         if (prior == -1) { StreamingInputList.Clear(); return; }
         if (movePrevention > 0 && followUpAllow > 0)
         {
-            if (iterationList[prior].followUpTo != savedMoveName)
+            if (!PopulateAllows(iterationList[prior]).Contains(savedMoveName))
             {
                 Debug.Log(iterationList[prior].followUpTo + " Does not equal:" + savedMoveName);
                 StreamingInputList.Clear(); return;
@@ -344,7 +387,7 @@ public class InputStreamParser : MonoBehaviour
     void ActivateMove(MoveProp mp, string name)
     {
         if (move != null) { move.text = name; }
-        mp.ActivateMove(player);
+        mp.ActivateMove(player, pcont.gv, curator.currentList);
         dirPrevention = mp.preventMovement;
         movePrevention = mp.allowNextMove;
         if (mp.allowNextMove <= mp.followUpAllowFrom) { return; }

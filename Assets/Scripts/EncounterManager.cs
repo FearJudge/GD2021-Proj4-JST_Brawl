@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class EncounterManager : MonoBehaviour
 {
+    public delegate void EncounterEvent();
+    public static event EncounterEvent EncounterStarted;
+    public static event EncounterEvent EncounterEnded;
+    public static event EncounterEvent EncounterCleared;
+
     public static EncounterManager manager;
 
     [System.Serializable]
@@ -91,6 +96,7 @@ public class EncounterManager : MonoBehaviour
                 currentWaves = encounterListings[a].waves;
             }
         }
+        EncounterStarted?.Invoke();
     }
 
     void AdvanceWaves()
@@ -119,7 +125,8 @@ public class EncounterManager : MonoBehaviour
     {
         yield return new WaitForSeconds(currentWaves[wave].enemies[enemyN].encounterSpawnAt);
         GameObject enemySpawn = currentWaves[wave].enemies[enemyN].SpawnEnemy(durFromWave);
-        if (enemySpawn != null) { enemies.Add(enemySpawn); }
+        if (enemySpawn == null) { yield break; }
+        enemies.Add(enemySpawn);
     }
 
     void WaveInternalsClear()
@@ -137,12 +144,21 @@ public class EncounterManager : MonoBehaviour
     void EndEncounter()
     {
         currentWaves = new Wave[0];
+        EncounterEnded?.Invoke();
         mainCam.EndEncounterCamera();
+        UpgradeLink.ActivateInstances();
     }
 
-    public static void IDied(GameObject enemy)
+    public static void IDied(GameObject enemy, EnemyAI controller)
     {
+        UpgradeLink.CreateInstance(controller, PlayerController.players[0], controller.GetUpgradeId());
         manager.enemies.Remove(enemy);
+    }
+
+    public static void Clear()
+    {
+        EncounterCleared?.Invoke();
+        EncounterCleared = null;
     }
 }
 

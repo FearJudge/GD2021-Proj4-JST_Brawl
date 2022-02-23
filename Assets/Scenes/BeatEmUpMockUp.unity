@@ -970,6 +970,7 @@ MonoBehaviour:
   camSpeedY: 2
   camOffSet: {x: 0, y: 1.6}
   controls: {fileID: 983526051}
+  setSights: {fileID: 0}
 --- !u!4 &892674944
 Transform:
   m_ObjectHideFlags: 0
@@ -1049,8 +1050,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06fd2fd4acf2bb04c914c8a2fdd6bcde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  body: {fileID: 0}
   hitStun: 0.25
   damage: 10
+  lifeSteal: 0
   knockDown: 0
   parry: 0
   knockDownVelocity: {x: 0, y: 0, z: 0}
@@ -2065,8 +2068,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26126e8573e38064290e4287b0e548e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthOwnerName: 
+  isPlayer: 0
+  lastTouched: 0
   health: 200
-  isBoss: 0
 --- !u!114 &1751891986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2079,6 +2084,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d79e0b6e9123744e804e9570255e1bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hpScript: {fileID: 1751891985}
   playerFacingRight: 1
   feet: {fileID: 1628944160}
   body: {fileID: 1267041004}
@@ -2087,21 +2093,29 @@ MonoBehaviour:
   baseJumpsAvailable: 1
   airborne: 0
   frozen: 0
-  rb: {fileID: 0}
+  cameraFocus: {fileID: 0}
+  sr: {fileID: 0}
+  rb_root: {fileID: 0}
+  rb_body: {fileID: 0}
+  playerCollisionBox: {fileID: 0}
   hurtBoxObject: {fileID: 921847281}
   hb: {fileID: 0}
   animator: {fileID: 0}
   groundMask:
     serializedVersion: 2
     m_Bits: 128
-  playerBodyMask:
+  collideWith:
     serializedVersion: 2
-    m_Bits: 16384
-  playerFeetMask:
-    serializedVersion: 2
-    m_Bits: 32768
-  hpScript: {fileID: 1751891985}
+    m_Bits: 0
+  behaviour: []
   currentAct: 0
+  exitReason: 0
+  maximumWaitTime: 5
+  destination: {x: 0, y: 0, z: 0}
+  movingDestination: {fileID: 0}
+  destinationOffset: {x: 0, y: 0, z: 0}
+  currentTarget: {fileID: 0}
+  visionRadius: 30
 --- !u!4 &1751891987
 Transform:
   m_ObjectHideFlags: 0

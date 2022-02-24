@@ -1050,16 +1050,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06fd2fd4acf2bb04c914c8a2fdd6bcde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ownerHealth: {fileID: 0}
   body: {fileID: 0}
   hitStun: 0.25
   damage: 10
   lifeSteal: 0
+  crit: 0
   knockDown: 0
   parry: 0
   knockDownVelocity: {x: 0, y: 0, z: 0}
   activeOn:
     serializedVersion: 2
     m_Bits: 4096
+  hitSpark: {fileID: 0}
+  critSpark: {fileID: 0}
+  sparkVariants: []
 --- !u!114 &983526051 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9176031724437091464, guid: 2dec37e93fcbed2459552cfbecdb2f7e, type: 3}
@@ -2116,6 +2121,7 @@ MonoBehaviour:
   destinationOffset: {x: 0, y: 0, z: 0}
   currentTarget: {fileID: 0}
   visionRadius: 30
+  inRangeRadius: 0.6
 --- !u!4 &1751891987
 Transform:
   m_ObjectHideFlags: 0

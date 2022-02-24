@@ -177,7 +177,7 @@ public class InputStreamParser : MonoBehaviour
         }
         bool A = Input.GetKeyDown(KeyCode.Z);
         bool B = Input.GetKeyDown(KeyCode.X);
-        if (Input.GetKeyDown(KeyCode.C)) { curator.ChangeList(1); }
+        // if (Input.GetKeyDown(KeyCode.C)) { curator.ChangeList(1); }
         string definB = res.ToString();
         if (A) { definB += "A"; }
         if (B) { definB += "B"; }
@@ -205,7 +205,7 @@ public class InputStreamParser : MonoBehaviour
         if (followUpDelay > 0) { followUpDelay--; if (followUpDelay == 0) { followUpAllow = followUpValue; followUpValue = 0; } }
         else if (followUpAllow > 0) { followUpAllow--; if (followUpAllow == 0) { savedMoveName = ""; } }
         if (movePrevention > 0) { movePrevention--; if (movePrevention == 0 && move != null) { move.text = ""; } }
-        if (dirPrevention > 0) { dirPrevention--; player.frozen = true; if (dirPrevention == 0) { player.frozen = false; } }
+        if (dirPrevention > 0) { dirPrevention--; player.halted = true; if (dirPrevention == 0) { player.halted = false; } }
         if (StreamingInputList.Count == 0 || buffer > 0)
         {
             AddInList(defin);
@@ -224,24 +224,27 @@ public class InputStreamParser : MonoBehaviour
         List<string> allowedToFollowUp = new List<string>();
 
 
-        List<string> PopulateAllows(MoveDetails moveToExamine)
+        bool PopulateAllows(MoveDetails moveToExamine, string toCompare)
         {
             string[] moves = moveToExamine.followUpTo.Split('|');
             List<string> movesFound = new List<string>();
             for (int z = 0; z < moves.Length; z++)
             {
                 string trim = moves[z].Trim(' ');
+                if (trim == "*") { return true; }
+                else if (trim == "-" && toCompare == "") { return true; }
                 movesFound.Add(trim);
             }
             if (movesFound.Count <= 0) { movesFound.Add(moveToExamine.followUpTo); }
-            return movesFound;
+            if (movesFound.Contains(toCompare)) { return true; }
+            return false;
         }
         void FindAllWithStartInput(string start)
         {
             MoveDetails[] moveList = curator.ReturnCurrentMoves();
             for (int j = 0; j < moveList.Length; j++)
             {
-                if (CheckAgainstInput(moveList[j].moveDefinition[0], start) && (PopulateAllows(moveList[j]).Contains(savedMoveName)))
+                if (CheckAgainstInput(moveList[j].moveDefinition[0], start) && (PopulateAllows(moveList[j], savedMoveName)))
                 {
                     if ((!player.airborne && moveList[j].allowOnGround) || (player.airborne && moveList[j].allowOnAir))
                     {
@@ -372,7 +375,7 @@ public class InputStreamParser : MonoBehaviour
         if (prior == -1) { StreamingInputList.Clear(); return; }
         if (movePrevention > 0 && followUpAllow > 0)
         {
-            if (!PopulateAllows(iterationList[prior]).Contains(savedMoveName))
+            if (!PopulateAllows(iterationList[prior], savedMoveName))
             {
                 StreamingInputList.Clear(); return;
             }

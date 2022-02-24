@@ -38,6 +38,7 @@ public class DepthBeUController : MonoBehaviour
     private float moveThreshold = 0.3f;
     public bool airborne = false;
     public bool frozen = false;
+    public bool halted = false;
     protected float stunnedFor = 0f;
     protected bool jumpRequested = false;
     private float feetOffset = 0f;
@@ -158,14 +159,19 @@ public class DepthBeUController : MonoBehaviour
         {
             forceZ = z;
         }
-        if ((rb_root.velocity.x > 0f && cameraFocus.position.x + cameraLocking.cameraLockArea.x > transform.position.x) || (rb_root.velocity.x < 0f && cameraFocus.position.x - cameraLocking.cameraLockArea.x < transform.position.x))
-        {
-            rb_root.velocity = new Vector3(0, rb_root.velocity.y, rb_root.velocity.z);
-        }
+        ControlledKnockBack();
 
         if (delta == 0f) { delta = Time.deltaTime; }
         transform.position += new Vector3(forceX, 0, forceZ) * delta * speed;
         AnimateCharacter(forceX, forceZ);
+    }
+
+    protected void ControlledKnockBack()
+    {
+        if ((rb_root.velocity.x > 0f && cameraFocus.position.x + cameraLocking.cameraLockArea.x < transform.position.x) || (rb_root.velocity.x < 0f && cameraFocus.position.x - cameraLocking.cameraLockArea.x > transform.position.x))
+        {
+            rb_root.velocity = new Vector3(0, rb_root.velocity.y, rb_root.velocity.z);
+        }
     }
 
     protected void PreventRigidBodyCollisions()

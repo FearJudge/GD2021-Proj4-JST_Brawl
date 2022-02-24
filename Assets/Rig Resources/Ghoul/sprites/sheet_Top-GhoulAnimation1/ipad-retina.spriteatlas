@@ -36,8 +36,56 @@ SpriteAtlas:
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
-  m_PackedSprites: []
-  m_PackedSpriteNamesToIndex: []
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 8a69fe00ae6008945972bdc727f70a5c, type: 3}
+  - {fileID: 21300000, guid: c180d4e014ec94d4cae4f31d7ffb51fb, type: 3}
+  - {fileID: 21300000, guid: 0760a6e098e19ba42a94b7ff4276e418, type: 3}
+  - {fileID: 21300000, guid: 0a8864c1477b92443a7f17dfd0cf74d7, type: 3}
+  - {fileID: 21300000, guid: 3a6d9922b9956414b942f4c53be0c0ad, type: 3}
+  - {fileID: 21300000, guid: a5431b229f9e75e47b8c54939ef19a37, type: 3}
+  - {fileID: 21300000, guid: 798fcef20be645846a3cfed8b659322e, type: 3}
+  - {fileID: 21300000, guid: 68e18783ca51ca5489646e8b5682dffe, type: 3}
+  - {fileID: 21300000, guid: 2e034554d3211044893ee2e1291b6676, type: 3}
+  - {fileID: 21300000, guid: 6c08d664322289e42912b2d8bb282e1f, type: 3}
+  - {fileID: 21300000, guid: 1b72556516bba984fada5865ce83c509, type: 3}
+  - {fileID: 21300000, guid: cb94ac0688623f6489568d0c5247ae30, type: 3}
+  - {fileID: 21300000, guid: fa5c29e6c89c86e429a3c596d6d744bb, type: 3}
+  - {fileID: 21300000, guid: 40478ee907cf2e94bb19b859bd8ee486, type: 3}
+  - {fileID: 21300000, guid: d764f7db8f5c2b54898bcb0de18c8de1, type: 3}
+  - {fileID: 21300000, guid: 376cd72c5acf0cc4f9e3e8427b6e7c3d, type: 3}
+  - {fileID: 21300000, guid: d5973cbc17fd70c40bb835d98702edf2, type: 3}
+  - {fileID: 21300000, guid: 998e600dde09b54499f8a97190daf058, type: 3}
+  - {fileID: 21300000, guid: f46ace4de3635a44eb8bb30166c1483a, type: 3}
+  - {fileID: 21300000, guid: daa3d57d6b040a448a16333ee731a05f, type: 3}
+  - {fileID: 21300000, guid: caac631e7dda50f43af738f1d7f01b15, type: 3}
+  - {fileID: 21300000, guid: 8e71eb7e7b599f14386d2520af8b040c, type: 3}
+  - {fileID: 21300000, guid: 2d09cfbef661d3b4e9fb50e88dec14a5, type: 3}
+  - {fileID: 21300000, guid: 585c7abfed1bf4c4db24e3ab0b85001d, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - 3-GHOUL-UpperLeg2
+  - 6-SmeaR-6
+  - 6-SmeaR-5
+  - 3-GHOUL-lowerleg2
+  - 6-SmeaR-9
+  - 6-SmeaR-11
+  - 3-GHOUL-head
+  - 6-SmeaR-10
+  - 6-SmeaR-2
+  - 3-GHOUL-torsonech
+  - 3-GHOUL-UpperArm1
+  - 6-SmeaR-4
+  - 6-SmeaR-8
+  - 3-GHOUL-LowerArm2
+  - 6-SmeaR-7
+  - 3-GHOUL-UpperLeg1
+  - 6-SmeaR-3
+  - 3-GHOUL-ffoot2
+  - 3-GHOUL-tongue
+  - 3-GHOUL-Foot1
+  - 3-GHOUL-LowerArm1
+  - 3-GHOUL-UpperArm2
+  - 3-GHOUL-loincloth
+  - 3-GHOUL-Lowerleg1
   m_RenderDataMap: {}
   m_Tag: ipad-retina
   m_IsVariant: 0

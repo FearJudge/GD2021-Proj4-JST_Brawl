@@ -1,5 +1,726 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &85708798
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 85708799}
+  - component: {fileID: 85708801}
+  - component: {fileID: 85708800}
+  m_Layer: 5
+  m_Name: UpgradeDescription
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &85708799
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 85708798}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3613538685460653514}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 180}
+  m_SizeDelta: {x: 550, y: 160}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &85708801
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 85708798}
+  m_CullTransparentMesh: 1
+--- !u!114 &85708800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 85708798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Add damage
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: b609d59c729d64c40ad1521a7d52be56, type: 2}
+  m_sharedMaterial: {fileID: 3626145051454967639, guid: b609d59c729d64c40ad1521a7d52be56, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 40
+  m_fontSizeBase: 40
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &183109660
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 183109661}
+  - component: {fileID: 183109662}
+  m_Layer: 5
+  m_Name: UpgradeSpot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &183109661
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183109660}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3613538685460653514}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 400}
+  m_SizeDelta: {x: 45, y: 45}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &183109662
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183109660}
+  m_CullTransparentMesh: 1
+--- !u!1 &592548131
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 592548132}
+  - component: {fileID: 592548134}
+  - component: {fileID: 592548133}
+  m_Layer: 5
+  m_Name: UpgradeName
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &592548132
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592548131}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3613538685460653514}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 580}
+  m_SizeDelta: {x: 750, y: 90}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &592548134
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592548131}
+  m_CullTransparentMesh: 1
+--- !u!114 &592548133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 592548131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Upgrade Name
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: b609d59c729d64c40ad1521a7d52be56, type: 2}
+  m_sharedMaterial: {fileID: 3626145051454967639, guid: b609d59c729d64c40ad1521a7d52be56, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 60
+  m_fontSizeBase: 60
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 1
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &1217079865
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1217079866}
+  - component: {fileID: 1217079867}
+  m_Layer: 0
+  m_Name: Library
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1217079866
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217079865}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3613538685460653514}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1217079867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1217079865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 14d0b5e560731e844b19e175963339de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerUpgrades:
+  - upgradeName: Increased Health
+    upgradeDescription: + 40 to Maximum Health
+    upgradeId: 0
+    icon: {fileID: 21300000, guid: f9c68c3a5bea9f249a3a921424d411c6, type: 3}
+    addHealth: 40
+    addLifeSteal: 0
+    addCriticalChance: 0
+    knockBackModifier: 0
+    animationSpeedModifier: 0
+    healthModifier: 0
+    damageModifier: 0
+    stunModifier: 0
+    movementModifier: 0
+    affectsSword: 0
+    affectsGun: 0
+    affectsSpells: 0
+  - upgradeName: Increased Sword Damage
+    upgradeDescription: Your sword deals 20% more damage.
+    upgradeId: 1
+    icon: {fileID: 21300000, guid: 40f712163c1b201498b9be2e110fee78, type: 3}
+    addHealth: 0
+    addLifeSteal: 0
+    addCriticalChance: 0
+    knockBackModifier: 0
+    animationSpeedModifier: 0
+    healthModifier: 0
+    damageModifier: 1.2
+    stunModifier: 0
+    movementModifier: 0
+    affectsSword: 1
+    affectsGun: 0
+    affectsSpells: 0
+  - upgradeName: Vampiric Blade
+    upgradeDescription: Sword Attacks Steal life, but deal less damage.
+    upgradeId: 2
+    icon: {fileID: 21300000, guid: 540380db06df10249b93ac721184ad2e, type: 3}
+    addHealth: 0
+    addLifeSteal: 3
+    addCriticalChance: 0
+    knockBackModifier: 0
+    animationSpeedModifier: 0
+    healthModifier: 0
+    damageModifier: 0.75
+    stunModifier: 0
+    movementModifier: 0
+    affectsSword: 1
+    affectsGun: 0
+    affectsSpells: 0
+  - upgradeName: Forceful Aura
+    upgradeDescription: Your hits have increased knockback and stun.
+    upgradeId: 3
+    icon: {fileID: 21300000, guid: 40fbb8d136861144789cbd9b7c655f90, type: 3}
+    addHealth: 0
+    addLifeSteal: 0
+    addCriticalChance: 0
+    knockBackModifier: 1.25
+    animationSpeedModifier: 0
+    healthModifier: 0
+    damageModifier: 0
+    stunModifier: 1.25
+    movementModifier: 0
+    affectsSword: 0
+    affectsGun: 0
+    affectsSpells: 0
+  - upgradeName: Awakened Soul
+    upgradeDescription: '+5% chance to deal Critical Strikes.
+
+      (Critical Strikes
+      deal double damage)'
+    upgradeId: 4
+    icon: {fileID: 21300000, guid: eec8514e9f717fe42b482361d6fbaae1, type: 3}
+    addHealth: 0
+    addLifeSteal: 0
+    addCriticalChance: 5
+    knockBackModifier: 0
+    animationSpeedModifier: 0
+    healthModifier: 0
+    damageModifier: 0
+    stunModifier: 0
+    movementModifier: 0
+    affectsSword: 0
+    affectsGun: 0
+    affectsSpells: 0
+  moveUpgrades:
+  - upgradeName: Vampiric Lunge
+    upgradeDescription: Your follow-up attack lunges forward, stealing life and adding
+      more knockback.
+    upgradeId: 1000
+    icon: {fileID: 21300000, guid: 802084b0b60c060419bbbb494e232906, type: 3}
+    onMove: Sword Slash II
+    isNewMove: 0
+    addLifeSteal: 10
+    addCriticalChance: 0
+    knockBackModifier: 1.5
+    damageModifier: 1.1
+    stunModifier: 1.2
+    changeSpeedOfAnimation: 0
+    changeAttackPrevention: 4
+    changeMovementPrevention: 4
+    changeFollowUpTiming: 0
+    playerVelChange: {x: 6, y: 0.5, z: 0}
+    addFollowUps: 
+    removeFollowUps: 
+    changeKnockDown: 0
+    knockdownChange: {x: 0, y: 0, z: 0}
+  - upgradeName: Executioner's Sword
+    upgradeDescription: You Uppercut deals tons of more damage, but knocks back the
+      enemy less and increases recovery duration for both you and the enemy.
+    upgradeId: 1001
+    icon: {fileID: 21300000, guid: b27bf8ff806aa5544a32b9fa9bc1ac89, type: 3}
+    onMove: Sword Uppercut
+    isNewMove: 0
+    addLifeSteal: 0
+    addCriticalChance: 0
+    knockBackModifier: 0.3
+    damageModifier: 2.8
+    stunModifier: 1.5
+    changeSpeedOfAnimation: 0
+    changeAttackPrevention: 7
+    changeMovementPrevention: 7
+    changeFollowUpTiming: 0
+    playerVelChange: {x: 0, y: 0, z: 0}
+    addFollowUps: 
+    removeFollowUps: 
+    changeKnockDown: 0
+    knockdownChange: {x: 0, y: 0, z: 0}
+  - upgradeName: Stinger Combo
+    upgradeDescription: Adds a follow up to Sword Slash II.
+    upgradeId: 1002
+    icon: {fileID: 21300000, guid: ed9530d120320cf4c97cb258c08a2db0, type: 3}
+    onMove: Sword Slash IIIA
+    isNewMove: 1
+    addLifeSteal: 0
+    addCriticalChance: 0
+    knockBackModifier: 0
+    damageModifier: 0
+    stunModifier: 0
+    changeSpeedOfAnimation: 0
+    changeAttackPrevention: 0
+    changeMovementPrevention: 0
+    changeFollowUpTiming: 0
+    playerVelChange: {x: 0, y: 0, z: 0}
+    addFollowUps: Sword Slash II
+    removeFollowUps: 
+    changeKnockDown: 0
+    knockdownChange: {x: 0, y: 0, z: 0}
+  - upgradeName: Vengeful Strike
+    upgradeDescription: Your initial Sword Slash pulls enemies in and deals extra
+      damage.
+    upgradeId: 1003
+    icon: {fileID: 21300000, guid: 370066b37bffe26408f7ae554b24562f, type: 3}
+    onMove: Sword Slash
+    isNewMove: 0
+    addLifeSteal: 0
+    addCriticalChance: 0
+    knockBackModifier: 0
+    damageModifier: 1.4
+    stunModifier: 0
+    changeSpeedOfAnimation: 0
+    changeAttackPrevention: 0
+    changeMovementPrevention: 0
+    changeFollowUpTiming: 0
+    playerVelChange: {x: 0, y: 0, z: 0}
+    addFollowUps: 
+    removeFollowUps: 
+    changeKnockDown: 0
+    knockdownChange: {x: -2, y: 0, z: 0}
+  - upgradeName: Uppercut Combo
+    upgradeDescription: You can perform an Uppercut Slash [Down-Forward A] after
+      Sword Slash II.
+    upgradeId: 1004
+    icon: {fileID: 21300000, guid: 26cce0787cf1301499c654329c733137, type: 3}
+    onMove: Sword Uppercut
+    isNewMove: 0
+    addLifeSteal: 0
+    addCriticalChance: 0
+    knockBackModifier: 0
+    damageModifier: 0
+    stunModifier: 0
+    changeSpeedOfAnimation: 0
+    changeAttackPrevention: 0
+    changeMovementPrevention: 0
+    changeFollowUpTiming: 0
+    playerVelChange: {x: 0, y: 0, z: 0}
+    addFollowUps: Sword Slash II
+    removeFollowUps: 
+    changeKnockDown: 0
+    knockdownChange: {x: 0, y: 0, z: 0}
+  linkInstance: {fileID: 5657378863576941360, guid: 07fc8ad1aaf74374c9fe507b4acedd2e, type: 3}
+  linkRoot: {fileID: 1568500313}
+  linkPosition: {fileID: 183109661}
+  upgradeName: {fileID: 592548133}
+  upgradeTarget: {fileID: 1509955663}
+  upgradeDescription: {fileID: 85708800}
+  rotationOfUpgrades: 0
+  range: 0
+--- !u!1 &1509955661
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1509955662}
+  - component: {fileID: 1509955664}
+  - component: {fileID: 1509955663}
+  m_Layer: 5
+  m_Name: UpgradingTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1509955662
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1509955661}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3613538685460653514}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 290}
+  m_SizeDelta: {x: 550, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &1509955664
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1509955661}
+  m_CullTransparentMesh: 1
+--- !u!114 &1509955663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1509955661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Global Upgrade
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: b609d59c729d64c40ad1521a7d52be56, type: 2}
+  m_sharedMaterial: {fileID: 3626145051454967639, guid: b609d59c729d64c40ad1521a7d52be56, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 40
+  m_fontSizeBase: 40
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 1
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &1568500312
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1568500313}
+  m_Layer: 5
+  m_Name: UpgradesRoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1568500313
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1568500312}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3613538685460653514}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 30}
+  m_Pivot: {x: 0.5, y: 0}
 --- !u!1 &3613538685460653515
 GameObject:
   m_ObjectHideFlags: 0
@@ -37,6 +758,12 @@ RectTransform:
   - {fileID: 3613538686037476109}
   - {fileID: 3613538686583175742}
   - {fileID: 3613538686573455012}
+  - {fileID: 1568500313}
+  - {fileID: 183109661}
+  - {fileID: 1217079866}
+  - {fileID: 592548132}
+  - {fileID: 85708799}
+  - {fileID: 1509955662}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

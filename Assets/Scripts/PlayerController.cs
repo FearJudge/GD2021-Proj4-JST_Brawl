@@ -14,7 +14,8 @@ public class PlayerController : DepthBeUController
         lifestealArray = new int[3],
         damageModArray = new float[3],
         damagePlusArray = new int[3],
-        hitstunArray = new float[3]
+        hitstunArray = new float[3],
+        critArray = new int[3]
     };
 
     private void Start()
@@ -26,7 +27,7 @@ public class PlayerController : DepthBeUController
     protected override void MoveCharacter()
     {
         if (!controlOn) { UpgradeInput(); return; }
-        if (frozen) { return; }
+        if (frozen) { ControlledCharacterMovement(0, 0); return; }
         float X = Input.GetAxis("Horizontal");
         float Z = Input.GetAxis("Vertical");
         jumpRequested = Input.GetButtonDown("Submit");
@@ -59,6 +60,7 @@ public class PlayerController : DepthBeUController
         if (up.damageModifier != 0f) { gv.damageModArray = MoveProp.DetermineFloatArrayValues(gv.damageModArray, up.damageModifier, up); }
         if (up.movementModifier != 0f) { speed *= up.movementModifier; }
         if (up.stunModifier != 0f) { gv.hitstunArray = MoveProp.DetermineFloatArrayValues(gv.hitstunArray, up.stunModifier, up); }
+        if (up.addCriticalChance != 0) { gv.critArray = MoveProp.DetermineIntArrayValues(gv.critArray, up.addCriticalChance, up); }
     }
 
     private void OnDestroy()

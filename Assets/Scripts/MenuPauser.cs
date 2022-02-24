@@ -27,7 +27,7 @@ public class MenuPauser : MonoBehaviour
 
     public void QuitCommand()
     {
-        Application.Quit();
+        SceneManager.LoadScene("MainMenuScene");
     }
 
     public void Resume()

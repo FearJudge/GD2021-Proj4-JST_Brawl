@@ -75,6 +75,7 @@ public class EnemyAI : DepthBeUController
     protected Vector3 prevDestination = Vector3.zero;
     public PlayerController currentTarget;
     public float visionRadius = 30f;
+    public float inRangeRadius = 0.6f;
     int behaviourInd = 0;
     bool inProgress = false;
     bool transitioning = false;
@@ -119,7 +120,7 @@ public class EnemyAI : DepthBeUController
         {
             currentAct = State.Moving;
             movingDestination = null;
-            if (curBehaviour.relateSpotToPlayer) { movingDestination = PlayerController.GetRandomPlayer().transform; destination = movingDestination.position; destinationOffset = new Vector3(curBehaviour.moveToSpot.x, 0, curBehaviour.moveToSpot.z); }
+            if (curBehaviour.relateSpotToPlayer) { movingDestination = PlayerController.GetRandomPlayer().transform; destination = Vector3.Scale(movingDestination.position, new Vector3(1, 0, 1)); destinationOffset = new Vector3(curBehaviour.moveToSpot.x, 0, curBehaviour.moveToSpot.z); }
             else if (curBehaviour.relateSpotToSelf) { destination = Vector3.Scale(transform.position + curBehaviour.moveToSpot, new Vector3(1, 0, 1)); }
             else { destination = new Vector3(curBehaviour.moveToSpot.x, 0, curBehaviour.moveToSpot.z); }
         }
@@ -153,19 +154,18 @@ public class EnemyAI : DepthBeUController
             case State.Standing:
                 if (idle <= 0f) { NextRule(Condition.WaitLimitReached); idle = 0f; return; }
                 idle -= Time.fixedDeltaTime;
+                AnimateCharacterBool("running", false);
                 break;
             case State.Moving:
-                if (frozen) { return; }
-                if ((destination - new Vector3(transform.position.x, 0, transform.position.z)).magnitude < 0.6f) { NextRule(Condition.ReachedDestination); return;  }
+                float range = (destination - new Vector3(transform.position.x, 0, transform.position.z)).magnitude;
+                if (range < inRangeRadius) { NextRule(Condition.ReachedDestination); return;  }
                 MoveToDestinationSpot();
                 break;
             case State.Attacking:
-                if (frozen) { return; }
                 if (moveDelay == 0) { NextRule(Condition.MoveRecoveredFrom); return; }
                 moveDelay--;
                 break;
             case State.Hit:
-                AnimateCharacter(0f, 0f);
                 break;
             case State.Dodging:
                 break;
@@ -229,19 +229,22 @@ public class EnemyAI : DepthBeUController
     void MoveToDestinationSpot()
     {
         if (InDistanceToPlayer() && cutAwayInRange) { NextRule(Condition.PlayerInRange); return; }
-        if (movingDestination != null) { destination = movingDestination.position + destinationOffset; }
+        if (frozen) { return; }
+        if (movingDestination != null) { destination = Vector3.Scale(movingDestination.position + destinationOffset, new Vector3(1, 0, 1)); }
         prevDestination = transform.position;
         float destStepX = Mathf.Clamp(destination.x - transform.position.x, -1, 1);
         float destStepZ = Mathf.Clamp(destination.z - transform.position.z, -1, 1);
         ControlledCharacterMovement(destStepX, destStepZ, Time.fixedDeltaTime);
-        if (Mathf.Abs(prevDestination.x - transform.position.x) <= 0.07f && Mathf.Abs(destStepX) >= 0.15f)
+        if (Mathf.Abs(prevDestination.x - transform.position.x) <= 0.005f && Mathf.Abs(destStepX) >= 0.15f)
         { gotStuckX--; if (gotStuckX == 0) { gotStuckX = BASESTUCK; NextRule(Condition.ReachedDestination); } }
     }
 
-    public override void GetHit(int dmg, float stun, bool knockBack, Vector3 knockback, bool fromLeft)
+    public override void GetHit(int dmg, float stun, bool knockBack, Vector3 knockback, bool fromLeft, bool isCrit=false)
     {
         if (currentAct != State.Hit)
         {
+            AnimateCharacterBool("stunned", true);
+            AnimateCharacter(0f, 0f);
             currentAct = State.Hit;
             NextRule(Condition.GotHit);
         }
@@ -267,14 +270,23 @@ public class EnemyAI : DepthBeUController
 
     protected override void UnFreeze()
     {
+        AnimateCharacterBool("stunned", false);
         base.UnFreeze();
     }
 
     public override void Kill()
     {
+        AnimateCharacterBool("stunned", false);
         currentAct = State.Dead;
-        EncounterManager.IDied(gameObject, this);
-        EncounterManager.EncounterCleared += Dissolve;
+        if (upgradeIdentifier != 0)
+        {
+            EncounterManager.IDied(gameObject, this);
+            EncounterManager.EncounterCleared += Dissolve;
+        }
+        else
+        {
+            Invoke("Dissolve", 2f);
+        }
         base.Kill();
     }
 

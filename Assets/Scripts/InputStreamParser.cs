@@ -357,7 +357,7 @@ public class InputStreamParser : MonoBehaviour
             return highestInd;
         }
 
-        if (movePrevention > 0 && followUpAllow == 0) { if (buffer == 0) { buffer = MOVEBUFFDUR; } else { buffer--; } if (buffer == 0) { StreamingInputList.Clear(); return; } return; }
+        if ((movePrevention > 0 && followUpAllow == 0) || player.frozen) { if (buffer == 0) { buffer = MOVEBUFFDUR; } else { buffer--; } if (buffer == 0) { StreamingInputList.Clear(); return; } return; }
         buffer = 0;
 
         for (int i = 0; i < StreamingInputList.Count; i++)
@@ -374,12 +374,11 @@ public class InputStreamParser : MonoBehaviour
         {
             if (!PopulateAllows(iterationList[prior]).Contains(savedMoveName))
             {
-                Debug.Log(iterationList[prior].followUpTo + " Does not equal:" + savedMoveName);
                 StreamingInputList.Clear(); return;
             }
         }
         
-        if (prior >= 0) { Debug.Log(iterationList[prior].moveName); ActivateMove(iterationList[prior].properties, iterationList[prior].moveName); }
+        if (prior >= 0) { ActivateMove(iterationList[prior].properties, iterationList[prior].moveName); }
 
         StreamingInputList.Clear();
     }

@@ -9,7 +9,17 @@ public class EnemySpawner : MonoBehaviour
     public float spawnDelay = 2f;
     public List<GameObject> spawnedEnemies = new List<GameObject>();
 
-    private void Start()
+    private void Awake()
+    {
+        EncounterManager.AllCleared += Activate;
+    }
+
+    private void OnDestroy()
+    {
+        EncounterManager.AllCleared -= Activate;
+    }
+
+    public void Activate()
     {
         StartCoroutine(SpewEnemy(spawnDelay));
     }

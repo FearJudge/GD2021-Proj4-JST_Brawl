@@ -158,6 +158,10 @@ public class DepthBeUController : MonoBehaviour
         {
             forceZ = z;
         }
+        if ((rb_root.velocity.x > 0f && cameraFocus.position.x + cameraLocking.cameraLockArea.x > transform.position.x) || (rb_root.velocity.x < 0f && cameraFocus.position.x - cameraLocking.cameraLockArea.x < transform.position.x))
+        {
+            rb_root.velocity = new Vector3(0, rb_root.velocity.y, rb_root.velocity.z);
+        }
 
         if (delta == 0f) { delta = Time.deltaTime; }
         transform.position += new Vector3(forceX, 0, forceZ) * delta * speed;
@@ -177,7 +181,7 @@ public class DepthBeUController : MonoBehaviour
 
     protected void TickDownStun()
     {
-        if (stunnedFor == 0f) { return; }
+        if (stunnedFor == 0f && !frozen) { return; }
         stunnedFor -= Time.fixedDeltaTime;
         if (stunnedFor <= 0f) { stunnedFor = 0f; UnFreeze(); }
     }
@@ -237,11 +241,28 @@ public class DepthBeUController : MonoBehaviour
         else if (speedX > 0) { body.transform.localRotation = Quaternion.Euler(0f, 0f, 0f); playerFacingRight = true; }
     }
 
-    public virtual void GetHit(int dmg, float stun, bool knockBack, Vector3 knockBackV, bool fromLeft)
+    protected void AnimateCharacter(string trigger)
     {
+        for (int a = 0; a < animator.parameters.Length; a++)
+        {
+            if (animator.parameters[a].name == trigger) { animator.SetTrigger(trigger); return; }
+        }
+    }
+
+    protected void AnimateCharacterBool(string boolean, bool boolvalue)
+    {
+        for (int a = 0; a < animator.parameters.Length; a++)
+        {
+            if (animator.parameters[a].name == boolean) { animator.SetBool(boolean, boolvalue); return; }
+        }
+    }
+
+    public virtual void GetHit(int dmg, float stun, bool knockBack, Vector3 knockBackV, bool fromLeft, bool isCrit=false)
+    {
+        if (isCrit) { dmg *= 2; }
         sr.Color = Color.red;
         hpScript.Hp -= dmg;
-        if (stunnedFor > 0.01f) { frozen = true; }
+        if (stun > 0.01f) { frozen = true; }
         stunnedFor = stun;
         int dir = 1;
         if (!fromLeft) { dir = -1; knockBackV.x *= dir; }
@@ -280,6 +301,7 @@ public class DepthBeUController : MonoBehaviour
 
     public virtual void Kill()
     {
+        sr.Color = baseCol;
         playerCollisionBox.enabled = false;
         rb_body.isKinematic = true;
         stunnedFor = 0f;

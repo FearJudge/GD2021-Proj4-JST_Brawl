@@ -4,14 +4,20 @@ using UnityEngine;
 
 public class HurtBox : MonoBehaviour
 {
+    public Health ownerHealth;
     public Transform body;
     public float hitStun = 0.25f;
     public int damage = 10;
     public int lifeSteal = 0;
+    public int crit = 0;
     public bool knockDown = false;
     public bool parry = false;
     public Vector3 knockDownVelocity = Vector3.zero;
     public LayerMask activeOn;
+    public GameObject hitSpark;
+    public GameObject critSpark;
+    public GameObject[] sparkVariants;
+    bool isCrit = false;
 
     public void OnTriggerEnter(Collider other)
     {
@@ -19,9 +25,13 @@ public class HurtBox : MonoBehaviour
         {
             other.transform.parent.gameObject.TryGetComponent(out DepthBeUController enemy);
             if (enemy == null) { return; }
+            if (ownerHealth != null) { ownerHealth.Hp += lifeSteal; }
             bool dirIsLeft = false;
             if (body.localRotation.y == 0f) { dirIsLeft = true; }
-            enemy.GetHit(damage, hitStun, knockDown, knockDownVelocity, dirIsLeft);
+            isCrit = (Random.Range(0, 101) < crit);
+            enemy.GetHit(damage, hitStun, knockDown, knockDownVelocity, dirIsLeft, isCrit);
+            if (hitSpark != null) { Instantiate(hitSpark, other.transform.position + new Vector3(Random.Range(-0.1f, 0.1f), Random.Range(-0.1f, 0.1f), 0), transform.rotation); }
+            if (critSpark != null && isCrit) { Instantiate(critSpark, other.transform.position + new Vector3(Random.Range(-0.1f, 0.1f), Random.Range(-0.1f, 0.1f), 0), transform.rotation); }
         }
     }
 }

@@ -8,6 +8,7 @@ public class EncounterManager : MonoBehaviour
     public static event EncounterEvent EncounterStarted;
     public static event EncounterEvent EncounterEnded;
     public static event EncounterEvent EncounterCleared;
+    public static event EncounterEvent AllCleared;
 
     public static EncounterManager manager;
 
@@ -51,7 +52,7 @@ public class EncounterManager : MonoBehaviour
         public void BeginEncounter()
         {
             encounterStart.trigger.enabled = false;
-            SoundPlayer.PlayBGM(songId, 0.8f, 1f);
+            SoundPlayer.PlayBGM(songId, 1f, 1f);
         }
     }
 
@@ -64,12 +65,14 @@ public class EncounterManager : MonoBehaviour
     bool waitForNextWave = false;
     bool waitForKilled = false;
     int currentEnemyCap = 0;
+    static int cleared = 0;
     public Wave[] currentWaves = new Wave[0];
     public List<GameObject> enemies = new List<GameObject>();
 
     void Start()
     {
         manager = this;
+        cleared = encounterListings.Length;
         EncounterTrigger.PlayerReached += StartEncounter;
     }
 
@@ -143,6 +146,7 @@ public class EncounterManager : MonoBehaviour
 
     void EndEncounter()
     {
+        SoundPlayer.PlayBGM(1, 1f, 1f);
         currentWaves = new Wave[0];
         EncounterEnded?.Invoke();
         mainCam.EndEncounterCamera();
@@ -157,8 +161,11 @@ public class EncounterManager : MonoBehaviour
 
     public static void Clear()
     {
+        SoundPlayer.PlayBGM(0, 1f, 1f);
         EncounterCleared?.Invoke();
         EncounterCleared = null;
+        cleared--;
+        if (cleared == 0) { AllCleared?.Invoke(); }
     }
 }
 

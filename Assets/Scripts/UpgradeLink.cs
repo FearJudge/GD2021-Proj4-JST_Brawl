@@ -30,9 +30,11 @@ public class UpgradeLink : MonoBehaviour
 
     public void HoveringCurrent()
     {
+        UpgradeLibrary.DisplayUpgrade(availableUpgrades[availableInd].upgrade);
+        if (ownedBy == null) { return; }
         for (int a = 0; a < availableUpgrades.Count; a++) { availableUpgrades[a].ownedBy.sr.Color = Color.gray; }
         ownedBy.sr.Color = Color.magenta;
-        UpgradeLibrary.DisplayUpgrade(availableUpgrades[availableInd].upgrade);
+        
     }
 
     public void SetUp()
@@ -63,7 +65,8 @@ public class UpgradeLink : MonoBehaviour
         for (int a = 0; a < availableUpgrades.Count; a++)
         {
             availableUpgrades[a].gameObject.SetActive(true);
-            availableUpgrades[a].transform.Translate(Vector3.up * 250f, Space.World);
+            RectTransform availableRect = availableUpgrades[a].GetComponent<RectTransform>();
+            availableRect.anchoredPosition = UpgradeLibrary.instance.linkPosition.anchoredPosition;
             availableUpgrades[a].transform.RotateAround(UpgradeLibrary.instance.linkRoot.position, Vector3.forward, a * -rotPerUpgrade);
         }
         Scroll(0);

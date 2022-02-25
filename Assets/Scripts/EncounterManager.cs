@@ -167,5 +167,15 @@ public class EncounterManager : MonoBehaviour
         cleared--;
         if (cleared == 0) { AllCleared?.Invoke(); }
     }
+
+    public static void CreateRewards()
+    {
+        if (cleared > 0) { return; }
+        for (int a = 0; a < Random.Range(2,8); a++)
+        {
+            UpgradeLink.CreateInstance(null, PlayerController.players[0], UpgradeLibrary.RandomUpgrade());
+        }
+        manager.EndEncounter();
+    }
 }
 

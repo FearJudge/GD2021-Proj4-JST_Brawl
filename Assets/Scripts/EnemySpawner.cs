@@ -29,7 +29,7 @@ public class EnemySpawner : MonoBehaviour
         while (gameObject != null)
         {
             yield return new WaitForSeconds(delay);
-            if (spawnedEnemies.Count < maxAllowed) { spawnedEnemies.Add(Instantiate(enemy, transform)); }
+            if (spawnedEnemies.Count < maxAllowed) { spawnedEnemies.Add(Instantiate(enemy, transform.position, transform.rotation)); }
             else { CheckDeaths(); }
             yield return null;
         }

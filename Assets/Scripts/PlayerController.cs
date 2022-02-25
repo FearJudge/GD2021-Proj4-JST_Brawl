@@ -27,10 +27,11 @@ public class PlayerController : DepthBeUController
     protected override void MoveCharacter()
     {
         if (!controlOn) { UpgradeInput(); return; }
-        if (frozen) { ControlledCharacterMovement(0, 0); return; }
+        if (frozen || halted) { ControlledCharacterMovement(0, 0); return; }
         float X = Input.GetAxis("Horizontal");
         float Z = Input.GetAxis("Vertical");
         jumpRequested = Input.GetButtonDown("Submit");
+        if (Input.GetKeyDown(KeyCode.C)) { EncounterManager.CreateRewards(); }
         if (Input.GetButtonDown("Cancel") && !MenuPauser.paused) { SceneManager.LoadSceneAsync("PauseMenuScene", LoadSceneMode.Additive); }
 
         ControlledCharacterMovement(X, Z);

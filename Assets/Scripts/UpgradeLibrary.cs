@@ -162,4 +162,19 @@ public class UpgradeLibrary : MonoBehaviour
         }
         return found;
     }
+
+    public static uint RandomUpgrade()
+    {
+        int rand = Random.Range(0, 2);
+        uint id = 0;
+        if (rand == 0)
+        {
+            id = instance.playerUpgrades[Random.Range(0, instance.playerUpgrades.Length - 1)].upgradeId;
+        }
+        else
+        {
+            id = instance.moveUpgrades[Random.Range(0, instance.moveUpgrades.Length - 1)].upgradeId;
+        }
+        return id;
+    }
 }

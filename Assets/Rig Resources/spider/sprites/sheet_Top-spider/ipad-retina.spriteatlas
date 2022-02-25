@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: ipad-retina
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 0
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 102900000, guid: 09912efc82622454f99c214269550d16, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 3e8641808c7ad634d89cb232ae5769a7, type: 3}
+  - {fileID: 21300000, guid: 64cec4b07e711cd49af94317cd73f4bf, type: 3}
+  - {fileID: 21300000, guid: 3857348117e39514fb9bf20a1ca4a0f2, type: 3}
+  - {fileID: 21300000, guid: 578a3a91c4105a74cb259fd5e23ad3bc, type: 3}
+  - {fileID: 21300000, guid: 56ec7422124d0024f8cdec20ec4206b8, type: 3}
+  - {fileID: 21300000, guid: f77e26a2cf4fc654f9b5feb6ee1a6c80, type: 3}
+  - {fileID: 21300000, guid: 93b31233980439d4a966fd08443084e8, type: 3}
+  - {fileID: 21300000, guid: 03c3be73d5d8f5247aa69e5193cbce3b, type: 3}
+  - {fileID: 21300000, guid: 32d62534fabf7fe448c933593a4170ea, type: 3}
+  - {fileID: 21300000, guid: e6094954ac0341440ad55f6a473cb813, type: 3}
+  - {fileID: 21300000, guid: b88846747bd7fc14ab07afaf39c0c3f4, type: 3}
+  - {fileID: 21300000, guid: 69f66f451e30b5943b4cb2226d284498, type: 3}
+  - {fileID: 21300000, guid: 97319b75e1a2d2f4bb4abc2538d3d074, type: 3}
+  - {fileID: 21300000, guid: c1d852d5d2eb75a4daf44921f055cceb, type: 3}
+  - {fileID: 21300000, guid: baf1699698495744c8b4d2d31f1a1284, type: 3}
+  - {fileID: 21300000, guid: c9dbb707c1b81314f9870edd0872d0d9, type: 3}
+  - {fileID: 21300000, guid: a4da5d07817d71a4a92ac41ec4a605d3, type: 3}
+  - {fileID: 21300000, guid: ee9c5e19f5d4064499358532449c4818, type: 3}
+  - {fileID: 21300000, guid: 46e0e699e805d6145b49eec083dd9ebf, type: 3}
+  - {fileID: 21300000, guid: 3424fa7b05b331d488f1c8a528a4ddef, type: 3}
+  - {fileID: 21300000, guid: 77d1243cf5df80941a20f1137d5e8d96, type: 3}
+  - {fileID: 21300000, guid: 2140fe3db94cf2c45bb0d2a0928872b0, type: 3}
+  - {fileID: 21300000, guid: ec1a6fbd02eda89419e28a23034f938b, type: 3}
+  - {fileID: 21300000, guid: df009cfd8639d654d8e41cde606ee971, type: 3}
+  - {fileID: 21300000, guid: 31b4840e1dff7f04c827b0df0771ce44, type: 3}
+  - {fileID: 21300000, guid: be80114f032661d4a9dda684df6b20f4, type: 3}
+  - {fileID: 21300000, guid: cf85e44f663f83349ad4402e94c9366d, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - 3-spiderzombie-LEGMID1B
+  - 3-spiderzombie-LEGMID1C
+  - 3-spiderzombie-LEGLOWER1C
+  - 3-spiderzombie-LEGLOWER2C
+  - 3-spiderzombie-LEGMID1A
+  - 3-spiderzombie-LEGUPPER1A
+  - 3-spiderzombie-UpperArm1
+  - 3-spiderzombie-Hand2
+  - 3-spiderzombie-LEGUPPER1C
+  - 3-spiderzombie-LEGLOWER1B
+  - 3-spiderzombie-HAnd1
+  - 3-spiderzombie-LEGMID2A
+  - 3-spiderzombie-lowerArm1
+  - 3-spiderzombie-lowerArm2
+  - 3-spiderzombie-LEGUPPER2C
+  - 3-spiderzombie-BODY
+  - 3-spiderzombie-LEGMID2C
+  - 3-spiderzombie-LEGUPPER2A
+  - 3-spiderzombie-LEGMID2B
+  - 3-spiderzombie-LEGLOWER2A
+  - 3-spiderzombie-HEAD
+  - 3-spiderzombie-LEGLOWER1A
+  - 3-spiderzombie-UpperArm2
+  - 3-spiderzombie-LEGUPPER2B
+  - 3-spiderzombie-LEGLOWER2B
+  - 4-WEB-1
+  - 3-spiderzombie-LEGUPPER1B
+  m_RenderDataMap: {}
+  m_Tag: ipad-retina
+  m_IsVariant: 0

@@ -103,6 +103,11 @@ public class EnemyAI : DepthBeUController
         TransitionBetweenRules(behaviourInd);
     }
 
+    protected override void MoveCharacter()
+    {
+        ControlledKnockBack();
+    }
+
     void ActAccordingToRules()
     {
         if (behaviour.Length == 0 || inProgress) { return; }

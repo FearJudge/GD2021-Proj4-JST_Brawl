@@ -1,10 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class PlayerController : DepthBeUController
 {
+    public PlayerInput p_input;
+    private InputActionAsset inasset;
+    private InputAction moveBtns;
+    private InputAction escBtn;
+    private InputAction jmpBtn;
     public static List<PlayerController> players = new List<PlayerController>();
     public bool controlOn = true;
     public InputStreamParser myStream;
@@ -18,9 +24,14 @@ public class PlayerController : DepthBeUController
         critArray = new int[3]
     };
 
-    private void Start()
+    private void Awake()
     {
         players.Add(this);
+        SetUP();
+        inasset = p_input.actions;
+        moveBtns = inasset.FindAction("Move");
+        escBtn = inasset.FindAction("Pause");
+        jmpBtn = inasset.FindAction("Jump");
         EncounterManager.EncounterEnded += SwapToChoose;
     }
 
@@ -28,11 +39,11 @@ public class PlayerController : DepthBeUController
     {
         if (!controlOn) { UpgradeInput(); return; }
         if (frozen || halted) { ControlledCharacterMovement(0, 0); return; }
-        float X = Input.GetAxis("Horizontal");
-        float Z = Input.GetAxis("Vertical");
-        jumpRequested = Input.GetButtonDown("Submit");
-        if (Input.GetKeyDown(KeyCode.C)) { EncounterManager.CreateRewards(); }
-        if (Input.GetButtonDown("Cancel") && !MenuPauser.paused) { SceneManager.LoadSceneAsync("PauseMenuScene", LoadSceneMode.Additive); }
+        Vector2 inputMoves = moveBtns.ReadValue<Vector2>();
+        float X = inputMoves.x;
+        float Z = inputMoves.y;
+        jumpRequested = jmpBtn.triggered;
+        if (escBtn.triggered && !MenuPauser.paused) { SceneManager.LoadSceneAsync("PauseMenuScene", LoadSceneMode.Additive); }
 
         ControlledCharacterMovement(X, Z);
     }

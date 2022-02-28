@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class InputStreamParser : MonoBehaviour
 {
@@ -8,6 +9,11 @@ public class InputStreamParser : MonoBehaviour
     public static int moveErrorOnCloseMissInput = 1;
     public static int moveErrorOnFarMissInput = 3;
     public static bool invertX = false;
+
+    public PlayerInput p_input;
+    private InputActionAsset actions;
+    private InputAction moveBtns;
+    private InputAction[] attackBtns = new InputAction[3];
 
     public enum ErrorType
     {
@@ -129,6 +135,9 @@ public class InputStreamParser : MonoBehaviour
     private void Awake()
     {
         pcont = (PlayerController)player;
+        actions = p_input.actions;
+        moveBtns = actions.FindAction("Move");
+        attackBtns = new InputAction[3] { actions.FindAction("LightAttack"), actions.FindAction("HeavyAttack"), actions.FindAction("WeaponSwap") };
     }
 
     void Update()
@@ -163,21 +172,20 @@ public class InputStreamParser : MonoBehaviour
         }
 
         int res = 0;
-        float x = Input.GetAxisRaw("Horizontal");
-        float y = Input.GetAxisRaw("Vertical");
-        if (y >= 0.3f) { res = 6; }
-        else if (y <= -0.3f) { res = 0; }
+        Vector2 mv = moveBtns.ReadValue<Vector2>();
+        if (mv.y >= 0.3f) { res = 6; }
+        else if (mv.y <= -0.3f) { res = 0; }
         else { res = 3; }
-        if (x >= 0.3f) { res += 3; if (invertX) { res -= 2; } }
-        else if (x <= -0.3f) { res += 1; if (invertX) { res += 2; } }
+        if (mv.x >= 0.3f) { res += 3; if (invertX) { res -= 2; } }
+        else if (mv.x <= -0.3f) { res += 1; if (invertX) { res += 2; } }
         else { res += 2; }
         if ((res == 5 || res == 4 || res == 6) && framesFrom >= TURNAROUNDDUR)
         {
             CheckFacing();
         }
-        bool A = Input.GetKeyDown(KeyCode.Z);
-        bool B = Input.GetKeyDown(KeyCode.X);
-        // if (Input.GetKeyDown(KeyCode.C)) { curator.ChangeList(1); }
+        bool A = attackBtns[0].triggered;
+        bool B = attackBtns[1].triggered;
+        if (attackBtns[2].triggered) { curator.ChangeList(1); }
         string definB = res.ToString();
         if (A) { definB += "A"; }
         if (B) { definB += "B"; }

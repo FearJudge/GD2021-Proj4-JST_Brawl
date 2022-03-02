@@ -1782,10 +1782,12 @@ MonoBehaviour:
   - moveName: Sword Slash
     followUpTo: 
     moveDefinition:
-    - (12456789)A
+    - (456789)A
     moveAllowedError: 3
     moveAllowedDuration: 12
     movePriority: 9
+    moveBloodCost: 0
+    moveAmmoCost: 0
     allowOnGround: 1
     allowOnAir: 0
     properties:
@@ -1798,9 +1800,14 @@ MonoBehaviour:
       characterVelocity: {x: 0, y: 0, z: 0}
       hurtBoxDamage: 21
       lifeSteal: 0
+      baseCrit: 0
       hitStunDuration: 0.2
       knockDown: 0
       knockDownVelocity: {x: 1, y: 0.2, z: 0}
+      isProjectile: 0
+      ammoChange: 0
+      projVelocity: {x: 0, y: 0, z: 0}
+      isProjBuff: 0
   - moveName: Sword Slash II
     followUpTo: Sword Slash
     moveDefinition:
@@ -1808,6 +1815,8 @@ MonoBehaviour:
     moveAllowedError: 3
     moveAllowedDuration: 12
     movePriority: 21
+    moveBloodCost: 0
+    moveAmmoCost: 0
     allowOnGround: 1
     allowOnAir: 0
     properties:
@@ -1820,31 +1829,43 @@ MonoBehaviour:
       characterVelocity: {x: 0, y: 0, z: 0}
       hurtBoxDamage: 36
       lifeSteal: 0
+      baseCrit: 0
       hitStunDuration: 0.7
       knockDown: 1
       knockDownVelocity: {x: 8, y: 0.9, z: 0}
+      isProjectile: 0
+      ammoChange: 0
+      projVelocity: {x: 0, y: 0, z: 0}
+      isProjBuff: 0
   - moveName: Sword Uppercut
     followUpTo: '-'
     moveDefinition:
-    - (3)A
+    - (123)A
     moveAllowedError: 5
     moveAllowedDuration: 12
     movePriority: 22
+    moveBloodCost: 0
+    moveAmmoCost: 0
     allowOnGround: 1
     allowOnAir: 0
     properties:
-      animationTrigger: Attack_Slash_Front2
+      animationTrigger: Attack_Slash_Up
       sound: {fileID: 8300000, guid: d6f8729048dc47645b6681f719c3d38b, type: 3}
       animationSpeedMod: 1
-      allowNextMove: 16
-      preventMovement: 15
-      followUpAllowFrom: 9
+      allowNextMove: 32
+      preventMovement: 32
+      followUpAllowFrom: 25
       characterVelocity: {x: 0, y: 0, z: 0}
       hurtBoxDamage: 28
       lifeSteal: 0
+      baseCrit: 0
       hitStunDuration: 1
       knockDown: 1
       knockDownVelocity: {x: 0.3, y: 9, z: 0}
+      isProjectile: 0
+      ammoChange: 0
+      projVelocity: {x: 0, y: 0, z: 0}
+      isProjBuff: 0
   - moveName: Aerial Sword
     followUpTo: 
     moveDefinition:
@@ -1852,6 +1873,8 @@ MonoBehaviour:
     moveAllowedError: 4
     moveAllowedDuration: 12
     movePriority: 20
+    moveBloodCost: 0
+    moveAmmoCost: 0
     allowOnGround: 0
     allowOnAir: 1
     properties:
@@ -1864,9 +1887,14 @@ MonoBehaviour:
       characterVelocity: {x: 0, y: 0, z: 0}
       hurtBoxDamage: 15
       lifeSteal: 0
+      baseCrit: 0
       hitStunDuration: 0.6
       knockDown: 1
       knockDownVelocity: {x: 0.2, y: 3, z: 0}
+      isProjectile: 0
+      ammoChange: 0
+      projVelocity: {x: 0, y: 0, z: 0}
+      isProjBuff: 0
   - moveName: Sword Slash IIIA
     followUpTo: 
     moveDefinition:
@@ -1874,6 +1902,8 @@ MonoBehaviour:
     moveAllowedError: 3
     moveAllowedDuration: 12
     movePriority: 21
+    moveBloodCost: 0
+    moveAmmoCost: 0
     allowOnGround: 1
     allowOnAir: 0
     properties:
@@ -1886,11 +1916,226 @@ MonoBehaviour:
       characterVelocity: {x: 7, y: 0.6, z: 0}
       hurtBoxDamage: 36
       lifeSteal: 0
+      baseCrit: 0
       hitStunDuration: 0.9
       knockDown: 1
       knockDownVelocity: {x: 8, y: 0.9, z: 0}
-  moveListGun: []
+      isProjectile: 0
+      ammoChange: 0
+      projVelocity: {x: 0, y: 0, z: 0}
+      isProjBuff: 0
+  moveListGun:
+  - moveName: Crossbow Shoot
+    followUpTo: 
+    moveDefinition:
+    - (123456789)A
+    moveAllowedError: 2
+    moveAllowedDuration: 5
+    movePriority: 12
+    moveBloodCost: 0
+    moveAmmoCost: 1
+    allowOnGround: 1
+    allowOnAir: 0
+    properties:
+      animationTrigger: Attack_Gun_Shot
+      sound: {fileID: 8300000, guid: 9a6ba1045ec4ea142acc8eb0f1b4f5ed, type: 3}
+      animationSpeedMod: 1
+      allowNextMove: 38
+      preventMovement: 32
+      followUpAllowFrom: 30
+      characterVelocity: {x: 0, y: 0, z: 0}
+      hurtBoxDamage: 7
+      lifeSteal: 0
+      baseCrit: 0
+      hitStunDuration: 0.12
+      knockDown: 0
+      knockDownVelocity: {x: 0, y: 0, z: 0}
+      isProjectile: 1
+      ammoChange: -1
+      projVelocity: {x: 0, y: 0, z: 0}
+      isProjBuff: 0
+  - moveName: Crossbow Shoot Followup
+    followUpTo: Crossbow Shoot
+    moveDefinition:
+    - (123456789)A
+    moveAllowedError: 2
+    moveAllowedDuration: 5
+    movePriority: 12
+    moveBloodCost: 0
+    moveAmmoCost: 1
+    allowOnGround: 1
+    allowOnAir: 0
+    properties:
+      animationTrigger: Attack_Gun_Shot2
+      sound: {fileID: 8300000, guid: c9c8536393ec15f4d9b154323753480f, type: 3}
+      animationSpeedMod: 1
+      allowNextMove: 32
+      preventMovement: 31
+      followUpAllowFrom: 8
+      characterVelocity: {x: 0, y: 0, z: 0}
+      hurtBoxDamage: 7
+      lifeSteal: 0
+      baseCrit: 0
+      hitStunDuration: 0.08
+      knockDown: 0
+      knockDownVelocity: {x: 0, y: 0, z: 0}
+      isProjectile: 1
+      ammoChange: -1
+      projVelocity: {x: 0, y: 0, z: 0}
+      isProjBuff: 0
+  - moveName: Crossbow Shoot BloodFollowup
+    followUpTo: Crossbow Shoot Followup | Crossbow Shoot BloodFollowup
+    moveDefinition:
+    - (123456789)A
+    moveAllowedError: 2
+    moveAllowedDuration: 5
+    movePriority: 12
+    moveBloodCost: 20
+    moveAmmoCost: 1
+    allowOnGround: 1
+    allowOnAir: 0
+    properties:
+      animationTrigger: Attack_Gun_Shot2
+      sound: {fileID: 8300000, guid: c9c8536393ec15f4d9b154323753480f, type: 3}
+      animationSpeedMod: 1
+      allowNextMove: 29
+      preventMovement: 29
+      followUpAllowFrom: 5
+      characterVelocity: {x: 0, y: 0, z: 0}
+      hurtBoxDamage: 14
+      lifeSteal: 2
+      baseCrit: 0
+      hitStunDuration: 0.2
+      knockDown: 0
+      knockDownVelocity: {x: 0, y: 0, z: 0}
+      isProjectile: 1
+      ammoChange: -1
+      projVelocity: {x: 0, y: 0, z: 0}
+      isProjBuff: 0
+  - moveName: Crossbow Charge
+    followUpTo: 
+    moveDefinition:
+    - (123)
+    - (456)
+    - (123)
+    - (123456)A
+    moveAllowedError: 4
+    moveAllowedDuration: 15
+    movePriority: 22
+    moveBloodCost: 0
+    moveAmmoCost: 0
+    allowOnGround: 1
+    allowOnAir: 0
+    properties:
+      animationTrigger: Attack_LoadBuff
+      sound: {fileID: 8300000, guid: c9c8536393ec15f4d9b154323753480f, type: 3}
+      animationSpeedMod: 1
+      allowNextMove: 25
+      preventMovement: 25
+      followUpAllowFrom: 25
+      characterVelocity: {x: 0, y: 0, z: 0}
+      hurtBoxDamage: 7
+      lifeSteal: 0
+      baseCrit: 100
+      hitStunDuration: 0.3
+      knockDown: 0
+      knockDownVelocity: {x: 0, y: 0, z: 0}
+      isProjectile: 0
+      ammoChange: 1
+      projVelocity: {x: 6, y: 0, z: 0}
+      isProjBuff: 1
+  - moveName: Crossbow Reload
+    followUpTo: 
+    moveDefinition:
+    - (123456789)A
+    moveAllowedError: 4
+    moveAllowedDuration: 21
+    movePriority: 2
+    moveBloodCost: 0
+    moveAmmoCost: 0
+    allowOnGround: 1
+    allowOnAir: 0
+    properties:
+      animationTrigger: Attack_LoadLong
+      sound: {fileID: 8300000, guid: c9c8536393ec15f4d9b154323753480f, type: 3}
+      animationSpeedMod: 1
+      allowNextMove: 45
+      preventMovement: 45
+      followUpAllowFrom: 45
+      characterVelocity: {x: 0, y: 0, z: 0}
+      hurtBoxDamage: 0
+      lifeSteal: 0
+      baseCrit: 0
+      hitStunDuration: 0
+      knockDown: 0
+      knockDownVelocity: {x: 0, y: 0, z: 0}
+      isProjectile: 0
+      ammoChange: 20
+      projVelocity: {x: 0, y: 0, z: 0}
+      isProjBuff: 1
+  - moveName: Crossbow Reload Manual
+    followUpTo: 
+    moveDefinition:
+    - 2
+    - (14)
+    - (45)
+    - (1475)A
+    moveAllowedError: 13
+    moveAllowedDuration: 225
+    movePriority: 55
+    moveBloodCost: 0
+    moveAmmoCost: 0
+    allowOnGround: 1
+    allowOnAir: 0
+    properties:
+      animationTrigger: Attack_Load
+      sound: {fileID: 8300000, guid: c9c8536393ec15f4d9b154323753480f, type: 3}
+      animationSpeedMod: 1
+      allowNextMove: 25
+      preventMovement: 25
+      followUpAllowFrom: 25
+      characterVelocity: {x: 0, y: 0, z: 0}
+      hurtBoxDamage: 0
+      lifeSteal: 0
+      baseCrit: 0
+      hitStunDuration: 0
+      knockDown: 0
+      knockDownVelocity: {x: 0, y: 0, z: 0}
+      isProjectile: 0
+      ammoChange: 20
+      projVelocity: {x: 0, y: 0, z: 0}
+      isProjBuff: 1
   moveListSpells: []
+  moveListGeneral:
+  - moveName: BloodRage
+    followUpTo: '*'
+    moveDefinition:
+    - (123456789)AB
+    moveAllowedError: 3
+    moveAllowedDuration: 22
+    movePriority: 99
+    moveBloodCost: 45
+    moveAmmoCost: 0
+    allowOnGround: 1
+    allowOnAir: 1
+    properties:
+      animationTrigger: 
+      sound: {fileID: 8300000, guid: b8d38d324558fbe4d94693f8d4968a3b, type: 3}
+      animationSpeedMod: 0
+      allowNextMove: 6
+      preventMovement: 6
+      followUpAllowFrom: 6
+      characterVelocity: {x: 0, y: 0, z: 0}
+      hurtBoxDamage: 0
+      lifeSteal: 0
+      baseCrit: 0
+      hitStunDuration: 0
+      knockDown: 0
+      knockDownVelocity: {x: 0, y: 0, z: 0}
+      isProjectile: 0
+      ammoChange: 0
+      projVelocity: {x: 0, y: 0, z: 0}
+      isProjBuff: 0
   currentList: 0
 --- !u!4 &80722673
 Transform:
@@ -3619,7 +3864,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &155939160
 GameObject:
@@ -3869,7 +4114,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &171943968
 GameObject:
@@ -8633,6 +8878,23 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7093080547386116854, guid: c8fcc7ef8a49bee4eb877c5ff7b52aee, type: 3}
   m_PrefabInstance: {fileID: 479117174}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &480541781 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4332821785571595828, guid: c597660c90d37d24082144cba7deb3a7, type: 3}
+  m_PrefabInstance: {fileID: 4861238091189942331}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &480541784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 480541781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ec5bbec2c844984db430b2bbc3e7c2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &482423888
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12099,6 +12361,127 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eceea79dafe57e84e8c2905777a488ce, type: 3}
+--- !u!1001 &634120377
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1169482323099518436, guid: b7682fbbe28d89f46908a981c3ad33a0, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1169482323099518436, guid: b7682fbbe28d89f46908a981c3ad33a0, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 459683e483e91c84b9e54f31e0fef25b, type: 2}
+    - target: {fileID: 1169482323099518436, guid: b7682fbbe28d89f46908a981c3ad33a0, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 459683e483e91c84b9e54f31e0fef25b, type: 2}
+    - target: {fileID: 1169482323099518436, guid: b7682fbbe28d89f46908a981c3ad33a0, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: 2100000, guid: 459683e483e91c84b9e54f31e0fef25b, type: 2}
+    - target: {fileID: 1169482323099518436, guid: b7682fbbe28d89f46908a981c3ad33a0, type: 3}
+      propertyPath: m_Materials.Array.data[4]
+      value: 
+      objectReference: {fileID: 2100000, guid: 459683e483e91c84b9e54f31e0fef25b, type: 2}
+    - target: {fileID: 1169482323099518436, guid: b7682fbbe28d89f46908a981c3ad33a0, type: 3}
+      propertyPath: m_Materials.Array.data[5]
+      value: 
+      objectReference: {fileID: 2100000, guid: 459683e483e91c84b9e54f31e0fef25b, type: 2}
+    - target: {fileID: 1169482323099518436, guid: b7682fbbe28d89f46908a981c3ad33a0, type: 3}
+      propertyPath: m_Materials.Array.data[6]
+      value: 
+      objectReference: {fileID: 2100000, guid: 459683e483e91c84b9e54f31e0fef25b, type: 2}
+    - target: {fileID: 1169482323099518436, guid: b7682fbbe28d89f46908a981c3ad33a0, type: 3}
+      propertyPath: m_Materials.Array.data[7]
+      value: 
+      objectReference: {fileID: 2100000, guid: 459683e483e91c84b9e54f31e0fef25b, type: 2}
+    - target: {fileID: 1169482323099518436, guid: b7682fbbe28d89f46908a981c3ad33a0, type: 3}
+      propertyPath: m_Materials.Array.data[8]
+      value: 
+      objectReference: {fileID: 2100000, guid: 459683e483e91c84b9e54f31e0fef25b, type: 2}
+    - target: {fileID: 1169482323099518436, guid: b7682fbbe28d89f46908a981c3ad33a0, type: 3}
+      propertyPath: m_Materials.Array.data[9]
+      value: 
+      objectReference: {fileID: 2100000, guid: 459683e483e91c84b9e54f31e0fef25b, type: 2}
+    - target: {fileID: 1169482323099518436, guid: b7682fbbe28d89f46908a981c3ad33a0, type: 3}
+      propertyPath: m_Materials.Array.data[10]
+      value: 
+      objectReference: {fileID: 2100000, guid: 459683e483e91c84b9e54f31e0fef25b, type: 2}
+    - target: {fileID: 1169482323099518436, guid: b7682fbbe28d89f46908a981c3ad33a0, type: 3}
+      propertyPath: m_Materials.Array.data[11]
+      value: 
+      objectReference: {fileID: 2100000, guid: 459683e483e91c84b9e54f31e0fef25b, type: 2}
+    - target: {fileID: 1169482323099518436, guid: b7682fbbe28d89f46908a981c3ad33a0, type: 3}
+      propertyPath: m_Materials.Array.data[12]
+      value: 
+      objectReference: {fileID: 2100000, guid: 459683e483e91c84b9e54f31e0fef25b, type: 2}
+    - target: {fileID: 1169482323099518436, guid: b7682fbbe28d89f46908a981c3ad33a0, type: 3}
+      propertyPath: m_Materials.Array.data[13]
+      value: 
+      objectReference: {fileID: 2100000, guid: 459683e483e91c84b9e54f31e0fef25b, type: 2}
+    - target: {fileID: 2835915896019487096, guid: b7682fbbe28d89f46908a981c3ad33a0, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2835915896019487096, guid: b7682fbbe28d89f46908a981c3ad33a0, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -20.371845
+      objectReference: {fileID: 0}
+    - target: {fileID: 2835915896019487096, guid: b7682fbbe28d89f46908a981c3ad33a0, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -2.4999998
+      objectReference: {fileID: 0}
+    - target: {fileID: 2835915896019487096, guid: b7682fbbe28d89f46908a981c3ad33a0, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.40683937
+      objectReference: {fileID: 0}
+    - target: {fileID: 2835915896019487096, guid: b7682fbbe28d89f46908a981c3ad33a0, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2835915896019487096, guid: b7682fbbe28d89f46908a981c3ad33a0, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2835915896019487096, guid: b7682fbbe28d89f46908a981c3ad33a0, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2835915896019487096, guid: b7682fbbe28d89f46908a981c3ad33a0, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2835915896019487096, guid: b7682fbbe28d89f46908a981c3ad33a0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2835915896019487096, guid: b7682fbbe28d89f46908a981c3ad33a0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2835915896019487096, guid: b7682fbbe28d89f46908a981c3ad33a0, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2835915896019487101, guid: b7682fbbe28d89f46908a981c3ad33a0, type: 3}
+      propertyPath: m_Name
+      value: Enemy_Ghoul
+      objectReference: {fileID: 0}
+    - target: {fileID: 2835915896019487102, guid: b7682fbbe28d89f46908a981c3ad33a0, type: 3}
+      propertyPath: health
+      value: 9000
+      objectReference: {fileID: 0}
+    - target: {fileID: 4141276214560396086, guid: b7682fbbe28d89f46908a981c3ad33a0, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b7682fbbe28d89f46908a981c3ad33a0, type: 3}
 --- !u!1 &638423128
 GameObject:
   m_ObjectHideFlags: 0
@@ -19561,7 +19944,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1044402228 stripped
 Transform:
@@ -23913,7 +24296,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4332821785571595816, guid: c597660c90d37d24082144cba7deb3a7, type: 3}
   m_PrefabInstance: {fileID: 4861238091189942331}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 480541781}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 26126e8573e38064290e4287b0e548e4, type: 3}
@@ -32029,7 +32412,7 @@ Transform:
   m_LocalScale: {x: 285, y: 1, z: 3.5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1821400528
 GameObject:
@@ -33519,6 +33902,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7093080547386116854, guid: c8fcc7ef8a49bee4eb877c5ff7b52aee, type: 3}
   m_PrefabInstance: {fileID: 1930757127}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1932436697 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 553892623218268205, guid: c597660c90d37d24082144cba7deb3a7, type: 3}
+  m_PrefabInstance: {fileID: 4861238091189942331}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 184af26fd2f95224992175945b107c61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1934278425
 Transform:
   m_ObjectHideFlags: 0
@@ -37865,7 +38259,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4066788327201747547
 GameObject:
@@ -41181,7 +41575,7 @@ Transform:
   - {fileID: 687298978}
   - {fileID: 543450652180475264}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4637970472275566911
 PrefabInstance:
@@ -42587,6 +42981,50 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 553892623218268205, guid: c597660c90d37d24082144cba7deb3a7, type: 3}
+      propertyPath: ammo
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 553892623218268205, guid: c597660c90d37d24082144cba7deb3a7, type: 3}
+      propertyPath: maxAmmo
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 553892623218268205, guid: c597660c90d37d24082144cba7deb3a7, type: 3}
+      propertyPath: lifeTime
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 553892623218268205, guid: c597660c90d37d24082144cba7deb3a7, type: 3}
+      propertyPath: forceCrit
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 553892623218268205, guid: c597660c90d37d24082144cba7deb3a7, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 9117652130694329349, guid: dc157d56dfb79e34687e1bdbbd13f729, type: 3}
+    - target: {fileID: 553892623218268205, guid: c597660c90d37d24082144cba7deb3a7, type: 3}
+      propertyPath: extraDamage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 553892623218268205, guid: c597660c90d37d24082144cba7deb3a7, type: 3}
+      propertyPath: noAmmoSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 022d5f504baa5ec4dbd05fb16803fc2c, type: 3}
+    - target: {fileID: 553892623218268205, guid: c597660c90d37d24082144cba7deb3a7, type: 3}
+      propertyPath: yesAmmoSound
+      value: 
+      objectReference: {fileID: 8300000, guid: dd1f595948b57b94e9b04661ae07ddb8, type: 3}
+    - target: {fileID: 553892623218268205, guid: c597660c90d37d24082144cba7deb3a7, type: 3}
+      propertyPath: extraVelocity.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 553892623218268205, guid: c597660c90d37d24082144cba7deb3a7, type: 3}
+      propertyPath: extraVelocity.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 553892623218268205, guid: c597660c90d37d24082144cba7deb3a7, type: 3}
+      propertyPath: extraVelocity.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 767088165682720002, guid: c597660c90d37d24082144cba7deb3a7, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -42596,6 +43034,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4066788327201747548}
     - target: {fileID: 4332821785571595817, guid: c597660c90d37d24082144cba7deb3a7, type: 3}
+      propertyPath: special
+      value: 
+      objectReference: {fileID: 480541784}
+    - target: {fileID: 4332821785571595817, guid: c597660c90d37d24082144cba7deb3a7, type: 3}
       propertyPath: myStream
       value: 
       objectReference: {fileID: 4066788327201747544}
@@ -42603,9 +43045,13 @@ PrefabInstance:
       propertyPath: cameraFocus
       value: 
       objectReference: {fileID: 175927029}
+    - target: {fileID: 4332821785571595817, guid: c597660c90d37d24082144cba7deb3a7, type: 3}
+      propertyPath: projectilespawner
+      value: 
+      objectReference: {fileID: 1932436697}
     - target: {fileID: 4332821785571595826, guid: c597660c90d37d24082144cba7deb3a7, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4332821785571595826, guid: c597660c90d37d24082144cba7deb3a7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -42671,6 +43117,10 @@ PrefabInstance:
       propertyPath: ownerHealth
       value: 
       objectReference: {fileID: 1316593584}
+    - target: {fileID: 4584556255072215263, guid: c597660c90d37d24082144cba7deb3a7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c597660c90d37d24082144cba7deb3a7, type: 3}
 --- !u!1 &4939062914332411573
@@ -42892,7 +43342,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4332821785571595817, guid: c597660c90d37d24082144cba7deb3a7, type: 3}
   m_PrefabInstance: {fileID: 4861238091189942331}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 480541781}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 127397cf1b307ed4982051ff212c4c45, type: 3}

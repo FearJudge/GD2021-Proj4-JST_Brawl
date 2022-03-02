@@ -22,7 +22,7 @@ TagManager:
   - Enemy_Body
   - Enemy_Feet
   - DamageBox
-  - 
+  - HurtBox
   - 
   - 
   - 

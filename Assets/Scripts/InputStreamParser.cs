@@ -35,6 +35,8 @@ public class InputStreamParser : MonoBehaviour
             moveName = copy.moveName;
             followUpTo = copy.followUpTo;
             properties = copy.properties;
+            moveBloodCost = copy.moveBloodCost;
+            moveAmmoCost = copy.moveAmmoCost;
             currentError = 0;
             currentDuration = 0;
         }
@@ -98,6 +100,8 @@ public class InputStreamParser : MonoBehaviour
         public int moveAllowedError;
         public int moveAllowedDuration;
         public int movePriority;
+        public int moveBloodCost;
+        public int moveAmmoCost;
         public bool allowOnGround = true;
         public bool allowOnAir = false;
         protected int currentError = 0;
@@ -116,7 +120,7 @@ public class InputStreamParser : MonoBehaviour
     protected PlayerController pcont;
     public MoveListCurator curator;
     public const int INPUTMEMORY = 13;
-    public const int TURNAROUNDDUR = 16;
+    public const int TURNAROUNDDUR = 12;
     public string savedMoveName = "";
     int followUpDelay = 0;
     int followUpValue = 0;
@@ -138,6 +142,7 @@ public class InputStreamParser : MonoBehaviour
         actions = p_input.actions;
         moveBtns = actions.FindAction("Move");
         attackBtns = new InputAction[3] { actions.FindAction("LightAttack"), actions.FindAction("HeavyAttack"), actions.FindAction("WeaponSwap") };
+        ChangeMoveList(0);
     }
 
     void Update()
@@ -179,18 +184,24 @@ public class InputStreamParser : MonoBehaviour
         if (mv.x >= 0.3f) { res += 3; if (invertX) { res -= 2; } }
         else if (mv.x <= -0.3f) { res += 1; if (invertX) { res += 2; } }
         else { res += 2; }
-        if ((res == 5 || res == 4 || res == 6) && framesFrom >= TURNAROUNDDUR)
+        if (framesFrom >= TURNAROUNDDUR)
         {
             CheckFacing();
         }
         bool A = attackBtns[0].triggered;
         bool B = attackBtns[1].triggered;
-        if (attackBtns[2].triggered) { curator.ChangeList(1); }
+        if (attackBtns[2].triggered) { ChangeMoveList(); }
         string definB = res.ToString();
         if (A) { definB += "A"; }
         if (B) { definB += "B"; }
         if (StreamingInputList.Count == 0) { defin = definB; return; }
         if (definB != StreamingInputList[StreamingInputList.Count - 1].Input) { defin = definB; }
+    }
+
+    void ChangeMoveList(int count = 1)
+    {
+        curator.ChangeList(count);
+        UI_HealthBarBrain.PlayerIconChange(player.hpScript, curator.currentList);
     }
 
     void CaptureInput()
@@ -252,7 +263,10 @@ public class InputStreamParser : MonoBehaviour
             MoveDetails[] moveList = curator.ReturnCurrentMoves();
             for (int j = 0; j < moveList.Length; j++)
             {
-                if (CheckAgainstInput(moveList[j].moveDefinition[0], start) && (PopulateAllows(moveList[j], savedMoveName)))
+                if (CheckAgainstInput(moveList[j].moveDefinition[0], start) &&
+                    PopulateAllows(moveList[j], savedMoveName) &&
+                    moveList[j].moveBloodCost <= pcont.special.Value &&
+                    pcont.projectilespawner.ammo >= moveList[j].moveAmmoCost)
                 {
                     if ((!player.airborne && moveList[j].allowOnGround) || (player.airborne && moveList[j].allowOnAir))
                     {
@@ -388,7 +402,8 @@ public class InputStreamParser : MonoBehaviour
                 StreamingInputList.Clear(); return;
             }
         }
-        
+
+        pcont.special.Value -= iterationList[prior].moveBloodCost;
         if (prior >= 0) { ActivateMove(iterationList[prior].properties, iterationList[prior].moveName); }
 
         StreamingInputList.Clear();

@@ -29,13 +29,13 @@ public class DepthBeUController : MonoBehaviour
     private float airborneTimer = 0f;
     public int baseJumpsAvailable = 1;
     private int jumpsAvailable = 1;
-    private float feetCollSize = 0.14f;
-    private float bodyCollSize = 0.32f;
-    private float feetEdgeSize = 0.02f;
-    private float bodyEdgeSize = 0.09f;
-    private float bodyLandingPad = 0.25f;
-    private float bodyHeight = 0.9f;
-    private float moveThreshold = 0.3f;
+    private readonly float feetCollSize = 0.14f;
+    private readonly float bodyCollSize = 0.32f;
+    private readonly float feetEdgeSize = 0.02f;
+    private readonly float bodyEdgeSize = 0.09f;
+    private readonly float bodyLandingPad = 0.25f;
+    private readonly float bodyHeight = 0.9f;
+    private readonly float moveThreshold = 0.3f;
     public bool airborne = false;
     public bool frozen = false;
     public bool halted = false;
@@ -52,6 +52,7 @@ public class DepthBeUController : MonoBehaviour
     [HideInInspector] public BoxCollider playerCollisionBox;
     [SerializeField] GameObject hurtBoxObject;
     [HideInInspector] public HurtBox hb;
+    public ProjectileSpawner projectilespawner;
     [HideInInspector] public Animator animator;
     [SerializeField] LayerMask groundMask;
     [SerializeField] LayerMask collideWith;

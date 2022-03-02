@@ -24,9 +24,14 @@ public class MoveProp
     public Vector3 characterVelocity = Vector3.zero;
     public int hurtBoxDamage = 10;
     public int lifeSteal = 0;
+    public int baseCrit = 0;
     public float hitStunDuration = 0.25f;
     public bool knockDown = false;
     public Vector3 knockDownVelocity = Vector3.zero;
+    public bool isProjectile;
+    public int ammoChange;
+    public Vector3 projVelocity = Vector3.zero;
+    public bool isProjBuff;
 
     public void ActivateMove(DepthBeUController player, GlobalVariables pv, int type)
     {
@@ -40,7 +45,16 @@ public class MoveProp
         player.hb.knockDown = knockDown;
         player.hb.knockDownVelocity = knockDownVelocity;
         player.hb.lifeSteal = lifeSteal + pv.lifestealArray[type];
-        player.hb.crit = pv.critArray[type];
+        player.hb.crit = pv.critArray[type] + baseCrit;
+        if (isProjectile) { player.projectilespawner.hbData = player.hb; player.projectilespawner.ammoChange = ammoChange; }
+        if (isProjBuff)
+        {
+            player.projectilespawner.ammo += ammoChange;
+            player.projectilespawner.extraVelocity = projVelocity;
+            player.projectilespawner.extraDamage = hurtBoxDamage;
+            player.projectilespawner.extraCrit = baseCrit;
+            player.projectilespawner.extraStun = hitStunDuration;
+        }
     }
 
     public void ActivateMove(DepthBeUController player)

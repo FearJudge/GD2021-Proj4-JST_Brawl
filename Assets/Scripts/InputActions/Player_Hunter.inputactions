@@ -83,6 +83,61 @@
                     "isPartOfComposite": false
                 },
                 {
+                    "name": "StickComp",
+                    "id": "ffa7c9a8-6097-41ca-bae7-f9a11e48143b",
+                    "path": "Dpad",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "961463c0-9965-4b89-b18a-1291c4c71a7c",
+                    "path": "<Gamepad>/dpad/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Composite;Gamepad",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "781391c9-c570-4232-9f57-42863fa64006",
+                    "path": "<Gamepad>/dpad/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Composite;Gamepad",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "b1e334c7-3569-4dd8-99c8-b77919248057",
+                    "path": "<Gamepad>/dpad/left",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Composite;Gamepad",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "414a4983-594d-43f8-b633-720483575f3e",
+                    "path": "<Gamepad>/dpad/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad;Composite",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
                     "name": "MoveComp",
                     "id": "00ca640b-d935-4593-8157-c05846ea39b3",
                     "path": "Dpad",
@@ -99,7 +154,7 @@
                     "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Keyboard",
+                    "groups": "Keyboard;CompositeKeys",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -110,7 +165,7 @@
                     "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Keyboard",
+                    "groups": "Keyboard;CompositeKeys",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -121,7 +176,7 @@
                     "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Keyboard",
+                    "groups": "Keyboard;CompositeKeys",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -132,7 +187,7 @@
                     "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Keyboard",
+                    "groups": "Keyboard;CompositeKeys",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -765,8 +820,23 @@
                     "devicePath": "<Gamepad>",
                     "isOptional": false,
                     "isOR": false
+                },
+                {
+                    "devicePath": "<Joystick>",
+                    "isOptional": false,
+                    "isOR": false
                 }
             ]
+        },
+        {
+            "name": "Composite",
+            "bindingGroup": "Composite",
+            "devices": []
+        },
+        {
+            "name": "CompositeKeys",
+            "bindingGroup": "CompositeKeys",
+            "devices": []
         }
     ]
 }

@@ -34,4 +34,21 @@ public class HurtBox : MonoBehaviour
             if (critSpark != null && isCrit) { Instantiate(critSpark, other.transform.position + new Vector3(Random.Range(-0.1f, 0.1f), Random.Range(-0.1f, 0.1f), 0), transform.rotation); }
         }
     }
+
+    public void SetData(HurtBox copy)
+    {
+        ownerHealth = copy.ownerHealth;
+        body = copy.body;
+        hitStun = copy.hitStun;
+        damage = copy.damage;
+        lifeSteal = copy.lifeSteal;
+        crit = copy.crit;
+        knockDown = copy.knockDown;
+        knockDownVelocity = copy.knockDownVelocity;
+        activeOn = copy.activeOn;
+        hitSpark = copy.hitSpark;
+        critSpark = copy.critSpark;
+        sparkVariants = copy.sparkVariants;
+        isCrit = copy.isCrit;
+    }
 }

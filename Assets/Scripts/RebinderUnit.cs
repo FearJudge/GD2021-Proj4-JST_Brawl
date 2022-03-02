@@ -10,18 +10,25 @@ public class RebinderUnit : MonoBehaviour
 
     public InputActionAsset inputActions;
     public string actionname;
+    string displayname;
+    string displaynamealt;
 
     public Button rebindBtn;
     public TMPro.TextMeshProUGUI valString;
+    public TMPro.TextMeshProUGUI nameString;
 
     private InputActionRebindingExtensions.RebindingOperation rebindOperation;
     public bool useCompositeOnKeyboard = false;
     public bool useCompositeOnPad = false;
+    public Toggle checkmark;
 
     void Awake()
     {
+        displayname = nameString.text;
+        displaynamealt = displayname + " (4-Directions)";
         SetStringValueText();
         master.Subscribe(this);
+        if (useCompositeOnKeyboard) { nameString.text = displaynamealt; } else { nameString.text = displayname; }
     }
 
     public void RebindBegin()
@@ -39,10 +46,17 @@ public class RebinderUnit : MonoBehaviour
 
         rebindOperation = inputActions.FindAction(actionname).PerformInteractiveRebinding()
             .WithControlsExcluding("Mouse")
-            .WithBindingMask(InputBinding.MaskByGroup(master.GetControlType()))
+            .WithTargetBinding(FindRebindIndexOfType())
             .OnMatchWaitForAnother(0.1f)
             .OnComplete(func => RebindDone())
             .Start();
+    }
+
+    public void SwapComposite()
+    {
+        if (master.rebindType == 0) { useCompositeOnKeyboard = !useCompositeOnKeyboard; }
+        else { useCompositeOnPad = !useCompositeOnPad; }
+        SetStringValueText();
     }
 
     public void BeginCompositeRebind()
@@ -72,16 +86,16 @@ public class RebinderUnit : MonoBehaviour
         switch (id)
         {
             case 1:
-                bindIndex = inputActions.FindAction(actionname).bindings.IndexOf(x => x.isPartOfComposite && x.name.ToLower() == "up");
+                bindIndex = inputActions.FindAction(actionname).bindings.IndexOf(x => x.isPartOfComposite && x.name.ToLower() == "up" && x.groups.Contains(master.GetControlType()));
                 break;
             case 2:
-                bindIndex = inputActions.FindAction(actionname).bindings.IndexOf(x => x.isPartOfComposite && x.name.ToLower() == "down");
+                bindIndex = inputActions.FindAction(actionname).bindings.IndexOf(x => x.isPartOfComposite && x.name.ToLower() == "down" && x.groups.Contains(master.GetControlType()));
                 break;
             case 3:
-                bindIndex = inputActions.FindAction(actionname).bindings.IndexOf(x => x.isPartOfComposite && x.name.ToLower() == "left");
+                bindIndex = inputActions.FindAction(actionname).bindings.IndexOf(x => x.isPartOfComposite && x.name.ToLower() == "left" && x.groups.Contains(master.GetControlType()));
                 break;
             case 4:
-                bindIndex = inputActions.FindAction(actionname).bindings.IndexOf(x => x.isPartOfComposite && x.name.ToLower() == "right");
+                bindIndex = inputActions.FindAction(actionname).bindings.IndexOf(x => x.isPartOfComposite && x.name.ToLower() == "right" && x.groups.Contains(master.GetControlType()));
                 break;
             default:
                 break;
@@ -106,13 +120,21 @@ public class RebinderUnit : MonoBehaviour
 
     int FindRebindIndexOfType()
     {
-        Debug.Log(inputActions.FindAction(actionname).GetBindingIndex(InputBinding.MaskByGroup(master.GetControlType())));
-        return inputActions.FindAction(actionname).GetBindingIndex(InputBinding.MaskByGroup(master.GetControlType()));
+        Debug.Log(inputActions.FindAction(actionname).GetBindingIndex(InputBinding.MaskByGroups(IsItComposite())));
+        return inputActions.FindAction(actionname).GetBindingIndex(InputBinding.MaskByGroups(IsItComposite()));
         
+    }
+
+    string[] IsItComposite()
+    {
+        if (master.rebindType == 0 && useCompositeOnKeyboard) { return new string[] { "Keyboard", "CompositeKeys" }; }
+        else if (master.rebindType != 0 && useCompositeOnPad) { return new string[] { "Composite" }; }
+        else { return new string[] { master.GetControlType() }; }
     }
 
     public void SetStringValueText()
     {
+        if (master.rebindType == 0 && !useCompositeOnKeyboard && checkmark != null) { useCompositeOnKeyboard = true; }
         string GetInputName(int idOffset=0)
         {
             return InputControlPath.ToHumanReadableString(
@@ -130,6 +152,8 @@ public class RebinderUnit : MonoBehaviour
         }
 
         master.CreateConflictMessages(master.CheckConflictingBindings());
+        if (master.rebindType == 0 && useCompositeOnKeyboard || master.rebindType != 0 && useCompositeOnPad) { checkmark?.SetIsOnWithoutNotify(true); nameString.text = displaynamealt; }
+        else { checkmark?.SetIsOnWithoutNotify(false); nameString.text = displayname; }
     }
 
     void WaitingText(string optionalMadeUpText = "")

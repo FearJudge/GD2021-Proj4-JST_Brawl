@@ -32,6 +32,7 @@ public class MoveProp
     public int ammoChange;
     public Vector3 projVelocity = Vector3.zero;
     public bool isProjBuff;
+    public int selfDamage = 0;
 
     public void ActivateMove(DepthBeUController player, GlobalVariables pv, int type)
     {
@@ -46,6 +47,7 @@ public class MoveProp
         player.hb.knockDownVelocity = knockDownVelocity;
         player.hb.lifeSteal = lifeSteal + pv.lifestealArray[type];
         player.hb.crit = pv.critArray[type] + baseCrit;
+        if (selfDamage != 0) { player.hpScript.Hp -= selfDamage; }
         if (isProjectile) { player.projectilespawner.hbData = player.hb; player.projectilespawner.ammoChange = ammoChange; }
         if (isProjBuff)
         {

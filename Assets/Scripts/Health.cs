@@ -21,10 +21,15 @@ public class Health : MonoBehaviour
             health = value;
             lastTouched = Time.fixedTimeAsDouble;
             UI_HealthBarBrain.NotifyBrain(this, healthOwnerName, isPlayer);
+            if (health > maxhealth) { health = maxhealth; }
             if (health < 0) { health = 0; }
             if (health == 0 && !isPlayer)
             {
                 UI_HealthBarBrain.NotifyBrainOfDeath(this, isPlayer);
+                character.Kill();
+            }
+            if (health == 0 && isPlayer)
+            {
                 character.Kill();
             }
         }

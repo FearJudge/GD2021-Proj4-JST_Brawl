@@ -7,13 +7,13 @@ using UnityEngine.SceneManagement;
 public class MenuPauser : MonoBehaviour
 {
     public static bool paused = false;
+    public bool pauseGame = true;
     public PlayerInput p_input;
 
     // Start is called before the first frame update
     void Awake()
     {
-        paused = true;
-        Time.timeScale = 0;
+        if (pauseGame) { paused = true; Time.timeScale = 0; }
     }
 
     private void OnDestroy()
@@ -35,5 +35,10 @@ public class MenuPauser : MonoBehaviour
     public void Resume()
     {
         SceneManager.UnloadSceneAsync("PauseMenuScene");
+    }
+
+    public void Retry()
+    {
+        SceneManager.LoadScene("BuildFourLevel");
     }
 }

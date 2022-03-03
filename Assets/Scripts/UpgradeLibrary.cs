@@ -83,6 +83,7 @@ public class UpgradeLibrary : MonoBehaviour
     public Transform linkRoot;
     public RectTransform linkPosition;
 
+    [SerializeField] protected GameObject upgradeUI;
     [SerializeField] protected TMPro.TextMeshProUGUI upgradeName;
     [SerializeField] protected TMPro.TextMeshProUGUI upgradeTarget;
     [SerializeField] protected TMPro.TextMeshProUGUI upgradeDescription;
@@ -112,6 +113,7 @@ public class UpgradeLibrary : MonoBehaviour
         instance.upgradeName.gameObject.SetActive(true);
         instance.upgradeDescription.gameObject.SetActive(true);
         instance.upgradeTarget.gameObject.SetActive(true);
+        instance.upgradeUI.SetActive(true);
         instance.upgradeName.text = toDisplay.upgradeName;
         instance.upgradeDescription.text = toDisplay.upgradeDescription;
         if (toDisplay.upgradeId < BREAKPOINT)
@@ -136,6 +138,7 @@ public class UpgradeLibrary : MonoBehaviour
         instance.upgradeName.gameObject.SetActive(false);
         instance.upgradeDescription.gameObject.SetActive(false);
         instance.upgradeTarget.gameObject.SetActive(false);
+        instance.upgradeUI.SetActive(false);
     }
 
     public void OnDestroy()

@@ -1,0 +1,543 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &358062729874709114
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 358062729874709112}
+  - component: {fileID: 358062729874709117}
+  - component: {fileID: 358062729874709113}
+  - component: {fileID: 4361800320190312718}
+  m_Layer: 0
+  m_Name: CharacterInput
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &358062729874709112
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358062729874709114}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &358062729874709117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358062729874709114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: c6ccba2898b56d9458987e42e8928a9d, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 14914554-8e5b-4e85-9771-a4ede01f671e
+    m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b1db5921-455d-488d-9081-2c2437b9aeaf
+    m_ActionName: Player/Look[/Mouse/delta]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b5be66b3-1e11-4b84-b236-e9f24aa01871
+    m_ActionName: Player/Fire[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d9049831-125a-4b8c-9ed4-5f92b9333bf0
+    m_ActionName: UI/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9410be3c-1e23-4802-9e23-5efc8a7e5fd9
+    m_ActionName: UI/Submit[/Keyboard/enter]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 54515905-1988-4a4c-adef-ff573688ad6c
+    m_ActionName: UI/Cancel[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 14589c0c-a998-4f6f-9d0c-805c30ea9ae3
+    m_ActionName: UI/Point[/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 767a4a91-c3ee-4472-8bfc-53247c64cd28
+    m_ActionName: UI/Click[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9bdb055a-63ac-4988-b476-f3afd9fd30a7
+    m_ActionName: UI/ScrollWheel[/Mouse/scroll]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3f29dbb1-b2dd-49dc-a48e-35b4d8eae355
+    m_ActionName: UI/MiddleClick[/Mouse/middleButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 2d1b690e-678c-44e2-b7a6-3b559a6d558f
+    m_ActionName: UI/RightClick[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: f6eb9275-9e3d-439d-b8ec-ad93ec8fd31b
+    m_ActionName: UI/TrackedDevicePosition
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4420711e-89c2-447f-974f-90839962fa06
+    m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3f1551b8-88cb-47d9-a497-c447cb5d248b
+    m_ActionName: Player/Jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 29231080-ddd4-47c9-bb34-023d25878d95
+    m_ActionName: Player/HeavyAttack[/Keyboard/x]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: a8fe851a-8922-422e-a9ba-cc15d9f10e69
+    m_ActionName: Player/WeaponSwap[/Keyboard/c]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 56808a0f-2bcd-48fc-ad8c-928af9040ece
+    m_ActionName: Player/Macro_LightHeavy[/Keyboard/v]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 4dbcf148-97de-4f97-b481-70736c7309ea
+    m_ActionName: Player/Pause[/Keyboard/escape]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: Keyboard
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
+--- !u!114 &358062729874709113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358062729874709114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f0c930e6d9e7ef4d9d5eb33a73777de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  p_input: {fileID: 358062729874709117}
+  player: {fileID: 0}
+  curator: {fileID: 4361800320190312718}
+  savedMoveName: 
+  followUpAllow: 0
+  movePrevention: 0
+  dirPrevention: 0
+  buffer: 0
+  StreamingInputList: []
+  stream: {fileID: 0}
+  move: {fileID: 0}
+--- !u!114 &4361800320190312718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 358062729874709114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87a95d8b4581d23468df0a4a23081262, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveListSword:
+  - moveName: Sword Slash
+    followUpTo: 
+    cancelFrom: 
+    moveDefinition:
+    - (456789)A
+    moveAllowedError: 3
+    moveAllowedDuration: 12
+    movePriority: 9
+    moveBloodCost: 0
+    moveAmmoCost: 0
+    allowOnGround: 1
+    allowOnAir: 0
+    properties:
+      animationTrigger: Attack_Slash_Front
+      sound: {fileID: 8300000, guid: 2b0a968ced97bde43b5fa9bd1fe7bcb7, type: 3}
+      animationSpeedMod: 1
+      allowNextMove: 30
+      preventMovement: 12
+      followUpAllowFrom: 18
+      characterVelocity: {x: 0, y: 0, z: 0}
+      hurtBoxDamage: 21
+      lifeSteal: 0
+      baseCrit: 0
+      hitStunDuration: 0.2
+      knockDown: 0
+      knockDownVelocity: {x: 0.4, y: 2.5, z: 0}
+      isProjectile: 0
+      ammoChange: 0
+      projVelocity: {x: 0, y: 0, z: 0}
+      isProjBuff: 0
+  - moveName: Sword Slash II
+    followUpTo: Sword Slash
+    cancelFrom: 
+    moveDefinition:
+    - (123456789)A
+    moveAllowedError: 3
+    moveAllowedDuration: 12
+    movePriority: 21
+    moveBloodCost: 0
+    moveAmmoCost: 0
+    allowOnGround: 1
+    allowOnAir: 0
+    properties:
+      animationTrigger: Attack_Slash_Front2
+      sound: {fileID: 8300000, guid: 66dc3a178330ba54781d4c9a45c6da97, type: 3}
+      animationSpeedMod: 1
+      allowNextMove: 28
+      preventMovement: 18
+      followUpAllowFrom: 22
+      characterVelocity: {x: 0, y: 0, z: 0}
+      hurtBoxDamage: 36
+      lifeSteal: 0
+      baseCrit: 0
+      hitStunDuration: 0.7
+      knockDown: 1
+      knockDownVelocity: {x: 8, y: 1.7, z: 0}
+      isProjectile: 0
+      ammoChange: 0
+      projVelocity: {x: 0, y: 0, z: 0}
+      isProjBuff: 0
+  - moveName: Sword Uppercut
+    followUpTo: '-'
+    cancelFrom: 
+    moveDefinition:
+    - (123)A
+    moveAllowedError: 5
+    moveAllowedDuration: 12
+    movePriority: 22
+    moveBloodCost: 0
+    moveAmmoCost: 0
+    allowOnGround: 1
+    allowOnAir: 0
+    properties:
+      animationTrigger: Attack_Slash_Up
+      sound: {fileID: 8300000, guid: d6f8729048dc47645b6681f719c3d38b, type: 3}
+      animationSpeedMod: 1
+      allowNextMove: 32
+      preventMovement: 32
+      followUpAllowFrom: 25
+      characterVelocity: {x: 0, y: 0, z: 0}
+      hurtBoxDamage: 28
+      lifeSteal: 0
+      baseCrit: 0
+      hitStunDuration: 1
+      knockDown: 1
+      knockDownVelocity: {x: 0.3, y: 9, z: 0}
+      isProjectile: 0
+      ammoChange: 0
+      projVelocity: {x: 0, y: 0, z: 0}
+      isProjBuff: 0
+  - moveName: Aerial Sword
+    followUpTo: 
+    cancelFrom: 
+    moveDefinition:
+    - (123456789)A
+    moveAllowedError: 4
+    moveAllowedDuration: 12
+    movePriority: 20
+    moveBloodCost: 0
+    moveAmmoCost: 0
+    allowOnGround: 0
+    allowOnAir: 1
+    properties:
+      animationTrigger: Attack_Slash_Aerial
+      sound: {fileID: 8300000, guid: 23de96f155c093e4b8375cd9416f6b3f, type: 3}
+      animationSpeedMod: 1
+      allowNextMove: 12
+      preventMovement: 4
+      followUpAllowFrom: 0
+      characterVelocity: {x: 0, y: 0, z: 0}
+      hurtBoxDamage: 15
+      lifeSteal: 0
+      baseCrit: 0
+      hitStunDuration: 0.6
+      knockDown: 1
+      knockDownVelocity: {x: 0.2, y: 3, z: 0}
+      isProjectile: 0
+      ammoChange: 0
+      projVelocity: {x: 0, y: 0, z: 0}
+      isProjBuff: 0
+  - moveName: Sword Slash IIIA
+    followUpTo: DISABLE
+    cancelFrom: 
+    moveDefinition:
+    - (123456789)A
+    moveAllowedError: 3
+    moveAllowedDuration: 12
+    movePriority: 21
+    moveBloodCost: 0
+    moveAmmoCost: 0
+    allowOnGround: 1
+    allowOnAir: 0
+    properties:
+      animationTrigger: Attack_Slash_Front2
+      sound: {fileID: 8300000, guid: a56cd1e5e465dac46a09aaf6f09bc030, type: 3}
+      animationSpeedMod: 1
+      allowNextMove: 24
+      preventMovement: 24
+      followUpAllowFrom: 0
+      characterVelocity: {x: 7, y: 0.6, z: 0}
+      hurtBoxDamage: 36
+      lifeSteal: 0
+      baseCrit: 0
+      hitStunDuration: 0.9
+      knockDown: 1
+      knockDownVelocity: {x: 8, y: 0.9, z: 0}
+      isProjectile: 0
+      ammoChange: 0
+      projVelocity: {x: 0, y: 0, z: 0}
+      isProjBuff: 0
+  moveListGun:
+  - moveName: Crossbow Shoot
+    followUpTo: 
+    cancelFrom: 
+    moveDefinition:
+    - (123456789)A
+    moveAllowedError: 2
+    moveAllowedDuration: 5
+    movePriority: 12
+    moveBloodCost: 0
+    moveAmmoCost: 1
+    allowOnGround: 1
+    allowOnAir: 0
+    properties:
+      animationTrigger: Attack_Gun_Shot
+      sound: {fileID: 8300000, guid: 9a6ba1045ec4ea142acc8eb0f1b4f5ed, type: 3}
+      animationSpeedMod: 1
+      allowNextMove: 38
+      preventMovement: 32
+      followUpAllowFrom: 30
+      characterVelocity: {x: 0, y: 0, z: 0}
+      hurtBoxDamage: 7
+      lifeSteal: 0
+      baseCrit: 0
+      hitStunDuration: 0.12
+      knockDown: 0
+      knockDownVelocity: {x: 0, y: 0, z: 0}
+      isProjectile: 1
+      ammoChange: -1
+      projVelocity: {x: 0, y: 0, z: 0}
+      isProjBuff: 0
+  - moveName: Crossbow Shoot Followup
+    followUpTo: Crossbow Shoot
+    cancelFrom: 
+    moveDefinition:
+    - (123456789)A
+    moveAllowedError: 2
+    moveAllowedDuration: 5
+    movePriority: 12
+    moveBloodCost: 0
+    moveAmmoCost: 1
+    allowOnGround: 1
+    allowOnAir: 0
+    properties:
+      animationTrigger: Attack_Gun_Shot2
+      sound: {fileID: 8300000, guid: c9c8536393ec15f4d9b154323753480f, type: 3}
+      animationSpeedMod: 1
+      allowNextMove: 32
+      preventMovement: 31
+      followUpAllowFrom: 8
+      characterVelocity: {x: 0, y: 0, z: 0}
+      hurtBoxDamage: 7
+      lifeSteal: 0
+      baseCrit: 0
+      hitStunDuration: 0.08
+      knockDown: 0
+      knockDownVelocity: {x: 0, y: 0, z: 0}
+      isProjectile: 1
+      ammoChange: -1
+      projVelocity: {x: 0, y: 0, z: 0}
+      isProjBuff: 0
+  - moveName: Crossbow Shoot BloodFollowup
+    followUpTo: Crossbow Shoot Followup | Crossbow Shoot BloodFollowup
+    cancelFrom: 
+    moveDefinition:
+    - (123456789)/A
+    moveAllowedError: 2
+    moveAllowedDuration: 5
+    movePriority: 12
+    moveBloodCost: 20
+    moveAmmoCost: 1
+    allowOnGround: 1
+    allowOnAir: 0
+    properties:
+      animationTrigger: Attack_Gun_Shot2
+      sound: {fileID: 8300000, guid: c9c8536393ec15f4d9b154323753480f, type: 3}
+      animationSpeedMod: 1
+      allowNextMove: 29
+      preventMovement: 29
+      followUpAllowFrom: 5
+      characterVelocity: {x: 0, y: 0, z: 0}
+      hurtBoxDamage: 14
+      lifeSteal: 2
+      baseCrit: 0
+      hitStunDuration: 0.2
+      knockDown: 0
+      knockDownVelocity: {x: 0, y: 0, z: 0}
+      isProjectile: 1
+      ammoChange: -1
+      projVelocity: {x: 0, y: 0, z: 0}
+      isProjBuff: 0
+  - moveName: Crossbow Charge
+    followUpTo: 
+    cancelFrom: 
+    moveDefinition:
+    - (123)
+    - (456)
+    - (123)
+    - (123456)A
+    moveAllowedError: 4
+    moveAllowedDuration: 12
+    movePriority: 22
+    moveBloodCost: 0
+    moveAmmoCost: 0
+    allowOnGround: 1
+    allowOnAir: 0
+    properties:
+      animationTrigger: Attack_LoadBuff
+      sound: {fileID: 8300000, guid: c9c8536393ec15f4d9b154323753480f, type: 3}
+      animationSpeedMod: 1
+      allowNextMove: 25
+      preventMovement: 25
+      followUpAllowFrom: 25
+      characterVelocity: {x: 0, y: 0, z: 0}
+      hurtBoxDamage: 7
+      lifeSteal: 0
+      baseCrit: 100
+      hitStunDuration: 0.3
+      knockDown: 0
+      knockDownVelocity: {x: 0, y: 0, z: 0}
+      isProjectile: 0
+      ammoChange: 1
+      projVelocity: {x: 6, y: 0, z: 0}
+      isProjBuff: 1
+  - moveName: Crossbow Reload
+    followUpTo: 
+    cancelFrom: 
+    moveDefinition:
+    - (123456789)A
+    moveAllowedError: 4
+    moveAllowedDuration: 21
+    movePriority: 2
+    moveBloodCost: 0
+    moveAmmoCost: 0
+    allowOnGround: 1
+    allowOnAir: 0
+    properties:
+      animationTrigger: Attack_LoadLong
+      sound: {fileID: 8300000, guid: c9c8536393ec15f4d9b154323753480f, type: 3}
+      animationSpeedMod: 1
+      allowNextMove: 45
+      preventMovement: 45
+      followUpAllowFrom: 45
+      characterVelocity: {x: 0, y: 0, z: 0}
+      hurtBoxDamage: 0
+      lifeSteal: 0
+      baseCrit: 0
+      hitStunDuration: 0
+      knockDown: 0
+      knockDownVelocity: {x: 0, y: 0, z: 0}
+      isProjectile: 0
+      ammoChange: 20
+      projVelocity: {x: 0, y: 0, z: 0}
+      isProjBuff: 1
+  - moveName: Crossbow Reload Manual
+    followUpTo: 
+    cancelFrom: 
+    moveDefinition:
+    - 2
+    - (14)
+    - (45)
+    - (1475)A
+    moveAllowedError: 13
+    moveAllowedDuration: 55
+    movePriority: 55
+    moveBloodCost: 0
+    moveAmmoCost: 0
+    allowOnGround: 1
+    allowOnAir: 0
+    properties:
+      animationTrigger: Attack_Load
+      sound: {fileID: 8300000, guid: c9c8536393ec15f4d9b154323753480f, type: 3}
+      animationSpeedMod: 1
+      allowNextMove: 25
+      preventMovement: 25
+      followUpAllowFrom: 25
+      characterVelocity: {x: 0, y: 0, z: 0}
+      hurtBoxDamage: 0
+      lifeSteal: 0
+      baseCrit: 0
+      hitStunDuration: 0
+      knockDown: 0
+      knockDownVelocity: {x: 0, y: 0, z: 0}
+      isProjectile: 0
+      ammoChange: 20
+      projVelocity: {x: 0, y: 0, z: 0}
+      isProjBuff: 1
+  moveListSpells: []
+  moveListGeneral:
+  - moveName: BloodRage
+    followUpTo: 
+    cancelFrom: 
+    moveDefinition:
+    - (123456789)AB
+    moveAllowedError: 3
+    moveAllowedDuration: 22
+    movePriority: 155
+    moveBloodCost: 45
+    moveAmmoCost: 0
+    allowOnGround: 1
+    allowOnAir: 1
+    properties:
+      animationTrigger: 
+      sound: {fileID: 8300000, guid: b8d38d324558fbe4d94693f8d4968a3b, type: 3}
+      animationSpeedMod: 0
+      allowNextMove: 25
+      preventMovement: 25
+      followUpAllowFrom: 6
+      characterVelocity: {x: 0, y: 0, z: 0}
+      hurtBoxDamage: 0
+      lifeSteal: 0
+      baseCrit: 0
+      hitStunDuration: 0
+      knockDown: 0
+      knockDownVelocity: {x: 0, y: 0, z: 0}
+      isProjectile: 0
+      ammoChange: 0
+      projVelocity: {x: 0, y: 0, z: 0}
+      isProjBuff: 0
+  currentList: 0

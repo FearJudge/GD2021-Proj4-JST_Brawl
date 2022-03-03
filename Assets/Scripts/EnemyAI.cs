@@ -182,7 +182,6 @@ public class EnemyAI : DepthBeUController
     void NextRule(Condition reason)
     {
         ControlledCharacterMovement(0f, 0f);
-        Debug.Log(reason.ToString());
         exitReason = reason;
         NextRule();
     }
@@ -283,9 +282,9 @@ public class EnemyAI : DepthBeUController
     {
         AnimateCharacterBool("stunned", false);
         currentAct = State.Dead;
+        EncounterManager.IDied(gameObject, this);
         if (upgradeIdentifier != 0)
         {
-            EncounterManager.IDied(gameObject, this);
             EncounterManager.EncounterCleared += Dissolve;
         }
         else

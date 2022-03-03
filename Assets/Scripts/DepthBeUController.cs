@@ -104,6 +104,7 @@ public class DepthBeUController : MonoBehaviour
     {
         PreventRigidBodyCollisions();
         TickDownStun();
+        CheckForOoB();
     }
 
     protected void GetCollisionsAroundCharacter()
@@ -127,6 +128,12 @@ public class DepthBeUController : MonoBehaviour
         movementChecks.bodyXneg = CheckCollision(bodyCheckNegX, 0, collideWith);
         movementChecks.bodyZplus = CheckCollision(bodyCheckPosY, 0, collideWith);
         movementChecks.bodyZneg = CheckCollision(bodyCheckNegY, 0, collideWith);
+    }
+
+    protected void CheckForOoB()
+    {
+        if (frozen) { return; }
+        if (transform.position.y <= -30) { Kill(); frozen = true; }
     }
 
     protected virtual void MoveCharacter() { }
@@ -278,8 +285,13 @@ public class DepthBeUController : MonoBehaviour
 
     public virtual void SetVelocity(Vector3 direction, bool flipX = false)
     {
+        if (direction == Vector3.zero) { return; }
         if (flipX && !playerFacingRight) { direction.x *= -1; }
-        rb_body.velocity += direction; rb_root.velocity += new Vector3(direction.x, 0, direction.z);
+        Vector3 bodyDir = direction;
+        Vector3 rootDir = direction;
+        rb_body.velocity = bodyDir;
+        if (rb_root.velocity.magnitude > rootDir.magnitude) { rootDir = rb_root.velocity + (0.1f * direction); rb_root.velocity = new Vector3(rootDir.x, 0, rootDir.z); }
+        else { rb_root.velocity = new Vector3(rootDir.x, 0, rootDir.z); }
     }
 
     public virtual void AddUpgradeToCharacter(UpgradeLibrary.IUpgrade up)
@@ -309,8 +321,7 @@ public class DepthBeUController : MonoBehaviour
     public virtual void Kill()
     {
         sr.Color = baseCol;
-        playerCollisionBox.enabled = false;
-        rb_body.isKinematic = true;
+        playerCollisionBox.gameObject.layer = 11;
         stunnedFor = 0f;
         frozen = true;
         animator.SetTrigger("Die");

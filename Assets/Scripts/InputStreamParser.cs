@@ -31,9 +31,11 @@ public class InputStreamParser : MonoBehaviour
             moveDefinition = new List<string>(copy.moveDefinition);
             moveAllowedError = copy.moveAllowedError;
             moveAllowedDuration = copy.moveAllowedDuration;
+            movePriority = copy.movePriority;
             if (moveAllowedDuration == 0) { moveAllowedDuration = 800; }
             moveName = copy.moveName;
             followUpTo = copy.followUpTo;
+            cancelFrom = copy.cancelFrom;
             properties = copy.properties;
             moveBloodCost = copy.moveBloodCost;
             moveAmmoCost = copy.moveAmmoCost;
@@ -96,6 +98,7 @@ public class InputStreamParser : MonoBehaviour
 
         public string moveName = "";
         public string followUpTo = "";
+        public string cancelFrom = "";
         public List<string> moveDefinition = new List<string>();
         public int moveAllowedError;
         public int moveAllowedDuration;
@@ -128,7 +131,13 @@ public class InputStreamParser : MonoBehaviour
     public int movePrevention = 0;
     public int dirPrevention = 0;
     public const int MOVEBUFFDUR = 9;
+    public const int HELD = 30;
+    public const int RECHECK = 10;
     public int buffer = 0;
+    bool A = false;
+    bool B = false;
+    int heldA = 0;
+    int heldB = 0;
 
     [SerializeField] public List<StreamedIn> StreamingInputList = new List<StreamedIn>();
     int framesFrom = 0;
@@ -141,13 +150,25 @@ public class InputStreamParser : MonoBehaviour
         pcont = (PlayerController)player;
         actions = p_input.actions;
         moveBtns = actions.FindAction("Move");
-        attackBtns = new InputAction[3] { actions.FindAction("LightAttack"), actions.FindAction("HeavyAttack"), actions.FindAction("WeaponSwap") };
+        attackBtns = new InputAction[4] { actions.FindAction("LightAttack"), actions.FindAction("HeavyAttack"), actions.FindAction("WeaponSwap"), actions.FindAction("Macro_LightHeavy") };
+        attackBtns[0].started += ADown => { A = true; };
+        attackBtns[1].started += BDown => { B = true; };
+        attackBtns[0].canceled += AUp => { A = false; };
+        attackBtns[1].canceled += BUp => { B = false; };
         ChangeMoveList(0);
     }
 
     void Update()
     {
         GetInput();
+    }
+
+    private void OnDestroy()
+    {
+        attackBtns[0].started -= ADown => { A = true; };
+        attackBtns[1].started -= BDown => { B = true; };
+        attackBtns[0].canceled -= AUp => { A = false; };
+        attackBtns[1].canceled -= BUp => { B = false; };
     }
 
     // Update is called once per frame
@@ -188,13 +209,13 @@ public class InputStreamParser : MonoBehaviour
         {
             CheckFacing();
         }
-        bool A = attackBtns[0].triggered;
-        bool B = attackBtns[1].triggered;
         if (attackBtns[2].triggered) { ChangeMoveList(); }
+        if (attackBtns[3].triggered) { A = true; B = true; }
         string definB = res.ToString();
-        if (A) { definB += "A"; }
-        if (B) { definB += "B"; }
+        if (A) { if (heldA > HELD) { definB += "/A"; } else { definB += "A"; heldA++; } } else { heldA = 0; }
+        if (B) { if (heldB > HELD) { definB += "/B"; } else { definB += "B"; heldB++; } } else { heldB = 0; }
         if (StreamingInputList.Count == 0) { defin = definB; return; }
+        if (attackBtns[3].triggered) { A = false; B = false; }
         if (definB != StreamingInputList[StreamingInputList.Count - 1].Input) { defin = definB; }
     }
 
@@ -219,7 +240,7 @@ public class InputStreamParser : MonoBehaviour
                     stream.text += inp.Input;
                 }
             }
-            if (definition.Contains("A")) { ParseInput(); }
+            if (definition.Contains("A") || definition.Contains("B")) { ParseInput(); }
         }
         if (followUpDelay > 0) { followUpDelay--; if (followUpDelay == 0) { followUpAllow = followUpValue; followUpValue = 0; } }
         else if (followUpAllow > 0) { followUpAllow--; if (followUpAllow == 0) { savedMoveName = ""; } }
@@ -230,6 +251,10 @@ public class InputStreamParser : MonoBehaviour
             AddInList(defin);
         }
         else if (defin != StreamingInputList[StreamingInputList.Count - 1].Input)
+        {
+            AddInList(defin);
+        }
+        else if (framesFrom > RECHECK)
         {
             AddInList(defin);
         }
@@ -320,12 +345,14 @@ public class InputStreamParser : MonoBehaviour
         }
         bool CheckAgainstInput(string definition, string input)
         {
-            if (definition.Contains("A") && !input.Contains("A")) { return false; }
-            else if (definition.Contains("B") && !input.Contains("B)")) { return false; }
-            string dirInput = input.Trim('A', 'B');
+            if (definition.Contains("A")) { if (!input.Contains("A")) { return false; } }
+            if (definition.Contains("B")) { if (!input.Contains("B")) { return false; } }
+            if (definition.Contains("/A")) { if (!input.Contains("/A")) { return false; } }
+            if (definition.Contains("/B")) { if (!input.Contains("/B")) { return false; } }
+            string dirInput = input.Trim('A', 'B', '/');
             if (definition.Contains("(") && definition.Contains(")"))
             {
-                string definStart = definition.Trim('(', ')', 'A', 'B');
+                string definStart = definition.Trim('(', ')', 'A', 'B', '/');
                 char[] definedDirs = definStart.ToCharArray();
                 for (int a = 0; a < definedDirs.Length; a++)
                 {
@@ -341,7 +368,7 @@ public class InputStreamParser : MonoBehaviour
                 iterationList[k].AddDuration(durFromLast);
                 for (int m = 0; m < 1; m++)
                 {
-                    if (iterationList[k].moveDefinition.Count < m) { break; }
+                    if (iterationList[k].moveDefinition.Count <= m) { break; }
                     if (CheckAgainstInput(iterationList[k].moveDefinition[m], input))
                     {
                         if (m == 1) { iterationList[k].AddError(ErrorType.IgnoredInput); }
@@ -382,7 +409,7 @@ public class InputStreamParser : MonoBehaviour
             return highestInd;
         }
 
-        if ((movePrevention > 0 && followUpAllow == 0) || player.frozen) { if (buffer == 0) { buffer = MOVEBUFFDUR; } else { buffer--; } if (buffer == 0) { StreamingInputList.Clear(); return; } return; }
+        if ((movePrevention > 0 && followUpAllow == 0) || player.frozen) { if (buffer == 0) { buffer = MOVEBUFFDUR; } else { buffer--; } if (buffer == 0) { return; } return; }
         buffer = 0;
 
         for (int i = 0; i < StreamingInputList.Count; i++)
@@ -394,19 +421,17 @@ public class InputStreamParser : MonoBehaviour
         IterateMissedEnds();
 
         int prior = FindHighestPriority();
-        if (prior == -1) { StreamingInputList.Clear(); return; }
+        if (prior == -1) { return; }
         if (movePrevention > 0 && followUpAllow > 0)
         {
             if (!PopulateAllows(iterationList[prior], savedMoveName))
             {
-                StreamingInputList.Clear(); return;
+                return;
             }
         }
 
         pcont.special.Value -= iterationList[prior].moveBloodCost;
         if (prior >= 0) { ActivateMove(iterationList[prior].properties, iterationList[prior].moveName); }
-
-        StreamingInputList.Clear();
     }
 
     void ActivateMove(MoveProp mp, string name)

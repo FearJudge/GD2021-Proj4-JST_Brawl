@@ -155,6 +155,7 @@ public class EncounterManager : MonoBehaviour
 
     public static void IDied(GameObject enemy, EnemyAI controller)
     {
+        if (!manager.enemies.Contains(enemy)) { return; }
         UpgradeLink.CreateInstance(controller, PlayerController.players[0], controller.GetUpgradeId());
         manager.enemies.Remove(enemy);
     }
@@ -165,6 +166,7 @@ public class EncounterManager : MonoBehaviour
         EncounterCleared?.Invoke();
         EncounterCleared = null;
         cleared--;
+        UI_HealthBarBrain.ClearMemoryOfEnemies();
         if (cleared == 0) { AllCleared?.Invoke(); }
     }
 

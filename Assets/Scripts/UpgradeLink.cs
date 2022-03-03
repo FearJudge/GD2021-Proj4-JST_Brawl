@@ -74,6 +74,7 @@ public class UpgradeLink : MonoBehaviour
 
     public static void CreateInstance(DepthBeUController owner, DepthBeUController player, uint upgradeint)
     {
+        if (upgradeint == 0 || UpgradeLibrary.GetUpgrade(upgradeint) == null) { return; }
         GameObject nLink = Instantiate(UpgradeLibrary.instance.linkInstance, UpgradeLibrary.instance.linkRoot);
         UpgradeLink trueLink = nLink.GetComponent<UpgradeLink>();
         trueLink.ownedBy = owner;

@@ -9,13 +9,16 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenuScene.unity
     guid: a3dd652ca303c6742ab080f2c792f5f8
   - enabled: 1
-    path: Assets/Scenes/CodingSanctuary.unity
-    guid: 43a8061e3195f354491c87b18c60ed9f
+    path: Assets/Scenes/BuildFourLevel.unity
+    guid: 03d2c02e2620cbc4d889cfa6608f3b6c
   - enabled: 1
     path: Assets/Scenes/TrainingGround.unity
     guid: 0d2f5540321ad954797264594c1e628a
   - enabled: 1
     path: Assets/Scenes/PauseMenuScene.unity
     guid: 7f59ef5c97292b34ba4da5f02eb80fae
+  - enabled: 1
+    path: Assets/Scenes/DeathMenuScene.unity
+    guid: 12872e0299c319a48a1cbf7773a617d2
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: b04eaf871b8572642b395379b80eee5e, type: 2}

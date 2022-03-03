@@ -181,6 +181,14 @@ public class UI_HealthBarBrain : MonoBehaviour
         if (findH != null) { findH.comp.ChangeSprite(currentWeapon); }
     }
 
+    public static void ClearMemoryOfEnemies()
+    {
+        for (int a = 0; a < instance.enemyHpInstances.Count; a++)
+        {
+            NonPlayerKill(instance.enemyHpInstances[a].hp);
+        }
+    }
+
     public static void PlayerKill(Health HpInstance)
     {
         // TODO: Add Life List System And Game Overs.

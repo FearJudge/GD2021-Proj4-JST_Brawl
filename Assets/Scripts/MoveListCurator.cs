@@ -48,6 +48,7 @@ public class MoveListCurator : MonoBehaviour
     public void ChangeList(int changeDirection)
     {
         currentList += changeDirection;
+        if (currentList >= 2) { currentList = 0; } // TEMP DISABLE SPELLS!
         if (currentList >= moveLists.Length) { currentList = 0; }
         else if (currentList < 0) { currentList = moveLists.Length - 1; }
     }

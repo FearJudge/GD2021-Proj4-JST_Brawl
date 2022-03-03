@@ -9,6 +9,8 @@ public class EncounterTrigger : MonoBehaviour
     public static event ActivateTrigger PlayerReached;
 
     [HideInInspector] public BoxCollider trigger;
+    public bool notAnEncounter = false;
+    public UI_OnScreenEffectBrain.HintType hint;
 
     private void Awake()
     {
@@ -17,9 +19,21 @@ public class EncounterTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player")
+        if (!notAnEncounter && other.gameObject.tag == "Player")
         {
             PlayerReached?.Invoke(this);
+        }
+        else if (hint != UI_OnScreenEffectBrain.HintType.None && other.gameObject.tag == "Player")
+        {
+            UI_OnScreenEffectBrain.DisplayHint(hint);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (hint != UI_OnScreenEffectBrain.HintType.None && other.gameObject.tag == "Player")
+        {
+            UI_OnScreenEffectBrain.UnDisplayHint();
         }
     }
 }

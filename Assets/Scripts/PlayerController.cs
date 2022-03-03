@@ -14,6 +14,7 @@ public class PlayerController : DepthBeUController
     private InputAction jmpBtn;
     public static List<PlayerController> players = new List<PlayerController>();
     public bool controlOn = true;
+    public bool death = false;
     public InputStreamParser myStream;
     bool madeMove = false;
     public MoveProp.GlobalVariables gv = new MoveProp.GlobalVariables()
@@ -39,6 +40,7 @@ public class PlayerController : DepthBeUController
 
     protected override void MoveCharacter()
     {
+        if (death) { return; }
         if (!controlOn) { UpgradeInput(); return; }
         if (frozen || halted) { ControlledCharacterMovement(0, 0); return; }
         Vector2 inputMoves = moveBtns.ReadValue<Vector2>();
@@ -54,11 +56,12 @@ public class PlayerController : DepthBeUController
     {
         frozen = true;
         ControlledCharacterMovement(0, 0);
-        float X = Input.GetAxis("Horizontal");
+        Vector2 inputMoves = moveBtns.ReadValue<Vector2>();
+        float X = inputMoves.x;
         if (X > 0.1f && !madeMove) { madeMove = true; UpgradeLink.Scroll(1); }
         else if (X < -0.1f && !madeMove) { madeMove = true; UpgradeLink.Scroll(-1); }
         else if (X == 0f) { madeMove = false; }
-        if (Input.GetButtonDown("Submit")) { UpgradeLink.SelectCurrent(); }
+        if (jmpBtn.triggered) { UpgradeLink.SelectCurrent(); }
     }
 
     protected override void ParseUpgrade(UpgradeLibrary.MoveUpgrade up)
@@ -86,6 +89,12 @@ public class PlayerController : DepthBeUController
     {
         if (players.Count == 0) { return null; }
         return players[Random.Range(0, players.Count - 1)];
+    }
+
+    public override void Kill()
+    {
+        base.Kill();
+        SceneManager.LoadSceneAsync("DeathMenuScene", LoadSceneMode.Additive);
     }
 
     void SwapToChoose()

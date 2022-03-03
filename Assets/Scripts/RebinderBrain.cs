@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -74,6 +75,57 @@ public class RebinderBrain : MonoBehaviour
             msgRect.anchoredPosition = messageSpawnPoint.anchoredPosition + (messageOffset * a);
 
             messages.Add(msg);
+        }
+    }
+
+    public void SaveUserRebinds()
+    {
+        List<string> rebinded = new List<string>();
+        for (int a = 0; a < inputActions.actionMaps.Count; a++)
+        {
+            if (inputActions.actionMaps[a].name == "UI") { continue; }
+            for (int b = 0; b < inputActions.actionMaps[a].bindings.Count; b++)
+            {
+                string bindStr = inputActions.actionMaps[a].bindings[b].effectivePath;
+                rebinded.Add(bindStr);
+            }
+        }
+        string path = Application.dataPath + string.Format("/../bindings.sav");
+
+        StreamWriter writer = new StreamWriter(path, false);
+
+        foreach (var st in rebinded)
+        {
+            writer.Write(st + "\n");
+        }
+
+        writer.Close();
+    }
+
+    public void LoadUserRebinds()
+    {
+        List<string> rebinding = new List<string>();
+        if (!File.Exists(Application.dataPath + string.Format("/../bindings.sav"))) { return; }
+        Debug.Log("Loadin!");
+        string path = Application.dataPath + string.Format("/../bindings.sav");
+
+        StreamReader reader = new StreamReader(path, true);
+        
+        while (!reader.EndOfStream)
+        {
+            rebinding.Add(reader.ReadLine());
+        }
+        for (int a = 0; a < inputActions.actionMaps.Count; a++)
+        {
+            if (inputActions.actionMaps[a].name == "UI") { continue; }
+            for (int b = 0; b < inputActions.actionMaps[a].bindings.Count; b++)
+            {
+                InputBinding inb = inputActions.actionMaps[a].bindings[b];
+                Debug.Log(inb.effectivePath + " -> " + rebinding[0]);
+                inb.overridePath = rebinding[0];
+                inputActions.actionMaps[a].ApplyBindingOverride(inb);
+                rebinding.RemoveAt(0);
+            }
         }
     }
 }

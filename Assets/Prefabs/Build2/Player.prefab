@@ -1,5 +1,54 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1869604226926032343
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7389809970114188094}
+  - component: {fileID: 553892623218268205}
+  m_Layer: 0
+  m_Name: BoltSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &7389809970114188094
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1869604226926032343}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: -1}
+  m_LocalPosition: {x: 6.41, y: -0.76, z: 0}
+  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_Children: []
+  m_Father: {fileID: 4584556255072215263}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &553892623218268205
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1869604226926032343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 184af26fd2f95224992175945b107c61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 0}
+  ammo: 6
+  noAmmoSound: {fileID: 0}
+  vel: {x: 0, y: 0, z: 0}
+  lifeTime: 2.5
+  hbData: {fileID: 0}
 --- !u!1 &4332821785571595828
 GameObject:
   m_ObjectHideFlags: 0
@@ -73,12 +122,15 @@ MonoBehaviour:
   baseJumpsAvailable: 1
   airborne: 0
   frozen: 0
+  halted: 0
   cameraFocus: {fileID: 0}
+  sr: {fileID: 0}
   rb_root: {fileID: 0}
   rb_body: {fileID: 0}
   playerCollisionBox: {fileID: 0}
   hurtBoxObject: {fileID: 4332821786938033764}
   hb: {fileID: 0}
+  projectilespawner: {fileID: 0}
   animator: {fileID: 0}
   groundMask:
     serializedVersion: 2
@@ -86,6 +138,10 @@ MonoBehaviour:
   collideWith:
     serializedVersion: 2
     m_Bits: 1
+  special: {fileID: 0}
+  p_input: {fileID: 0}
+  controlOn: 1
+  myStream: {fileID: 0}
 --- !u!54 &4332821785571595818
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -234,15 +290,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06fd2fd4acf2bb04c914c8a2fdd6bcde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ownerHealth: {fileID: 0}
   body: {fileID: 4332821786311381067}
   hitStun: 0.25
   damage: 10
+  lifeSteal: 0
+  crit: 0
   knockDown: 0
   parry: 0
   knockDownVelocity: {x: 0, y: 0, z: 0}
   activeOn:
     serializedVersion: 2
     m_Bits: 16384
+  hitSpark: {fileID: 0}
+  critSpark: {fileID: 0}
+  sparkVariants: []
 --- !u!1 &4861238092123342830
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,6 +387,50 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &7442116096874106577
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3022441043745852162}
+  - component: {fileID: 4988936423219011086}
+  m_Layer: 17
+  m_Name: HurtBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3022441043745852162
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7442116096874106577}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: -1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4584556255072215263}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &4988936423219011086
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7442116096874106577}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.3634143, y: 20.723505, z: 2.0442438}
+  m_Center: {x: 0.4968202, y: -8.780847, z: 0.031309426}
 --- !u!1001 &4332821786479949793
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 684206980074409236}
   - component: {fileID: 5420817311333587096}
   - component: {fileID: 5009858210320873462}
+  - component: {fileID: 1478814100553750646}
   m_Layer: 0
   m_Name: HitSpark
   m_TagString: Untagged
@@ -4890,3 +4891,35 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 541cd783477ef0646809e73c4990665e, type: 3}
   volMod: 1
   pitch: 0.7
+--- !u!114 &1478814100553750646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3494273047620996136}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0037d5148496864292737c5a732bb6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bloodPrefab: {fileID: 536307619090549329, guid: 37ee3c3b708b4534b94331d885326524, type: 3}
+  bloodArray:
+  - chance: 0.65
+    velocityRange: {x: 5, y: 7}
+    angleRange: {x: -60, y: 60}
+  - chance: 0.25
+    velocityRange: {x: 5, y: 7}
+    angleRange: {x: -70, y: 70}
+  - chance: 0.2
+    velocityRange: {x: 9, y: 11}
+    angleRange: {x: -35, y: 35}
+  - chance: 0.2
+    velocityRange: {x: 9, y: 11}
+    angleRange: {x: -35, y: 35}
+  - chance: 1
+    velocityRange: {x: 3, y: 6}
+    angleRange: {x: 0, y: 75}
+  - chance: 1
+    velocityRange: {x: 3, y: 6}
+    angleRange: {x: -75, y: 0}

@@ -18,6 +18,7 @@ public class MenuController : MonoBehaviour
 
     public MenuScreen[] screens;
     public int currentLevel = 0;
+    public RebinderBrain rebrain;
 
     public void GoBackScreen(int toVariant=0)
     {
@@ -55,6 +56,11 @@ public class MenuController : MonoBehaviour
                 screens[a].root.gameObject.SetActive(false);
             }
         }
+    }
+
+    public void LoadRebind()
+    {
+        rebrain.LoadUserRebinds();
     }
 
     public void GameQuit()

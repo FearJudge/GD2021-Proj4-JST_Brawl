@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : DepthBeUController
 {
+    public Special special;
     public PlayerInput p_input;
     private InputActionAsset inasset;
     private InputAction moveBtns;
@@ -28,6 +29,7 @@ public class PlayerController : DepthBeUController
     {
         players.Add(this);
         SetUP();
+        special = GetComponent<Special>();
         inasset = p_input.actions;
         moveBtns = inasset.FindAction("Move");
         escBtn = inasset.FindAction("Pause");

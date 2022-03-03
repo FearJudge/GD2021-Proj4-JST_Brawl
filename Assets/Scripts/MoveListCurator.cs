@@ -10,14 +10,39 @@ public class MoveListCurator : MonoBehaviour
     [SerializeField] public InputStreamParser.MoveDetails[] moveListSword = new InputStreamParser.MoveDetails[0];
     [SerializeField] public InputStreamParser.MoveDetails[] moveListGun = new InputStreamParser.MoveDetails[0];
     [SerializeField] public InputStreamParser.MoveDetails[] moveListSpells = new InputStreamParser.MoveDetails[0];
+    [SerializeField] public InputStreamParser.MoveDetails[] moveListGeneral = new InputStreamParser.MoveDetails[0];
     private InputStreamParser.MoveDetails[][] moveLists = new InputStreamParser.MoveDetails[3][];
     public int currentList = 0;
 
     public void Start()
     {
-        moveLists[0] = moveListSword;
-        moveLists[1] = moveListGun;
-        moveLists[2] = moveListSpells;
+        moveLists[0] = new InputStreamParser.MoveDetails[moveListSword.Length + moveListGeneral.Length];
+        moveLists[1] = new InputStreamParser.MoveDetails[moveListGun.Length + moveListGeneral.Length];
+        moveLists[2] = new InputStreamParser.MoveDetails[moveListSpells.Length + moveListGeneral.Length];
+        for (int a = 0; a < moveListSword.Length; a++)
+        {
+            moveLists[0][a] = moveListSword[a];
+        }
+        for (int b = 0; b < moveListGeneral.Length; b++)
+        {
+            moveLists[0][moveListSword.Length + b] = moveListGeneral[b];
+        }
+        for (int a = 0; a < moveListGun.Length; a++)
+        {
+            moveLists[1][a] = moveListGun[a];
+        }
+        for (int b = 0; b < moveListGeneral.Length; b++)
+        {
+            moveLists[1][moveListGun.Length + b] = moveListGeneral[b];
+        }
+        for (int a = 0; a < moveListSpells.Length; a++)
+        {
+            moveLists[2][a] = moveListSpells[a];
+        }
+        for (int b = 0; b < moveListGeneral.Length; b++)
+        {
+            moveLists[2][moveListSpells.Length + b] = moveListGeneral[b];
+        }
     }
 
     public void ChangeList(int changeDirection)

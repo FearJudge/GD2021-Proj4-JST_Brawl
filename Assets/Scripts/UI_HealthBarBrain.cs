@@ -25,7 +25,11 @@ public class UI_HealthBarBrain : MonoBehaviour
         public LinkedHealth(Health h, bool player)
         {
             hp = h;
-            if (player) { prefab = Instantiate(instance.playerHUDCanvasPreFab, instance.playerFolder); }
+            if (player) {
+                prefab = Instantiate(instance.playerHUDCanvasPreFab, instance.playerFolder);
+                spcomp = prefab.GetComponent<UI_SpecialBarComponent>();
+                sp = h.gameObject.GetComponent<Special>();
+            }
             else { prefab = Instantiate(instance.enemyHUDCanvasPreFab, instance.enemyFolder); }
             comp = prefab.GetComponent<UI_HealthBarComponent>();
             CreateHP(this);
@@ -33,7 +37,9 @@ public class UI_HealthBarBrain : MonoBehaviour
 
         public GameObject prefab;
         public UI_HealthBarComponent comp;
+        public UI_SpecialBarComponent spcomp;
         public Health hp;
+        public Special sp;
 
         public int CompareTo(LinkedHealth other)
         {
@@ -64,6 +70,11 @@ public class UI_HealthBarBrain : MonoBehaviour
     public static void UpdatePlayerHP(LinkedHealth h)
     {
         h.comp.UpdateHealthInformation(h.hp);
+    }
+
+    public static void UpdatePlayerSP(LinkedHealth h)
+    {
+        h.spcomp.UpdateSpecialInformation(h.sp);
     }
 
     public static void CreateHP(LinkedHealth h)
@@ -123,6 +134,11 @@ public class UI_HealthBarBrain : MonoBehaviour
         else { PlayerFindHealth(HpInstance, name); }
     }
 
+    public static void NotifyBrain(Special SpInstance)
+    {
+        PlayerFindSpecial(SpInstance);
+    }
+
     public static void EnemyFindHealth(Health HpInstance, string name)
     {
         LinkedHealth findH = instance.enemyHpInstances.Find(p => p.hp == HpInstance);
@@ -135,6 +151,12 @@ public class UI_HealthBarBrain : MonoBehaviour
         LinkedHealth findH = instance.playerHpInstances.Find(p => p.hp == HpInstance);
         if (findH != null) { UpdatePlayerHP(findH); }
         else { LinkedHealth newH = new LinkedHealth(HpInstance, true); instance.playerHpInstances.Add(newH); SetPlayerBars(); }
+    }
+
+    public static void PlayerFindSpecial(Special SpInstance)
+    {
+        LinkedHealth findS = instance.playerHpInstances.Find(p => p.sp == SpInstance);
+        if (findS != null) { UpdatePlayerSP(findS); }
     }
 
     public static void NotifyBrainOfDeath(Health HpInstance, bool isPlayer)
@@ -151,6 +173,12 @@ public class UI_HealthBarBrain : MonoBehaviour
         instance.enemyHpInstances.Remove(findH);
         Destroy(findH.prefab);
         SortAndHideEnemies(instance.maximumEnemyCount);
+    }
+
+    public static void PlayerIconChange(Health HpInstance, int currentWeapon)
+    {
+        LinkedHealth findH = instance.playerHpInstances.Find(p => p.hp == HpInstance);
+        if (findH != null) { findH.comp.ChangeSprite(currentWeapon); }
     }
 
     public static void PlayerKill(Health HpInstance)

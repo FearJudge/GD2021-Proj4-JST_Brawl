@@ -36,8 +36,84 @@ SpriteAtlas:
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
-  m_PackedSprites: []
-  m_PackedSpriteNamesToIndex: []
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 8d1ffb80a26cc0a4495abac42dee1c7f, type: 3}
+  - {fileID: 21300000, guid: ad4ae3c0353ae4d49ab9d87e2a3ffe5a, type: 3}
+  - {fileID: 21300000, guid: 92009731628e62f4c94596b767c7df24, type: 3}
+  - {fileID: 21300000, guid: 7374e89162db5bf44b256fe226902fb5, type: 3}
+  - {fileID: 21300000, guid: fc30daf1b7d4e7a43af4341eb37c349e, type: 3}
+  - {fileID: 21300000, guid: 1972ede2691e4de42b2c97d50da72fae, type: 3}
+  - {fileID: 21300000, guid: d22cffe2a676cb949bf03126ae45b12b, type: 3}
+  - {fileID: 21300000, guid: 5ed13a5486a74bc4286e3de93b2d9195, type: 3}
+  - {fileID: 21300000, guid: 16c91364101a021419fecf862080c7ba, type: 3}
+  - {fileID: 21300000, guid: 4889737493f4f5d4b8a987833fc75e23, type: 3}
+  - {fileID: 21300000, guid: 5ac60a15fdad1ef41ae4da0d13eb98db, type: 3}
+  - {fileID: 21300000, guid: 973250253e267104ca1ceff80e7e9572, type: 3}
+  - {fileID: 21300000, guid: a7742f45abd2aa54995d4780d3761248, type: 3}
+  - {fileID: 21300000, guid: df05a6550e5f52d4ca141ad1c587f4a5, type: 3}
+  - {fileID: 21300000, guid: 018b2195e0161854e8bceaa360727688, type: 3}
+  - {fileID: 21300000, guid: 7acbd5d5aff62174cb005e99c3eef256, type: 3}
+  - {fileID: 21300000, guid: 92dbd73658e2f1641a042120c0ed7690, type: 3}
+  - {fileID: 21300000, guid: 10329c9651dab2e46a61c5d6ea9b0fa5, type: 3}
+  - {fileID: 21300000, guid: df3777576a078ee428556683f4143177, type: 3}
+  - {fileID: 21300000, guid: 1be4fc08ec94e4c43ae56f3e8bf835da, type: 3}
+  - {fileID: 21300000, guid: cd0e1d387497dd14fb97b8e9c1e15b15, type: 3}
+  - {fileID: 21300000, guid: f8940c48c439ee94a92e9402cde7e895, type: 3}
+  - {fileID: 21300000, guid: b9acc5980dd728141a806fe5befbae56, type: 3}
+  - {fileID: 21300000, guid: 3d19daa89694b4e429ea72322ef01361, type: 3}
+  - {fileID: 21300000, guid: b804402a008e5ee4cbdabe37608dca9a, type: 3}
+  - {fileID: 21300000, guid: 18877dbaddcb57346845025a5ef0f0c3, type: 3}
+  - {fileID: 21300000, guid: f2064fbae1751c54ba6c9b140411b5aa, type: 3}
+  - {fileID: 21300000, guid: 35d3b39c4862e7c4aa7b49de01c38e69, type: 3}
+  - {fileID: 21300000, guid: 208728ecc72d3c942b7659e8792925ea, type: 3}
+  - {fileID: 21300000, guid: 15e5feec7fd01784cb91aa301ac3934d, type: 3}
+  - {fileID: 21300000, guid: 2aae7d2df1817ba4c9bef53ead15fe46, type: 3}
+  - {fileID: 21300000, guid: 2483076dff98dc149ba8545ed4c90cf1, type: 3}
+  - {fileID: 21300000, guid: b10bbddd1ce0a044b82aea3777f59c61, type: 3}
+  - {fileID: 21300000, guid: 84c6063e1febe464bb47c4a719ed70c4, type: 3}
+  - {fileID: 21300000, guid: f7cdff3e066a26f4ca6de4ab0cc1b61a, type: 3}
+  - {fileID: 21300000, guid: 04a7ef4e593b28b4bbd54a4e54f1be39, type: 3}
+  - {fileID: 21300000, guid: ef631a9ebc8b9f54088316436001ed80, type: 3}
+  - {fileID: 21300000, guid: 76b9065ffac85784490dc3fc25398c4d, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - 6-Drawing-8
+  - 5-boss-fur2
+  - 5-boss-coattails1
+  - 6-Drawing-3
+  - 5-boss-neckback
+  - 5-boss-leg2
+  - 5-boss-loincloth
+  - 5-boss-upperarm2
+  - 5-boss-HAnd1
+  - 5-boss-Layer_63
+  - 5-boss-UpperArm1
+  - 5-boss-foot1
+  - 5-boss-pauldron2
+  - 6-Drawing-4
+  - 5-boss-Head
+  - 6-Drawing-2
+  - 6-Drawing-10
+  - 5-boss-HAnd2
+  - 5-boss-upperleg2
+  - 5-boss-coattails2
+  - 5-boss-Leg1
+  - 5-boss-LowerArm1
+  - 5-boss-coattailfront1
+  - 5-boss-LowerArm2
+  - 5-boss-foot2
+  - 5-boss-belt1
+  - 5-boss-Neck1
+  - 5-boss-jacketUpper1
+  - 6-Drawing-11
+  - 5-boss-coattailfront2
+  - 5-boss-fur2_2
+  - 6-Drawing-7
+  - 6-Drawing-6
+  - 5-boss-shoulderpaldron1
+  - 5-boss-upperleg1
+  - 5-boss-jacketuppr2
+  - 6-Drawing-5
+  - 5-boss-belt2
   m_RenderDataMap: {}
   m_Tag: ipad
   m_IsVariant: 0

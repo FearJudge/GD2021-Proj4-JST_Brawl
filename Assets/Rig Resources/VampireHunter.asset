@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 819987e1edc943b4fa1b1fbb06080c5b, type: 3}
   m_Name: VampireHunter
   m_EditorClassIdentifier: 
-  HarmonyXMLProjectPath: D:/School Work/2D GAme/ToonBoomAnims/Hunter_Animation/Hunter_Animationv5
+  HarmonyXMLProjectPath: D:/School Work/2D GAme/ToonBoomAnims/Hunter_Animation/VAmpireHuterv6
   OutputPath: Assets/Rig Resources/VampireHunterProject.asset
   GeneratePrefab: 1
   ExistingPrefab: {fileID: 3963715104231128142, guid: 5ef7269fd4450ac4f9ec57eb4d04d715, type: 3}

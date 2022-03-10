@@ -37772,6 +37772,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5836677656861686947, guid: a1a333f262d04ad40a4ec621b416abf5, type: 3}
+      propertyPath: critSpark
+      value: 
+      objectReference: {fileID: 4748730675913877244, guid: 9c074aa299cf88f4a9ce34d50a5bbff3, type: 3}
     - target: {fileID: 5836677658177531113, guid: a1a333f262d04ad40a4ec621b416abf5, type: 3}
       propertyPath: p_input
       value: 
@@ -37836,6 +37840,10 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7678249740153299693, guid: a1a333f262d04ad40a4ec621b416abf5, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 9117652130694329349, guid: dc157d56dfb79e34687e1bdbbd13f729, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1a333f262d04ad40a4ec621b416abf5, type: 3}
 --- !u!1001 &3545773398847948627

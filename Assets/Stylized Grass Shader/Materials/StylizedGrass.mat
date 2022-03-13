@@ -112,7 +112,7 @@ Material:
     - _TranslucencyOffset: 0
     - _TwoSided: 0
     - _VertexDarkening: 0.702
-    - _WindAmbientStrength: 0.2
+    - _WindAmbientStrength: 0
     - _WindFlutter: 0.559
     - _WindGustFreq: 2.71
     - _WindGustSpeed: 5
@@ -122,7 +122,7 @@ Material:
     - _WindQuality: 0
     - _WindRandSpeed: 1
     - _WindRandStrength: 1
-    - _WindSpeed: 1.1
+    - _WindSpeed: 0
     - _WindStr: 0.067
     - _WindStrength: 0.128
     - _WindStrengths: 1

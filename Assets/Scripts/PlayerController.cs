@@ -16,6 +16,8 @@ public class PlayerController : DepthBeUController
     public bool controlOn = true;
     public bool death = false;
     public InputStreamParser myStream;
+    bool walking = true;
+    float runDecay = 0f;
     bool madeMove = false;
     public MoveProp.GlobalVariables gv = new MoveProp.GlobalVariables()
     {
@@ -36,11 +38,12 @@ public class PlayerController : DepthBeUController
         escBtn = inasset.FindAction("Pause");
         jmpBtn = inasset.FindAction("Jump");
         EncounterManager.EncounterEnded += SwapToChoose;
+        EncounterManager.AllCleared += FinishGame;
     }
 
     protected override void MoveCharacter()
     {
-        if (death) { return; }
+        if (death) { animator.SetTrigger("Die"); return; }
         if (!controlOn) { UpgradeInput(); return; }
         if (frozen || halted) { ControlledCharacterMovement(0, 0); return; }
         Vector2 inputMoves = moveBtns.ReadValue<Vector2>();
@@ -61,7 +64,7 @@ public class PlayerController : DepthBeUController
         if (X > 0.1f && !madeMove) { madeMove = true; UpgradeLink.Scroll(1); }
         else if (X < -0.1f && !madeMove) { madeMove = true; UpgradeLink.Scroll(-1); }
         else if (X == 0f) { madeMove = false; }
-        if (jmpBtn.triggered) { UpgradeLink.SelectCurrent(); }
+        if (jmpBtn.triggered) { UpgradeLink.SelectCurrent(); animator.SetTrigger("AbsorbStanceOut"); }
     }
 
     protected override void ParseUpgrade(UpgradeLibrary.MoveUpgrade up)
@@ -82,6 +85,8 @@ public class PlayerController : DepthBeUController
 
     private void OnDestroy()
     {
+        EncounterManager.EncounterEnded -= SwapToChoose;
+        EncounterManager.AllCleared -= FinishGame;
         players.Remove(this);
     }
 
@@ -93,6 +98,7 @@ public class PlayerController : DepthBeUController
 
     public override void Kill()
     {
+        death = true;
         base.Kill();
         SceneManager.LoadSceneAsync("DeathMenuScene", LoadSceneMode.Additive);
     }
@@ -100,6 +106,7 @@ public class PlayerController : DepthBeUController
     void SwapToChoose()
     {
         controlOn = false;
+        animator.SetTrigger("AbsorbStanceIn");
         EncounterManager.EncounterCleared += Chosen;
     }
 
@@ -107,5 +114,10 @@ public class PlayerController : DepthBeUController
     {
         frozen = false;
         controlOn = true;
+    }
+
+    void FinishGame()
+    {
+        SceneManager.LoadSceneAsync("FinishMenuScene", LoadSceneMode.Additive);
     }
 }

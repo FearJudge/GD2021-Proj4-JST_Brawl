@@ -9,6 +9,8 @@ public class MenuPauser : MonoBehaviour
     public static bool paused = false;
     public bool pauseGame = true;
     public PlayerInput p_input;
+    public GameObject lc;
+    public string resumelevel;
 
     // Start is called before the first frame update
     void Awake()
@@ -29,7 +31,9 @@ public class MenuPauser : MonoBehaviour
 
     public void QuitCommand()
     {
-        SceneManager.LoadScene("MainMenuScene");
+        GameObject changer = Instantiate(lc);
+        LevelChanger transitionscript = changer.GetComponent<LevelChanger>();
+        transitionscript.StartTransition("MainMenuScene", 0.1f);
     }
 
     public void Resume()
@@ -37,8 +41,15 @@ public class MenuPauser : MonoBehaviour
         SceneManager.UnloadSceneAsync("PauseMenuScene");
     }
 
+    public void ResumeAlt()
+    {
+        SceneManager.UnloadSceneAsync("FinishMenuScene");
+    }
+
     public void Retry()
     {
-        SceneManager.LoadScene("BuildFourLevel");
+        GameObject changer = Instantiate(lc);
+        LevelChanger transitionscript = changer.GetComponent<LevelChanger>();
+        transitionscript.StartTransition(resumelevel, 0.1f);
     }
 }

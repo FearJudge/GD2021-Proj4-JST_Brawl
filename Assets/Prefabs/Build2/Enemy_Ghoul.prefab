@@ -131,6 +131,7 @@ MonoBehaviour:
   activeOn:
     serializedVersion: 2
     m_Bits: 4096
+  blockSpark: {fileID: 0}
   hitSpark: {fileID: 3494273047620996136, guid: 3c1eff4b468cc7e4ab4a46cd158deb42, type: 3}
   critSpark: {fileID: 0}
   sparkVariants: []
@@ -269,17 +270,21 @@ MonoBehaviour:
   feet: {fileID: 2835915896019487096}
   body: {fileID: 2835915894936817503}
   speed: 3
+  resistance: 10
   hangTime: 0.2
   baseJumpsAvailable: 1
   airborne: 0
   frozen: 0
+  halted: 0
   cameraFocus: {fileID: 0}
+  outlineBrain: {fileID: 0}
   sr: {fileID: 0}
   rb_root: {fileID: 0}
   rb_body: {fileID: 0}
   playerCollisionBox: {fileID: 0}
   hurtBoxObject: {fileID: 2835915895115929239}
   hb: {fileID: 0}
+  projectilespawner: {fileID: 0}
   animator: {fileID: 0}
   groundMask:
     serializedVersion: 2
@@ -299,10 +304,18 @@ MonoBehaviour:
       characterVelocity: {x: 0, y: 0, z: 0}
       hurtBoxDamage: 21
       lifeSteal: 0
+      baseCrit: 0
       hitStunDuration: 0.45
       knockDown: 1
       knockDownVelocity: {x: 6, y: 3, z: 0}
+      isProjectile: 0
+      ammoChange: 0
+      projCount: 1
+      projVelocity: {x: 0, y: 0, z: 0}
+      isProjBuff: 0
+      selfDamage: 0
     moveToSpot: {x: 0.7, y: 0, z: 0}
+    randomizeSpotArea: {x: 0, y: 0, z: 0.7}
     relateSpotToSelf: 0
     relateSpotToPlayer: 1
     waitAction: {x: 0, y: 0}
@@ -311,9 +324,18 @@ MonoBehaviour:
     turnToFacePlayer: 1
     turnToFaceAwayFromPlayer: 0
     transitions:
-    - behaviourIndexToTransitionTo: 2
-      conditionUsed: 8
+    - behaviourIndexToTransitionTo: 4
+      conditionUsed: 11
       chance: 1
+      useTimes: -1
+    - behaviourIndexToTransitionTo: 2
+      conditionUsed: 5
+      chance: 1
+      useTimes: -1
+    - behaviourIndexToTransitionTo: 2
+      conditionUsed: 7
+      chance: 1
+      useTimes: -1
   - performAMove: 0
     useMove:
       animationTrigger: Attack_Fast
@@ -325,10 +347,18 @@ MonoBehaviour:
       characterVelocity: {x: 0, y: 0, z: 0}
       hurtBoxDamage: 21
       lifeSteal: 0
+      baseCrit: 0
       hitStunDuration: 0.12
       knockDown: 1
       knockDownVelocity: {x: 6, y: 3, z: 0}
+      isProjectile: 0
+      ammoChange: 0
+      projCount: 1
+      projVelocity: {x: 0, y: 0, z: 0}
+      isProjBuff: 0
+      selfDamage: 0
     moveToSpot: {x: -0.7, y: 0, z: 0}
+    randomizeSpotArea: {x: 0, y: 0, z: 0.7}
     relateSpotToSelf: 0
     relateSpotToPlayer: 1
     waitAction: {x: 0, y: 0}
@@ -337,9 +367,18 @@ MonoBehaviour:
     turnToFacePlayer: 1
     turnToFaceAwayFromPlayer: 0
     transitions:
-    - behaviourIndexToTransitionTo: 2
-      conditionUsed: 8
+    - behaviourIndexToTransitionTo: 5
+      conditionUsed: 11
       chance: 1
+      useTimes: -1
+    - behaviourIndexToTransitionTo: 2
+      conditionUsed: 5
+      chance: 1
+      useTimes: -1
+    - behaviourIndexToTransitionTo: 2
+      conditionUsed: 7
+      chance: 1
+      useTimes: -1
   - performAMove: 1
     useMove:
       animationTrigger: Attack_Fast
@@ -351,10 +390,18 @@ MonoBehaviour:
       characterVelocity: {x: 0, y: 0, z: 0}
       hurtBoxDamage: 7
       lifeSteal: 0
+      baseCrit: 0
       hitStunDuration: 0.12
       knockDown: 0
       knockDownVelocity: {x: 0, y: 0, z: 0}
+      isProjectile: 0
+      ammoChange: 0
+      projCount: 1
+      projVelocity: {x: 0, y: 0, z: 0}
+      isProjBuff: 0
+      selfDamage: 0
     moveToSpot: {x: 0, y: 0, z: 0}
+    randomizeSpotArea: {x: 0, y: 0, z: 0}
     relateSpotToSelf: 0
     relateSpotToPlayer: 0
     waitAction: {x: 0, y: 0}
@@ -366,12 +413,15 @@ MonoBehaviour:
     - behaviourIndexToTransitionTo: 3
       conditionUsed: 1
       chance: 1
+      useTimes: -1
     - behaviourIndexToTransitionTo: 1
       conditionUsed: 0
       chance: 0.534
+      useTimes: -1
     - behaviourIndexToTransitionTo: 0
       conditionUsed: 0
       chance: 1
+      useTimes: -1
   - performAMove: 1
     useMove:
       animationTrigger: Attack_Slow
@@ -383,10 +433,18 @@ MonoBehaviour:
       characterVelocity: {x: 0, y: 0, z: 0}
       hurtBoxDamage: 25
       lifeSteal: 0
+      baseCrit: 0
       hitStunDuration: 0.5
       knockDown: 1
       knockDownVelocity: {x: 4, y: 4, z: 0}
+      isProjectile: 0
+      ammoChange: 0
+      projCount: 1
+      projVelocity: {x: 0, y: 0, z: 0}
+      isProjBuff: 0
+      selfDamage: 0
     moveToSpot: {x: 0, y: 0, z: 0}
+    randomizeSpotArea: {x: 0, y: 0, z: 0}
     relateSpotToSelf: 0
     relateSpotToPlayer: 0
     waitAction: {x: 0, y: 0}
@@ -398,9 +456,108 @@ MonoBehaviour:
     - behaviourIndexToTransitionTo: 1
       conditionUsed: 0
       chance: 0.489
+      useTimes: -1
     - behaviourIndexToTransitionTo: 0
       conditionUsed: 0
       chance: 1
+      useTimes: -1
+  - performAMove: 0
+    useMove:
+      animationTrigger: Attack_Slow
+      sound: {fileID: 0}
+      animationSpeedMod: 1
+      allowNextMove: 32
+      preventMovement: 21
+      followUpAllowFrom: 0
+      characterVelocity: {x: 0, y: 0, z: 0}
+      hurtBoxDamage: 25
+      lifeSteal: 0
+      baseCrit: 0
+      hitStunDuration: 0.5
+      knockDown: 1
+      knockDownVelocity: {x: 4, y: 4, z: 0}
+      isProjectile: 0
+      ammoChange: 0
+      projCount: 1
+      projVelocity: {x: 0, y: 0, z: 0}
+      isProjBuff: 0
+      selfDamage: 0
+    moveToSpot: {x: 3, y: 0, z: 0}
+    randomizeSpotArea: {x: 0, y: 0, z: 0.7}
+    relateSpotToSelf: 0
+    relateSpotToPlayer: 1
+    waitAction: {x: 0, y: 0}
+    modifyLife: 0
+    waitAfter: 1
+    turnToFacePlayer: 1
+    turnToFaceAwayFromPlayer: 0
+    transitions:
+    - behaviourIndexToTransitionTo: 2
+      conditionUsed: 5
+      chance: 1
+      useTimes: -1
+    - behaviourIndexToTransitionTo: 0
+      conditionUsed: 11
+      chance: 1
+      useTimes: -1
+    - behaviourIndexToTransitionTo: 4
+      conditionUsed: 8
+      chance: 0.555
+      useTimes: -1
+    - behaviourIndexToTransitionTo: 0
+      conditionUsed: 0
+      chance: 1
+      useTimes: -1
+  - performAMove: 0
+    useMove:
+      animationTrigger: Attack_Slow
+      sound: {fileID: 0}
+      animationSpeedMod: 1
+      allowNextMove: 32
+      preventMovement: 21
+      followUpAllowFrom: 0
+      characterVelocity: {x: 0, y: 0, z: 0}
+      hurtBoxDamage: 25
+      lifeSteal: 0
+      baseCrit: 0
+      hitStunDuration: 0.5
+      knockDown: 1
+      knockDownVelocity: {x: 4, y: 4, z: 0}
+      isProjectile: 0
+      ammoChange: 0
+      projCount: 1
+      projVelocity: {x: 0, y: 0, z: 0}
+      isProjBuff: 0
+      selfDamage: 0
+    moveToSpot: {x: -3, y: 0, z: 0}
+    randomizeSpotArea: {x: 0, y: 0, z: 0.7}
+    relateSpotToSelf: 0
+    relateSpotToPlayer: 1
+    waitAction: {x: 0, y: 0}
+    modifyLife: 0
+    waitAfter: 1
+    turnToFacePlayer: 1
+    turnToFaceAwayFromPlayer: 0
+    transitions:
+    - behaviourIndexToTransitionTo: 2
+      conditionUsed: 5
+      chance: 1
+      useTimes: -1
+    - behaviourIndexToTransitionTo: 1
+      conditionUsed: 11
+      chance: 1
+      useTimes: -1
+    - behaviourIndexToTransitionTo: 5
+      conditionUsed: 8
+      chance: 0.555
+      useTimes: -1
+    - behaviourIndexToTransitionTo: 1
+      conditionUsed: 0
+      chance: 1
+      useTimes: -1
+  listenToAttacks: 0
+  listenToHurtAllies: 1
+  listenToAlliesKilled: 0
   currentAct: 0
   exitReason: 0
   maximumWaitTime: 5
@@ -410,6 +567,7 @@ MonoBehaviour:
   currentTarget: {fileID: 0}
   visionRadius: 6
   inRangeRadius: 0.6
+  behaviourInd: 0
 --- !u!114 &2835915896019487102
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -425,6 +583,7 @@ MonoBehaviour:
   healthOwnerName: Ghoulish Ghoul
   isPlayer: 0
   lastTouched: 0
+  healthThresholds: 
   health: 215
 --- !u!54 &2835915896019487103
 Rigidbody:
@@ -560,3 +719,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 2835915896019487097}
   speedmod: 0
+  invulnerable: 0

@@ -45,9 +45,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds: []
   songs:
+  - song: {fileID: 8300000, guid: 81eec29a9c96c61469b3437f4d5192c5, type: 3}
+    artist: Steven Melin
+    songname: Valley of the Dead
+    starttime: 0
+  - song: {fileID: 8300000, guid: 6856323d873b1954f856d445b7c37373, type: 3}
+    artist: Steven Melin
+    songname: Demon of Dreams
+    starttime: 0
+  - song: {fileID: 8300000, guid: 26760f1d36643cb469c2f96d0b917d57, type: 3}
+    artist: Steven Melin
+    songname: Glitch in the Orchestra
+    starttime: 0
   - song: {fileID: 8300000, guid: 2ee85775ed876c44e9de030e14baf5e7, type: 3}
     artist: Steven Melin
     songname: Banished Warriors
+    starttime: 0
+  - song: {fileID: 8300000, guid: dbc14b7f3fddb294ca0ca75e912aad2b, type: 3}
+    artist: Steven Melin
+    songname: Graveyard Hijinx
+    starttime: 0
+  - song: {fileID: 8300000, guid: 66fa3e16858cc194ead14c13e7d5b61f, type: 3}
+    artist: Steven Melin
+    songname: Escape to the Enchanted Forest
+    starttime: 0
+  - song: {fileID: 8300000, guid: 6e46912c607da1a4489eccb5df5946aa, type: 3}
+    artist: Steven Melin
+    songname: Cathedral of Demons
+    starttime: 0
+  - song: {fileID: 8300000, guid: f42ec02a3a7ee6945b76ea54d7f61448, type: 3}
+    artist: Steven Melin
+    songname: Fractured Soul
+    starttime: 0
+  - song: {fileID: 8300000, guid: 5ca60862a6c58404f84a4606fb82b460, type: 3}
+    artist: Steven Melin
+    songname: Battle at the Cathedral
+    starttime: 0
+  - song: {fileID: 8300000, guid: f21e78b53b518734e920837c15c916ff, type: 3}
+    artist: Steven Melin
+    songname: Face Your Fears
+    starttime: 0
   sfxMix: {fileID: -301564460132043043, guid: 7c81c3633f054bc4b925ed39adb1493c, type: 2}
   bgmMix: {fileID: 4572178918568903914, guid: 7c81c3633f054bc4b925ed39adb1493c, type: 2}
   AutoPlayBGM: 1

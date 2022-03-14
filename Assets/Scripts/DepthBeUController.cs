@@ -25,20 +25,39 @@ public class DepthBeUController : MonoBehaviour
     [HideInInspector] public Transform feet;
     public GameObject body;
     public float speed;
+    [HideInInspector] public bool isAlive = true;
+    float maxResistance = 10f;
+    float resistanceRegen = 0f;
+    public float resistance = 10f;
     public float hangTime = 0.2f;
     private float airborneTimer = 0f;
     public int baseJumpsAvailable = 1;
     private int jumpsAvailable = 1;
-    private readonly float feetCollSize = 0.14f;
-    private readonly float bodyCollSize = 0.32f;
-    private readonly float feetEdgeSize = 0.02f;
-    private readonly float bodyEdgeSize = 0.09f;
-    private readonly float bodyLandingPad = 0.25f;
-    private readonly float bodyHeight = 0.9f;
+    [SerializeField] private float feetCollSize = 0.14f;
+    [SerializeField] private float bodyCollSize = 0.32f;
+    [SerializeField] private float feetEdgeSize = 0.02f;
+    [SerializeField] private float bodyEdgeSize = 0.09f;
+    [SerializeField] private float bodyLandingPad = 0.25f;
+    [SerializeField] private float bodyHeight = 0.9f;
     private readonly float moveThreshold = 0.3f;
     public bool airborne = false;
     public bool frozen = false;
     public bool halted = false;
+    public bool Invulnerable
+    {
+        set
+        {
+            invulnerable = value;
+            if (value == true) { if (outlineBrain != null) { SetInvulnerableOutline(false); } }
+            else { if (outlineBrain != null && resistance > 0f) { outlineBrain.DeactivateOutlines(); } }
+        }
+        get
+        {
+            return invulnerable;
+        }
+    }
+    private bool invulnerable = false;
+    
     protected float stunnedFor = 0f;
     protected bool jumpRequested = false;
     private float feetOffset = 0f;
@@ -46,7 +65,8 @@ public class DepthBeUController : MonoBehaviour
     [SerializeField] private Transform cameraFocus;
     private CameraLock cameraLocking;
 
-    public HarmonyRenderer sr;
+    public HackyOutline outlineBrain;
+    [HideInInspector] public HarmonyRenderer sr;
     [HideInInspector] public Rigidbody rb_root;
     [HideInInspector] public Rigidbody rb_body;
     [HideInInspector] public BoxCollider playerCollisionBox;
@@ -79,6 +99,7 @@ public class DepthBeUController : MonoBehaviour
     protected void SetUP()
     {
         feet = transform;
+        maxResistance = resistance;
         if (cameraFocus == null) { cameraFocus = Camera.main.transform.parent; }
         cameraLocking = cameraFocus.GetComponent<CameraLock>();
         feetOffset = body.transform.localPosition.y - feet.transform.localPosition.y;
@@ -90,18 +111,20 @@ public class DepthBeUController : MonoBehaviour
         sr = body.GetComponentInChildren<HarmonyRenderer>();
         animator = body.GetComponentInChildren<Animator>();
         baseCol = sr.Color;
+        GetCollisionsAroundCharacter();
     }
 
     // Update is called once per frame
     public virtual void Update()
     {
-        GetCollisionsAroundCharacter();
         MoveCharacter();
         CharacterAirborne();
+        RegainResistance();
     }
 
     public virtual void FixedUpdate()
     {
+        GetCollisionsAroundCharacter();
         PreventRigidBodyCollisions();
         TickDownStun();
         CheckForOoB();
@@ -136,6 +159,16 @@ public class DepthBeUController : MonoBehaviour
         if (transform.position.y <= -30) { Kill(); frozen = true; }
     }
 
+    protected void RegainResistance()
+    {
+        if (resistanceRegen == 0f) { return; }
+        resistanceRegen -= Time.deltaTime;
+        if (resistanceRegen > 0f) { return; }
+        resistanceRegen = 0f;
+        resistance = maxResistance;
+        if (outlineBrain != null) { outlineBrain.DeactivateOutlines(); }
+    }
+
     protected virtual void MoveCharacter() { }
 
     protected bool CheckCollision(Collider[] listedCollisions, LayerMask require, LayerMask collide)
@@ -163,10 +196,12 @@ public class DepthBeUController : MonoBehaviour
             if ((cameraFocus.position.x + cameraLocking.cameraLockArea.x > transform.position.x && x > 0) || (cameraFocus.position.x - cameraLocking.cameraLockArea.x < transform.position.x && x < 0))
             { forceX = x; }
         }
+        else if ((x < -moveThreshold && movementChecks.feetXneg) || (x > moveThreshold && movementChecks.feetXplus)) { forceX = x; }
         if ( (z > moveThreshold && movementChecks.feetZplus && movementChecks.bodyZplus) || (z < -moveThreshold && movementChecks.feetZneg && movementChecks.bodyZneg) )
         {
             forceZ = z;
         }
+        else if ((z < -moveThreshold && movementChecks.feetZneg) || (z > moveThreshold && movementChecks.feetZplus)) { forceZ = z; }
         ControlledKnockBack();
 
         if (delta == 0f) { delta = Time.deltaTime; }
@@ -195,7 +230,7 @@ public class DepthBeUController : MonoBehaviour
 
     protected void TickDownStun()
     {
-        if (stunnedFor == 0f && !frozen) { return; }
+        if (stunnedFor == 0f && !frozen) { if (animator.GetBool("stunned")) { animator.SetBool("stunned", false); } return; }
         stunnedFor -= Time.fixedDeltaTime;
         if (stunnedFor <= 0f) { stunnedFor = 0f; UnFreeze(); }
     }
@@ -255,6 +290,12 @@ public class DepthBeUController : MonoBehaviour
         else if (speedX > 0) { body.transform.localRotation = Quaternion.Euler(0f, 0f, 0f); playerFacingRight = true; }
     }
 
+    public void ChangeFacing()
+    {
+        if (playerFacingRight) { body.transform.localRotation = Quaternion.Euler(0f, 180f, 0f); playerFacingRight = false; }
+        else { body.transform.localRotation = Quaternion.Euler(0f, 0f, 0f); playerFacingRight = true; }
+    }
+
     protected void AnimateCharacter(string trigger)
     {
         for (int a = 0; a < animator.parameters.Length; a++)
@@ -273,14 +314,53 @@ public class DepthBeUController : MonoBehaviour
 
     public virtual void GetHit(int dmg, float stun, bool knockBack, Vector3 knockBackV, bool fromLeft, bool isCrit=false)
     {
+        if (invulnerable || resistance <= 0f) { return; }
         if (isCrit) { dmg *= 2; }
         sr.Color = Color.red;
-        hpScript.Hp -= dmg;
-        if (stun > 0.01f) { frozen = true; }
-        stunnedFor = stun;
         int dir = 1;
         if (!fromLeft) { dir = -1; knockBackV.x *= dir; }
-        SetVelocity(knockBackV);
+        float res = ResistanceMod();
+        hpScript.Hp -= Mathf.CeilToInt(dmg * res);
+        stunnedFor = stun * res;
+        SetVelocity(knockBackV * res);
+        if (stun > 0.01f) {
+            frozen = true;
+            resistance -= stun;
+            AnimateCharacterBool("stunned", true);
+            AnimateCharacter(0f, 0f);
+        }
+        if (outlineBrain != null && resistance <= 0f) { SetInvulnerableOutline(true); }
+    }
+
+    protected float ResistanceMod()
+    {
+        resistanceRegen = 3f;
+        switch (resistance)
+        {
+            case float n when n >= maxResistance * 0.75f:
+                return 1f;
+            case float n when n >= maxResistance * 0.5f && n < maxResistance * 0.75f:
+                return 0.9f;
+            case float n when n >= maxResistance * 0.25f && n < maxResistance * 0.5f:
+                return 0.7f;
+            case float n when n > maxResistance * 0f && n < maxResistance * 0.25f:
+                return 0.35f;
+            case float n when n <= maxResistance * 0f:
+                return 0f;
+            default:
+                return 1f;
+        }
+    }
+
+    protected virtual void SetInvulnerableOutline(bool isResisted)
+    {
+        outlineBrain.ActivateOutlines();
+    }
+
+    public void Resistance(float val)
+    {
+        resistance -= val;
+        if (outlineBrain != null && resistance <= 0f) { outlineBrain.ActivateOutlines(); }
     }
 
     public virtual void SetVelocity(Vector3 direction, bool flipX = false)
@@ -294,8 +374,9 @@ public class DepthBeUController : MonoBehaviour
         else { rb_root.velocity = new Vector3(rootDir.x, 0, rootDir.z); }
     }
 
-    public virtual void AddUpgradeToCharacter(UpgradeLibrary.IUpgrade up)
+    public virtual void AddUpgradeToCharacter(UpgradeLibrary.IUpgrade up, int linkLength=0)
     {
+        if (linkLength >= 10) { return; }
         addedUpgrades.Add(up);
         if (up.upgradeId >= UpgradeLibrary.BREAKPOINT)
         {
@@ -306,6 +387,10 @@ public class DepthBeUController : MonoBehaviour
         {
             UpgradeLibrary.PlayerUpgrade playerPlus = (UpgradeLibrary.PlayerUpgrade)up;
             ParseUpgrade(playerPlus);
+        }
+        for (int a = 0; a < up.upgradeChain.Length; a++)
+        {
+            AddUpgradeToCharacter(UpgradeLibrary.GetUpgrade(up.upgradeChain[a]), linkLength++);
         }
     }
 
@@ -320,11 +405,14 @@ public class DepthBeUController : MonoBehaviour
 
     public virtual void Kill()
     {
+        isAlive = false;
+        AnimateCharacterBool("stunned", false);
+        animator.SetTrigger("Die");
         sr.Color = baseCol;
+        rb_root.velocity = Vector3.zero;
         playerCollisionBox.gameObject.layer = 11;
         stunnedFor = 0f;
         frozen = true;
-        animator.SetTrigger("Die");
     }
 
     public virtual void Dissolve()

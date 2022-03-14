@@ -24,7 +24,7 @@ public class BloodSpawner : MonoBehaviour
     {
         for (int a = 0; a < bloodArray.Length; a++)
         {
-            if (Random.Range(0f, 1f) > bloodArray[a].chance) { continue; }
+            if (Random.Range(0f, 1f) < bloodArray[a].chance) { continue; }
             GameObject bloody = Instantiate(bloodPrefab);
             bloody.transform.position = gameObject.transform.position;
             Rigidbody rb = bloody.GetComponent<Rigidbody>();

@@ -11,6 +11,7 @@ public class SoundPlayer : MonoBehaviour
         public AudioClip song;
         public string artist = "-";
         public string songname = "-";
+        public float starttime = 0f;
     }
 
     public static SoundPlayer instance;
@@ -20,6 +21,7 @@ public class SoundPlayer : MonoBehaviour
     [SerializeField] private AudioMixerGroup bgmMix;
     private static List<GameObject> currentSounds = new List<GameObject>();
     private static GameObject currentBGM;
+    private static GameObject crossfadeBGM;
     private float bgmvolume = 0.7f;
     private bool[] allowSound = new bool[5] { true, true, true, true, true };
     private bool bgmAudioFade = false;
@@ -69,6 +71,17 @@ public class SoundPlayer : MonoBehaviour
         source.volume = volume;
         source.PlayOneShot(clip);
         instance.StartCoroutine(PlayMe(source, audio));
+    }
+
+    public static void PlaySFXDelayed(float delay, AudioClip clip, float volume, float pitch)
+    {
+        GameObject audio = new GameObject("SoundEffect", typeof(AudioSource));
+        var source = audio.GetComponent<AudioSource>();
+        source.outputAudioMixerGroup = instance.sfxMix;
+        currentSounds.Add(audio);
+        source.pitch = pitch;
+        source.volume = volume;
+        instance.StartCoroutine(Delayed(clip, source,audio, delay));
     }
 
     public static void PlaySFXControlled(int id, float vol, float pitch, int channel = 0)
@@ -127,6 +140,14 @@ public class SoundPlayer : MonoBehaviour
         instance.ControlBGM(player, 1f, 1f, new SongWithData() { song = bgm }, volume);
     }
 
+    public static void CrossFadeBGM(int soundid, float volume, float pitch)
+    {
+        AudioSource player = BGMCrossFadeControl();
+        AudioSource fader = crossfadeBGM.GetComponent<AudioSource>();
+        instance.ControlBGM(fader);
+        instance.ControlBGM(player, 1f, 1f, instance.songs[soundid], volume);
+    }
+
     public static void StopBGM()
     {
         AudioSource player = BGMControl();
@@ -160,6 +181,20 @@ public class SoundPlayer : MonoBehaviour
         return source;
     }
 
+    private static AudioSource BGMCrossFadeControl()
+    {
+        crossfadeBGM = currentBGM;
+        currentBGM = null;
+        return BGMControl();
+    }
+
+    static IEnumerator Delayed(AudioClip toPlay, AudioSource source, GameObject sourceObject, float waitUntil)
+    {
+        yield return new WaitForSeconds(waitUntil);
+        source.PlayOneShot(toPlay);
+        instance.StartCoroutine(PlayMe(source, sourceObject));
+    }
+
     static IEnumerator PlayMe(AudioSource src, GameObject obj)
     {
         while (src.isPlaying)
@@ -187,6 +222,7 @@ public class SoundPlayer : MonoBehaviour
         if (volumeStepIn < 0 || volumeStepIn > 0.05f) { volumeStepIn = volumeStep; if (volumeStepIn < 0 || volumeStepIn > 0.05f) { volumeStep = 0.05f; } }
         if (newClip == null || timeIn == 0f) { yield break; }
         src.clip = newClip.song;
+        if (newClip.starttime != 0f) { src.time = newClip.starttime; }
         src.Play();
         src.volume = 0f;
         for (int a = 0; a < 20; a++)

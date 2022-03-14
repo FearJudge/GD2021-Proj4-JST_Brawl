@@ -19,6 +19,8 @@ public class MenuController : MonoBehaviour
     public MenuScreen[] screens;
     public int currentLevel = 0;
     public RebinderBrain rebrain;
+    public GameObject lc;
+    public InputField playerNameBox;
 
     public void GoBackScreen(int toVariant=0)
     {
@@ -30,6 +32,23 @@ public class MenuController : MonoBehaviour
     {
         currentLevel++;
         SetActiveScreen(currentLevel, variant);
+    }
+
+    public void ChangeName(string namae)
+    {
+        GameOptions.playerName = namae;
+    }
+
+    public void SaveName(string name)
+    {
+        PlayerPrefs.SetString("PlayerName", name);
+    }
+
+    public void LoadName()
+    {
+        string getVal = PlayerPrefs.GetString("PlayerName", "Crimson");
+        playerNameBox.text = getVal;
+        ChangeName(getVal);
     }
 
     public void SetActiveScreen(int currentLevel, int variant)
@@ -70,6 +89,8 @@ public class MenuController : MonoBehaviour
 
     public void GoToScene(string name)
     {
-        SceneManager.LoadScene(name);
+        GameObject changer = Instantiate(lc);
+        LevelChanger transitionscript = changer.GetComponent<LevelChanger>();
+        transitionscript.StartTransition(name, 0.1f);
     }
 }

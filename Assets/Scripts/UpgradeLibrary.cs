@@ -12,6 +12,7 @@ public class UpgradeLibrary : MonoBehaviour
         [TextArea] public string upgradeDescription = "";
         public uint upgradeId = 0;
         public Sprite icon;
+        public uint[] upgradeChain;
     }
 
     [System.Serializable]
@@ -55,7 +56,7 @@ public class UpgradeLibrary : MonoBehaviour
                 case 1:
                     return "Sword Upgrade";
                 case 2:
-                    return "Gun Upgrade";
+                    return "Cross Bow Upgrade";
                 case 4:
                     return "Spell Upgrade";
                 default:

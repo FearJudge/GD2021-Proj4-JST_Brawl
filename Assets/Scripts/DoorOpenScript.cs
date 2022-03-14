@@ -7,6 +7,7 @@ public class DoorOpenScript : MonoBehaviour
     public Transform door;
     public Vector3 closed;
     public Vector3 open;
+    public Vector3 altopen;
     public bool isOpen = false;
     public LayerMask activeOn;
     float t = 0f;
@@ -18,6 +19,7 @@ public class DoorOpenScript : MonoBehaviour
         if (isOpen) { return; }
         if ((1 << other.gameObject.layer & activeOn) != 0)
         {
+            if (other.gameObject.transform.position.x - transform.position.x > 0) { if (altopen == Vector3.zero) { altopen = new Vector3(open.x, -open.y, open.z); } open = altopen; }
             StartCoroutine(Open());
         }
     }

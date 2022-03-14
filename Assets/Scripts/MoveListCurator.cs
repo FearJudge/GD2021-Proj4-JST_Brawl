@@ -11,6 +11,7 @@ public class MoveListCurator : MonoBehaviour
     [SerializeField] public InputStreamParser.MoveDetails[] moveListGun = new InputStreamParser.MoveDetails[0];
     [SerializeField] public InputStreamParser.MoveDetails[] moveListSpells = new InputStreamParser.MoveDetails[0];
     [SerializeField] public InputStreamParser.MoveDetails[] moveListGeneral = new InputStreamParser.MoveDetails[0];
+    [SerializeField] public InputStreamParser.MoveDetails[] moveListNoActionButtons = new InputStreamParser.MoveDetails[0];
     private InputStreamParser.MoveDetails[][] moveLists = new InputStreamParser.MoveDetails[3][];
     public int currentList = 0;
 
@@ -56,6 +57,11 @@ public class MoveListCurator : MonoBehaviour
     public InputStreamParser.MoveDetails[] ReturnCurrentMoves()
     {
         return moveLists[currentList];
+    }
+
+    public InputStreamParser.MoveDetails[] ReturnMovement()
+    {
+        return moveListNoActionButtons;
     }
 
     public void Upgrade(UpgradeLibrary.MoveUpgrade moveupgrade)

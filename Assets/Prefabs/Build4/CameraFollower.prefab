@@ -167,6 +167,7 @@ MonoBehaviour:
   camSpeedY: 2
   camOffSet: {x: 0, y: 1.6}
   controls: {fileID: 0}
+  setSights: {fileID: 0}
 --- !u!114 &7466636004562777237
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,4 +180,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6e9eae3498e7e94aa67889e10df6140, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraLockArea: {x: 12, y: 5}
+  cameraLockArea: {x: 7, y: 5}
+  isLocked: 0

@@ -34,7 +34,14 @@ public class UpgradeLink : MonoBehaviour
         if (ownedBy == null) { return; }
         for (int a = 0; a < availableUpgrades.Count; a++) { availableUpgrades[a].ownedBy.sr.Color = Color.gray; }
         ownedBy.sr.Color = Color.magenta;
-        
+    }
+
+    private void OnDestroy()
+    {
+        if (availableUpgrades.Contains(this))
+        {
+            availableUpgrades.Remove(this);
+        }
     }
 
     public void SetUp()

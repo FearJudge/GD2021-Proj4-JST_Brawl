@@ -160,7 +160,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -40}
-  m_SizeDelta: {x: 540, y: 90}
+  m_SizeDelta: {x: 650, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &121742085
 MonoBehaviour:
@@ -638,7 +638,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -200}
-  m_SizeDelta: {x: 540, y: 90}
+  m_SizeDelta: {x: 650, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &444712662
 MonoBehaviour:
@@ -1063,6 +1063,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseGame: 0
   p_input: {fileID: 1251358141}
+  lc: {fileID: 7767617361546925688, guid: 1bd272b3eff428c45be4e736b65c665e, type: 3}
+  resumelevel: BuildFourLevel
 --- !u!114 &1251358141
 MonoBehaviour:
   m_ObjectHideFlags: 0

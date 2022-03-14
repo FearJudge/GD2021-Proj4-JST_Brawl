@@ -174,6 +174,7 @@ MonoBehaviour:
   - moveName: Sword Slash
     followUpTo: 
     cancelFrom: 
+    followUpAllowedOnlyOnHit: 0
     moveDefinition:
     - (456789)A
     moveAllowedError: 3
@@ -184,8 +185,11 @@ MonoBehaviour:
     allowOnGround: 1
     allowOnAir: 0
     properties:
+      triggerIsBool: 0
+      setTo: 0
       animationTrigger: Attack_Slash_Front
       sound: {fileID: 8300000, guid: 2b0a968ced97bde43b5fa9bd1fe7bcb7, type: 3}
+      playDelays: []
       animationSpeedMod: 1
       allowNextMove: 30
       preventMovement: 12
@@ -193,17 +197,24 @@ MonoBehaviour:
       characterVelocity: {x: 0, y: 0, z: 0}
       hurtBoxDamage: 21
       lifeSteal: 0
-      baseCrit: 0
+      baseCrit: 4
       hitStunDuration: 0.2
       knockDown: 0
       knockDownVelocity: {x: 0.4, y: 2.5, z: 0}
       isProjectile: 0
       ammoChange: 0
+      projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
+      selfDamage: 0
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
   - moveName: Sword Slash II
-    followUpTo: Sword Slash
+    followUpTo: Sword Slash | Heavy Thrust
     cancelFrom: 
+    followUpAllowedOnlyOnHit: 0
     moveDefinition:
     - (123456789)A
     moveAllowedError: 3
@@ -214,8 +225,11 @@ MonoBehaviour:
     allowOnGround: 1
     allowOnAir: 0
     properties:
+      triggerIsBool: 0
+      setTo: 0
       animationTrigger: Attack_Slash_Front2
       sound: {fileID: 8300000, guid: 66dc3a178330ba54781d4c9a45c6da97, type: 3}
+      playDelays: []
       animationSpeedMod: 1
       allowNextMove: 28
       preventMovement: 18
@@ -223,17 +237,24 @@ MonoBehaviour:
       characterVelocity: {x: 0, y: 0, z: 0}
       hurtBoxDamage: 36
       lifeSteal: 0
-      baseCrit: 0
+      baseCrit: 4
       hitStunDuration: 0.7
       knockDown: 1
       knockDownVelocity: {x: 8, y: 1.7, z: 0}
       isProjectile: 0
       ammoChange: 0
+      projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
+      selfDamage: 0
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
   - moveName: Sword Uppercut
     followUpTo: '-'
     cancelFrom: 
+    followUpAllowedOnlyOnHit: 0
     moveDefinition:
     - (123)A
     moveAllowedError: 5
@@ -244,8 +265,11 @@ MonoBehaviour:
     allowOnGround: 1
     allowOnAir: 0
     properties:
+      triggerIsBool: 0
+      setTo: 0
       animationTrigger: Attack_Slash_Up
       sound: {fileID: 8300000, guid: d6f8729048dc47645b6681f719c3d38b, type: 3}
+      playDelays: []
       animationSpeedMod: 1
       allowNextMove: 32
       preventMovement: 32
@@ -253,17 +277,24 @@ MonoBehaviour:
       characterVelocity: {x: 0, y: 0, z: 0}
       hurtBoxDamage: 28
       lifeSteal: 0
-      baseCrit: 0
+      baseCrit: 7
       hitStunDuration: 1
       knockDown: 1
       knockDownVelocity: {x: 0.3, y: 9, z: 0}
       isProjectile: 0
       ammoChange: 0
+      projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
+      selfDamage: 0
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
   - moveName: Aerial Sword
     followUpTo: 
     cancelFrom: 
+    followUpAllowedOnlyOnHit: 0
     moveDefinition:
     - (123456789)A
     moveAllowedError: 4
@@ -274,8 +305,11 @@ MonoBehaviour:
     allowOnGround: 0
     allowOnAir: 1
     properties:
+      triggerIsBool: 0
+      setTo: 0
       animationTrigger: Attack_Slash_Aerial
       sound: {fileID: 8300000, guid: 23de96f155c093e4b8375cd9416f6b3f, type: 3}
+      playDelays: []
       animationSpeedMod: 1
       allowNextMove: 12
       preventMovement: 4
@@ -289,11 +323,18 @@ MonoBehaviour:
       knockDownVelocity: {x: 0.2, y: 3, z: 0}
       isProjectile: 0
       ammoChange: 0
+      projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
+      selfDamage: 0
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
   - moveName: Sword Slash IIIA
     followUpTo: DISABLE
     cancelFrom: 
+    followUpAllowedOnlyOnHit: 0
     moveDefinition:
     - (123456789)A
     moveAllowedError: 3
@@ -304,27 +345,157 @@ MonoBehaviour:
     allowOnGround: 1
     allowOnAir: 0
     properties:
+      triggerIsBool: 0
+      setTo: 0
       animationTrigger: Attack_Slash_Front2
       sound: {fileID: 8300000, guid: a56cd1e5e465dac46a09aaf6f09bc030, type: 3}
+      playDelays: []
       animationSpeedMod: 1
       allowNextMove: 24
       preventMovement: 24
-      followUpAllowFrom: 0
+      followUpAllowFrom: 16
       characterVelocity: {x: 7, y: 0.6, z: 0}
       hurtBoxDamage: 36
       lifeSteal: 0
-      baseCrit: 0
+      baseCrit: 7
       hitStunDuration: 0.9
       knockDown: 1
       knockDownVelocity: {x: 8, y: 0.9, z: 0}
       isProjectile: 0
       ammoChange: 0
+      projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
+      selfDamage: 0
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
+  - moveName: Heavy Thrust
+    followUpTo: 
+    cancelFrom: 
+    followUpAllowedOnlyOnHit: 0
+    moveDefinition:
+    - (123456789)B
+    moveAllowedError: 3
+    moveAllowedDuration: 12
+    movePriority: 21
+    moveBloodCost: 0
+    moveAmmoCost: 0
+    allowOnGround: 1
+    allowOnAir: 0
+    properties:
+      triggerIsBool: 0
+      setTo: 0
+      animationTrigger: Attack_Thrust_Front
+      sound: {fileID: 8300000, guid: a56cd1e5e465dac46a09aaf6f09bc030, type: 3}
+      playDelays: []
+      animationSpeedMod: 1
+      allowNextMove: 36
+      preventMovement: 34
+      followUpAllowFrom: 25
+      characterVelocity: {x: 3, y: 0.1, z: 0}
+      hurtBoxDamage: 65
+      lifeSteal: 0
+      baseCrit: 15
+      hitStunDuration: 0.5
+      knockDown: 1
+      knockDownVelocity: {x: 5, y: 0.3, z: 0}
+      isProjectile: 0
+      ammoChange: 0
+      projCount: 0
+      projVelocity: {x: 0, y: 0, z: 0}
+      isProjBuff: 0
+      selfDamage: 0
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
+  - moveName: Parry Start
+    followUpTo: 
+    cancelFrom: 
+    followUpAllowedOnlyOnHit: 1
+    moveDefinition:
+    - (89)B
+    moveAllowedError: 3
+    moveAllowedDuration: 12
+    movePriority: 32
+    moveBloodCost: 0
+    moveAmmoCost: 0
+    allowOnGround: 1
+    allowOnAir: 0
+    properties:
+      triggerIsBool: 0
+      setTo: 0
+      animationTrigger: Attack_Parry
+      sound: {fileID: 8300000, guid: a56cd1e5e465dac46a09aaf6f09bc030, type: 3}
+      playDelays: []
+      animationSpeedMod: 1
+      allowNextMove: 36
+      preventMovement: 36
+      followUpAllowFrom: 1
+      characterVelocity: {x: 0, y: 0, z: 0}
+      hurtBoxDamage: 0
+      lifeSteal: 0
+      baseCrit: 0
+      hitStunDuration: 0
+      knockDown: 0
+      knockDownVelocity: {x: 0, y: 0, z: 0}
+      isProjectile: 0
+      ammoChange: 0
+      projCount: 0
+      projVelocity: {x: 0, y: 0, z: 0}
+      isProjBuff: 0
+      selfDamage: 0
+      nonAttack: 1
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 65536
+  - moveName: Parry End
+    followUpTo: Parry Start
+    cancelFrom: 
+    followUpAllowedOnlyOnHit: 0
+    moveDefinition:
+    - '*'
+    moveAllowedError: 3
+    moveAllowedDuration: 12
+    movePriority: 99
+    moveBloodCost: 0
+    moveAmmoCost: 0
+    allowOnGround: 1
+    allowOnAir: 0
+    properties:
+      triggerIsBool: 0
+      setTo: 0
+      animationTrigger: PARRIED
+      sound: {fileID: 8300000, guid: a56cd1e5e465dac46a09aaf6f09bc030, type: 3}
+      playDelays: []
+      animationSpeedMod: 1
+      allowNextMove: 36
+      preventMovement: 34
+      followUpAllowFrom: 25
+      characterVelocity: {x: 0, y: 0, z: 0}
+      hurtBoxDamage: 0
+      lifeSteal: 0
+      baseCrit: 0
+      hitStunDuration: 0
+      knockDown: 0
+      knockDownVelocity: {x: 0, y: 0, z: 0}
+      isProjectile: 0
+      ammoChange: 0
+      projCount: 0
+      projVelocity: {x: 0, y: 0, z: 0}
+      isProjBuff: 0
+      selfDamage: 0
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
   moveListGun:
   - moveName: Crossbow Shoot
     followUpTo: 
     cancelFrom: 
+    followUpAllowedOnlyOnHit: 0
     moveDefinition:
     - (123456789)A
     moveAllowedError: 2
@@ -335,14 +506,17 @@ MonoBehaviour:
     allowOnGround: 1
     allowOnAir: 0
     properties:
+      triggerIsBool: 0
+      setTo: 0
       animationTrigger: Attack_Gun_Shot
       sound: {fileID: 8300000, guid: 9a6ba1045ec4ea142acc8eb0f1b4f5ed, type: 3}
-      animationSpeedMod: 1
-      allowNextMove: 38
-      preventMovement: 32
-      followUpAllowFrom: 30
+      playDelays: []
+      animationSpeedMod: 2
+      allowNextMove: 20
+      preventMovement: 20
+      followUpAllowFrom: 16
       characterVelocity: {x: 0, y: 0, z: 0}
-      hurtBoxDamage: 7
+      hurtBoxDamage: 16
       lifeSteal: 0
       baseCrit: 0
       hitStunDuration: 0.12
@@ -350,11 +524,18 @@ MonoBehaviour:
       knockDownVelocity: {x: 0, y: 0, z: 0}
       isProjectile: 1
       ammoChange: -1
+      projCount: 3
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
+      selfDamage: 0
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
   - moveName: Crossbow Shoot Followup
     followUpTo: Crossbow Shoot
     cancelFrom: 
+    followUpAllowedOnlyOnHit: 0
     moveDefinition:
     - (123456789)A
     moveAllowedError: 2
@@ -365,14 +546,17 @@ MonoBehaviour:
     allowOnGround: 1
     allowOnAir: 0
     properties:
+      triggerIsBool: 0
+      setTo: 0
       animationTrigger: Attack_Gun_Shot2
       sound: {fileID: 8300000, guid: c9c8536393ec15f4d9b154323753480f, type: 3}
-      animationSpeedMod: 1
-      allowNextMove: 32
-      preventMovement: 31
+      playDelays: []
+      animationSpeedMod: 1.4
+      allowNextMove: 27
+      preventMovement: 25
       followUpAllowFrom: 8
       characterVelocity: {x: 0, y: 0, z: 0}
-      hurtBoxDamage: 7
+      hurtBoxDamage: 16
       lifeSteal: 0
       baseCrit: 0
       hitStunDuration: 0.08
@@ -380,11 +564,18 @@ MonoBehaviour:
       knockDownVelocity: {x: 0, y: 0, z: 0}
       isProjectile: 1
       ammoChange: -1
+      projCount: 3
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
+      selfDamage: 0
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
   - moveName: Crossbow Shoot BloodFollowup
     followUpTo: Crossbow Shoot Followup | Crossbow Shoot BloodFollowup
     cancelFrom: 
+    followUpAllowedOnlyOnHit: 0
     moveDefinition:
     - (123456789)/A
     moveAllowedError: 2
@@ -395,14 +586,17 @@ MonoBehaviour:
     allowOnGround: 1
     allowOnAir: 0
     properties:
+      triggerIsBool: 0
+      setTo: 0
       animationTrigger: Attack_Gun_Shot2
       sound: {fileID: 8300000, guid: c9c8536393ec15f4d9b154323753480f, type: 3}
-      animationSpeedMod: 1
-      allowNextMove: 29
-      preventMovement: 29
-      followUpAllowFrom: 5
+      playDelays: []
+      animationSpeedMod: 1.4
+      allowNextMove: 22
+      preventMovement: 22
+      followUpAllowFrom: 4
       characterVelocity: {x: 0, y: 0, z: 0}
-      hurtBoxDamage: 14
+      hurtBoxDamage: 22
       lifeSteal: 2
       baseCrit: 0
       hitStunDuration: 0.2
@@ -410,11 +604,18 @@ MonoBehaviour:
       knockDownVelocity: {x: 0, y: 0, z: 0}
       isProjectile: 1
       ammoChange: -1
+      projCount: 5
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
+      selfDamage: 0
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
   - moveName: Crossbow Charge
     followUpTo: 
     cancelFrom: 
+    followUpAllowedOnlyOnHit: 0
     moveDefinition:
     - (123)
     - (456)
@@ -428,14 +629,17 @@ MonoBehaviour:
     allowOnGround: 1
     allowOnAir: 0
     properties:
+      triggerIsBool: 0
+      setTo: 0
       animationTrigger: Attack_LoadBuff
       sound: {fileID: 8300000, guid: c9c8536393ec15f4d9b154323753480f, type: 3}
+      playDelays: []
       animationSpeedMod: 1
       allowNextMove: 25
       preventMovement: 25
       followUpAllowFrom: 25
       characterVelocity: {x: 0, y: 0, z: 0}
-      hurtBoxDamage: 7
+      hurtBoxDamage: 25
       lifeSteal: 0
       baseCrit: 100
       hitStunDuration: 0.3
@@ -443,11 +647,18 @@ MonoBehaviour:
       knockDownVelocity: {x: 0, y: 0, z: 0}
       isProjectile: 0
       ammoChange: 1
+      projCount: 3
       projVelocity: {x: 6, y: 0, z: 0}
       isProjBuff: 1
+      selfDamage: 0
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
   - moveName: Crossbow Reload
-    followUpTo: 
+    followUpTo: '-'
     cancelFrom: 
+    followUpAllowedOnlyOnHit: 0
     moveDefinition:
     - (123456789)A
     moveAllowedError: 4
@@ -458,8 +669,11 @@ MonoBehaviour:
     allowOnGround: 1
     allowOnAir: 0
     properties:
+      triggerIsBool: 0
+      setTo: 0
       animationTrigger: Attack_LoadLong
       sound: {fileID: 8300000, guid: c9c8536393ec15f4d9b154323753480f, type: 3}
+      playDelays: []
       animationSpeedMod: 1
       allowNextMove: 45
       preventMovement: 45
@@ -473,11 +687,18 @@ MonoBehaviour:
       knockDownVelocity: {x: 0, y: 0, z: 0}
       isProjectile: 0
       ammoChange: 20
+      projCount: 0
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 1
+      selfDamage: 0
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
   - moveName: Crossbow Reload Manual
     followUpTo: 
     cancelFrom: 
+    followUpAllowedOnlyOnHit: 0
     moveDefinition:
     - 2
     - (14)
@@ -491,8 +712,11 @@ MonoBehaviour:
     allowOnGround: 1
     allowOnAir: 0
     properties:
+      triggerIsBool: 0
+      setTo: 0
       animationTrigger: Attack_Load
       sound: {fileID: 8300000, guid: c9c8536393ec15f4d9b154323753480f, type: 3}
+      playDelays: []
       animationSpeedMod: 1
       allowNextMove: 25
       preventMovement: 25
@@ -506,13 +730,180 @@ MonoBehaviour:
       knockDownVelocity: {x: 0, y: 0, z: 0}
       isProjectile: 0
       ammoChange: 20
+      projCount: 0
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 1
+      selfDamage: 0
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
+  - moveName: Slide Kick
+    followUpTo: 
+    cancelFrom: 
+    followUpAllowedOnlyOnHit: 0
+    moveDefinition:
+    - (123)B
+    moveAllowedError: 2
+    moveAllowedDuration: 23
+    movePriority: 29
+    moveBloodCost: 0
+    moveAmmoCost: 0
+    allowOnGround: 1
+    allowOnAir: 0
+    properties:
+      triggerIsBool: 0
+      setTo: 0
+      animationTrigger: Attack_SlidingKick
+      sound: {fileID: 8300000, guid: 0048a87cbf958472e8b135695af78cd1, type: 3}
+      playDelays: []
+      animationSpeedMod: 1
+      allowNextMove: 35
+      preventMovement: 35
+      followUpAllowFrom: 25
+      characterVelocity: {x: 9, y: 1, z: 0}
+      hurtBoxDamage: 22
+      lifeSteal: 0
+      baseCrit: 2
+      hitStunDuration: 0.7
+      knockDown: 1
+      knockDownVelocity: {x: 0, y: 3, z: 0}
+      isProjectile: 0
+      ammoChange: 0
+      projCount: 0
+      projVelocity: {x: 0, y: 0, z: 0}
+      isProjBuff: 0
+      selfDamage: 0
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
+  - moveName: Heavy Cross Bow StartUp
+    followUpTo: '-'
+    cancelFrom: 
+    followUpAllowedOnlyOnHit: 0
+    moveDefinition:
+    - (456789)B
+    moveAllowedError: 2
+    moveAllowedDuration: 23
+    movePriority: 23
+    moveBloodCost: 0
+    moveAmmoCost: 0
+    allowOnGround: 1
+    allowOnAir: 0
+    properties:
+      triggerIsBool: 0
+      setTo: 0
+      animationTrigger: Attack_Gun_Heavy
+      sound: {fileID: 8300000, guid: c9c8536393ec15f4d9b154323753480f, type: 3}
+      playDelays: []
+      animationSpeedMod: 1
+      allowNextMove: 35
+      preventMovement: 25
+      followUpAllowFrom: 25
+      characterVelocity: {x: 0, y: 0, z: 0}
+      hurtBoxDamage: 0
+      lifeSteal: 0
+      baseCrit: 0
+      hitStunDuration: 0
+      knockDown: 0
+      knockDownVelocity: {x: 0, y: 0, z: 0}
+      isProjectile: 0
+      ammoChange: 0
+      projCount: 0
+      projVelocity: {x: 0, y: 0, z: 0}
+      isProjBuff: 0
+      selfDamage: 0
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
+  - moveName: Heavy Cross Bow Held
+    followUpTo: Heavy Cross Bow StartUp | Heavy Cross Bow Held
+    cancelFrom: 
+    followUpAllowedOnlyOnHit: 0
+    moveDefinition:
+    - (123456789)/B
+    moveAllowedError: 2
+    moveAllowedDuration: 23
+    movePriority: 55
+    moveBloodCost: 0
+    moveAmmoCost: 0
+    allowOnGround: 1
+    allowOnAir: 0
+    properties:
+      triggerIsBool: 0
+      setTo: 0
+      animationTrigger: Attack_Gun_Heavy3
+      sound: {fileID: 8300000, guid: f6f6cca9a6aed524396744111f498209, type: 3}
+      playDelays: []
+      animationSpeedMod: 1
+      allowNextMove: 40
+      preventMovement: 30
+      followUpAllowFrom: 20
+      characterVelocity: {x: 0, y: 0, z: 0}
+      hurtBoxDamage: 3
+      lifeSteal: 0
+      baseCrit: 0
+      hitStunDuration: 0
+      knockDown: 0
+      knockDownVelocity: {x: 0, y: 0, z: 0}
+      isProjectile: 0
+      ammoChange: 0
+      projCount: 0
+      projVelocity: {x: 0, y: 0, z: 0}
+      isProjBuff: 1
+      selfDamage: 0
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
+  - moveName: Heavy Cross Bow Released
+    followUpTo: Heavy Cross Bow StartUp | Heavy Cross Bow Held
+    cancelFrom: 
+    followUpAllowedOnlyOnHit: 0
+    moveDefinition:
+    - (123456789)-B
+    moveAllowedError: 2
+    moveAllowedDuration: 23
+    movePriority: 66
+    moveBloodCost: 0
+    moveAmmoCost: 0
+    allowOnGround: 1
+    allowOnAir: 0
+    properties:
+      triggerIsBool: 0
+      setTo: 0
+      animationTrigger: Attack_Gun_Heavy2
+      sound: {fileID: 8300000, guid: 022d5f504baa5ec4dbd05fb16803fc2c, type: 3}
+      playDelays: []
+      animationSpeedMod: 2
+      allowNextMove: 25
+      preventMovement: 15
+      followUpAllowFrom: 10
+      characterVelocity: {x: 0, y: 0, z: 0}
+      hurtBoxDamage: 3
+      lifeSteal: 0
+      baseCrit: 35
+      hitStunDuration: 1
+      knockDown: 1
+      knockDownVelocity: {x: 4, y: 0, z: 0}
+      isProjectile: 1
+      ammoChange: -1
+      projCount: 3
+      projVelocity: {x: 14, y: 0, z: 0}
+      isProjBuff: 0
+      selfDamage: 0
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
   moveListSpells: []
   moveListGeneral:
   - moveName: BloodRage
     followUpTo: 
     cancelFrom: 
+    followUpAllowedOnlyOnHit: 0
     moveDefinition:
     - (123456789)AB
     moveAllowedError: 3
@@ -523,8 +914,11 @@ MonoBehaviour:
     allowOnGround: 1
     allowOnAir: 1
     properties:
+      triggerIsBool: 0
+      setTo: 0
       animationTrigger: 
       sound: {fileID: 8300000, guid: b8d38d324558fbe4d94693f8d4968a3b, type: 3}
+      playDelays: []
       animationSpeedMod: 0
       allowNextMove: 25
       preventMovement: 25
@@ -538,6 +932,137 @@ MonoBehaviour:
       knockDownVelocity: {x: 0, y: 0, z: 0}
       isProjectile: 0
       ammoChange: 0
+      projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
+      selfDamage: -50
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
+  moveListNoActionButtons:
+  - moveName: Walk
+    followUpTo: 
+    cancelFrom: 
+    followUpAllowedOnlyOnHit: 0
+    moveDefinition:
+    - 5
+    moveAllowedError: 2
+    moveAllowedDuration: 5
+    movePriority: 5
+    moveBloodCost: 0
+    moveAmmoCost: 0
+    allowOnGround: 1
+    allowOnAir: 0
+    properties:
+      triggerIsBool: 1
+      setTo: 1
+      animationTrigger: walking
+      sound: {fileID: 0}
+      playDelays: []
+      animationSpeedMod: 0
+      allowNextMove: 0
+      preventMovement: 0
+      followUpAllowFrom: 0
+      characterVelocity: {x: 0, y: 0, z: 0}
+      hurtBoxDamage: 0
+      lifeSteal: 0
+      baseCrit: 0
+      hitStunDuration: 0
+      knockDown: 0
+      knockDownVelocity: {x: 0, y: 0, z: 0}
+      isProjectile: 0
+      ammoChange: 0
+      projCount: 0
+      projVelocity: {x: 0, y: 0, z: 0}
+      isProjBuff: 0
+      selfDamage: 0
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
+  - moveName: Run
+    followUpTo: 
+    cancelFrom: 
+    followUpAllowedOnlyOnHit: 0
+    moveDefinition:
+    - (369147)
+    - (258)
+    - (369147)
+    moveAllowedError: 2
+    moveAllowedDuration: 35
+    movePriority: 12
+    moveBloodCost: 0
+    moveAmmoCost: 0
+    allowOnGround: 1
+    allowOnAir: 0
+    properties:
+      triggerIsBool: 1
+      setTo: 0
+      animationTrigger: walking
+      sound: {fileID: 0}
+      playDelays: []
+      animationSpeedMod: 0
+      allowNextMove: 0
+      preventMovement: 0
+      followUpAllowFrom: 0
+      characterVelocity: {x: 0, y: 0, z: 0}
+      hurtBoxDamage: 0
+      lifeSteal: 0
+      baseCrit: 0
+      hitStunDuration: 0
+      knockDown: 0
+      knockDownVelocity: {x: 0, y: 0, z: 0}
+      isProjectile: 0
+      ammoChange: 0
+      projCount: 0
+      projVelocity: {x: 0, y: 0, z: 0}
+      isProjBuff: 0
+      selfDamage: 0
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
+  - moveName: BackDash
+    followUpTo: 
+    cancelFrom: 
+    followUpAllowedOnlyOnHit: 0
+    moveDefinition:
+    - 2
+    - 1
+    - 4
+    moveAllowedError: 3
+    moveAllowedDuration: 10
+    movePriority: 12
+    moveBloodCost: 0
+    moveAmmoCost: 0
+    allowOnGround: 1
+    allowOnAir: 0
+    properties:
+      triggerIsBool: 0
+      setTo: 0
+      animationTrigger: Movement_DashBack
+      sound: {fileID: 0}
+      playDelays: []
+      animationSpeedMod: 2.5
+      allowNextMove: 16
+      preventMovement: 16
+      followUpAllowFrom: 16
+      characterVelocity: {x: 9, y: 0.2, z: 0}
+      hurtBoxDamage: 0
+      lifeSteal: 0
+      baseCrit: 0
+      hitStunDuration: 0
+      knockDown: 0
+      knockDownVelocity: {x: 0, y: 0, z: 0}
+      isProjectile: 0
+      ammoChange: 0
+      projCount: 0
+      projVelocity: {x: 0, y: 0, z: 0}
+      isProjBuff: 0
+      selfDamage: 0
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
   currentList: 0

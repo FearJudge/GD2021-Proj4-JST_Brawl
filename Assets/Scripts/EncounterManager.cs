@@ -11,6 +11,7 @@ public class EncounterManager : MonoBehaviour
     public static event EncounterEvent AllCleared;
 
     public static EncounterManager manager;
+    public static bool inProgress = false;
 
     [System.Serializable]
     public class Spawn
@@ -52,7 +53,7 @@ public class EncounterManager : MonoBehaviour
         public void BeginEncounter()
         {
             encounterStart.trigger.enabled = false;
-            SoundPlayer.PlayBGM(songId, 1f, 1f);
+            SoundPlayer.CrossFadeBGM(songId, 1f, 1f);
         }
     }
 
@@ -72,8 +73,10 @@ public class EncounterManager : MonoBehaviour
     void Start()
     {
         manager = this;
+        inProgress = false;
         cleared = encounterListings.Length;
         EncounterTrigger.PlayerReached += StartEncounter;
+        EncounterCleared = null;
     }
 
     private void OnDestroy()
@@ -100,6 +103,7 @@ public class EncounterManager : MonoBehaviour
             }
         }
         EncounterStarted?.Invoke();
+        inProgress = true;
     }
 
     void AdvanceWaves()
@@ -146,11 +150,11 @@ public class EncounterManager : MonoBehaviour
 
     void EndEncounter()
     {
-        SoundPlayer.PlayBGM(1, 1f, 1f);
+        SoundPlayer.CrossFadeBGM(1, 1f, 1f);
         currentWaves = new Wave[0];
         EncounterEnded?.Invoke();
-        mainCam.EndEncounterCamera();
         UpgradeLink.ActivateInstances();
+        inProgress = false;
     }
 
     public static void IDied(GameObject enemy, EnemyAI controller)
@@ -165,6 +169,7 @@ public class EncounterManager : MonoBehaviour
         SoundPlayer.PlayBGM(0, 1f, 1f);
         EncounterCleared?.Invoke();
         EncounterCleared = null;
+        manager.mainCam.EndEncounterCamera();
         cleared--;
         UI_HealthBarBrain.ClearMemoryOfEnemies();
         if (cleared == 0) { AllCleared?.Invoke(); }

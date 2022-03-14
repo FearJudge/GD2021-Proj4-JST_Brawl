@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 5387335073138520824}
   - component: {fileID: 5387335073138520830}
   - component: {fileID: 5387335073138520831}
-  m_Layer: 14
+  m_Layer: 19
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 122
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!1 &5387335073395616561
 GameObject:
@@ -150,6 +150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06fd2fd4acf2bb04c914c8a2fdd6bcde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputSystem: {fileID: 0}
   ownerHealth: {fileID: 0}
   body: {fileID: 5387335073138520824}
   hitStun: 0.25
@@ -162,6 +163,11 @@ MonoBehaviour:
   activeOn:
     serializedVersion: 2
     m_Bits: 4096
+  useAlternate: 0
+  activeOnAlt:
+    serializedVersion: 2
+    m_Bits: 0
+  blockSpark: {fileID: 0}
   hitSpark: {fileID: 3494273047620996136, guid: 3c1eff4b468cc7e4ab4a46cd158deb42, type: 3}
   critSpark: {fileID: 0}
   sparkVariants: []
@@ -300,12 +306,20 @@ MonoBehaviour:
   feet: {fileID: 5387335074236298462}
   body: {fileID: 5387335073138520825}
   speed: 12
+  resistance: 10
   hangTime: 0.2
   baseJumpsAvailable: 1
+  feetCollSize: 0.14
+  bodyCollSize: 0.32
+  feetEdgeSize: 0.02
+  bodyEdgeSize: 0.09
+  bodyLandingPad: 0.25
+  bodyHeight: 0.9
   airborne: 0
   frozen: 0
   halted: 0
   cameraFocus: {fileID: 0}
+  outlineBrain: {fileID: 0}
   sr: {fileID: 0}
   rb_root: {fileID: 0}
   rb_body: {fileID: 0}
@@ -321,10 +335,14 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   behaviour:
-  - performAMove: 0
+  - name: Swarm Player R
+    performAMove: 0
     useMove:
+      triggerIsBool: 0
+      setTo: 0
       animationTrigger: Attack_Fast
       sound: {fileID: 0}
+      playDelays: []
       animationSpeedMod: 1
       allowNextMove: 25
       preventMovement: 12
@@ -338,12 +356,21 @@ MonoBehaviour:
       knockDownVelocity: {x: 6, y: 3, z: 0}
       isProjectile: 0
       ammoChange: 0
+      projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
+      selfDamage: 0
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
     moveToSpot: {x: 0.5, y: 0, z: 0}
+    randomizeSpotArea: {x: 0, y: 0, z: 0}
     relateSpotToSelf: 0
     relateSpotToPlayer: 1
     waitAction: {x: 0, y: 0}
+    changePhase: 0
+    setPhase: 0
     modifyLife: 0
     waitAfter: 0.2
     turnToFacePlayer: 1
@@ -352,10 +379,16 @@ MonoBehaviour:
     - behaviourIndexToTransitionTo: 2
       conditionUsed: 8
       chance: 1
-  - performAMove: 0
+      useTimes: -1
+      usedInPhases: 
+  - name: Swarm Player L
+    performAMove: 0
     useMove:
+      triggerIsBool: 0
+      setTo: 0
       animationTrigger: Attack_Fast
       sound: {fileID: 0}
+      playDelays: []
       animationSpeedMod: 1
       allowNextMove: 25
       preventMovement: 12
@@ -369,12 +402,21 @@ MonoBehaviour:
       knockDownVelocity: {x: 6, y: 3, z: 0}
       isProjectile: 0
       ammoChange: 0
+      projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
+      selfDamage: 0
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
     moveToSpot: {x: -0.5, y: 0, z: 0}
+    randomizeSpotArea: {x: 0, y: 0, z: 0}
     relateSpotToSelf: 0
     relateSpotToPlayer: 1
     waitAction: {x: 0, y: 0}
+    changePhase: 0
+    setPhase: 0
     modifyLife: 0
     waitAfter: 0.2
     turnToFacePlayer: 1
@@ -383,16 +425,22 @@ MonoBehaviour:
     - behaviourIndexToTransitionTo: 2
       conditionUsed: 8
       chance: 1
-  - performAMove: 1
+      useTimes: -1
+      usedInPhases: 
+  - name: Attack_1
+    performAMove: 1
     useMove:
+      triggerIsBool: 0
+      setTo: 0
       animationTrigger: Attack1
-      sound: {fileID: 0}
+      sound: {fileID: 8300000, guid: af9838a90ed0aa0499675301333498d8, type: 3}
+      playDelays: []
       animationSpeedMod: 1
       allowNextMove: 25
       preventMovement: 12
       followUpAllowFrom: 12
       characterVelocity: {x: 0, y: 0, z: 0}
-      hurtBoxDamage: 12
+      hurtBoxDamage: 8
       lifeSteal: 0
       baseCrit: 0
       hitStunDuration: 0.23
@@ -400,12 +448,21 @@ MonoBehaviour:
       knockDownVelocity: {x: 0, y: 0, z: 0}
       isProjectile: 0
       ammoChange: 0
+      projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
+      selfDamage: 0
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
     moveToSpot: {x: 0, y: 0, z: 0}
+    randomizeSpotArea: {x: 0, y: 0, z: 0}
     relateSpotToSelf: 0
     relateSpotToPlayer: 0
     waitAction: {x: 0, y: 0}
+    changePhase: 0
+    setPhase: 0
     modifyLife: 0
     waitAfter: 0.2
     turnToFacePlayer: 1
@@ -414,16 +471,77 @@ MonoBehaviour:
     - behaviourIndexToTransitionTo: 3
       conditionUsed: 1
       chance: 0.227
+      useTimes: -1
+      usedInPhases: 
     - behaviourIndexToTransitionTo: 1
       conditionUsed: 0
       chance: 0.434
+      useTimes: -1
+      usedInPhases: 
     - behaviourIndexToTransitionTo: 0
       conditionUsed: 0
       chance: 1
-  - performAMove: 1
+      useTimes: -1
+      usedInPhases: 
+  - name: Attack_2
+    performAMove: 1
     useMove:
+      triggerIsBool: 0
+      setTo: 0
       animationTrigger: Attack2
-      sound: {fileID: 0}
+      sound: {fileID: 8300000, guid: af9838a90ed0aa0499675301333498d8, type: 3}
+      playDelays: []
+      animationSpeedMod: 1
+      allowNextMove: 32
+      preventMovement: 21
+      followUpAllowFrom: 0
+      characterVelocity: {x: 0, y: 0, z: 0}
+      hurtBoxDamage: 19
+      lifeSteal: 0
+      baseCrit: 0
+      hitStunDuration: 0.6
+      knockDown: 1
+      knockDownVelocity: {x: 4, y: 4, z: 0}
+      isProjectile: 0
+      ammoChange: 0
+      projCount: 1
+      projVelocity: {x: 0, y: 0, z: 0}
+      isProjBuff: 0
+      selfDamage: 0
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
+    moveToSpot: {x: 0, y: 0, z: 0}
+    randomizeSpotArea: {x: 0, y: 0, z: 0}
+    relateSpotToSelf: 0
+    relateSpotToPlayer: 0
+    waitAction: {x: 0, y: 0}
+    changePhase: 0
+    setPhase: 0
+    modifyLife: 0
+    waitAfter: 2
+    turnToFacePlayer: 1
+    turnToFaceAwayFromPlayer: 0
+    transitions:
+    - behaviourIndexToTransitionTo: 1
+      conditionUsed: 0
+      chance: 0.489
+      useTimes: -1
+      usedInPhases: 
+    - behaviourIndexToTransitionTo: 0
+      conditionUsed: 0
+      chance: 1
+      useTimes: -1
+      usedInPhases: 
+  - name: Go Up
+    performAMove: 1
+    useMove:
+      triggerIsBool: 0
+      setTo: 0
+      animationTrigger: Ascend
+      sound: {fileID: 8300000, guid: 4bffa002ed1dda3489b94c1fd57dc13b, type: 3}
+      playDelays: []
       animationSpeedMod: 1
       allowNextMove: 32
       preventMovement: 21
@@ -437,25 +555,145 @@ MonoBehaviour:
       knockDownVelocity: {x: 4, y: 4, z: 0}
       isProjectile: 0
       ammoChange: 0
+      projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
+      selfDamage: 0
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
     moveToSpot: {x: 0, y: 0, z: 0}
+    randomizeSpotArea: {x: 0, y: 0, z: 0}
     relateSpotToSelf: 0
     relateSpotToPlayer: 0
     waitAction: {x: 0, y: 0}
+    changePhase: 1
+    setPhase: 1
     modifyLife: 0
     waitAfter: 2
     turnToFacePlayer: 1
     turnToFaceAwayFromPlayer: 0
     transitions:
-    - behaviourIndexToTransitionTo: 1
+    - behaviourIndexToTransitionTo: 5
       conditionUsed: 0
-      chance: 0.489
+      chance: 1
+      useTimes: -1
+      usedInPhases: 
+  - name: Move Around Player
+    performAMove: 0
+    useMove:
+      triggerIsBool: 0
+      setTo: 0
+      animationTrigger: Attack2
+      sound: {fileID: 0}
+      playDelays: []
+      animationSpeedMod: 1
+      allowNextMove: 32
+      preventMovement: 21
+      followUpAllowFrom: 0
+      characterVelocity: {x: 0, y: 0, z: 0}
+      hurtBoxDamage: 45
+      lifeSteal: 0
+      baseCrit: 0
+      hitStunDuration: 0.6
+      knockDown: 1
+      knockDownVelocity: {x: 4, y: 4, z: 0}
+      isProjectile: 0
+      ammoChange: 0
+      projCount: 1
+      projVelocity: {x: 0, y: 0, z: 0}
+      isProjBuff: 0
+      selfDamage: 0
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
+    moveToSpot: {x: 0, y: 0.001, z: 0}
+    randomizeSpotArea: {x: 2, y: 0, z: 2}
+    relateSpotToSelf: 0
+    relateSpotToPlayer: 1
+    waitAction: {x: 0, y: 0}
+    changePhase: 0
+    setPhase: 0
+    modifyLife: 0
+    waitAfter: 0.3
+    turnToFacePlayer: 1
+    turnToFaceAwayFromPlayer: 0
+    transitions:
+    - behaviourIndexToTransitionTo: 5
+      conditionUsed: 8
+      chance: 0.536
+      useTimes: -1
+      usedInPhases: 
+    - behaviourIndexToTransitionTo: 6
+      conditionUsed: 0
+      chance: 1
+      useTimes: -1
+      usedInPhases: 
+  - name: Surprise
+    performAMove: 1
+    useMove:
+      triggerIsBool: 0
+      setTo: 0
+      animationTrigger: Descend
+      sound: {fileID: 8300000, guid: a5f7971758b19e7429136ca7522c8808, type: 3}
+      playDelays: []
+      animationSpeedMod: 1
+      allowNextMove: 32
+      preventMovement: 21
+      followUpAllowFrom: 0
+      characterVelocity: {x: 0, y: 0, z: 0}
+      hurtBoxDamage: 32
+      lifeSteal: 0
+      baseCrit: 0
+      hitStunDuration: 0.9
+      knockDown: 1
+      knockDownVelocity: {x: 7, y: 1, z: 0}
+      isProjectile: 0
+      ammoChange: 0
+      projCount: 1
+      projVelocity: {x: 0, y: 0, z: 0}
+      isProjBuff: 0
+      selfDamage: 0
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
+    moveToSpot: {x: 0, y: 0.001, z: 0}
+    randomizeSpotArea: {x: 2, y: 0, z: 2}
+    relateSpotToSelf: 0
+    relateSpotToPlayer: 1
+    waitAction: {x: 0, y: 0}
+    changePhase: 1
+    setPhase: 0
+    modifyLife: 0
+    waitAfter: 0.3
+    turnToFacePlayer: 1
+    turnToFaceAwayFromPlayer: 0
+    transitions:
     - behaviourIndexToTransitionTo: 0
       conditionUsed: 0
       chance: 1
+      useTimes: -1
+      usedInPhases: 
+  globalTransitions:
+  - behaviourIndexToTransitionTo: 4
+    conditionUsed: 2
+    chance: 0.335
+    useTimes: 3
+    usedInPhases: 00000000
+  - behaviourIndexToTransitionTo: 4
+    conditionUsed: 12
+    chance: 0.322
+    useTimes: 1
+    usedInPhases: 00000000
+  listenToAttacks: 0
+  listenToHurtAllies: 0
+  listenToAlliesKilled: 1
   currentAct: 0
   exitReason: 0
+  currentPhase: 0
   maximumWaitTime: 5
   destination: {x: 0, y: 0, z: 0}
   movingDestination: {fileID: 0}
@@ -463,6 +701,7 @@ MonoBehaviour:
   currentTarget: {fileID: 0}
   visionRadius: 6
   inRangeRadius: 1
+  behaviourInd: 0
 --- !u!114 &5387335074236298456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -478,7 +717,8 @@ MonoBehaviour:
   healthOwnerName: Batsquito
   isPlayer: 0
   lastTouched: 0
-  health: 300
+  healthThresholds: 
+  health: 160
 --- !u!54 &5387335074236298457
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -508,6 +748,50 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.35, y: 0.02, z: 0.35}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &8795887056904540216
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3085664604652757934}
+  - component: {fileID: 8112939149153189014}
+  m_Layer: 14
+  m_Name: HurtBox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3085664604652757934
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8795887056904540216}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 0.79, y: -1.18, z: 0}
+  m_LocalScale: {x: 2.8792927, y: 2.422492, z: 1.0474733}
+  m_Children: []
+  m_Father: {fileID: 2902183920742763635}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &8112939149153189014
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8795887056904540216}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.7, y: 0.8, z: 0.4}
+  m_Center: {x: 0.3, y: 0.4, z: 0}
 --- !u!1001 &470841234976897149
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -677,8 +961,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8128e5b537b42d64d9b7e6587505ba4f, type: 3}
+--- !u!1 &4201481921420680084 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4379304338387248105, guid: 8128e5b537b42d64d9b7e6587505ba4f, type: 3}
+  m_PrefabInstance: {fileID: 470841234976897149}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2902183920742763635 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3372742561765422094, guid: 8128e5b537b42d64d9b7e6587505ba4f, type: 3}
   m_PrefabInstance: {fileID: 470841234976897149}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3145392034231128093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4201481921420680084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf3b8eb29c6fa21458c6b22bb88aa221, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controller: {fileID: 5387335074236298463}
+  speedmod: 1
+  invulnerable: 0

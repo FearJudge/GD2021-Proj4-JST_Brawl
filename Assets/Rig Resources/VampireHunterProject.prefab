@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Project: {fileID: 11400000, guid: 19f8e03ac57b1ab4f89fcef475f97f7c, type: 2}
-  ResolutionIndex: 1
+  ResolutionIndex: 0
   Material: {fileID: 2100000, guid: 459683e483e91c84b9e54f31e0fef25b, type: 2}
   Color: {r: 1, g: 1, b: 1, a: 1}
   DiscretizationStep: 4

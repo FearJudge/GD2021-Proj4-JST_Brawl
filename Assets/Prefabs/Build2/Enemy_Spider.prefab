@@ -388,8 +388,8 @@ MonoBehaviour:
       preventMovement: 12
       followUpAllowFrom: 12
       characterVelocity: {x: 0, y: 0, z: 0}
-      hurtBoxDamage: 7
-      lifeSteal: 7
+      hurtBoxDamage: 18
+      lifeSteal: 38
       baseCrit: 0
       hitStunDuration: 0.12
       knockDown: 0
@@ -436,8 +436,8 @@ MonoBehaviour:
       preventMovement: 21
       followUpAllowFrom: 0
       characterVelocity: {x: 0, y: 0, z: 0}
-      hurtBoxDamage: 9
-      lifeSteal: 9
+      hurtBoxDamage: 17
+      lifeSteal: 45
       baseCrit: 0
       hitStunDuration: 0.16
       knockDown: 1
@@ -462,7 +462,7 @@ MonoBehaviour:
     changePhase: 0
     setPhase: 0
     modifyLife: 0
-    waitAfter: 0.6
+    waitAfter: 0.3
     turnToFacePlayer: 1
     turnToFaceAwayFromPlayer: 0
     transitions:
@@ -520,7 +520,7 @@ MonoBehaviour:
     changePhase: 0
     setPhase: 0
     modifyLife: 0
-    waitAfter: 0.7
+    waitAfter: 0.2
     turnToFacePlayer: 1
     turnToFaceAwayFromPlayer: 0
     transitions:
@@ -542,8 +542,8 @@ MonoBehaviour:
       preventMovement: 21
       followUpAllowFrom: 0
       characterVelocity: {x: 0, y: 0, z: 0}
-      hurtBoxDamage: 25
-      lifeSteal: 50
+      hurtBoxDamage: 38
+      lifeSteal: 250
       baseCrit: 0
       hitStunDuration: 0.3
       knockDown: 1
@@ -568,7 +568,7 @@ MonoBehaviour:
     changePhase: 0
     setPhase: 0
     modifyLife: 0
-    waitAfter: 1.8
+    waitAfter: 0.5
     turnToFacePlayer: 1
     turnToFaceAwayFromPlayer: 0
     transitions:
@@ -681,17 +681,17 @@ MonoBehaviour:
   globalTransitions:
   - behaviourIndexToTransitionTo: 7
     conditionUsed: 12
-    chance: 0.5
+    chance: 0.176
     useTimes: -1
     usedInPhases: 00000000
   - behaviourIndexToTransitionTo: 8
     conditionUsed: 12
-    chance: 1
+    chance: 0.328
     useTimes: -1
     usedInPhases: 0000000002000000
   - behaviourIndexToTransitionTo: 7
     conditionUsed: 12
-    chance: 1
+    chance: 0.314
     useTimes: -1
     usedInPhases: 01000000
   listenToAttacks: 1
@@ -725,7 +725,7 @@ MonoBehaviour:
   isPlayer: 0
   lastTouched: 0
   healthThresholds: 
-  health: 260
+  health: 280
 --- !u!54 &1111734080773255244
 Rigidbody:
   m_ObjectHideFlags: 0

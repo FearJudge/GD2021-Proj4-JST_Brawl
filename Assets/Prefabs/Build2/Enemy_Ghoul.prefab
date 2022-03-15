@@ -277,7 +277,7 @@ MonoBehaviour:
   playerFacingRight: 1
   feet: {fileID: 2835915896019487096}
   body: {fileID: 2835915894936817503}
-  speed: 3
+  speed: 4
   isAlive: 1
   resistance: 10
   hangTime: 0.2
@@ -437,7 +437,7 @@ MonoBehaviour:
       preventMovement: 12
       followUpAllowFrom: 12
       characterVelocity: {x: 0, y: 0, z: 0}
-      hurtBoxDamage: 7
+      hurtBoxDamage: 13
       lifeSteal: 0
       baseCrit: 0
       hitStunDuration: 0.12
@@ -495,10 +495,10 @@ MonoBehaviour:
       preventMovement: 21
       followUpAllowFrom: 0
       characterVelocity: {x: 0, y: 0, z: 0}
-      hurtBoxDamage: 25
+      hurtBoxDamage: 35
       lifeSteal: 0
       baseCrit: 0
-      hitStunDuration: 0.5
+      hitStunDuration: 0.7
       knockDown: 1
       knockDownVelocity: {x: 4, y: 4, z: 0}
       isProjectile: 0
@@ -521,7 +521,7 @@ MonoBehaviour:
     changePhase: 0
     setPhase: 0
     modifyLife: 0
-    waitAfter: 2
+    waitAfter: 0.4
     turnToFacePlayer: 1
     turnToFaceAwayFromPlayer: 0
     transitions:
@@ -574,7 +574,7 @@ MonoBehaviour:
     changePhase: 0
     setPhase: 0
     modifyLife: 0
-    waitAfter: 1
+    waitAfter: 0.6
     turnToFacePlayer: 1
     turnToFaceAwayFromPlayer: 0
     transitions:
@@ -637,7 +637,7 @@ MonoBehaviour:
     changePhase: 0
     setPhase: 0
     modifyLife: 0
-    waitAfter: 1
+    waitAfter: 0.6
     turnToFacePlayer: 1
     turnToFaceAwayFromPlayer: 0
     transitions:
@@ -674,7 +674,7 @@ MonoBehaviour:
   destinationOffset: {x: 0, y: 0, z: 0}
   currentTarget: {fileID: 0}
   visionRadius: 6
-  inRangeRadius: 0.6
+  inRangeRadius: 0.8
   behaviourInd: 0
 --- !u!114 &2835915896019487102
 MonoBehaviour:
@@ -693,7 +693,7 @@ MonoBehaviour:
   isPlayer: 0
   lastTouched: 0
   healthThresholds: 
-  health: 215
+  health: 240
 --- !u!54 &2835915896019487103
 Rigidbody:
   m_ObjectHideFlags: 0

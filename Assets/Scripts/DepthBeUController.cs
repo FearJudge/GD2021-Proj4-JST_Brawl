@@ -30,6 +30,7 @@ public class DepthBeUController : MonoBehaviour
     float resistanceRegen = 0f;
     public float resistance = 10f;
     public float hangTime = 0.2f;
+    public float knockBackRes = 1f;
     private float airborneTimer = 0f;
     public int baseJumpsAvailable = 1;
     private int jumpsAvailable = 1;
@@ -367,8 +368,8 @@ public class DepthBeUController : MonoBehaviour
     {
         if (direction == Vector3.zero) { return; }
         if (flipX && !playerFacingRight) { direction.x *= -1; }
-        Vector3 bodyDir = direction;
-        Vector3 rootDir = direction;
+        Vector3 bodyDir = direction * knockBackRes;
+        Vector3 rootDir = direction * knockBackRes;
         rb_body.velocity = bodyDir;
         if (rb_root.velocity.magnitude > rootDir.magnitude) { rootDir = rb_root.velocity + (0.1f * direction); rb_root.velocity = new Vector3(rootDir.x, 0, rootDir.z); }
         else { rb_root.velocity = new Vector3(rootDir.x, 0, rootDir.z); }

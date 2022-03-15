@@ -62,7 +62,7 @@ MonoBehaviour:
   ownerSpecial: {fileID: 0}
   body: {fileID: 0}
   hitStun: 0
-  damage: 2
+  damage: 4
   lifeSteal: 0
   crit: 0
   bloodSteal: 0
@@ -19356,8 +19356,8 @@ MonoBehaviour:
   ps: {fileID: 7064893436019030434}
   frwrd: {x: 0, y: 0, z: 0}
   rotate: 0
-  killAfter: 9
-  stopAfter: 8
+  killAfter: 10
+  stopAfter: 9
 --- !u!1 &7064893436112792026
 GameObject:
   m_ObjectHideFlags: 0

@@ -9721,7 +9721,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4096
   hitSpark: {fileID: 0}
-  bloodFill: {x: 3, y: 7}
+  bloodFill: {x: 1, y: 2}
   ps: {fileID: 4599972797544935344}
   trigger: {fileID: 4812424337579818627}
   speed: 2

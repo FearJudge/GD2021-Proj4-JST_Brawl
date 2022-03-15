@@ -308,7 +308,7 @@ MonoBehaviour:
   playerFacingRight: 1
   feet: {fileID: 5387335074236298462}
   body: {fileID: 5387335073138520825}
-  speed: 12
+  speed: 13
   isAlive: 1
   resistance: 10
   hangTime: 0.2
@@ -718,7 +718,7 @@ MonoBehaviour:
   destinationOffset: {x: 0, y: 0, z: 0}
   currentTarget: {fileID: 0}
   visionRadius: 6
-  inRangeRadius: 1
+  inRangeRadius: 0.6
   behaviourInd: 0
 --- !u!114 &5387335074236298456
 MonoBehaviour:
@@ -737,7 +737,7 @@ MonoBehaviour:
   isPlayer: 0
   lastTouched: 0
   healthThresholds: 
-  health: 160
+  health: 280
 --- !u!54 &5387335074236298457
 Rigidbody:
   m_ObjectHideFlags: 0

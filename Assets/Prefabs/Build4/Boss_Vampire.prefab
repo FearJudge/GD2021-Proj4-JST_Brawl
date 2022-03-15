@@ -1267,7 +1267,7 @@ MonoBehaviour:
       preventMovement: 45
       followUpAllowFrom: 45
       characterVelocity: {x: 0, y: 0, z: 0}
-      hurtBoxDamage: 18
+      hurtBoxDamage: 27
       lifeSteal: 0
       baseCrit: 0
       hitStunDuration: 0.45
@@ -1327,7 +1327,7 @@ MonoBehaviour:
       preventMovement: 45
       followUpAllowFrom: 45
       characterVelocity: {x: 0, y: 0, z: 0}
-      hurtBoxDamage: 16
+      hurtBoxDamage: 27
       lifeSteal: 0
       baseCrit: 0
       hitStunDuration: 0.3
@@ -1515,7 +1515,7 @@ MonoBehaviour:
       conditionUsed: 8
       chance: 0
       useTimes: 5
-      usedInPhases: 
+      usedInPhases: 010000000200000003000000
     - behaviourIndexToTransitionTo: 6
       conditionUsed: 0
       chance: 1
@@ -1835,7 +1835,7 @@ MonoBehaviour:
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
       isStacking: 0
-      selfDamage: -100
+      selfDamage: -250
       nonAttack: 0
       alternateLayerMask:
         serializedVersion: 2
@@ -1956,8 +1956,8 @@ MonoBehaviour:
   iconid: 3
   isPlayer: 0
   lastTouched: 0
-  healthThresholds: e8030000d0070000b20c0000
-  health: 4000
+  healthThresholds: 40060000b80b000094110000
+  health: 6000
 --- !u!54 &5949180037624937293
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -1183,7 +1183,9 @@ MonoBehaviour:
   playerCollisionBox: {fileID: 0}
   hurtBoxObject: {fileID: 5836677656861686948}
   hb: {fileID: 0}
-  projectilespawner: {fileID: 7678249740153299693}
+  projectilespawners:
+  - {fileID: 7678249740153299693}
+  - {fileID: 738099858029142723}
   animator: {fileID: 0}
   groundMask:
     serializedVersion: 2
@@ -1281,15 +1283,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEnemySpawnerInsteadSomehow: 0
-  maxAmmo: 10
+  maxAmmo: 4
   firedProjectiles: 1
   firedExtraProjectiles: 0
-  projectile: {fileID: 9117652130694329349, guid: dc157d56dfb79e34687e1bdbbd13f729, type: 3}
+  projectile: {fileID: 9117652130694329349, guid: 2dd50c17ffd04504fa0296508367ca30, type: 3}
   ammo: 10
   noAmmoSound: {fileID: 8300000, guid: 022d5f504baa5ec4dbd05fb16803fc2c, type: 3}
   yesAmmoSound: {fileID: 8300000, guid: dd1f595948b57b94e9b04661ae07ddb8, type: 3}
   vel: {x: 0, y: 2, z: 0}
-  lifeTime: 0.8
+  lifeTime: 0.25
   hbData: {fileID: 0}
   lifeSteal: 0
   ammoChange: 0

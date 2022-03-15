@@ -203,6 +203,7 @@ MonoBehaviour:
       knockDownVelocity: {x: 0.4, y: 2.5, z: 0}
       isProjectile: 0
       ammoChange: 0
+      useSpawner: 0
       projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
@@ -244,6 +245,7 @@ MonoBehaviour:
       knockDownVelocity: {x: 8, y: 1.7, z: 0}
       isProjectile: 0
       ammoChange: 0
+      useSpawner: 0
       projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
@@ -285,6 +287,7 @@ MonoBehaviour:
       knockDownVelocity: {x: 0.3, y: 9, z: 0}
       isProjectile: 0
       ammoChange: 0
+      useSpawner: 0
       projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
@@ -326,6 +329,7 @@ MonoBehaviour:
       knockDownVelocity: {x: 0.2, y: 3, z: 0}
       isProjectile: 0
       ammoChange: 0
+      useSpawner: 0
       projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
@@ -367,6 +371,7 @@ MonoBehaviour:
       knockDownVelocity: {x: 8, y: 0.9, z: 0}
       isProjectile: 0
       ammoChange: 0
+      useSpawner: 0
       projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
@@ -381,7 +386,7 @@ MonoBehaviour:
     cancelFrom: 
     followUpAllowedOnlyOnHit: 1
     moveDefinition:
-    - (89)B
+    - (789)B
     moveAllowedError: 3
     moveAllowedDuration: 12
     movePriority: 32
@@ -408,6 +413,7 @@ MonoBehaviour:
       knockDownVelocity: {x: 0, y: 0, z: 0}
       isProjectile: 0
       ammoChange: 0
+      useSpawner: 0
       projCount: 0
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
@@ -417,7 +423,7 @@ MonoBehaviour:
       alternateLayerMask:
         serializedVersion: 2
         m_Bits: 65536
-  - moveName: Parry End
+  - moveName: Parry
     followUpTo: Parry Start
     cancelFrom: 
     followUpAllowedOnlyOnHit: 0
@@ -449,6 +455,7 @@ MonoBehaviour:
       knockDownVelocity: {x: 0, y: 2.8, z: 0}
       isProjectile: 0
       ammoChange: 0
+      useSpawner: 0
       projCount: 0
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
@@ -490,6 +497,7 @@ MonoBehaviour:
       knockDownVelocity: {x: 5, y: 0.3, z: 0}
       isProjectile: 0
       ammoChange: 0
+      useSpawner: 0
       projCount: 0
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
@@ -531,6 +539,7 @@ MonoBehaviour:
       knockDownVelocity: {x: 0, y: 4.7, z: 0}
       isProjectile: 0
       ammoChange: 0
+      useSpawner: 0
       projCount: 0
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
@@ -573,7 +582,50 @@ MonoBehaviour:
       knockDownVelocity: {x: 0, y: 0, z: 0}
       isProjectile: 1
       ammoChange: -1
+      useSpawner: 0
       projCount: 3
+      projVelocity: {x: 16, y: -1, z: 0}
+      isProjBuff: 0
+      isStacking: 0
+      selfDamage: 0
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
+  - moveName: Crossbow Explosive Shot
+    followUpTo: DISABLE
+    cancelFrom: 
+    followUpAllowedOnlyOnHit: 0
+    moveDefinition:
+    - (123456789)A
+    moveAllowedError: 2
+    moveAllowedDuration: 5
+    movePriority: 13
+    moveBloodCost: 0
+    moveAmmoCost: 1
+    allowOnGround: 1
+    allowOnAir: 0
+    properties:
+      triggerIsBool: 0
+      setTo: 0
+      animationTrigger: Attack_Gun_ShotBoom
+      sound: {fileID: 8300000, guid: 9a6ba1045ec4ea142acc8eb0f1b4f5ed, type: 3}
+      playDelays: []
+      animationSpeedMod: 2
+      allowNextMove: 20
+      preventMovement: 20
+      followUpAllowFrom: 16
+      characterVelocity: {x: 0, y: 0, z: 0}
+      hurtBoxDamage: 3
+      lifeSteal: 0
+      baseCrit: 0
+      hitStunDuration: 0.1
+      knockDown: 0
+      knockDownVelocity: {x: 0, y: 0, z: 0}
+      isProjectile: 1
+      ammoChange: -1
+      useSpawner: 1
+      projCount: 1
       projVelocity: {x: 16, y: -1, z: 0}
       isProjBuff: 0
       isStacking: 0
@@ -614,6 +666,7 @@ MonoBehaviour:
       knockDownVelocity: {x: 0, y: 0, z: 0}
       isProjectile: 1
       ammoChange: -1
+      useSpawner: 0
       projCount: 3
       projVelocity: {x: 16, y: -2, z: 0}
       isProjBuff: 0
@@ -623,7 +676,7 @@ MonoBehaviour:
       alternateLayerMask:
         serializedVersion: 2
         m_Bits: 0
-  - moveName: Crossbow Shoot BloodFollowup
+  - moveName: Crossbow Shoot Blood Followup
     followUpTo: DISABLE
     cancelFrom: 
     followUpAllowedOnlyOnHit: 0
@@ -633,7 +686,7 @@ MonoBehaviour:
     moveAllowedDuration: 5
     movePriority: 12
     moveBloodCost: 20
-    moveAmmoCost: 1
+    moveAmmoCost: 0
     allowOnGround: 1
     allowOnAir: 0
     properties:
@@ -654,7 +707,8 @@ MonoBehaviour:
       knockDown: 0
       knockDownVelocity: {x: 0, y: 0, z: 0}
       isProjectile: 1
-      ammoChange: -1
+      ammoChange: 0
+      useSpawner: 0
       projCount: 5
       projVelocity: {x: 16, y: 0, z: 0}
       isProjBuff: 0
@@ -687,9 +741,9 @@ MonoBehaviour:
       sound: {fileID: 8300000, guid: c9c8536393ec15f4d9b154323753480f, type: 3}
       playDelays: []
       animationSpeedMod: 1
-      allowNextMove: 25
+      allowNextMove: 30
       preventMovement: 25
-      followUpAllowFrom: 25
+      followUpAllowFrom: 22
       characterVelocity: {x: 0, y: 0, z: 0}
       hurtBoxDamage: 25
       lifeSteal: 0
@@ -699,6 +753,7 @@ MonoBehaviour:
       knockDownVelocity: {x: 0, y: 0, z: 0}
       isProjectile: 0
       ammoChange: 1
+      useSpawner: 99
       projCount: 3
       projVelocity: {x: 6, y: 0, z: 0}
       isProjBuff: 1
@@ -740,6 +795,7 @@ MonoBehaviour:
       knockDownVelocity: {x: 0, y: 0, z: 0}
       isProjectile: 0
       ammoChange: 20
+      useSpawner: 99
       projCount: 0
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 1
@@ -784,6 +840,7 @@ MonoBehaviour:
       knockDownVelocity: {x: 0, y: 0, z: 0}
       isProjectile: 0
       ammoChange: 20
+      useSpawner: 99
       projCount: 0
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 1
@@ -825,6 +882,7 @@ MonoBehaviour:
       knockDownVelocity: {x: 0, y: 3, z: 0}
       isProjectile: 0
       ammoChange: 0
+      useSpawner: 0
       projCount: 0
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
@@ -866,6 +924,7 @@ MonoBehaviour:
       knockDownVelocity: {x: 0, y: 0, z: 0}
       isProjectile: 0
       ammoChange: 0
+      useSpawner: 0
       projCount: 0
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
@@ -907,6 +966,7 @@ MonoBehaviour:
       knockDownVelocity: {x: 0, y: 0, z: 0}
       isProjectile: 0
       ammoChange: 0
+      useSpawner: 0
       projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 1
@@ -948,6 +1008,7 @@ MonoBehaviour:
       knockDownVelocity: {x: 4, y: 0, z: 0}
       isProjectile: 1
       ammoChange: -1
+      useSpawner: 0
       projCount: 3
       projVelocity: {x: 26, y: 0, z: 0}
       isProjBuff: 0
@@ -989,6 +1050,7 @@ MonoBehaviour:
       knockDownVelocity: {x: 4, y: 0, z: 0}
       isProjectile: 1
       ammoChange: -1
+      useSpawner: 0
       projCount: 3
       projVelocity: {x: 12, y: -6, z: 0}
       isProjBuff: 0
@@ -1009,7 +1071,7 @@ MonoBehaviour:
     moveAllowedError: 3
     moveAllowedDuration: 22
     movePriority: 155
-    moveBloodCost: 45
+    moveBloodCost: 100
     moveAmmoCost: 0
     allowOnGround: 1
     allowOnAir: 1
@@ -1032,11 +1094,54 @@ MonoBehaviour:
       knockDownVelocity: {x: 0, y: 0.9, z: 0}
       isProjectile: 0
       ammoChange: 0
+      useSpawner: 0
       projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
       isStacking: 0
       selfDamage: -75
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
+  - moveName: Blood Explosion
+    followUpTo: 
+    cancelFrom: 
+    followUpAllowedOnlyOnHit: 0
+    moveDefinition:
+    - (123456789)AB
+    moveAllowedError: 3
+    moveAllowedDuration: 22
+    movePriority: 165
+    moveBloodCost: 250
+    moveAmmoCost: 0
+    allowOnGround: 1
+    allowOnAir: 1
+    properties:
+      triggerIsBool: 0
+      setTo: 0
+      animationTrigger: BloodRageExplosion
+      sound: {fileID: 8300000, guid: b8d38d324558fbe4d94693f8d4968a3b, type: 3}
+      playDelays: []
+      animationSpeedMod: 0
+      allowNextMove: 25
+      preventMovement: 25
+      followUpAllowFrom: 12
+      characterVelocity: {x: 0, y: 0, z: 0}
+      hurtBoxDamage: 300
+      lifeSteal: 0
+      baseCrit: 0
+      hitStunDuration: 0.3
+      knockDown: 1
+      knockDownVelocity: {x: 0, y: 0.9, z: 0}
+      isProjectile: 0
+      ammoChange: 0
+      useSpawner: 0
+      projCount: 1
+      projVelocity: {x: 0, y: 0, z: 0}
+      isProjBuff: 0
+      isStacking: 0
+      selfDamage: -150
       nonAttack: 0
       alternateLayerMask:
         serializedVersion: 2
@@ -1074,6 +1179,7 @@ MonoBehaviour:
       knockDownVelocity: {x: 0, y: 0, z: 0}
       isProjectile: 0
       ammoChange: 0
+      useSpawner: 0
       projCount: 0
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
@@ -1117,6 +1223,7 @@ MonoBehaviour:
       knockDownVelocity: {x: 0, y: 0, z: 0}
       isProjectile: 0
       ammoChange: 0
+      useSpawner: 0
       projCount: 0
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
@@ -1160,6 +1267,7 @@ MonoBehaviour:
       knockDownVelocity: {x: 0, y: 0, z: 0}
       isProjectile: 0
       ammoChange: 0
+      useSpawner: 0
       projCount: 0
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
@@ -1201,6 +1309,7 @@ MonoBehaviour:
       knockDownVelocity: {x: 4, y: 0, z: 0}
       isProjectile: 1
       ammoChange: -1
+      useSpawner: 0
       projCount: 3
       projVelocity: {x: 22, y: 0, z: 0}
       isProjBuff: 0

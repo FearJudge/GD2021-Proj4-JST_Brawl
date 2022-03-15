@@ -178,10 +178,14 @@ public class EncounterManager : MonoBehaviour
 
     public static void CreateRewards()
     {
-        if (cleared > 0) { return; }
-        for (int a = 0; a < Random.Range(2,8); a++)
+        for (int a = 0; a < UpgradeLibrary.instance.moveUpgrades.Length; a++)
         {
-            UpgradeLink.CreateInstance(null, PlayerController.players[0], UpgradeLibrary.RandomUpgrade());
+            if (UpgradeLibrary.instance.moveUpgrades[a].upgradeId >= 2000) { continue; }
+            UpgradeLink.CreateInstance(null, PlayerController.players[0], UpgradeLibrary.instance.moveUpgrades[a].upgradeId);
+        }
+        for (int a = 0; a < UpgradeLibrary.instance.playerUpgrades.Length; a++)
+        {
+            UpgradeLink.CreateInstance(null, PlayerController.players[0], UpgradeLibrary.instance.playerUpgrades[a].upgradeId);
         }
         manager.EndEncounter();
     }

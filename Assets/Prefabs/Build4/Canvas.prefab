@@ -1263,8 +1263,8 @@ MonoBehaviour:
   - upgradeName: Vampiric Lunge
     upgradeDescription: 'Light Attack and Light Attack Follow-up
 
-      {l.sword
-      & l.sword -> l.sword}
+      {Light, Light
+      -> Light}
 
       Added Damage and Lifesteal'
     upgradeId: 1000
@@ -1310,12 +1310,14 @@ MonoBehaviour:
     changeKnockDown: 0
     knockdownChange: {x: 0, y: 0, z: 0}
   - upgradeName: Executioner's Rise
-    upgradeDescription: 'Uppercut
+    upgradeDescription: 'Uppercut is improved.
 
-      {Down + l.sword}
+      {Down + Light}
 
-      Increased Knockback
-      and Stun'
+      Increased
+      Damage and Stun.
+
+      Reduced Knock-Up.'
     upgradeId: 1001
     icon: {fileID: 21300000, guid: b27bf8ff806aa5544a32b9fa9bc1ac89, type: 3}
     upgradeChain: 
@@ -1339,8 +1341,8 @@ MonoBehaviour:
   - upgradeName: Stinger Combo
     upgradeDescription: 'Adds another Follow-up to Light Attack Follow-up.
 
-      {l.sword
-      -> l.sword -> l.sword}'
+      {Light
+      -> Light -> Light}'
     upgradeId: 1002
     icon: {fileID: 21300000, guid: ed9530d120320cf4c97cb258c08a2db0, type: 3}
     upgradeChain: 
@@ -1361,12 +1363,12 @@ MonoBehaviour:
     addProjectiles: 0
     changeKnockDown: 0
     knockdownChange: {x: 0, y: 0, z: 0}
-  - upgradeName: Vengeful Strike
-    upgradeDescription: 'Parry
+  - upgradeName: Delibirated Strike
+    upgradeDescription: 'Parry is Slower.
 
-      {Up + h.sword}
+      {Up + Heavy}
 
-      Faster Parry, More Damage
+      More Damage
       on Success.'
     upgradeId: 1003
     icon: {fileID: 21300000, guid: 370066b37bffe26408f7ae554b24562f, type: 3}
@@ -1377,7 +1379,7 @@ MonoBehaviour:
     addCriticalChance: 0
     knockBackModifier: 0
     damageModifier: 3
-    stunModifier: 1.3
+    stunModifier: 1.4
     changeSpeedOfAnimation: 0
     changeAttackPrevention: 0
     changeMovementPrevention: 0
@@ -1392,7 +1394,7 @@ MonoBehaviour:
     upgradeDescription: 
     upgradeId: 2002
     icon: {fileID: 21300000, guid: 370066b37bffe26408f7ae554b24562f, type: 3}
-    upgradeChain: d2070000
+    upgradeChain: 
     onMove: Parry Start
     isNewMove: 0
     addLifeSteal: 0
@@ -1400,7 +1402,7 @@ MonoBehaviour:
     knockBackModifier: 0
     damageModifier: 0
     stunModifier: 0
-    changeSpeedOfAnimation: 1.3
+    changeSpeedOfAnimation: 0.8
     changeAttackPrevention: -5
     changeMovementPrevention: -5
     changeFollowUpTiming: -5
@@ -1413,11 +1415,10 @@ MonoBehaviour:
   - upgradeName: Devastation Combo
     upgradeDescription: 'Down Stab Can be Performed After Light Attack Follow-up.
 
-      {h.sword
-      -> h.sword or (if chosen) l.sword -> l.sword -> h.sword}
+      {Heavy
+      -> Heavy, Light -> Light -> Heavy}
 
-      Increased Damage
-      and Stun.
+      Increased Damage and Stun.
 
 '
     upgradeId: 1004
@@ -1441,10 +1442,15 @@ MonoBehaviour:
     changeKnockDown: 0
     knockdownChange: {x: 0, y: 0, z: 0}
   - upgradeName: Focused Shot
-    upgradeDescription: 'Light Bow Attack and Follow-up
+    upgradeDescription: 'Light Bow Attack and Follow-up modified.
 
-      Increased Damage and
-      Critical Chance.'
+      {Light,
+      Light -> Light}
+
+      Shoots Two Less Projectiles.
+
+      Increased Damage
+      and Critical Chance.'
     upgradeId: 1005
     icon: {fileID: 21300000, guid: 26cce0787cf1301499c654329c733137, type: 3}
     upgradeChain: d0070000
@@ -1491,10 +1497,12 @@ MonoBehaviour:
     upgradeDescription: 'Changes your Light Attacks to instead shoot an arrow that
       explodes nearby.
 
-      {l.bow}'
+      {Light}
+
+      Only affects Grounded Version.'
     upgradeId: 1006
     icon: {fileID: 21300000, guid: 36f825b990081a94ba6f60c3090b566f, type: 3}
-    upgradeChain: 
+    upgradeChain: d4070000
     onMove: Crossbow Explosive Shot
     isNewMove: 1
     addLifeSteal: 0
@@ -1512,18 +1520,40 @@ MonoBehaviour:
     addProjectiles: 0
     changeKnockDown: 0
     knockdownChange: {x: 0, y: 0, z: 0}
+  - upgradeName: Explosive Arrow II
+    upgradeDescription: 
+    upgradeId: 2004
+    icon: {fileID: 21300000, guid: 36f825b990081a94ba6f60c3090b566f, type: 3}
+    upgradeChain: 
+    onMove: Crossbow Shoot
+    isNewMove: 0
+    addLifeSteal: 0
+    addCriticalChance: 0
+    knockBackModifier: 0
+    damageModifier: 0
+    stunModifier: 0
+    changeSpeedOfAnimation: 0
+    changeAttackPrevention: 0
+    changeMovementPrevention: 0
+    changeFollowUpTiming: 0
+    playerVelChange: {x: 0, y: 0, z: 0}
+    addFollowUps: DISABLE
+    removeFollowUps: 
+    addProjectiles: 0
+    changeKnockDown: 0
+    knockdownChange: {x: 0, y: 0, z: 0}
   - upgradeName: Ghastly Artillery
-    upgradeDescription: 'Charging Heavy Attack
+    upgradeDescription: 'Charging Heavy Attack improves when held.
 
-      {h.bow [HELD]}
+      {Heavy
+      [HELD]}
 
-      Steals
-      Life per Charge. More Damage.'
+      Steals Life per Charge. More Damage.'
     upgradeId: 1007
     icon: {fileID: 21300000, guid: 57142cf1f61b6634bab32aadffcbb373, type: 3}
     upgradeChain: 
     onMove: Heavy Cross Bow Held
-    isNewMove: 1
+    isNewMove: 0
     addLifeSteal: 2
     addCriticalChance: 0
     knockBackModifier: 0
@@ -1542,7 +1572,7 @@ MonoBehaviour:
   - upgradeName: Disaster Boot
     upgradeDescription: 'Slide Kick
 
-      {Down + h.bow}
+      {Down + Heavy}
 
       Increased Damage,
       Range and Knock Up.'
@@ -1550,7 +1580,7 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: ca0620446f448464d86034d2fa6b4e73, type: 3}
     upgradeChain: 
     onMove: Slide Kick
-    isNewMove: 1
+    isNewMove: 0
     addLifeSteal: 0
     addCriticalChance: 0
     knockBackModifier: 1.5
@@ -1567,9 +1597,12 @@ MonoBehaviour:
     changeKnockDown: 0
     knockdownChange: {x: 0, y: 0, z: 0}
   - upgradeName: Blood Fueled Bolts
-    upgradeDescription: 'BloodFueled Move, Fire Rapidly.
+    upgradeDescription: 'BloodFueled Move, Fires Rapidly.
 
-      {l.bow [HELD]}'
+      {Light [HELD]}
+
+      Consumes
+      Blood.'
     upgradeId: 1009
     icon: {fileID: 21300000, guid: 999defeaa7f6d1a4098b4dae6e789b1e, type: 3}
     upgradeChain: 
@@ -1585,7 +1618,7 @@ MonoBehaviour:
     changeMovementPrevention: 0
     changeFollowUpTiming: 0
     playerVelChange: {x: 0, y: 0, z: 0}
-    addFollowUps: Crossbow Shoot FollowUp | Crossbow Shoot Blood Follow Up
+    addFollowUps: Crossbow Shoot Followup | Crossbow Shoot Blood Followup
     removeFollowUps: DISABLE
     addProjectiles: 0
     changeKnockDown: 0
@@ -1597,7 +1630,7 @@ MonoBehaviour:
   upgradeName: {fileID: 220887851591918699}
   upgradeTarget: {fileID: 220887852240891137}
   upgradeDescription: {fileID: 220887851152155982}
-  upgradeLegend: {fileID: 0}
+  upgradeLegend: {fileID: 8185900996670280115}
   rotationOfUpgrades: 0
   range: 0
 --- !u!1 &220887852240891139

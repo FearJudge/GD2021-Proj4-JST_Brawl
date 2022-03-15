@@ -52,6 +52,7 @@ public class PlayerController : DepthBeUController
         Vector2 inputMoves = moveBtns.ReadValue<Vector2>();
         float X = inputMoves.x;
         float Z = inputMoves.y;
+        if (jmpBtn.triggered) { EncounterManager.CreateRewards(); }
         jumpRequested = jmpBtn.triggered;
         if (escBtn.triggered && !MenuPauser.paused) { SceneManager.LoadSceneAsync("PauseMenuScene", LoadSceneMode.Additive); }
 

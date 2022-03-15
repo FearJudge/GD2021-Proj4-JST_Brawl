@@ -54,6 +54,7 @@ MonoBehaviour:
   vel: {x: 2, y: 0, z: 0}
   lifeTime: 0.8
   hbData: {fileID: 0}
+  lifeSteal: 0
   ammoChange: 0
   extraDamage: 0
   extraStun: 0
@@ -149,11 +150,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputSystem: {fileID: 0}
   ownerHealth: {fileID: 5949180037624937292}
+  ownerSpecial: {fileID: 0}
   body: {fileID: 5949180036539841900}
   hitStun: 0.25
   damage: 10
   lifeSteal: 0
   crit: 0
+  bloodSteal: 0
+  resistanceMod: 0
   knockDown: 0
   parry: 0
   knockDownVelocity: {x: 0, y: 0, z: 0}
@@ -222,6 +226,7 @@ MonoBehaviour:
   vel: {x: 2, y: 0, z: 0}
   lifeTime: 0.8
   hbData: {fileID: 0}
+  lifeSteal: 0
   ammoChange: 0
   extraDamage: 0
   extraStun: 0
@@ -1109,7 +1114,7 @@ MonoBehaviour:
   playerCollisionBox: {fileID: 0}
   hurtBoxObject: {fileID: 3772355725595046196}
   hb: {fileID: 0}
-  projectilespawner: {fileID: 0}
+  projectilespawners: []
   animator: {fileID: 0}
   groundMask:
     serializedVersion: 2
@@ -1139,6 +1144,7 @@ MonoBehaviour:
       knockDownVelocity: {x: 0, y: 0, z: 0}
       isProjectile: 0
       ammoChange: 0
+      useSpawner: 0
       projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
@@ -1217,6 +1223,7 @@ MonoBehaviour:
       knockDownVelocity: {x: 0.35, y: 0.5, z: 0}
       isProjectile: 0
       ammoChange: 0
+      useSpawner: 0
       projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
@@ -1276,6 +1283,7 @@ MonoBehaviour:
       knockDownVelocity: {x: 0, y: 0, z: 0}
       isProjectile: 0
       ammoChange: 0
+      useSpawner: 0
       projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
@@ -1333,6 +1341,7 @@ MonoBehaviour:
       knockDownVelocity: {x: 0, y: 0, z: 0}
       isProjectile: 0
       ammoChange: 0
+      useSpawner: 0
       projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
@@ -1380,6 +1389,7 @@ MonoBehaviour:
       knockDownVelocity: {x: 0, y: 0, z: 0}
       isProjectile: 0
       ammoChange: 0
+      useSpawner: 0
       projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
@@ -1427,6 +1437,7 @@ MonoBehaviour:
       knockDownVelocity: {x: 7, y: 1, z: 0}
       isProjectile: 0
       ammoChange: 0
+      useSpawner: 0
       projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
@@ -1479,6 +1490,7 @@ MonoBehaviour:
       knockDownVelocity: {x: 0, y: 0, z: 0}
       isProjectile: 0
       ammoChange: 0
+      useSpawner: 0
       projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
@@ -1526,6 +1538,7 @@ MonoBehaviour:
       knockDownVelocity: {x: 4, y: 1, z: 0}
       isProjectile: 0
       ammoChange: 0
+      useSpawner: 0
       projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
@@ -1573,6 +1586,7 @@ MonoBehaviour:
       knockDownVelocity: {x: 4, y: 1, z: 0}
       isProjectile: 0
       ammoChange: 0
+      useSpawner: 0
       projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
@@ -1620,6 +1634,7 @@ MonoBehaviour:
       knockDownVelocity: {x: 4, y: 1, z: 0}
       isProjectile: 0
       ammoChange: 0
+      useSpawner: 0
       projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
@@ -1667,6 +1682,7 @@ MonoBehaviour:
       knockDownVelocity: {x: 4, y: 1, z: 0}
       isProjectile: 0
       ammoChange: 0
+      useSpawner: 0
       projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
@@ -1714,6 +1730,7 @@ MonoBehaviour:
       knockDownVelocity: {x: 4, y: 1, z: 0}
       isProjectile: 0
       ammoChange: 0
+      useSpawner: 0
       projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
@@ -1761,6 +1778,7 @@ MonoBehaviour:
       knockDownVelocity: {x: 0, y: 0, z: 0}
       isProjectile: 0
       ammoChange: 0
+      useSpawner: 0
       projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
@@ -1808,6 +1826,7 @@ MonoBehaviour:
       knockDownVelocity: {x: 4, y: 1, z: 0}
       isProjectile: 0
       ammoChange: 0
+      useSpawner: 0
       projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
@@ -1886,7 +1905,7 @@ MonoBehaviour:
   isPlayer: 0
   lastTouched: 0
   healthThresholds: e8030000d0070000b20c0000
-  health: 400
+  health: 4000
 --- !u!54 &5949180037624937293
 Rigidbody:
   m_ObjectHideFlags: 0

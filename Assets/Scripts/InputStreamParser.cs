@@ -133,9 +133,9 @@ public class InputStreamParser : MonoBehaviour
     public int followUpAllow = 0;
     public int movePrevention = 0;
     public int dirPrevention = 0;
-    public const int MOVEBUFFDUR = 5;
+    public const int MOVEBUFFDUR = 7;
     public const int HELD = 30;
-    public const int RECHECK = 10;
+    public const int RECHECK = 7;
     public int buffer = 0;
     bool A = false;
     bool B = false;

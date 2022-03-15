@@ -161,7 +161,7 @@ public class DepthBeUController : MonoBehaviour
 
     protected void RegainResistance()
     {
-        if (resistanceRegen == 0f) { return; }
+        if (resistanceRegen == 0f && resistance > 0f) { return; }
         resistanceRegen -= Time.deltaTime;
         if (resistanceRegen > 0f) { return; }
         resistanceRegen = 0f;

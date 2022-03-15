@@ -92,7 +92,7 @@ public class MoveProp
         if (isProjectile && projectilespawner != null) { projectilespawner.firedProjectiles = projCount + pv.extraProj; projectilespawner.hbData = player.hb; projectilespawner.ammoChange = ammoChange; projectilespawner.vel = projVelocity; }
         if (isProjBuff)
         {      
-            if (projectilespawner != null) { ProjectileBuff(); }
+            if (useSpawner < player.projectilespawners.Length) { ProjectileBuff(); }
             else { for (int i = 0; i < player.projectilespawners.Length; i++) { projectilespawner = player.projectilespawners[i]; ProjectileBuff(); } }
         }
         if (nonAttack) { player.hb.useAlternate = true; player.hb.activeOnAlt = alternateLayerMask; }

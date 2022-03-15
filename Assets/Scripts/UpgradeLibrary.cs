@@ -36,7 +36,7 @@ public class UpgradeLibrary : MonoBehaviour
         public string addFollowUps = "";
         public string removeFollowUps = "";
 
-
+        public int addProjectiles = 0;
         // knockdown: 0 = no change, 1 = change to FALSE, 2 = change to TRUE, 3 = SWAP
         public int changeKnockDown = 0;
         public Vector3 knockdownChange = Vector3.zero;
@@ -75,6 +75,8 @@ public class UpgradeLibrary : MonoBehaviour
         public bool affectsSword = true;
         public bool affectsGun = true;
         public bool affectsSpells = true;
+
+        public int addProjectiles = 0;
     }
 
     public const int BREAKPOINT = 1000;

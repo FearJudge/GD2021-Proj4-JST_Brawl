@@ -95,6 +95,7 @@ public class InputStreamParser : MonoBehaviour
             if (moveUpgrade.changeSpeedOfAnimation != 0f) { properties.animationSpeedMod += moveUpgrade.changeSpeedOfAnimation; if (properties.animationSpeedMod <= 0f) { properties.animationSpeedMod = 0.1f; } }
             if (moveUpgrade.addFollowUps != "") { string prefix = ""; if (followUpTo != "") { prefix = "|"; } followUpTo += prefix + moveUpgrade.addFollowUps; }
             if (moveUpgrade.removeFollowUps != "") { followUpTo.Replace(moveUpgrade.removeFollowUps, ""); }
+            if (moveUpgrade.addProjectiles != 0) { properties.projCount += moveUpgrade.addProjectiles; if (properties.projCount < 0) { properties.projCount = 0; } }
         }
 
         public string moveName = "";

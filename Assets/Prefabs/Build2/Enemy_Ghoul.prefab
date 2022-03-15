@@ -44,7 +44,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.25, y: 0.93, z: 0.125}
+  m_Size: {x: 0.31, y: 0.93, z: 0.21}
   m_Center: {x: 0.04, y: -0.0023481846, z: 0.014171649}
 --- !u!54 &2835915894936817497
 Rigidbody:
@@ -119,6 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06fd2fd4acf2bb04c914c8a2fdd6bcde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputSystem: {fileID: 0}
   ownerHealth: {fileID: 0}
   body: {fileID: 2835915894936817502}
   hitStun: 0.25
@@ -131,8 +132,12 @@ MonoBehaviour:
   activeOn:
     serializedVersion: 2
     m_Bits: 4096
-  blockSpark: {fileID: 0}
-  hitSpark: {fileID: 3494273047620996136, guid: 3c1eff4b468cc7e4ab4a46cd158deb42, type: 3}
+  useAlternate: 0
+  activeOnAlt:
+    serializedVersion: 2
+    m_Bits: 0
+  blockSpark: {fileID: 4748730675913877244, guid: ee1116342624b6342b89b9cf302d2290, type: 3}
+  hitSpark: {fileID: 8840018528841292498, guid: e506070dd2c62214596a0ba2dac17408, type: 3}
   critSpark: {fileID: 0}
   sparkVariants: []
 --- !u!1 &2835915895833788671
@@ -270,9 +275,16 @@ MonoBehaviour:
   feet: {fileID: 2835915896019487096}
   body: {fileID: 2835915894936817503}
   speed: 3
+  isAlive: 1
   resistance: 10
   hangTime: 0.2
   baseJumpsAvailable: 1
+  feetCollSize: 0.14
+  bodyCollSize: 0.32
+  feetEdgeSize: 0.02
+  bodyEdgeSize: 0.09
+  bodyLandingPad: 0.25
+  bodyHeight: 0.9
   airborne: 0
   frozen: 0
   halted: 0
@@ -293,10 +305,14 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   behaviour:
-  - performAMove: 0
+  - name: 
+    performAMove: 0
     useMove:
+      triggerIsBool: 0
+      setTo: 0
       animationTrigger: Attack_Fast
       sound: {fileID: 0}
+      playDelays: []
       animationSpeedMod: 1
       allowNextMove: 25
       preventMovement: 12
@@ -313,12 +329,19 @@ MonoBehaviour:
       projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
+      isStacking: 0
       selfDamage: 0
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
     moveToSpot: {x: 0.7, y: 0, z: 0}
     randomizeSpotArea: {x: 0, y: 0, z: 0.7}
     relateSpotToSelf: 0
     relateSpotToPlayer: 1
     waitAction: {x: 0, y: 0}
+    changePhase: 0
+    setPhase: 0
     modifyLife: 0
     waitAfter: 0.2
     turnToFacePlayer: 1
@@ -328,18 +351,25 @@ MonoBehaviour:
       conditionUsed: 11
       chance: 1
       useTimes: -1
+      usedInPhases: 
     - behaviourIndexToTransitionTo: 2
       conditionUsed: 5
       chance: 1
       useTimes: -1
+      usedInPhases: 
     - behaviourIndexToTransitionTo: 2
-      conditionUsed: 7
+      conditionUsed: 8
       chance: 1
       useTimes: -1
-  - performAMove: 0
+      usedInPhases: 
+  - name: 
+    performAMove: 0
     useMove:
+      triggerIsBool: 0
+      setTo: 0
       animationTrigger: Attack_Fast
       sound: {fileID: 0}
+      playDelays: []
       animationSpeedMod: 1
       allowNextMove: 25
       preventMovement: 12
@@ -356,12 +386,19 @@ MonoBehaviour:
       projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
+      isStacking: 0
       selfDamage: 0
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
     moveToSpot: {x: -0.7, y: 0, z: 0}
     randomizeSpotArea: {x: 0, y: 0, z: 0.7}
     relateSpotToSelf: 0
     relateSpotToPlayer: 1
     waitAction: {x: 0, y: 0}
+    changePhase: 0
+    setPhase: 0
     modifyLife: 0
     waitAfter: 0.2
     turnToFacePlayer: 1
@@ -371,18 +408,25 @@ MonoBehaviour:
       conditionUsed: 11
       chance: 1
       useTimes: -1
+      usedInPhases: 
     - behaviourIndexToTransitionTo: 2
       conditionUsed: 5
       chance: 1
       useTimes: -1
+      usedInPhases: 
     - behaviourIndexToTransitionTo: 2
       conditionUsed: 7
       chance: 1
       useTimes: -1
-  - performAMove: 1
+      usedInPhases: 
+  - name: 
+    performAMove: 1
     useMove:
+      triggerIsBool: 0
+      setTo: 0
       animationTrigger: Attack_Fast
       sound: {fileID: 0}
+      playDelays: []
       animationSpeedMod: 1
       allowNextMove: 25
       preventMovement: 12
@@ -399,12 +443,19 @@ MonoBehaviour:
       projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
+      isStacking: 0
       selfDamage: 0
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
     moveToSpot: {x: 0, y: 0, z: 0}
     randomizeSpotArea: {x: 0, y: 0, z: 0}
     relateSpotToSelf: 0
     relateSpotToPlayer: 0
     waitAction: {x: 0, y: 0}
+    changePhase: 0
+    setPhase: 0
     modifyLife: 0
     waitAfter: 0.2
     turnToFacePlayer: 1
@@ -414,18 +465,25 @@ MonoBehaviour:
       conditionUsed: 1
       chance: 1
       useTimes: -1
+      usedInPhases: 
     - behaviourIndexToTransitionTo: 1
       conditionUsed: 0
       chance: 0.534
       useTimes: -1
+      usedInPhases: 
     - behaviourIndexToTransitionTo: 0
       conditionUsed: 0
       chance: 1
       useTimes: -1
-  - performAMove: 1
+      usedInPhases: 
+  - name: 
+    performAMove: 1
     useMove:
+      triggerIsBool: 0
+      setTo: 0
       animationTrigger: Attack_Slow
       sound: {fileID: 0}
+      playDelays: []
       animationSpeedMod: 1
       allowNextMove: 32
       preventMovement: 21
@@ -442,12 +500,19 @@ MonoBehaviour:
       projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
+      isStacking: 0
       selfDamage: 0
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
     moveToSpot: {x: 0, y: 0, z: 0}
     randomizeSpotArea: {x: 0, y: 0, z: 0}
     relateSpotToSelf: 0
     relateSpotToPlayer: 0
     waitAction: {x: 0, y: 0}
+    changePhase: 0
+    setPhase: 0
     modifyLife: 0
     waitAfter: 2
     turnToFacePlayer: 1
@@ -457,14 +522,20 @@ MonoBehaviour:
       conditionUsed: 0
       chance: 0.489
       useTimes: -1
+      usedInPhases: 
     - behaviourIndexToTransitionTo: 0
       conditionUsed: 0
       chance: 1
       useTimes: -1
-  - performAMove: 0
+      usedInPhases: 
+  - name: 
+    performAMove: 0
     useMove:
+      triggerIsBool: 0
+      setTo: 0
       animationTrigger: Attack_Slow
       sound: {fileID: 0}
+      playDelays: []
       animationSpeedMod: 1
       allowNextMove: 32
       preventMovement: 21
@@ -481,12 +552,19 @@ MonoBehaviour:
       projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
+      isStacking: 0
       selfDamage: 0
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
     moveToSpot: {x: 3, y: 0, z: 0}
-    randomizeSpotArea: {x: 0, y: 0, z: 0.7}
+    randomizeSpotArea: {x: 1, y: 0, z: 1}
     relateSpotToSelf: 0
     relateSpotToPlayer: 1
     waitAction: {x: 0, y: 0}
+    changePhase: 0
+    setPhase: 0
     modifyLife: 0
     waitAfter: 1
     turnToFacePlayer: 1
@@ -496,22 +574,30 @@ MonoBehaviour:
       conditionUsed: 5
       chance: 1
       useTimes: -1
+      usedInPhases: 
     - behaviourIndexToTransitionTo: 0
       conditionUsed: 11
       chance: 1
       useTimes: -1
+      usedInPhases: 
     - behaviourIndexToTransitionTo: 4
       conditionUsed: 8
       chance: 0.555
       useTimes: -1
+      usedInPhases: 
     - behaviourIndexToTransitionTo: 0
       conditionUsed: 0
       chance: 1
       useTimes: -1
-  - performAMove: 0
+      usedInPhases: 
+  - name: 
+    performAMove: 0
     useMove:
+      triggerIsBool: 0
+      setTo: 0
       animationTrigger: Attack_Slow
       sound: {fileID: 0}
+      playDelays: []
       animationSpeedMod: 1
       allowNextMove: 32
       preventMovement: 21
@@ -528,12 +614,19 @@ MonoBehaviour:
       projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
+      isStacking: 0
       selfDamage: 0
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
     moveToSpot: {x: -3, y: 0, z: 0}
-    randomizeSpotArea: {x: 0, y: 0, z: 0.7}
+    randomizeSpotArea: {x: 1, y: 0, z: 1}
     relateSpotToSelf: 0
     relateSpotToPlayer: 1
     waitAction: {x: 0, y: 0}
+    changePhase: 0
+    setPhase: 0
     modifyLife: 0
     waitAfter: 1
     turnToFacePlayer: 1
@@ -543,23 +636,29 @@ MonoBehaviour:
       conditionUsed: 5
       chance: 1
       useTimes: -1
+      usedInPhases: 
     - behaviourIndexToTransitionTo: 1
-      conditionUsed: 11
+      conditionUsed: 12
       chance: 1
       useTimes: -1
+      usedInPhases: 
     - behaviourIndexToTransitionTo: 5
       conditionUsed: 8
       chance: 0.555
       useTimes: -1
+      usedInPhases: 
     - behaviourIndexToTransitionTo: 1
       conditionUsed: 0
       chance: 1
       useTimes: -1
+      usedInPhases: 
+  globalTransitions: []
   listenToAttacks: 0
   listenToHurtAllies: 1
   listenToAlliesKilled: 0
   currentAct: 0
   exitReason: 0
+  currentPhase: 0
   maximumWaitTime: 5
   destination: {x: 0, y: 0, z: 0}
   movingDestination: {fileID: 0}
@@ -581,6 +680,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthOwnerName: Ghoulish Ghoul
+  iconid: 0
   isPlayer: 0
   lastTouched: 0
   healthThresholds: 
@@ -655,7 +755,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6166227239933066341, guid: 42cec3da48755f846b850690f8d8bd43, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.09
       objectReference: {fileID: 0}
     - target: {fileID: 6166227239933066341, guid: 42cec3da48755f846b850690f8d8bd43, type: 3}
       propertyPath: m_LocalPosition.z

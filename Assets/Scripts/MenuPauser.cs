@@ -10,7 +10,6 @@ public class MenuPauser : MonoBehaviour
     public bool pauseGame = true;
     public PlayerInput p_input;
     public GameObject lc;
-    public string resumelevel;
 
     // Start is called before the first frame update
     void Awake()
@@ -50,6 +49,6 @@ public class MenuPauser : MonoBehaviour
     {
         GameObject changer = Instantiate(lc);
         LevelChanger transitionscript = changer.GetComponent<LevelChanger>();
-        transitionscript.StartTransition(resumelevel, 0.1f);
+        transitionscript.StartTransition(GameOptions.gameScene, 0.1f);
     }
 }

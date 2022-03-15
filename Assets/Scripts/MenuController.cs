@@ -93,4 +93,11 @@ public class MenuController : MonoBehaviour
         LevelChanger transitionscript = changer.GetComponent<LevelChanger>();
         transitionscript.StartTransition(name, 0.1f);
     }
+
+    public void GoToGame()
+    {
+        GameObject changer = Instantiate(lc);
+        LevelChanger transitionscript = changer.GetComponent<LevelChanger>();
+        transitionscript.StartTransition(GameOptions.gameScene, 0.1f);
+    }
 }

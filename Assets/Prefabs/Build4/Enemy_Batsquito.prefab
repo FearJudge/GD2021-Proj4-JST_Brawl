@@ -167,8 +167,8 @@ MonoBehaviour:
   activeOnAlt:
     serializedVersion: 2
     m_Bits: 0
-  blockSpark: {fileID: 0}
-  hitSpark: {fileID: 3494273047620996136, guid: 3c1eff4b468cc7e4ab4a46cd158deb42, type: 3}
+  blockSpark: {fileID: 4748730675913877244, guid: ee1116342624b6342b89b9cf302d2290, type: 3}
+  hitSpark: {fileID: 8840018528841292498, guid: e506070dd2c62214596a0ba2dac17408, type: 3}
   critSpark: {fileID: 0}
   sparkVariants: []
 --- !u!1 &5387335074120596825

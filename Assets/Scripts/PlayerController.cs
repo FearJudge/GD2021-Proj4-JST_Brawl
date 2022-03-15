@@ -25,7 +25,8 @@ public class PlayerController : DepthBeUController
         damageModArray = new float[3],
         damagePlusArray = new int[3],
         hitstunArray = new float[3],
-        critArray = new int[3]
+        critArray = new int[3],
+        extraProj = 0
     };
 
     private void Awake()
@@ -81,6 +82,7 @@ public class PlayerController : DepthBeUController
         if (up.movementModifier != 0f) { speed *= up.movementModifier; }
         if (up.stunModifier != 0f) { gv.hitstunArray = MoveProp.DetermineFloatArrayValues(gv.hitstunArray, up.stunModifier, up); }
         if (up.addCriticalChance != 0) { gv.critArray = MoveProp.DetermineIntArrayValues(gv.critArray, up.addCriticalChance, up); }
+        if (up.addProjectiles != 0) { gv.extraProj += up.addProjectiles; }
     }
 
     private void OnDestroy()

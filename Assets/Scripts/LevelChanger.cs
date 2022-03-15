@@ -30,7 +30,8 @@ public class LevelChanger : MonoBehaviour
             yield return new WaitForSecondsRealtime(0.1f);
         }
         sceneChange.allowSceneActivation = true;
-        yield return new WaitForSecondsRealtime(0.7f);
+        yield return new WaitUntil(() => sceneChange.isDone);
+        yield return new WaitForSecondsRealtime(0.2f);
         EndTransition();
         yield return new WaitForSecondsRealtime(finalDur);
         EndMe();

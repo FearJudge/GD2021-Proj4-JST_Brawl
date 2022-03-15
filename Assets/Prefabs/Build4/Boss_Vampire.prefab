@@ -1937,8 +1937,8 @@ MonoBehaviour:
   iconid: 3
   isPlayer: 0
   lastTouched: 0
-  healthThresholds: 0c0000001900000025000000
-  health: 50
+  healthThresholds: e2040000c4090000a60e0000
+  health: 5000
 --- !u!54 &5949180037624937293
 Rigidbody:
   m_ObjectHideFlags: 0

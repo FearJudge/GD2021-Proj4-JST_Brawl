@@ -12,6 +12,7 @@ public class MoveProp
         public int[] damagePlusArray;
         public float[] damageModArray;
         public int[] critArray;
+        public int extraProj;
     }
 
     [SerializeField] public readonly string moveName = "";
@@ -68,7 +69,7 @@ public class MoveProp
         player.hb.lifeSteal = lifeSteal + pv.lifestealArray[type];
         player.hb.crit = pv.critArray[type] + baseCrit;
         if (selfDamage != 0) { player.hpScript.Hp -= selfDamage; }
-        if (isProjectile) { player.projectilespawner.firedProjectiles = projCount; player.projectilespawner.hbData = player.hb; player.projectilespawner.ammoChange = ammoChange; player.projectilespawner.vel = projVelocity; }
+        if (isProjectile) { player.projectilespawner.firedProjectiles = projCount + pv.extraProj; player.projectilespawner.hbData = player.hb; player.projectilespawner.ammoChange = ammoChange; player.projectilespawner.vel = projVelocity; }
         if (isProjBuff)
         {
             if (!isStacking) { player.projectilespawner.SetStateToRegular(); }
@@ -85,7 +86,7 @@ public class MoveProp
 
     public void ActivateMove(DepthBeUController player)
     {
-        ActivateMove(player, new GlobalVariables() { damageModArray = new float[1], hitstunArray = new float[1], damagePlusArray = new int[1], lifestealArray = new int[1], critArray = new int[1] }, 0);
+        ActivateMove(player, new GlobalVariables() { damageModArray = new float[1], hitstunArray = new float[1], damagePlusArray = new int[1], lifestealArray = new int[1], critArray = new int[1], extraProj = 0 }, 0);
     }
 
     public static int[] DetermineIntArrayValues(int[] toMod, int valMod, UpgradeLibrary.PlayerUpgrade up)

@@ -43563,15 +43563,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bloodPrefab: {fileID: 536307619090549329, guid: 37ee3c3b708b4534b94331d885326524, type: 3}
   bloodArray:
-  - chance: 0.3
+  - chance: 0.1
     velocityRange: {x: 3, y: 4}
     angleRange: {x: -60, y: 60}
-  - chance: 0.12
+  - chance: 0.03
     velocityRange: {x: 2, y: 5}
     angleRange: {x: -70, y: 70}
-  - chance: 0.02
-    velocityRange: {x: 2, y: 5}
-    angleRange: {x: -35, y: 35}
 --- !u!114 &9028592010258895497
 MonoBehaviour:
   m_ObjectHideFlags: 0

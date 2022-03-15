@@ -53,7 +53,7 @@ public class UI_HealthBarComponent : MonoBehaviour
         while (healthBar.value != healthBarFollower.value)
         {
             if (healthBarFollower.value > movetow) { healthBarFollower.value -= 1; }
-            else { healthBar.value += 1; yield return new WaitForSeconds(0.2f); }
+            else { healthBar.value += 1; yield return new WaitForSeconds(0.01f); }
             yield return new WaitForSeconds(0.01f);
         }
         movin = false;

@@ -172,7 +172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveListSword:
   - moveName: Sword Slash
-    followUpTo: 
+    followUpTo: '- | Slide Kick'
     cancelFrom: 
     followUpAllowedOnlyOnHit: 0
     moveDefinition:
@@ -206,6 +206,7 @@ MonoBehaviour:
       projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
+      isStacking: 0
       selfDamage: 0
       nonAttack: 0
       alternateLayerMask:
@@ -246,13 +247,14 @@ MonoBehaviour:
       projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
+      isStacking: 0
       selfDamage: 0
       nonAttack: 0
       alternateLayerMask:
         serializedVersion: 2
         m_Bits: 0
   - moveName: Sword Uppercut
-    followUpTo: '-'
+    followUpTo: '- | Heavy Ground Stab'
     cancelFrom: 
     followUpAllowedOnlyOnHit: 0
     moveDefinition:
@@ -286,6 +288,7 @@ MonoBehaviour:
       projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
+      isStacking: 0
       selfDamage: 0
       nonAttack: 0
       alternateLayerMask:
@@ -326,6 +329,7 @@ MonoBehaviour:
       projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
+      isStacking: 0
       selfDamage: 0
       nonAttack: 0
       alternateLayerMask:
@@ -366,46 +370,7 @@ MonoBehaviour:
       projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
-      selfDamage: 0
-      nonAttack: 0
-      alternateLayerMask:
-        serializedVersion: 2
-        m_Bits: 0
-  - moveName: Heavy Thrust
-    followUpTo: 
-    cancelFrom: 
-    followUpAllowedOnlyOnHit: 0
-    moveDefinition:
-    - (123456789)B
-    moveAllowedError: 3
-    moveAllowedDuration: 12
-    movePriority: 21
-    moveBloodCost: 0
-    moveAmmoCost: 0
-    allowOnGround: 1
-    allowOnAir: 0
-    properties:
-      triggerIsBool: 0
-      setTo: 0
-      animationTrigger: Attack_Thrust_Front
-      sound: {fileID: 8300000, guid: a56cd1e5e465dac46a09aaf6f09bc030, type: 3}
-      playDelays: []
-      animationSpeedMod: 1
-      allowNextMove: 36
-      preventMovement: 34
-      followUpAllowFrom: 25
-      characterVelocity: {x: 3, y: 0.1, z: 0}
-      hurtBoxDamage: 65
-      lifeSteal: 0
-      baseCrit: 15
-      hitStunDuration: 0.5
-      knockDown: 1
-      knockDownVelocity: {x: 5, y: 0.3, z: 0}
-      isProjectile: 0
-      ammoChange: 0
-      projCount: 0
-      projVelocity: {x: 0, y: 0, z: 0}
-      isProjBuff: 0
+      isStacking: 0
       selfDamage: 0
       nonAttack: 0
       alternateLayerMask:
@@ -446,6 +411,7 @@ MonoBehaviour:
       projCount: 0
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
+      isStacking: 0
       selfDamage: 0
       nonAttack: 1
       alternateLayerMask:
@@ -475,17 +441,100 @@ MonoBehaviour:
       preventMovement: 34
       followUpAllowFrom: 25
       characterVelocity: {x: 0, y: 0, z: 0}
-      hurtBoxDamage: 0
+      hurtBoxDamage: 55
       lifeSteal: 0
-      baseCrit: 0
-      hitStunDuration: 0
-      knockDown: 0
-      knockDownVelocity: {x: 0, y: 0, z: 0}
+      baseCrit: 100
+      hitStunDuration: 1.3
+      knockDown: 1
+      knockDownVelocity: {x: 0, y: 2.8, z: 0}
       isProjectile: 0
       ammoChange: 0
       projCount: 0
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
+      isStacking: 0
+      selfDamage: 0
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
+  - moveName: Heavy Thrust
+    followUpTo: '- | Slide Kick'
+    cancelFrom: 
+    followUpAllowedOnlyOnHit: 0
+    moveDefinition:
+    - (123456789)B
+    moveAllowedError: 3
+    moveAllowedDuration: 12
+    movePriority: 21
+    moveBloodCost: 0
+    moveAmmoCost: 0
+    allowOnGround: 1
+    allowOnAir: 0
+    properties:
+      triggerIsBool: 0
+      setTo: 0
+      animationTrigger: Attack_Thrust_Front
+      sound: {fileID: 8300000, guid: a56cd1e5e465dac46a09aaf6f09bc030, type: 3}
+      playDelays: []
+      animationSpeedMod: 1
+      allowNextMove: 36
+      preventMovement: 34
+      followUpAllowFrom: 25
+      characterVelocity: {x: 3, y: 0.1, z: 0}
+      hurtBoxDamage: 65
+      lifeSteal: 0
+      baseCrit: 15
+      hitStunDuration: 0.5
+      knockDown: 1
+      knockDownVelocity: {x: 5, y: 0.3, z: 0}
+      isProjectile: 0
+      ammoChange: 0
+      projCount: 0
+      projVelocity: {x: 0, y: 0, z: 0}
+      isProjBuff: 0
+      isStacking: 0
+      selfDamage: 0
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
+  - moveName: Heavy Ground Stab
+    followUpTo: Heavy Thrust
+    cancelFrom: 
+    followUpAllowedOnlyOnHit: 0
+    moveDefinition:
+    - (123456789)B
+    moveAllowedError: 3
+    moveAllowedDuration: 12
+    movePriority: 21
+    moveBloodCost: 0
+    moveAmmoCost: 0
+    allowOnGround: 1
+    allowOnAir: 0
+    properties:
+      triggerIsBool: 0
+      setTo: 0
+      animationTrigger: Attack_DownStab
+      sound: {fileID: 8300000, guid: a56cd1e5e465dac46a09aaf6f09bc030, type: 3}
+      playDelays: []
+      animationSpeedMod: 1
+      allowNextMove: 36
+      preventMovement: 34
+      followUpAllowFrom: 25
+      characterVelocity: {x: 0, y: 0, z: 0}
+      hurtBoxDamage: 55
+      lifeSteal: 0
+      baseCrit: 10
+      hitStunDuration: 0.8
+      knockDown: 1
+      knockDownVelocity: {x: 0, y: 4.7, z: 0}
+      isProjectile: 0
+      ammoChange: 0
+      projCount: 0
+      projVelocity: {x: 0, y: 0, z: 0}
+      isProjBuff: 0
+      isStacking: 0
       selfDamage: 0
       nonAttack: 0
       alternateLayerMask:
@@ -525,8 +574,9 @@ MonoBehaviour:
       isProjectile: 1
       ammoChange: -1
       projCount: 3
-      projVelocity: {x: 0, y: 0, z: 0}
+      projVelocity: {x: 16, y: -1, z: 0}
       isProjBuff: 0
+      isStacking: 0
       selfDamage: 0
       nonAttack: 0
       alternateLayerMask:
@@ -565,15 +615,16 @@ MonoBehaviour:
       isProjectile: 1
       ammoChange: -1
       projCount: 3
-      projVelocity: {x: 0, y: 0, z: 0}
+      projVelocity: {x: 16, y: -2, z: 0}
       isProjBuff: 0
+      isStacking: 0
       selfDamage: 0
       nonAttack: 0
       alternateLayerMask:
         serializedVersion: 2
         m_Bits: 0
   - moveName: Crossbow Shoot BloodFollowup
-    followUpTo: Crossbow Shoot Followup | Crossbow Shoot BloodFollowup
+    followUpTo: DISABLE
     cancelFrom: 
     followUpAllowedOnlyOnHit: 0
     moveDefinition:
@@ -605,8 +656,9 @@ MonoBehaviour:
       isProjectile: 1
       ammoChange: -1
       projCount: 5
-      projVelocity: {x: 0, y: 0, z: 0}
+      projVelocity: {x: 16, y: 0, z: 0}
       isProjBuff: 0
+      isStacking: 0
       selfDamage: 0
       nonAttack: 0
       alternateLayerMask:
@@ -650,6 +702,7 @@ MonoBehaviour:
       projCount: 3
       projVelocity: {x: 6, y: 0, z: 0}
       isProjBuff: 1
+      isStacking: 0
       selfDamage: 0
       nonAttack: 0
       alternateLayerMask:
@@ -690,6 +743,7 @@ MonoBehaviour:
       projCount: 0
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 1
+      isStacking: 0
       selfDamage: 0
       nonAttack: 0
       alternateLayerMask:
@@ -733,6 +787,7 @@ MonoBehaviour:
       projCount: 0
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 1
+      isStacking: 0
       selfDamage: 0
       nonAttack: 0
       alternateLayerMask:
@@ -773,13 +828,14 @@ MonoBehaviour:
       projCount: 0
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
+      isStacking: 0
       selfDamage: 0
       nonAttack: 0
       alternateLayerMask:
         serializedVersion: 2
         m_Bits: 0
   - moveName: Heavy Cross Bow StartUp
-    followUpTo: '-'
+    followUpTo: '- | Slide Kick'
     cancelFrom: 
     followUpAllowedOnlyOnHit: 0
     moveDefinition:
@@ -798,9 +854,9 @@ MonoBehaviour:
       sound: {fileID: 8300000, guid: c9c8536393ec15f4d9b154323753480f, type: 3}
       playDelays: []
       animationSpeedMod: 1
-      allowNextMove: 35
-      preventMovement: 25
-      followUpAllowFrom: 25
+      allowNextMove: 80
+      preventMovement: 76
+      followUpAllowFrom: 23
       characterVelocity: {x: 0, y: 0, z: 0}
       hurtBoxDamage: 0
       lifeSteal: 0
@@ -813,6 +869,7 @@ MonoBehaviour:
       projCount: 0
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
+      isStacking: 0
       selfDamage: 0
       nonAttack: 0
       alternateLayerMask:
@@ -837,12 +894,12 @@ MonoBehaviour:
       animationTrigger: Attack_Gun_Heavy3
       sound: {fileID: 8300000, guid: f6f6cca9a6aed524396744111f498209, type: 3}
       playDelays: []
-      animationSpeedMod: 1
+      animationSpeedMod: 1.5
       allowNextMove: 40
       preventMovement: 30
       followUpAllowFrom: 20
       characterVelocity: {x: 0, y: 0, z: 0}
-      hurtBoxDamage: 3
+      hurtBoxDamage: 2
       lifeSteal: 0
       baseCrit: 0
       hitStunDuration: 0
@@ -850,9 +907,10 @@ MonoBehaviour:
       knockDownVelocity: {x: 0, y: 0, z: 0}
       isProjectile: 0
       ammoChange: 0
-      projCount: 0
+      projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 1
+      isStacking: 1
       selfDamage: 0
       nonAttack: 0
       alternateLayerMask:
@@ -878,8 +936,8 @@ MonoBehaviour:
       sound: {fileID: 8300000, guid: 022d5f504baa5ec4dbd05fb16803fc2c, type: 3}
       playDelays: []
       animationSpeedMod: 2
-      allowNextMove: 25
-      preventMovement: 15
+      allowNextMove: 33
+      preventMovement: 33
       followUpAllowFrom: 10
       characterVelocity: {x: 0, y: 0, z: 0}
       hurtBoxDamage: 3
@@ -891,8 +949,50 @@ MonoBehaviour:
       isProjectile: 1
       ammoChange: -1
       projCount: 3
-      projVelocity: {x: 14, y: 0, z: 0}
+      projVelocity: {x: 26, y: 0, z: 0}
       isProjBuff: 0
+      isStacking: 0
+      selfDamage: 0
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
+  - moveName: Cross Bow Air
+    followUpTo: 
+    cancelFrom: 
+    followUpAllowedOnlyOnHit: 0
+    moveDefinition:
+    - (123456789)A
+    moveAllowedError: 2
+    moveAllowedDuration: 23
+    movePriority: 21
+    moveBloodCost: 0
+    moveAmmoCost: 0
+    allowOnGround: 0
+    allowOnAir: 1
+    properties:
+      triggerIsBool: 0
+      setTo: 0
+      animationTrigger: Attack_Gun_Air
+      sound: {fileID: 8300000, guid: 022d5f504baa5ec4dbd05fb16803fc2c, type: 3}
+      playDelays: []
+      animationSpeedMod: 2
+      allowNextMove: 45
+      preventMovement: 45
+      followUpAllowFrom: 36
+      characterVelocity: {x: -3, y: 4, z: 0}
+      hurtBoxDamage: 7
+      lifeSteal: 0
+      baseCrit: 0
+      hitStunDuration: 0.3
+      knockDown: 1
+      knockDownVelocity: {x: 4, y: 0, z: 0}
+      isProjectile: 1
+      ammoChange: -1
+      projCount: 3
+      projVelocity: {x: 12, y: -6, z: 0}
+      isProjBuff: 0
+      isStacking: 0
       selfDamage: 0
       nonAttack: 0
       alternateLayerMask:
@@ -916,26 +1016,27 @@ MonoBehaviour:
     properties:
       triggerIsBool: 0
       setTo: 0
-      animationTrigger: 
+      animationTrigger: BloodRage
       sound: {fileID: 8300000, guid: b8d38d324558fbe4d94693f8d4968a3b, type: 3}
       playDelays: []
       animationSpeedMod: 0
       allowNextMove: 25
       preventMovement: 25
-      followUpAllowFrom: 6
+      followUpAllowFrom: 12
       characterVelocity: {x: 0, y: 0, z: 0}
       hurtBoxDamage: 0
       lifeSteal: 0
       baseCrit: 0
-      hitStunDuration: 0
-      knockDown: 0
-      knockDownVelocity: {x: 0, y: 0, z: 0}
+      hitStunDuration: 0.3
+      knockDown: 1
+      knockDownVelocity: {x: 0, y: 0.9, z: 0}
       isProjectile: 0
       ammoChange: 0
       projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
-      selfDamage: -50
+      isStacking: 0
+      selfDamage: -75
       nonAttack: 0
       alternateLayerMask:
         serializedVersion: 2
@@ -976,6 +1077,7 @@ MonoBehaviour:
       projCount: 0
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
+      isStacking: 0
       selfDamage: 0
       nonAttack: 0
       alternateLayerMask:
@@ -1018,6 +1120,7 @@ MonoBehaviour:
       projCount: 0
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
+      isStacking: 0
       selfDamage: 0
       nonAttack: 0
       alternateLayerMask:
@@ -1060,6 +1163,48 @@ MonoBehaviour:
       projCount: 0
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
+      isStacking: 0
+      selfDamage: 0
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
+  - moveName: Heavy Cross Bow Release Fast
+    followUpTo: Heavy Cross Bow StartUp
+    cancelFrom: 
+    followUpAllowedOnlyOnHit: 0
+    moveDefinition:
+    - '*'
+    moveAllowedError: 2
+    moveAllowedDuration: 23
+    movePriority: 21
+    moveBloodCost: 0
+    moveAmmoCost: 0
+    allowOnGround: 1
+    allowOnAir: 0
+    properties:
+      triggerIsBool: 0
+      setTo: 0
+      animationTrigger: Attack_Gun_Heavy2
+      sound: {fileID: 8300000, guid: 022d5f504baa5ec4dbd05fb16803fc2c, type: 3}
+      playDelays: []
+      animationSpeedMod: 2
+      allowNextMove: 33
+      preventMovement: 33
+      followUpAllowFrom: 10
+      characterVelocity: {x: 0, y: 0, z: 0}
+      hurtBoxDamage: 3
+      lifeSteal: 0
+      baseCrit: 35
+      hitStunDuration: 1
+      knockDown: 1
+      knockDownVelocity: {x: 4, y: 0, z: 0}
+      isProjectile: 1
+      ammoChange: -1
+      projCount: 3
+      projVelocity: {x: 22, y: 0, z: 0}
+      isProjBuff: 0
+      isStacking: 0
       selfDamage: 0
       nonAttack: 0
       alternateLayerMask:

@@ -64,10 +64,11 @@ public class UpgradeLink : MonoBehaviour
         availableUpgrades[availableInd].SelectedCurrent();
     }
 
-    public static void ActivateInstances()
+    public static bool ActivateInstances()
     {
         availableInd = 0;
         UpgradeLibrary.instance.linkRoot.localRotation = Quaternion.AngleAxis(0, Vector3.forward);
+        if (availableUpgrades.Count == 0) { return false; }
         float rotPerUpgrade = 360f / availableUpgrades.Count;
         for (int a = 0; a < availableUpgrades.Count; a++)
         {
@@ -77,6 +78,7 @@ public class UpgradeLink : MonoBehaviour
             availableUpgrades[a].transform.RotateAround(UpgradeLibrary.instance.linkRoot.position, Vector3.forward, a * -rotPerUpgrade);
         }
         Scroll(0);
+        return true;
     }
 
     public static void CreateInstance(DepthBeUController owner, DepthBeUController player, uint upgradeint)

@@ -296,6 +296,19 @@ MeshRenderer:
   - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
   - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
   - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -446,6 +459,19 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
   - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
   - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
   - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
@@ -628,6 +654,19 @@ MeshRenderer:
   - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
   - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
   - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -778,6 +817,19 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+  - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
   - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
   - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
   - {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
@@ -1160,6 +1212,16 @@ MonoBehaviour:
     turnToFacePlayer: 1
     turnToFaceAwayFromPlayer: 0
     transitions:
+    - behaviourIndexToTransitionTo: 13
+      conditionUsed: 0
+      chance: 0.089
+      useTimes: -1
+      usedInPhases: 010000000200000003000000
+    - behaviourIndexToTransitionTo: 13
+      conditionUsed: 0
+      chance: 0.171
+      useTimes: -1
+      usedInPhases: 0200000003000000
     - behaviourIndexToTransitionTo: 1
       conditionUsed: 8
       chance: 0.553
@@ -1777,6 +1839,53 @@ MonoBehaviour:
       chance: 0
       useTimes: -1
       usedInPhases: 
+  - name: BloodAttack
+    performAMove: 1
+    useMove:
+      triggerIsBool: 0
+      setTo: 0
+      animationTrigger: Airborne_Attack
+      sound: {fileID: 0}
+      playDelays: []
+      animationSpeedMod: 0
+      allowNextMove: 45
+      preventMovement: 45
+      followUpAllowFrom: 45
+      characterVelocity: {x: 0, y: 0, z: 0}
+      hurtBoxDamage: 45
+      lifeSteal: 0
+      baseCrit: 0
+      hitStunDuration: 0.8
+      knockDown: 0
+      knockDownVelocity: {x: 4, y: 1, z: 0}
+      isProjectile: 0
+      ammoChange: 0
+      projCount: 1
+      projVelocity: {x: 0, y: 0, z: 0}
+      isProjBuff: 0
+      isStacking: 0
+      selfDamage: 0
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
+    moveToSpot: {x: 0, y: 0, z: 0}
+    randomizeSpotArea: {x: 0, y: 0, z: 0}
+    relateSpotToSelf: 0
+    relateSpotToPlayer: 1
+    waitAction: {x: 0, y: 0}
+    changePhase: 0
+    setPhase: 0
+    modifyLife: 0
+    waitAfter: 1
+    turnToFacePlayer: 1
+    turnToFaceAwayFromPlayer: 0
+    transitions:
+    - behaviourIndexToTransitionTo: 0
+      conditionUsed: 0
+      chance: 0
+      useTimes: -1
+      usedInPhases: 
   globalTransitions:
   - behaviourIndexToTransitionTo: 8
     conditionUsed: 10
@@ -1825,6 +1934,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthOwnerName: General Slurp
+  iconid: 3
   isPlayer: 0
   lastTouched: 0
   healthThresholds: 0c0000001900000025000000
@@ -1871,7 +1981,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2742274014615355421, guid: 2f615c82be5b29e43b312b885393b0ca, type: 3}
       propertyPath: m_Materials.Array.size
-      value: 16
+      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 2742274014615355421, guid: 2f615c82be5b29e43b312b885393b0ca, type: 3}
       propertyPath: m_Materials.Array.data[29]

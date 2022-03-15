@@ -21,7 +21,7 @@ public class UI_HealthBarComponent : MonoBehaviour
         healthBar.wholeNumbers = true;
         healthBarFollower.wholeNumbers = true;
         UpdateHealthInformation(hp, true);
-        if (sprites.Length > 0) { characterIcon.sprite = sprites[0]; }
+        if (sprites.Length > 0) { characterIcon.sprite = sprites[hp.iconid]; }
     }
 
     public void UpdateHealthInformation(Health hp, bool setValues=false)

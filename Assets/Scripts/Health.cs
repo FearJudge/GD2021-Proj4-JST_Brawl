@@ -11,6 +11,7 @@ public class Health : MonoBehaviour
 
     protected DepthBeUController character;
     [SerializeField] public string healthOwnerName = "";
+    public int iconid = 0;
     public bool isPlayer = false;
     private int maxhealth = 100;
     private int minhealthInd = 0;

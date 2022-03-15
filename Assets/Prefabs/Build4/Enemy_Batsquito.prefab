@@ -306,6 +306,7 @@ MonoBehaviour:
   feet: {fileID: 5387335074236298462}
   body: {fileID: 5387335073138520825}
   speed: 12
+  isAlive: 1
   resistance: 10
   hangTime: 0.2
   baseJumpsAvailable: 1
@@ -359,6 +360,7 @@ MonoBehaviour:
       projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
+      isStacking: 0
       selfDamage: 0
       nonAttack: 0
       alternateLayerMask:
@@ -405,6 +407,7 @@ MonoBehaviour:
       projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
+      isStacking: 0
       selfDamage: 0
       nonAttack: 0
       alternateLayerMask:
@@ -451,6 +454,7 @@ MonoBehaviour:
       projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
+      isStacking: 0
       selfDamage: 0
       nonAttack: 0
       alternateLayerMask:
@@ -507,6 +511,7 @@ MonoBehaviour:
       projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
+      isStacking: 0
       selfDamage: 0
       nonAttack: 0
       alternateLayerMask:
@@ -558,6 +563,7 @@ MonoBehaviour:
       projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
+      isStacking: 0
       selfDamage: 0
       nonAttack: 0
       alternateLayerMask:
@@ -604,6 +610,7 @@ MonoBehaviour:
       projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
+      isStacking: 0
       selfDamage: 0
       nonAttack: 0
       alternateLayerMask:
@@ -655,6 +662,7 @@ MonoBehaviour:
       projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
+      isStacking: 0
       selfDamage: 0
       nonAttack: 0
       alternateLayerMask:
@@ -715,6 +723,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthOwnerName: Batsquito
+  iconid: 2
   isPlayer: 0
   lastTouched: 0
   healthThresholds: 
@@ -801,7 +810,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 524425060632732602, guid: 8128e5b537b42d64d9b7e6587505ba4f, type: 3}
       propertyPath: m_Materials.Array.size
-      value: 7
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 524425060632732602, guid: 8128e5b537b42d64d9b7e6587505ba4f, type: 3}
       propertyPath: m_Materials.Array.data[0]

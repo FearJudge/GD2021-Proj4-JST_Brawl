@@ -57,6 +57,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06fd2fd4acf2bb04c914c8a2fdd6bcde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputSystem: {fileID: 0}
   ownerHealth: {fileID: 1111734080773255561}
   body: {fileID: 1111734080773255232}
   hitStun: 0.25
@@ -69,6 +70,10 @@ MonoBehaviour:
   activeOn:
     serializedVersion: 2
     m_Bits: 4096
+  useAlternate: 0
+  activeOnAlt:
+    serializedVersion: 2
+    m_Bits: 0
   blockSpark: {fileID: 0}
   hitSpark: {fileID: 3494273047620996136, guid: 3c1eff4b468cc7e4ab4a46cd158deb42, type: 3}
   critSpark: {fileID: 0}
@@ -188,9 +193,16 @@ MonoBehaviour:
   feet: {fileID: 1111734080773255237}
   body: {fileID: 1111734080773255277}
   speed: 8
+  isAlive: 1
   resistance: 10
   hangTime: 0.2
   baseJumpsAvailable: 1
+  feetCollSize: 0.14
+  bodyCollSize: 0.32
+  feetEdgeSize: 0.02
+  bodyEdgeSize: 0.09
+  bodyLandingPad: 0.25
+  bodyHeight: 0.9
   airborne: 0
   frozen: 0
   halted: 0
@@ -218,6 +230,7 @@ MonoBehaviour:
       setTo: 0
       animationTrigger: Attack_3
       sound: {fileID: 0}
+      playDelays: []
       animationSpeedMod: 1
       allowNextMove: 6
       preventMovement: 21
@@ -234,7 +247,12 @@ MonoBehaviour:
       projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
+      isStacking: 0
       selfDamage: 0
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
     moveToSpot: {x: 0, y: 0, z: 0}
     randomizeSpotArea: {x: 0, y: 0, z: 0}
     relateSpotToSelf: 0
@@ -264,6 +282,7 @@ MonoBehaviour:
       setTo: 0
       animationTrigger: Attack_Fast
       sound: {fileID: 0}
+      playDelays: []
       animationSpeedMod: 1
       allowNextMove: 25
       preventMovement: 12
@@ -280,7 +299,12 @@ MonoBehaviour:
       projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
+      isStacking: 0
       selfDamage: 0
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
     moveToSpot: {x: 0.4, y: 0, z: 0}
     randomizeSpotArea: {x: 0, y: 0, z: 0}
     relateSpotToSelf: 0
@@ -305,6 +329,7 @@ MonoBehaviour:
       setTo: 0
       animationTrigger: Attack_Fast
       sound: {fileID: 0}
+      playDelays: []
       animationSpeedMod: 1
       allowNextMove: 25
       preventMovement: 12
@@ -321,7 +346,12 @@ MonoBehaviour:
       projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
+      isStacking: 0
       selfDamage: 0
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
     moveToSpot: {x: -0.4, y: 0, z: 0}
     randomizeSpotArea: {x: 0, y: 0, z: 0}
     relateSpotToSelf: 0
@@ -346,6 +376,7 @@ MonoBehaviour:
       setTo: 0
       animationTrigger: Attack_1
       sound: {fileID: 0}
+      playDelays: []
       animationSpeedMod: 1
       allowNextMove: 6
       preventMovement: 12
@@ -362,7 +393,12 @@ MonoBehaviour:
       projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
+      isStacking: 0
       selfDamage: 0
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
     moveToSpot: {x: 0, y: 0, z: 0}
     randomizeSpotArea: {x: 0, y: 0, z: 0}
     relateSpotToSelf: 0
@@ -387,6 +423,7 @@ MonoBehaviour:
       setTo: 0
       animationTrigger: Attack_2
       sound: {fileID: 0}
+      playDelays: []
       animationSpeedMod: 1
       allowNextMove: 6
       preventMovement: 21
@@ -403,7 +440,12 @@ MonoBehaviour:
       projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
+      isStacking: 0
       selfDamage: 0
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
     moveToSpot: {x: 0, y: 0, z: 0}
     randomizeSpotArea: {x: 0, y: 0, z: 0}
     relateSpotToSelf: 0
@@ -438,6 +480,7 @@ MonoBehaviour:
       setTo: 0
       animationTrigger: Attack_3
       sound: {fileID: 0}
+      playDelays: []
       animationSpeedMod: 1
       allowNextMove: 6
       preventMovement: 21
@@ -454,7 +497,12 @@ MonoBehaviour:
       projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
+      isStacking: 0
       selfDamage: 0
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
     moveToSpot: {x: 0, y: 0, z: 0.01}
     randomizeSpotArea: {x: 0, y: 0, z: 0}
     relateSpotToSelf: 0
@@ -479,6 +527,7 @@ MonoBehaviour:
       setTo: 0
       animationTrigger: Attack_3
       sound: {fileID: 0}
+      playDelays: []
       animationSpeedMod: 1
       allowNextMove: 6
       preventMovement: 21
@@ -495,7 +544,12 @@ MonoBehaviour:
       projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
+      isStacking: 0
       selfDamage: 0
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
     moveToSpot: {x: 0, y: 0, z: 0.01}
     randomizeSpotArea: {x: 0, y: 0, z: 0}
     relateSpotToSelf: 0
@@ -525,6 +579,7 @@ MonoBehaviour:
       setTo: 0
       animationTrigger: Attack_3
       sound: {fileID: 0}
+      playDelays: []
       animationSpeedMod: 1
       allowNextMove: 6
       preventMovement: 21
@@ -541,7 +596,12 @@ MonoBehaviour:
       projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
+      isStacking: 0
       selfDamage: 0
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
     moveToSpot: {x: -7, y: 0, z: -1}
     randomizeSpotArea: {x: 0, y: 0, z: 0}
     relateSpotToSelf: 0
@@ -566,6 +626,7 @@ MonoBehaviour:
       setTo: 0
       animationTrigger: Attack_3
       sound: {fileID: 0}
+      playDelays: []
       animationSpeedMod: 1
       allowNextMove: 6
       preventMovement: 21
@@ -582,7 +643,12 @@ MonoBehaviour:
       projCount: 1
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
+      isStacking: 0
       selfDamage: 0
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
     moveToSpot: {x: 7, y: 0, z: 1}
     randomizeSpotArea: {x: 0, y: 0, z: 0}
     relateSpotToSelf: 0
@@ -643,6 +709,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthOwnerName: Venomous Spider
+  iconid: 1
   isPlayer: 0
   lastTouched: 0
   healthThresholds: 
@@ -827,7 +894,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8969409817552502318, guid: bf373893f0c18604581857d998af0d25, type: 3}
       propertyPath: m_Materials.Array.size
-      value: 1
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 8969409817552502318, guid: bf373893f0c18604581857d998af0d25, type: 3}
       propertyPath: m_Materials.Array.data[0]

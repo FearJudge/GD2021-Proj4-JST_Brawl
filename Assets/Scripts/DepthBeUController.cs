@@ -196,12 +196,12 @@ public class DepthBeUController : MonoBehaviour
             if ((cameraFocus.position.x + cameraLocking.cameraLockArea.x > transform.position.x && x > 0) || (cameraFocus.position.x - cameraLocking.cameraLockArea.x < transform.position.x && x < 0))
             { forceX = x; }
         }
-        else if ((x < -moveThreshold && movementChecks.feetXneg) || (x > moveThreshold && movementChecks.feetXplus)) { forceX = x; }
+        else if ((x < -moveThreshold && movementChecks.feetXneg && movementChecks.bodyXneg) || (x > moveThreshold && movementChecks.feetXplus && movementChecks.bodyXplus)) { forceX = x; }
         if ( (z > moveThreshold && movementChecks.feetZplus && movementChecks.bodyZplus) || (z < -moveThreshold && movementChecks.feetZneg && movementChecks.bodyZneg) )
         {
             forceZ = z;
         }
-        else if ((z < -moveThreshold && movementChecks.feetZneg) || (z > moveThreshold && movementChecks.feetZplus)) { forceZ = z; }
+        else if ((z < -moveThreshold && movementChecks.feetZneg && movementChecks.bodyZneg) || (z > moveThreshold && movementChecks.feetZplus && movementChecks.bodyZplus)) { forceZ = z; }
         ControlledKnockBack();
 
         if (delta == 0f) { delta = Time.deltaTime; }

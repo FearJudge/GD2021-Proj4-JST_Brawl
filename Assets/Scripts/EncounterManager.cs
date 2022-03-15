@@ -152,9 +152,10 @@ public class EncounterManager : MonoBehaviour
     {
         SoundPlayer.CrossFadeBGM(1, 1f, 1f);
         currentWaves = new Wave[0];
-        EncounterEnded?.Invoke();
-        UpgradeLink.ActivateInstances();
+        bool upgrade = UpgradeLink.ActivateInstances();
         inProgress = false;
+        if (!upgrade) { Clear(); return; }
+        EncounterEnded?.Invoke();
     }
 
     public static void IDied(GameObject enemy, EnemyAI controller)

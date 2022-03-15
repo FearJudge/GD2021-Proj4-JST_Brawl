@@ -804,8 +804,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 31.6
+  m_fontSizeBase: 31.6
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -880,7 +880,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 580}
+  m_AnchoredPosition: {x: 0, y: 596.1}
   m_SizeDelta: {x: 750, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &220887851591918696
@@ -913,8 +913,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Upgrade Name
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b609d59c729d64c40ad1521a7d52be56, type: 2}
-  m_sharedMaterial: {fileID: 3626145051454967639, guid: b609d59c729d64c40ad1521a7d52be56, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8aa726a475d3f5e41bbae4184afdf47f, type: 2}
+  m_sharedMaterial: {fileID: -4158142542280365578, guid: 8aa726a475d3f5e41bbae4184afdf47f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -938,13 +938,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60
-  m_fontSizeBase: 60
+  m_fontSize: 117.11
+  m_fontSizeBase: 117.11
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -1028,6 +1028,7 @@ MonoBehaviour:
     upgradeDescription: + 40 to Maximum Health
     upgradeId: 1
     icon: {fileID: 21300000, guid: f9c68c3a5bea9f249a3a921424d411c6, type: 3}
+    upgradeChain: 
     addHealth: 40
     addLifeSteal: 0
     addCriticalChance: 0
@@ -1044,6 +1045,7 @@ MonoBehaviour:
     upgradeDescription: Your sword deals 20% more damage.
     upgradeId: 2
     icon: {fileID: 21300000, guid: 40f712163c1b201498b9be2e110fee78, type: 3}
+    upgradeChain: 
     addHealth: 0
     addLifeSteal: 0
     addCriticalChance: 0
@@ -1060,6 +1062,7 @@ MonoBehaviour:
     upgradeDescription: Sword Attacks Steal life, but deal less damage.
     upgradeId: 3
     icon: {fileID: 21300000, guid: 540380db06df10249b93ac721184ad2e, type: 3}
+    upgradeChain: 
     addHealth: 0
     addLifeSteal: 3
     addCriticalChance: 0
@@ -1076,6 +1079,7 @@ MonoBehaviour:
     upgradeDescription: Your hits have increased knockback and stun.
     upgradeId: 4
     icon: {fileID: 21300000, guid: 40fbb8d136861144789cbd9b7c655f90, type: 3}
+    upgradeChain: 
     addHealth: 0
     addLifeSteal: 0
     addCriticalChance: 0
@@ -1095,6 +1099,7 @@ MonoBehaviour:
       deal double damage)'
     upgradeId: 5
     icon: {fileID: 21300000, guid: eec8514e9f717fe42b482361d6fbaae1, type: 3}
+    upgradeChain: 
     addHealth: 0
     addLifeSteal: 0
     addCriticalChance: 5
@@ -1113,6 +1118,7 @@ MonoBehaviour:
       more knockback.
     upgradeId: 1000
     icon: {fileID: 21300000, guid: 802084b0b60c060419bbbb494e232906, type: 3}
+    upgradeChain: 
     onMove: Sword Slash II
     isNewMove: 0
     addLifeSteal: 10
@@ -1134,6 +1140,7 @@ MonoBehaviour:
       enemy less and increases recovery duration for both you and the enemy.
     upgradeId: 1001
     icon: {fileID: 21300000, guid: b27bf8ff806aa5544a32b9fa9bc1ac89, type: 3}
+    upgradeChain: 
     onMove: Sword Uppercut
     isNewMove: 0
     addLifeSteal: 0
@@ -1154,6 +1161,7 @@ MonoBehaviour:
     upgradeDescription: Adds a follow up to Sword Slash II.
     upgradeId: 1002
     icon: {fileID: 21300000, guid: ed9530d120320cf4c97cb258c08a2db0, type: 3}
+    upgradeChain: 
     onMove: Sword Slash IIIA
     isNewMove: 1
     addLifeSteal: 0
@@ -1175,6 +1183,7 @@ MonoBehaviour:
       damage.
     upgradeId: 1003
     icon: {fileID: 21300000, guid: 370066b37bffe26408f7ae554b24562f, type: 3}
+    upgradeChain: 
     onMove: Sword Slash
     isNewMove: 0
     addLifeSteal: 0
@@ -1196,6 +1205,7 @@ MonoBehaviour:
       Sword Slash II.
     upgradeId: 1004
     icon: {fileID: 21300000, guid: 26cce0787cf1301499c654329c733137, type: 3}
+    upgradeChain: 
     onMove: Sword Uppercut
     isNewMove: 0
     addLifeSteal: 0
@@ -1288,8 +1298,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Global Upgrade
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: b609d59c729d64c40ad1521a7d52be56, type: 2}
-  m_sharedMaterial: {fileID: 3626145051454967639, guid: b609d59c729d64c40ad1521a7d52be56, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8aa726a475d3f5e41bbae4184afdf47f, type: 2}
+  m_sharedMaterial: {fileID: -4158142542280365578, guid: 8aa726a475d3f5e41bbae4184afdf47f, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1313,13 +1323,13 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 68.8
+  m_fontSizeBase: 68.8
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -1963,14 +1973,14 @@ RectTransform:
   m_GameObject: {fileID: 3545773399199699947}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.59328, y: 0.59328, z: 0.59328}
   m_Children: []
   m_Father: {fileID: 3545773398154530948}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 186, y: -118}
+  m_AnchoredPosition: {x: -117, y: -20}
   m_SizeDelta: {x: 12, y: 12}
   m_Pivot: {x: 0, y: 0}
 --- !u!1 &3545773399209906033
@@ -2103,14 +2113,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.5529412}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5529412}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 2ed5ec13a5a2c49419df24578e7b57de, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

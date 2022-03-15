@@ -747,7 +747,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: 180}
-  m_SizeDelta: {x: 550, y: 160}
+  m_SizeDelta: {x: 700, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &220887851152155983
 CanvasRenderer:
@@ -1025,11 +1025,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerUpgrades:
   - upgradeName: Increased Health
-    upgradeDescription: + 40 to Maximum Health
+    upgradeDescription: Fully Heal and Add More Max Health.
     upgradeId: 1
     icon: {fileID: 21300000, guid: f9c68c3a5bea9f249a3a921424d411c6, type: 3}
     upgradeChain: 
-    addHealth: 40
+    addHealth: 60
     addLifeSteal: 0
     addCriticalChance: 0
     knockBackModifier: 0
@@ -1038,11 +1038,14 @@ MonoBehaviour:
     damageModifier: 0
     stunModifier: 0
     movementModifier: 0
+    addBloodSteal: 0
+    resistanceMod: 0
     affectsSword: 0
     affectsGun: 0
     affectsSpells: 0
+    addProjectiles: 0
   - upgradeName: Increased Sword Damage
-    upgradeDescription: Your sword deals 20% more damage.
+    upgradeDescription: Your Sword Deals Extra Damage
     upgradeId: 2
     icon: {fileID: 21300000, guid: 40f712163c1b201498b9be2e110fee78, type: 3}
     upgradeChain: 
@@ -1055,13 +1058,16 @@ MonoBehaviour:
     damageModifier: 1.2
     stunModifier: 0
     movementModifier: 0
+    addBloodSteal: 0
+    resistanceMod: 0
     affectsSword: 1
     affectsGun: 0
     affectsSpells: 0
-  - upgradeName: Vampiric Blade
-    upgradeDescription: Sword Attacks Steal life, but deal less damage.
+    addProjectiles: 0
+  - upgradeName: Vampiric Arrows
+    upgradeDescription: Your Bow Attacks Steal Life.
     upgradeId: 3
-    icon: {fileID: 21300000, guid: 540380db06df10249b93ac721184ad2e, type: 3}
+    icon: {fileID: 21300000, guid: af6156aa7afdbc449b41f1f8e8968f62, type: 3}
     upgradeChain: 
     addHealth: 0
     addLifeSteal: 3
@@ -1069,14 +1075,17 @@ MonoBehaviour:
     knockBackModifier: 0
     animationSpeedModifier: 0
     healthModifier: 0
-    damageModifier: 0.75
+    damageModifier: 1
     stunModifier: 0
     movementModifier: 0
-    affectsSword: 1
-    affectsGun: 0
+    addBloodSteal: 0
+    resistanceMod: 0
+    affectsSword: 0
+    affectsGun: 1
     affectsSpells: 0
+    addProjectiles: 0
   - upgradeName: Forceful Aura
-    upgradeDescription: Your hits have increased knockback and stun.
+    upgradeDescription: Increased Knockback and Stun.
     upgradeId: 4
     icon: {fileID: 21300000, guid: 40fbb8d136861144789cbd9b7c655f90, type: 3}
     upgradeChain: 
@@ -1089,11 +1098,14 @@ MonoBehaviour:
     damageModifier: 0
     stunModifier: 1.25
     movementModifier: 0
+    addBloodSteal: 0
+    resistanceMod: 0
     affectsSword: 0
     affectsGun: 0
     affectsSpells: 0
+    addProjectiles: 0
   - upgradeName: Awakened Soul
-    upgradeDescription: '+5% chance to deal Critical Strikes.
+    upgradeDescription: '+20% chance to deal Critical Strikes.
 
       (Critical Strikes
       deal double damage)'
@@ -1102,21 +1114,182 @@ MonoBehaviour:
     upgradeChain: 
     addHealth: 0
     addLifeSteal: 0
-    addCriticalChance: 5
+    addCriticalChance: 20
     knockBackModifier: 0
     animationSpeedModifier: 0
     healthModifier: 0
     damageModifier: 0
     stunModifier: 0
     movementModifier: 0
+    addBloodSteal: 0
+    resistanceMod: 0
     affectsSword: 0
     affectsGun: 0
     affectsSpells: 0
+    addProjectiles: 0
+  - upgradeName: Lightweight Bolts
+    upgradeDescription: Bow Fires +1 Arrow on Every Attack.
+    upgradeId: 6
+    icon: {fileID: 21300000, guid: c8c3552f324bc29449411ca141cffe50, type: 3}
+    upgradeChain: 
+    addHealth: 0
+    addLifeSteal: 0
+    addCriticalChance: 15
+    knockBackModifier: 0
+    animationSpeedModifier: 0
+    healthModifier: 0
+    damageModifier: 0
+    stunModifier: 0
+    movementModifier: 0
+    addBloodSteal: 0
+    resistanceMod: 0
+    affectsSword: 0
+    affectsGun: 1
+    affectsSpells: 0
+    addProjectiles: 1
+  - upgradeName: Brave Sword
+    upgradeDescription: 'Your Sword Attacks Steal Life.
+
+      Your Sword Attacks
+      Knockback Less.'
+    upgradeId: 7
+    icon: {fileID: 21300000, guid: 1af477d7943cbb04e9d40faf639d20b0, type: 3}
+    upgradeChain: 
+    addHealth: 0
+    addLifeSteal: 3
+    addCriticalChance: 0
+    knockBackModifier: 0.75
+    animationSpeedModifier: 0
+    healthModifier: 0
+    damageModifier: 0
+    stunModifier: 0
+    movementModifier: 0
+    addBloodSteal: 0
+    resistanceMod: 0
+    affectsSword: 1
+    affectsGun: 0
+    affectsSpells: 0
+    addProjectiles: 0
+  - upgradeName: Resolved Might
+    upgradeDescription: 'Your Sword Attacks Deal a Lot More Damage.
+
+      Your Sword
+      Attacks Deal Damage to You.'
+    upgradeId: 8
+    icon: {fileID: 21300000, guid: 1a9ba00291e647c42902bec619c07043, type: 3}
+    upgradeChain: 
+    addHealth: 0
+    addLifeSteal: -4
+    addCriticalChance: 0
+    knockBackModifier: 1
+    animationSpeedModifier: 0
+    healthModifier: 0
+    damageModifier: 2
+    stunModifier: 0
+    movementModifier: 0
+    addBloodSteal: 0
+    resistanceMod: 0
+    affectsSword: 1
+    affectsGun: 0
+    affectsSpells: 0
+    addProjectiles: 0
+  - upgradeName: Resolved Force
+    upgradeDescription: 'Your Sword Strikes Stun a Lot Longer.
+
+      Your Sword
+      Strikes Are Guarded Against Slower.'
+    upgradeId: 9
+    icon: {fileID: 21300000, guid: 2c6f468761c47404fa9dc45001ea443c, type: 3}
+    upgradeChain: 
+    addHealth: 0
+    addLifeSteal: 0
+    addCriticalChance: 0
+    knockBackModifier: 0
+    animationSpeedModifier: 0
+    healthModifier: 0
+    damageModifier: 0
+    stunModifier: 2.2
+    movementModifier: 0
+    addBloodSteal: 0
+    resistanceMod: -0.5
+    affectsSword: 1
+    affectsGun: 0
+    affectsSpells: 0
+    addProjectiles: 0
+  - upgradeName: Vicious Sharpness
+    upgradeDescription: 'Your Bow Attacks Deal More Damage.
+
+      Your Bow Attacks
+      Can Not Stun.'
+    upgradeId: 10
+    icon: {fileID: 21300000, guid: 4390ddc4b9b041e468c102079f144f6a, type: 3}
+    upgradeChain: 
+    addHealth: 0
+    addLifeSteal: 0
+    addCriticalChance: 0
+    knockBackModifier: 0
+    animationSpeedModifier: 1
+    healthModifier: 0
+    damageModifier: 2
+    stunModifier: 0.0000001
+    movementModifier: 0
+    addBloodSteal: 0
+    resistanceMod: 0
+    affectsSword: 0
+    affectsGun: 1
+    affectsSpells: 0
+    addProjectiles: 0
+  - upgradeName: Vicious Grasp
+    upgradeDescription: Your Bow Attacks Generate Extra Blood on Hit.
+    upgradeId: 11
+    icon: {fileID: 21300000, guid: fb2344f70fa5f7946ba5f27b5dee3f2b, type: 3}
+    upgradeChain: 
+    addHealth: 0
+    addLifeSteal: 0
+    addCriticalChance: 0
+    knockBackModifier: 0
+    animationSpeedModifier: 0
+    healthModifier: 0
+    damageModifier: 0
+    stunModifier: 0
+    movementModifier: 0
+    addBloodSteal: 4
+    resistanceMod: 0
+    affectsSword: 0
+    affectsGun: 1
+    affectsSpells: 0
+    addProjectiles: 0
   moveUpgrades:
   - upgradeName: Vampiric Lunge
-    upgradeDescription: Your follow-up attack lunges forward, stealing life and adding
-      more knockback.
+    upgradeDescription: 'Light Attack and Light Attack Follow-up
+
+      {l.sword
+      & l.sword -> l.sword}
+
+      Added Damage and Lifesteal'
     upgradeId: 1000
+    icon: {fileID: 21300000, guid: 802084b0b60c060419bbbb494e232906, type: 3}
+    upgradeChain: d1070000
+    onMove: Sword Slash
+    isNewMove: 0
+    addLifeSteal: 10
+    addCriticalChance: 0
+    knockBackModifier: 1
+    damageModifier: 1.1
+    stunModifier: 1.2
+    changeSpeedOfAnimation: 0
+    changeAttackPrevention: 4
+    changeMovementPrevention: 4
+    changeFollowUpTiming: 0
+    playerVelChange: {x: 6, y: 0.5, z: 0}
+    addFollowUps: 
+    removeFollowUps: 
+    addProjectiles: 0
+    changeKnockDown: 0
+    knockdownChange: {x: 0, y: 0, z: 0}
+  - upgradeName: Vampiric Lunge II
+    upgradeDescription: 
+    upgradeId: 2001
     icon: {fileID: 21300000, guid: 802084b0b60c060419bbbb494e232906, type: 3}
     upgradeChain: 
     onMove: Sword Slash II
@@ -1133,11 +1306,16 @@ MonoBehaviour:
     playerVelChange: {x: 6, y: 0.5, z: 0}
     addFollowUps: 
     removeFollowUps: 
+    addProjectiles: 0
     changeKnockDown: 0
     knockdownChange: {x: 0, y: 0, z: 0}
-  - upgradeName: Executioner's Sword
-    upgradeDescription: You Uppercut deals tons of more damage, but knocks back the
-      enemy less and increases recovery duration for both you and the enemy.
+  - upgradeName: Executioner's Rise
+    upgradeDescription: 'Uppercut
+
+      {Down + l.sword}
+
+      Increased Knockback
+      and Stun'
     upgradeId: 1001
     icon: {fileID: 21300000, guid: b27bf8ff806aa5544a32b9fa9bc1ac89, type: 3}
     upgradeChain: 
@@ -1155,10 +1333,14 @@ MonoBehaviour:
     playerVelChange: {x: 0, y: 0, z: 0}
     addFollowUps: 
     removeFollowUps: 
+    addProjectiles: 0
     changeKnockDown: 0
     knockdownChange: {x: 0, y: 0, z: 0}
   - upgradeName: Stinger Combo
-    upgradeDescription: Adds a follow up to Sword Slash II.
+    upgradeDescription: 'Adds another Follow-up to Light Attack Follow-up.
+
+      {l.sword
+      -> l.sword -> l.sword}'
     upgradeId: 1002
     icon: {fileID: 21300000, guid: ed9530d120320cf4c97cb258c08a2db0, type: 3}
     upgradeChain: 
@@ -1176,20 +1358,102 @@ MonoBehaviour:
     playerVelChange: {x: 0, y: 0, z: 0}
     addFollowUps: Sword Slash II
     removeFollowUps: 
+    addProjectiles: 0
     changeKnockDown: 0
     knockdownChange: {x: 0, y: 0, z: 0}
   - upgradeName: Vengeful Strike
-    upgradeDescription: Your initial Sword Slash pulls enemies in and deals extra
-      damage.
+    upgradeDescription: 'Parry
+
+      {Up + h.sword}
+
+      Faster Parry, More Damage
+      on Success.'
     upgradeId: 1003
     icon: {fileID: 21300000, guid: 370066b37bffe26408f7ae554b24562f, type: 3}
-    upgradeChain: 
-    onMove: Sword Slash
+    upgradeChain: d2070000
+    onMove: Parry
     isNewMove: 0
     addLifeSteal: 0
     addCriticalChance: 0
     knockBackModifier: 0
-    damageModifier: 1.4
+    damageModifier: 3
+    stunModifier: 1.3
+    changeSpeedOfAnimation: 0
+    changeAttackPrevention: 0
+    changeMovementPrevention: 0
+    changeFollowUpTiming: 0
+    playerVelChange: {x: 0, y: 0, z: 0}
+    addFollowUps: 
+    removeFollowUps: 
+    addProjectiles: 0
+    changeKnockDown: 0
+    knockdownChange: {x: 0, y: 0, z: 0}
+  - upgradeName: Vengeful Strike II
+    upgradeDescription: 
+    upgradeId: 2002
+    icon: {fileID: 21300000, guid: 370066b37bffe26408f7ae554b24562f, type: 3}
+    upgradeChain: d2070000
+    onMove: Parry Start
+    isNewMove: 0
+    addLifeSteal: 0
+    addCriticalChance: 0
+    knockBackModifier: 0
+    damageModifier: 0
+    stunModifier: 0
+    changeSpeedOfAnimation: 1.3
+    changeAttackPrevention: -5
+    changeMovementPrevention: -5
+    changeFollowUpTiming: -5
+    playerVelChange: {x: 0, y: 0, z: 0}
+    addFollowUps: 
+    removeFollowUps: 
+    addProjectiles: 0
+    changeKnockDown: 0
+    knockdownChange: {x: 0, y: 0, z: 0}
+  - upgradeName: Devastation Combo
+    upgradeDescription: 'Down Stab Can be Performed After Light Attack Follow-up.
+
+      {h.sword
+      -> h.sword or (if chosen) l.sword -> l.sword -> h.sword}
+
+      Increased Damage
+      and Stun.
+
+'
+    upgradeId: 1004
+    icon: {fileID: 21300000, guid: 26cce0787cf1301499c654329c733137, type: 3}
+    upgradeChain: 
+    onMove: Downward Stab
+    isNewMove: 0
+    addLifeSteal: 0
+    addCriticalChance: 0
+    knockBackModifier: 0
+    damageModifier: 1.35
+    stunModifier: 1.45
+    changeSpeedOfAnimation: 0
+    changeAttackPrevention: 0
+    changeMovementPrevention: 0
+    changeFollowUpTiming: 0
+    playerVelChange: {x: 0, y: 0, z: 0}
+    addFollowUps: Sword Slash II
+    removeFollowUps: 
+    addProjectiles: 0
+    changeKnockDown: 0
+    knockdownChange: {x: 0, y: 0, z: 0}
+  - upgradeName: Focused Shot
+    upgradeDescription: 'Light Bow Attack and Follow-up
+
+      Increased Damage and
+      Critical Chance.'
+    upgradeId: 1005
+    icon: {fileID: 21300000, guid: 26cce0787cf1301499c654329c733137, type: 3}
+    upgradeChain: d0070000
+    onMove: Crossbow Shoot
+    isNewMove: 0
+    addLifeSteal: 0
+    addCriticalChance: 33
+    knockBackModifier: 0
+    damageModifier: 3
     stunModifier: 0
     changeSpeedOfAnimation: 0
     changeAttackPrevention: 0
@@ -1198,16 +1462,41 @@ MonoBehaviour:
     playerVelChange: {x: 0, y: 0, z: 0}
     addFollowUps: 
     removeFollowUps: 
+    addProjectiles: -2
     changeKnockDown: 0
-    knockdownChange: {x: -2, y: 0.2, z: 0}
-  - upgradeName: Uppercut Combo
-    upgradeDescription: You can perform an Uppercut Slash [Down-Forward A] after
-      Sword Slash II.
-    upgradeId: 1004
+    knockdownChange: {x: 0, y: 0, z: 0}
+  - upgradeName: Focused Shot II
+    upgradeDescription: 
+    upgradeId: 2000
     icon: {fileID: 21300000, guid: 26cce0787cf1301499c654329c733137, type: 3}
     upgradeChain: 
-    onMove: Sword Uppercut
+    onMove: Crossbow Shoot Followup
     isNewMove: 0
+    addLifeSteal: 0
+    addCriticalChance: 33
+    knockBackModifier: 0
+    damageModifier: 3
+    stunModifier: 0
+    changeSpeedOfAnimation: 0
+    changeAttackPrevention: 0
+    changeMovementPrevention: 0
+    changeFollowUpTiming: 0
+    playerVelChange: {x: 0, y: 0, z: 0}
+    addFollowUps: 
+    removeFollowUps: 
+    addProjectiles: -2
+    changeKnockDown: 0
+    knockdownChange: {x: 0, y: 0, z: 0}
+  - upgradeName: Explosive Arrow
+    upgradeDescription: 'Changes your Light Attacks to instead shoot an arrow that
+      explodes nearby.
+
+      {l.bow}'
+    upgradeId: 1006
+    icon: {fileID: 21300000, guid: 36f825b990081a94ba6f60c3090b566f, type: 3}
+    upgradeChain: 
+    onMove: Crossbow Explosive Shot
+    isNewMove: 1
     addLifeSteal: 0
     addCriticalChance: 0
     knockBackModifier: 0
@@ -1218,8 +1507,87 @@ MonoBehaviour:
     changeMovementPrevention: 0
     changeFollowUpTiming: 0
     playerVelChange: {x: 0, y: 0, z: 0}
-    addFollowUps: Sword Slash II
+    addFollowUps: '-'
+    removeFollowUps: DISABLE
+    addProjectiles: 0
+    changeKnockDown: 0
+    knockdownChange: {x: 0, y: 0, z: 0}
+  - upgradeName: Ghastly Artillery
+    upgradeDescription: 'Charging Heavy Attack
+
+      {h.bow [HELD]}
+
+      Steals
+      Life per Charge. More Damage.'
+    upgradeId: 1007
+    icon: {fileID: 21300000, guid: 57142cf1f61b6634bab32aadffcbb373, type: 3}
+    upgradeChain: 
+    onMove: Heavy Cross Bow Held
+    isNewMove: 1
+    addLifeSteal: 2
+    addCriticalChance: 0
+    knockBackModifier: 0
+    damageModifier: 3
+    stunModifier: 0
+    changeSpeedOfAnimation: 0
+    changeAttackPrevention: 0
+    changeMovementPrevention: 0
+    changeFollowUpTiming: 0
+    playerVelChange: {x: 0, y: 0, z: 0}
+    addFollowUps: 
     removeFollowUps: 
+    addProjectiles: 0
+    changeKnockDown: 0
+    knockdownChange: {x: 0, y: 0, z: 0}
+  - upgradeName: Disaster Boot
+    upgradeDescription: 'Slide Kick
+
+      {Down + h.bow}
+
+      Increased Damage,
+      Range and Knock Up.'
+    upgradeId: 1008
+    icon: {fileID: 21300000, guid: ca0620446f448464d86034d2fa6b4e73, type: 3}
+    upgradeChain: 
+    onMove: Slide Kick
+    isNewMove: 1
+    addLifeSteal: 0
+    addCriticalChance: 0
+    knockBackModifier: 1.5
+    damageModifier: 2.7
+    stunModifier: 0
+    changeSpeedOfAnimation: 0
+    changeAttackPrevention: 0
+    changeMovementPrevention: 0
+    changeFollowUpTiming: 0
+    playerVelChange: {x: 4, y: 0, z: 0}
+    addFollowUps: 
+    removeFollowUps: 
+    addProjectiles: 0
+    changeKnockDown: 0
+    knockdownChange: {x: 0, y: 0, z: 0}
+  - upgradeName: Blood Fueled Bolts
+    upgradeDescription: 'BloodFueled Move, Fire Rapidly.
+
+      {l.bow [HELD]}'
+    upgradeId: 1009
+    icon: {fileID: 21300000, guid: 999defeaa7f6d1a4098b4dae6e789b1e, type: 3}
+    upgradeChain: 
+    onMove: Crossbow Shoot Blood Followup
+    isNewMove: 1
+    addLifeSteal: 0
+    addCriticalChance: 0
+    knockBackModifier: 0
+    damageModifier: 0
+    stunModifier: 0
+    changeSpeedOfAnimation: 0
+    changeAttackPrevention: 0
+    changeMovementPrevention: 0
+    changeFollowUpTiming: 0
+    playerVelChange: {x: 0, y: 0, z: 0}
+    addFollowUps: Crossbow Shoot FollowUp | Crossbow Shoot Blood Follow Up
+    removeFollowUps: DISABLE
+    addProjectiles: 0
     changeKnockDown: 0
     knockdownChange: {x: 0, y: 0, z: 0}
   linkInstance: {fileID: 5657378863576941360, guid: 07fc8ad1aaf74374c9fe507b4acedd2e, type: 3}
@@ -1229,6 +1597,7 @@ MonoBehaviour:
   upgradeName: {fileID: 220887851591918699}
   upgradeTarget: {fileID: 220887852240891137}
   upgradeDescription: {fileID: 220887851152155982}
+  upgradeLegend: {fileID: 0}
   rotationOfUpgrades: 0
   range: 0
 --- !u!1 &220887852240891139
@@ -1520,6 +1889,7 @@ RectTransform:
   - {fileID: 220887851152161457}
   - {fileID: 220887852240891136}
   - {fileID: 1301202376}
+  - {fileID: 9115494559689857253}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2090,7 +2460,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 200}
-  m_SizeDelta: {x: 600, y: 245}
+  m_SizeDelta: {x: 720, y: 245}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2657514033357133206
 CanvasRenderer:
@@ -2130,3 +2500,137 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &5020939500592868072
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9115494559689857253}
+  - component: {fileID: 2628070274336161392}
+  - component: {fileID: 8185900996670280115}
+  m_Layer: 5
+  m_Name: UpgradeLegend
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &9115494559689857253
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5020939500592868072}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3545773398154530948}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 50}
+  m_SizeDelta: {x: 700, y: 45}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &2628070274336161392
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5020939500592868072}
+  m_CullTransparentMesh: 1
+--- !u!114 &8185900996670280115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5020939500592868072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Left & Right to Change. Space to Choose.
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: b609d59c729d64c40ad1521a7d52be56, type: 2}
+  m_sharedMaterial: {fileID: 3626145051454967639, guid: b609d59c729d64c40ad1521a7d52be56, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 31.6
+  m_fontSizeBase: 31.6
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}

@@ -25,6 +25,8 @@ public class PlayerController : DepthBeUController
         damageModArray = new float[3],
         damagePlusArray = new int[3],
         hitstunArray = new float[3],
+        bloodStealArray = new int[3],
+        resistanceModArray = new float[3],
         critArray = new int[3],
         extraProj = 0
     };
@@ -83,6 +85,8 @@ public class PlayerController : DepthBeUController
         if (up.stunModifier != 0f) { gv.hitstunArray = MoveProp.DetermineFloatArrayValues(gv.hitstunArray, up.stunModifier, up); }
         if (up.addCriticalChance != 0) { gv.critArray = MoveProp.DetermineIntArrayValues(gv.critArray, up.addCriticalChance, up); }
         if (up.addProjectiles != 0) { gv.extraProj += up.addProjectiles; }
+        if (up.addBloodSteal != 0) { gv.bloodStealArray = MoveProp.DetermineIntArrayValues(gv.bloodStealArray, up.addBloodSteal, up); }
+        if (up.resistanceMod != 0) { gv.resistanceModArray = MoveProp.DetermineFloatArrayValues(gv.resistanceModArray, up.resistanceMod, up); }
     }
 
     private void OnDestroy()

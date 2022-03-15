@@ -7,11 +7,14 @@ public class HurtBox : MonoBehaviour
     [SerializeField] private InputStreamParser inputSystem;
 
     public Health ownerHealth;
+    public Special ownerSpecial;
     public Transform body;
     public float hitStun = 0.25f;
     public int damage = 10;
     public int lifeSteal = 0;
     public int crit = 0;
+    public int bloodSteal = 0;
+    public float resistanceMod = 0f;
     public bool knockDown = false;
     public bool parry = false;
     public Vector3 knockDownVelocity = Vector3.zero;
@@ -40,11 +43,12 @@ public class HurtBox : MonoBehaviour
             if (blockSpark != null && (enemy.Invulnerable || enemy.resistance <= 0f))
             { Instantiate(blockSpark, other.transform.position + new Vector3(Random.Range(-0.1f, 0.1f), Random.Range(-0.1f, 0.1f), 0), transform.rotation); return; }
             if (ownerHealth != null) { ownerHealth.Hp += lifeSteal; }
+            if (ownerSpecial != null) { ownerSpecial.Value += bloodSteal; }
             bool dirIsLeft = false;
             if (body != null) { if (body.localRotation.y == 0f) { dirIsLeft = true; } }
             isCrit = (Random.Range(0, 101) < crit);
             if (isCrit) { damage *= 2; lifeSteal *= 2; hitStun *= 1.5f; }
-            enemy.GetHit(damage, hitStun, knockDown, knockDownVelocity, dirIsLeft, isCrit);
+            enemy.GetHit(damage, hitStun, knockDown, knockDownVelocity, dirIsLeft, isCrit, resistanceMod + 1f);
             if (hitSpark != null) { Instantiate(hitSpark, other.transform.position + new Vector3(Random.Range(-0.1f, 0.1f), Random.Range(-0.1f, 0.1f), 0), transform.rotation); }
             if (critSpark != null && isCrit) { Instantiate(critSpark, other.transform.position + new Vector3(Random.Range(-0.1f, 0.1f), Random.Range(-0.1f, 0.1f), 0), transform.rotation); }
             if (inputSystem != null) { inputSystem.HitConfirmed(); }

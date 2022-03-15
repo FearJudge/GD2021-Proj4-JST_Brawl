@@ -133,7 +133,7 @@ public class InputStreamParser : MonoBehaviour
     public int followUpAllow = 0;
     public int movePrevention = 0;
     public int dirPrevention = 0;
-    public const int MOVEBUFFDUR = 9;
+    public const int MOVEBUFFDUR = 5;
     public const int HELD = 30;
     public const int RECHECK = 10;
     public int buffer = 0;
@@ -291,6 +291,12 @@ public class InputStreamParser : MonoBehaviour
         }
         void FindAllWithStartInput(string start, bool nonActionMoves)
         {
+            bool CheckAmmo(MoveDetails move)
+            {
+                if (move.properties.useSpawner >= pcont.projectilespawners.Length) { return true; }
+                return pcont.projectilespawners[move.properties.useSpawner].ammo >= move.moveAmmoCost;
+            }
+
             MoveDetails[] moveList = new MoveDetails[0];
             if (!nonActionMoves) { moveList = curator.ReturnCurrentMoves(); }
             else { moveList = curator.ReturnMovement(); }
@@ -298,8 +304,8 @@ public class InputStreamParser : MonoBehaviour
             {
                 if (CheckAgainstInput(moveList[j].moveDefinition[0], start) &&
                     PopulateAllows(moveList[j], savedMoveName) &&
-                    moveList[j].moveBloodCost <= pcont.special.Value &&
-                    pcont.projectilespawner.ammo >= moveList[j].moveAmmoCost)
+                    moveList[j].moveBloodCost <= pcont.special.Value && CheckAmmo(moveList[j])
+                    )
                 {
                     if ((!player.airborne && moveList[j].allowOnGround) || (player.airborne && moveList[j].allowOnAir))
                     {

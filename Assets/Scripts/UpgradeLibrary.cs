@@ -72,6 +72,9 @@ public class UpgradeLibrary : MonoBehaviour
         public float damageModifier = 0;
         public float stunModifier = 0;
         public float movementModifier = 0;
+        public int addBloodSteal = 0;
+        public float resistanceMod = 0;
+
         public bool affectsSword = true;
         public bool affectsGun = true;
         public bool affectsSpells = true;
@@ -90,6 +93,7 @@ public class UpgradeLibrary : MonoBehaviour
     [SerializeField] protected TMPro.TextMeshProUGUI upgradeName;
     [SerializeField] protected TMPro.TextMeshProUGUI upgradeTarget;
     [SerializeField] protected TMPro.TextMeshProUGUI upgradeDescription;
+    [SerializeField] protected TMPro.TextMeshProUGUI upgradeLegend;
 
     public float rotationOfUpgrades = 0f;
     public float range = 0;
@@ -117,8 +121,10 @@ public class UpgradeLibrary : MonoBehaviour
         instance.upgradeDescription.gameObject.SetActive(true);
         instance.upgradeTarget.gameObject.SetActive(true);
         instance.upgradeUI.SetActive(true);
+        instance.upgradeLegend.gameObject.SetActive(true);
         instance.upgradeName.text = toDisplay.upgradeName;
         instance.upgradeDescription.text = toDisplay.upgradeDescription;
+        instance.upgradeLegend.text = UI_OnScreenEffectBrain.GetLegendForUpgrades();
         if (toDisplay.upgradeId < BREAKPOINT)
         {
             PlayerUpgrade displayedUpgrade = (PlayerUpgrade)toDisplay;
@@ -142,6 +148,7 @@ public class UpgradeLibrary : MonoBehaviour
         instance.upgradeDescription.gameObject.SetActive(false);
         instance.upgradeTarget.gameObject.SetActive(false);
         instance.upgradeUI.SetActive(false);
+        instance.upgradeLegend.gameObject.SetActive(false);
     }
 
     public void OnDestroy()

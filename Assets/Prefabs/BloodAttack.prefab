@@ -59,11 +59,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputSystem: {fileID: 0}
   ownerHealth: {fileID: 0}
+  ownerSpecial: {fileID: 0}
   body: {fileID: 0}
   hitStun: 0
   damage: 2
   lifeSteal: 0
   crit: 0
+  bloodSteal: 0
+  resistanceMod: 0
   knockDown: 0
   parry: 0
   knockDownVelocity: {x: 0, y: 0, z: 0}
@@ -19353,8 +19356,8 @@ MonoBehaviour:
   ps: {fileID: 7064893436019030434}
   frwrd: {x: 0, y: 0, z: 0}
   rotate: 0
-  killAfter: 15
-  stopAfter: 14
+  killAfter: 9
+  stopAfter: 8
 --- !u!1 &7064893436112792026
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,6 +12,8 @@ public class MoveProp
         public int[] damagePlusArray;
         public float[] damageModArray;
         public int[] critArray;
+        public int[] bloodStealArray;
+        public float[] resistanceModArray;
         public int extraProj;
     }
 
@@ -34,6 +36,7 @@ public class MoveProp
     public Vector3 knockDownVelocity = Vector3.zero;
     public bool isProjectile;
     public int ammoChange;
+    public int useSpawner = 0;
     public int projCount = 1;
     public Vector3 projVelocity = Vector3.zero;
     public bool isProjBuff;
@@ -41,9 +44,22 @@ public class MoveProp
     public int selfDamage = 0;
     public bool nonAttack = false;
     public LayerMask alternateLayerMask;
+    ProjectileSpawner projectilespawner;
 
     public void ActivateMove(DepthBeUController player, GlobalVariables pv, int type, float multiplier = 1f)
     {
+        void ProjectileBuff()
+        {
+            if (!isStacking) { projectilespawner.SetStateToRegular(); }
+            projectilespawner.lifeSteal += lifeSteal;
+            projectilespawner.ammo += ammoChange;
+            projectilespawner.extraVelocity += projVelocity;
+            projectilespawner.extraDamage += hurtBoxDamage;
+            projectilespawner.extraCrit += baseCrit;
+            projectilespawner.extraStun += hitStunDuration;
+            projectilespawner.firedExtraProjectiles += projCount;
+        }
+
         if (player == null) { Debug.Log("No Controller!"); return; }
         if (sound != null)
         {
@@ -67,18 +83,17 @@ public class MoveProp
         player.hb.knockDown = knockDown;
         player.hb.knockDownVelocity = knockDownVelocity;
         player.hb.lifeSteal = lifeSteal + pv.lifestealArray[type];
+        player.hb.bloodSteal = pv.bloodStealArray[type];
+        player.hb.resistanceMod = pv.resistanceModArray[type];
         player.hb.crit = pv.critArray[type] + baseCrit;
         if (selfDamage != 0) { player.hpScript.Hp -= selfDamage; }
-        if (isProjectile) { player.projectilespawner.firedProjectiles = projCount + pv.extraProj; player.projectilespawner.hbData = player.hb; player.projectilespawner.ammoChange = ammoChange; player.projectilespawner.vel = projVelocity; }
+        if (player.projectilespawners.Length > 0 && useSpawner < player.projectilespawners.Length)
+        { projectilespawner = player.projectilespawners[useSpawner]; }
+        if (isProjectile && projectilespawner != null) { projectilespawner.firedProjectiles = projCount + pv.extraProj; projectilespawner.hbData = player.hb; projectilespawner.ammoChange = ammoChange; projectilespawner.vel = projVelocity; }
         if (isProjBuff)
-        {
-            if (!isStacking) { player.projectilespawner.SetStateToRegular(); }
-            player.projectilespawner.ammo += ammoChange;
-            player.projectilespawner.extraVelocity += projVelocity;
-            player.projectilespawner.extraDamage += hurtBoxDamage;
-            player.projectilespawner.extraCrit += baseCrit;
-            player.projectilespawner.extraStun += hitStunDuration;
-            player.projectilespawner.firedExtraProjectiles += projCount;
+        {      
+            if (projectilespawner != null) { ProjectileBuff(); }
+            else { for (int i = 0; i < player.projectilespawners.Length; i++) { projectilespawner = player.projectilespawners[i]; ProjectileBuff(); } }
         }
         if (nonAttack) { player.hb.useAlternate = true; player.hb.activeOnAlt = alternateLayerMask; }
         else { player.hb.useAlternate = false; }
@@ -86,7 +101,7 @@ public class MoveProp
 
     public void ActivateMove(DepthBeUController player)
     {
-        ActivateMove(player, new GlobalVariables() { damageModArray = new float[1], hitstunArray = new float[1], damagePlusArray = new int[1], lifestealArray = new int[1], critArray = new int[1], extraProj = 0 }, 0);
+        ActivateMove(player, new GlobalVariables() { damageModArray = new float[1], hitstunArray = new float[1], damagePlusArray = new int[1], lifestealArray = new int[1], critArray = new int[1], extraProj = 0, bloodStealArray = new int[1], resistanceModArray = new float[1] }, 0);
     }
 
     public static int[] DetermineIntArrayValues(int[] toMod, int valMod, UpgradeLibrary.PlayerUpgrade up)

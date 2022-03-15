@@ -355,7 +355,7 @@ public class EnemyAI : DepthBeUController
         { gotStuckX--; if (gotStuckX == 0) { gotStuckX = BASESTUCK; NextRule(Condition.ReachedDestination); } }
     }
 
-    public override void GetHit(int dmg, float stun, bool knockBack, Vector3 knockback, bool fromLeft, bool isCrit=false)
+    public override void GetHit(int dmg, float stun, bool knockBack, Vector3 knockback, bool fromLeft, bool isCrit=false, float resistanceMod=1f)
     {
         if (currentAct == State.Dead) { return; }
         if (currentAct != State.Hit)

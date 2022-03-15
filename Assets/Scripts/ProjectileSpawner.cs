@@ -18,6 +18,7 @@ public class ProjectileSpawner : MonoBehaviour
     public float lifeTime = 0.5f;
     public HurtBox hbData;
 
+    public int lifeSteal = 0;
     public int ammoChange = 0;
     public int extraDamage = 0;
     public float extraStun = 0f;
@@ -51,6 +52,7 @@ public class ProjectileSpawner : MonoBehaviour
             hb.SetData(hbData);
             hb.damage += extraDamage;
             hb.crit += extraCrit;
+            hb.lifeSteal += lifeSteal;
             hb.hitStun += extraStun;
             ps.lifetime = lifeTime;
             ps.BeginDeath();
@@ -74,6 +76,7 @@ public class ProjectileSpawner : MonoBehaviour
         extraCrit = 0;
         extraDamage = 0;
         extraStun = 0f;
+        lifeSteal = 0;
         extraVelocity = Vector3.zero;
         ammoChange = 0;
         firedExtraProjectiles = 0;

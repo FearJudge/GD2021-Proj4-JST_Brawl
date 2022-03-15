@@ -72,7 +72,7 @@ public class DepthBeUController : MonoBehaviour
     [HideInInspector] public BoxCollider playerCollisionBox;
     [SerializeField] GameObject hurtBoxObject;
     [HideInInspector] public HurtBox hb;
-    public ProjectileSpawner projectilespawner;
+    public ProjectileSpawner[] projectilespawners;
     [HideInInspector] public Animator animator;
     [SerializeField] LayerMask groundMask;
     [SerializeField] LayerMask collideWith;
@@ -312,7 +312,7 @@ public class DepthBeUController : MonoBehaviour
         }
     }
 
-    public virtual void GetHit(int dmg, float stun, bool knockBack, Vector3 knockBackV, bool fromLeft, bool isCrit=false)
+    public virtual void GetHit(int dmg, float stun, bool knockBack, Vector3 knockBackV, bool fromLeft, bool isCrit=false, float resistanceChange = 1f)
     {
         if (invulnerable || resistance <= 0f) { return; }
         if (isCrit) { dmg *= 2; }
@@ -325,7 +325,7 @@ public class DepthBeUController : MonoBehaviour
         SetVelocity(knockBackV * res);
         if (stun > 0.01f) {
             frozen = true;
-            resistance -= stun;
+            resistance -= stun * resistanceChange;
             AnimateCharacterBool("stunned", true);
             AnimateCharacter(0f, 0f);
         }

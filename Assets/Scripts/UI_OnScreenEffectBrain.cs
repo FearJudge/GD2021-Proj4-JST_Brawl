@@ -82,7 +82,7 @@ public class UI_OnScreenEffectBrain : MonoBehaviour
                 hintText = "Stances:\nUse " +
                     instance.pi.currentActionMap.FindAction("WeaponSwap").
                     GetBindingDisplayString(InputBinding.MaskByGroup(instance.pi.currentControlScheme), InputBinding.DisplayStringOptions.DontIncludeInteractions) +
-                    " to swap between: Melee, Ranged and Spell stances.";
+                    " to swap between: Melee and Ranged stances.";
                 break;
             case HintType.Blood:
                 hintText = "Blood:\n" +
@@ -101,5 +101,14 @@ public class UI_OnScreenEffectBrain : MonoBehaviour
         }
         instance.hintDisplay.text = hintText;
         instance.effectAnimator.SetBool("HintScreenUp", true);
+    }
+
+    public static string GetLegendForUpgrades()
+    {
+        return "Change Upgrade: " +
+                    instance.pi.currentActionMap.FindAction("Move").
+                    GetBindingDisplayString(InputBinding.MaskByGroup(instance.pi.currentControlScheme), InputBinding.DisplayStringOptions.DontIncludeInteractions) +
+                    " Choose Upgrade: " + instance.pi.currentActionMap.FindAction("Jump").
+                    GetBindingDisplayString(InputBinding.MaskByGroup(instance.pi.currentControlScheme), InputBinding.DisplayStringOptions.DontIncludeInteractions);
     }
 }

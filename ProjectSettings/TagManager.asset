@@ -25,7 +25,7 @@ TagManager:
   - HurtBox
   - Encounters
   - RootGround
-  - 
+  - UIParticles
   - 
   - 
   - 
@@ -40,4 +40,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: SortLayer1
+    uniqueID: 2572023057
     locked: 0

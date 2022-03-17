@@ -133,9 +133,9 @@ public class InputStreamParser : MonoBehaviour
     public int followUpAllow = 0;
     public int movePrevention = 0;
     public int dirPrevention = 0;
-    public const int MOVEBUFFDUR = 7;
-    public const int HELD = 30;
-    public const int RECHECK = 7;
+    public const int MOVEBUFFDUR = 2;
+    public const int HELD = 15;
+    public const int RECHECK = 5;
     public int buffer = 0;
     bool A = false;
     bool B = false;
@@ -362,10 +362,9 @@ public class InputStreamParser : MonoBehaviour
             if (definition == "*") { return true; }
             if (definition.Contains("A")) { if (!input.Contains("A")) { return false; } }
             if (definition.Contains("B")) { if (!input.Contains("B")) { return false; } }
-            if (definition.Contains("/A")) { if (!input.Contains("/A")) { return false; } }
-            if (definition.Contains("/B")) { if (!input.Contains("/B")) { return false; } }
-            if (definition.Contains("-A")) { if (!input.Contains("-A")) { return false; } }
-            if (definition.Contains("-B")) { if (!input.Contains("-B")) { return false; } }
+            if (definition.Contains("/")) { if (!input.Contains("/")) { return false; } }
+            if (definition.Contains("-")) { if (!input.Contains("-")) { return false; } }
+            if (!definition.Contains("-")) { if (input.Contains("-")) { return false; } }
             string dirInput = input.Trim('A', 'B', '/', '-');
             if (definition.Contains("(") && definition.Contains(")"))
             {

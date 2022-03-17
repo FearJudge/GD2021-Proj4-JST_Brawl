@@ -9,7 +9,7 @@ public class Health : MonoBehaviour
     public static event PlayerHealthEvent GotHit;
     public static event CharacterHealthEvent ThresholdReached;
 
-    protected DepthBeUController character;
+    [SerializeField] protected DepthBeUController character;
     [SerializeField] public string healthOwnerName = "";
     public int iconid = 0;
     public bool isPlayer = false;

@@ -124,6 +124,11 @@ public class PlayerController : DepthBeUController
 
     void FinishGame()
     {
+        Invoke("TrueFinish", 3f);
+    }
+
+    void TrueFinish()
+    {
         SceneManager.LoadSceneAsync("FinishMenuScene", LoadSceneMode.Additive);
     }
 }

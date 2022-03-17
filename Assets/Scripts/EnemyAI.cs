@@ -418,12 +418,16 @@ public class EnemyAI : DepthBeUController
 
     public override void Dissolve()
     {
+        base.Dissolve();
+    }
+
+    public void OnDestroy()
+    {
         Health.GotHit -= CheckForHitRule;
         Health.ThresholdReached -= CheckForThresholdRule;
         if (listenToAttacks) { Attacking -= YelledAtReaction; }
         if (listenToHurtAllies) { Hurt -= YelledAtReaction; }
         if (listenToAlliesKilled) { Hurt -= YelledAtReaction; }
-        base.Dissolve();
     }
 
     public void SetUpgradeId(uint id)

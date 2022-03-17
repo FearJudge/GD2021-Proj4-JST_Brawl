@@ -805,6 +805,48 @@ MonoBehaviour:
       alternateLayerMask:
         serializedVersion: 2
         m_Bits: 0
+  - moveName: Crossbow Reload B
+    followUpTo: '-'
+    cancelFrom: 
+    followUpAllowedOnlyOnHit: 0
+    moveDefinition:
+    - (123456789)B
+    moveAllowedError: 4
+    moveAllowedDuration: 21
+    movePriority: 2
+    moveBloodCost: 0
+    moveAmmoCost: 0
+    allowOnGround: 1
+    allowOnAir: 0
+    properties:
+      triggerIsBool: 0
+      setTo: 0
+      animationTrigger: Attack_LoadLong
+      sound: {fileID: 8300000, guid: c9c8536393ec15f4d9b154323753480f, type: 3}
+      playDelays: []
+      animationSpeedMod: 1
+      allowNextMove: 45
+      preventMovement: 45
+      followUpAllowFrom: 45
+      characterVelocity: {x: 0, y: 0, z: 0}
+      hurtBoxDamage: 0
+      lifeSteal: 0
+      baseCrit: 0
+      hitStunDuration: 0
+      knockDown: 0
+      knockDownVelocity: {x: 0, y: 0, z: 0}
+      isProjectile: 0
+      ammoChange: 20
+      useSpawner: 99
+      projCount: 0
+      projVelocity: {x: 0, y: 0, z: 0}
+      isProjBuff: 1
+      isStacking: 0
+      selfDamage: 0
+      nonAttack: 0
+      alternateLayerMask:
+        serializedVersion: 2
+        m_Bits: 0
   - moveName: Crossbow Reload Manual
     followUpTo: 
     cancelFrom: 
@@ -902,7 +944,7 @@ MonoBehaviour:
     moveAllowedDuration: 23
     movePriority: 23
     moveBloodCost: 0
-    moveAmmoCost: 0
+    moveAmmoCost: 1
     allowOnGround: 1
     allowOnAir: 0
     properties:
@@ -1082,9 +1124,9 @@ MonoBehaviour:
       sound: {fileID: 8300000, guid: b8d38d324558fbe4d94693f8d4968a3b, type: 3}
       playDelays: []
       animationSpeedMod: 0
-      allowNextMove: 25
-      preventMovement: 25
-      followUpAllowFrom: 12
+      allowNextMove: 38
+      preventMovement: 35
+      followUpAllowFrom: 30
       characterVelocity: {x: 0, y: 0, z: 0}
       hurtBoxDamage: 0
       lifeSteal: 0
@@ -1099,7 +1141,7 @@ MonoBehaviour:
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
       isStacking: 0
-      selfDamage: -75
+      selfDamage: -80
       nonAttack: 0
       alternateLayerMask:
         serializedVersion: 2
@@ -1113,7 +1155,7 @@ MonoBehaviour:
     moveAllowedError: 3
     moveAllowedDuration: 22
     movePriority: 165
-    moveBloodCost: 250
+    moveBloodCost: 0
     moveAmmoCost: 0
     allowOnGround: 1
     allowOnAir: 1
@@ -1124,11 +1166,11 @@ MonoBehaviour:
       sound: {fileID: 8300000, guid: b8d38d324558fbe4d94693f8d4968a3b, type: 3}
       playDelays: []
       animationSpeedMod: 0
-      allowNextMove: 25
-      preventMovement: 25
-      followUpAllowFrom: 12
+      allowNextMove: 38
+      preventMovement: 35
+      followUpAllowFrom: 25
       characterVelocity: {x: 0, y: 0, z: 0}
-      hurtBoxDamage: 300
+      hurtBoxDamage: 155
       lifeSteal: 0
       baseCrit: 0
       hitStunDuration: 0.3
@@ -1141,7 +1183,7 @@ MonoBehaviour:
       projVelocity: {x: 0, y: 0, z: 0}
       isProjBuff: 0
       isStacking: 0
-      selfDamage: -150
+      selfDamage: -200
       nonAttack: 0
       alternateLayerMask:
         serializedVersion: 2

@@ -99,6 +99,7 @@ public class DepthBeUController : MonoBehaviour
 
     protected void SetUP()
     {
+        Debug.Log("Triggered!");
         feet = transform;
         maxResistance = resistance;
         if (cameraFocus == null) { cameraFocus = Camera.main.transform.parent; }

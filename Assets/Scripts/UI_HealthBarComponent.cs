@@ -13,6 +13,7 @@ public class UI_HealthBarComponent : MonoBehaviour
     public int heldSuffixInd = -1;
     bool movin = false;
     int movetow = 0;
+    [SerializeField] Animator barIconAnim;
 
     public void SetUpInformation(string name, Health hp, int suffix = -1)
     {
@@ -31,9 +32,15 @@ public class UI_HealthBarComponent : MonoBehaviour
         healthBar.maxValue = hp.GetMaxHealth();
         if (setValues) { healthBar.value = hp.Hp; healthBarFollower.value = healthBar.value; }
         if (hp.Hp > healthBar.value) { healthBarFollower.value = hp.Hp; }
-        else { healthBar.value = hp.Hp; }
+        else { if (hp.Hp < healthBar.value) { TakeDamage(); } healthBar.value = hp.Hp;  }
         movetow = hp.Hp;
         StartCoroutine(HPEffect());
+    }
+
+    public void TakeDamage()
+    {
+        if (barIconAnim == null) { return; }
+        barIconAnim.SetTrigger("FLASH");
     }
 
     public void ChangeSprite(int defValue, bool wrap = false)

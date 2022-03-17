@@ -7,15 +7,16 @@ public class UI_SpecialBarComponent : MonoBehaviour
 {
     public Slider specialBar;
     Color foundCol = Color.black;
-    readonly int[] VALUETHRESHOLDS = { 200, 240, 280, 320, 425 };
+    readonly int[] VALUETHRESHOLDS = { 60, 80, 210, 250, 475 };
     readonly Color[] COLORVALUES = {
-        new Color(180f / 255f, 180f / 255f, 180f / 255f),
-        new Color(200f / 255f, 170f / 255f, 170f / 255f),
-        new Color(220f / 255f, 155f / 255f, 155f / 255f),
-        new Color(240f / 255f, 140f / 255f, 140f / 255f),
-        new Color(255f / 255f, 120f / 255f, 120f / 255f),
-        new Color(255f / 255f, 30f / 255f, 30f / 255f)
+        new Color(225f / 255f, 225f / 255f, 225f / 255f),
+        new Color(225f / 255f, 225f / 255f, 225f / 255f),
+        new Color(235f / 255f, 160f / 255f, 160f / 255f),
+        new Color(235f / 255f, 140f / 255f, 140f / 255f),
+        new Color(245f / 255f, 25f / 255f, 40f / 255f),
+        new Color(255f / 255f, 0f / 255f, 0f / 255f)
     };
+    [SerializeField] Animator barTrimAnim;
 
     public void UpdateSpecialInformation(Special s)
     {
@@ -30,21 +31,27 @@ public class UI_SpecialBarComponent : MonoBehaviour
         {
             case int n when (n <= VALUETHRESHOLDS[0]):
                 tempCol = COLORVALUES[0];
+                barTrimAnim.SetInteger("SpecialFlash", 0);
                 break;
             case int n when (n > VALUETHRESHOLDS[0] && n <= VALUETHRESHOLDS[1]):
                 tempCol = COLORVALUES[1];
+                barTrimAnim.SetInteger("SpecialFlash", 0);
                 break;
             case int n when (n > VALUETHRESHOLDS[1] && n <= VALUETHRESHOLDS[2]):
                 tempCol = COLORVALUES[2];
+                barTrimAnim.SetInteger("SpecialFlash", 1);
                 break;
             case int n when (n > VALUETHRESHOLDS[2] && n <= VALUETHRESHOLDS[3]):
                 tempCol = COLORVALUES[3];
+                barTrimAnim.SetInteger("SpecialFlash", 1);
                 break;
             case int n when (n > VALUETHRESHOLDS[3] && n <= VALUETHRESHOLDS[4]):
                 tempCol = COLORVALUES[4];
+                barTrimAnim.SetInteger("SpecialFlash", 2);
                 break;
             case int n when (n > VALUETHRESHOLDS[4]):
                 tempCol = COLORVALUES[5];
+                barTrimAnim.SetInteger("SpecialFlash", 3);
                 break;
             default:
                 break;

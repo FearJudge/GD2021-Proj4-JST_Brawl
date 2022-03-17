@@ -86,7 +86,8 @@ public class UI_OnScreenEffectBrain : MonoBehaviour
                 break;
             case HintType.Blood:
                 hintText = "Blood:\n" +
-                    "When you hit enemies, your blood gauge rises. Using certain actions will drain blood to empower them.";
+                    "With at least 20% BLOOD, Press Light and Heavy Attack at the same time [Hotkey: " + instance.pi.currentActionMap.FindAction("Macro_LightHeavy").
+                    GetBindingDisplayString(InputBinding.MaskByGroup(instance.pi.currentControlScheme), InputBinding.DisplayStringOptions.DontIncludeInteractions) + "] to unleash Blood Rage, Healing you.";
                 break;
             case HintType.Upgrades:
                 hintText = "Upgrades:\n" +

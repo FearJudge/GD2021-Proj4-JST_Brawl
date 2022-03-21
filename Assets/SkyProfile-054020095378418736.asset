@@ -56,9 +56,9 @@ Material:
     - _HorizonCloudSize: 4.47
     - _HorizonCloudStartPosition: -0.01
     - _HorizonCloudStep: 25
-    - _HorizonExponent: 2
-    - _HorizonStep: 600
-    - _HorizonThickness: 1
+    - _HorizonExponent: 5
+    - _HorizonStep: 70
+    - _HorizonThickness: 0
     - _MoonGlow: 0.35
     - _MoonLightIntensity: 0.5
     - _MoonSize: 0.089
@@ -156,9 +156,9 @@ MonoBehaviour:
   skyColor: {r: 0, g: 0.38878655, b: 0.4528302, a: 1}
   horizonColor: {r: 0, g: 0.07450981, b: 0.16470589, a: 1}
   groundColor: {r: 0.122641504, g: 0.122641504, b: 0.122641504, a: 1}
-  horizonThickness: 1
-  horizonExponent: 2
-  horizonStep: 600
+  horizonThickness: 0
+  horizonExponent: 5
+  horizonStep: 70
   fogSyncOption: 4
   fogColor: {r: 0.34901962, g: 0.62352943, b: 0.5803922, a: 0}
   enableStars: 1

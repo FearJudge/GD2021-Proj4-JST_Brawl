@@ -7,7 +7,7 @@ public class UI_SpecialBarComponent : MonoBehaviour
 {
     public Slider specialBar;
     Color foundCol = Color.black;
-    readonly int[] VALUETHRESHOLDS = { 60, 80, 210, 250, 475 };
+    readonly int[] VALUETHRESHOLDS = { 60, 100, 200, 250, 475 };
     readonly Color[] COLORVALUES = {
         new Color(225f / 255f, 225f / 255f, 225f / 255f),
         new Color(225f / 255f, 225f / 255f, 225f / 255f),
@@ -51,7 +51,7 @@ public class UI_SpecialBarComponent : MonoBehaviour
                 break;
             case int n when (n > VALUETHRESHOLDS[4]):
                 tempCol = COLORVALUES[5];
-                barTrimAnim.SetInteger("SpecialFlash", 3);
+                barTrimAnim.SetInteger("SpecialFlash", 2);
                 break;
             default:
                 break;

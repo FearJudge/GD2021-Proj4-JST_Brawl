@@ -72,10 +72,12 @@ public class HurtBox : MonoBehaviour
     public void SetData(HurtBox copy)
     {
         ownerHealth = copy.ownerHealth;
+        ownerSpecial = copy.ownerSpecial;
         body = copy.body;
         hitStun = copy.hitStun;
         damage = copy.damage;
         lifeSteal = copy.lifeSteal;
+        bloodSteal = copy.bloodSteal;
         crit = copy.crit;
         knockDown = copy.knockDown;
         knockDownVelocity = copy.knockDownVelocity;

@@ -31,6 +31,7 @@ public class DepthBeUController : MonoBehaviour
     public float resistance = 10f;
     public float hangTime = 0.2f;
     public float knockBackRes = 1f;
+    public float stunnedRes = 1f;
     private float airborneTimer = 0f;
     public int baseJumpsAvailable = 1;
     private int jumpsAvailable = 1;
@@ -318,15 +319,15 @@ public class DepthBeUController : MonoBehaviour
     {
         if (invulnerable || resistance <= 0f) { return; }
         if (isCrit) { dmg *= 2; }
-        sr.Color = Color.red;
         int dir = 1;
         if (!fromLeft) { dir = -1; knockBackV.x *= dir; }
         float res = ResistanceMod();
         hpScript.Hp -= Mathf.CeilToInt(dmg * res);
-        stunnedFor = stun * res;
+        stunnedFor = stun * res * stunnedRes;
         SetVelocity(knockBackV * res);
-        if (stun > 0.01f) {
+        if (stunnedFor > 0.01f) {
             frozen = true;
+            sr.Color = Color.red;
             resistance -= stun * resistanceChange;
             AnimateCharacterBool("stunned", true);
             AnimateCharacter(0f, 0f);

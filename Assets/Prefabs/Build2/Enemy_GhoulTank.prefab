@@ -282,6 +282,7 @@ MonoBehaviour:
   resistance: 10
   hangTime: 0.2
   knockBackRes: 0.1
+  stunnedRes: 0.0001
   baseJumpsAvailable: 1
   feetCollSize: 0.14
   bodyCollSize: 0.32
@@ -734,12 +735,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 199313491040924543, guid: 42cec3da48755f846b850690f8d8bd43, type: 3}
       propertyPath: m_Materials.Array.size
-      value: 1
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 199313491040924543, guid: 42cec3da48755f846b850690f8d8bd43, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
+      objectReference: {fileID: 2100000, guid: 459683e483e91c84b9e54f31e0fef25b, type: 2}
     - target: {fileID: 199313491040924543, guid: 42cec3da48755f846b850690f8d8bd43, type: 3}
       propertyPath: m_Materials.Array.data[14]
       value: 

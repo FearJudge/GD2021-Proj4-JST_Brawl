@@ -689,6 +689,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26126e8573e38064290e4287b0e548e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  character: {fileID: 0}
   healthOwnerName: Titanic Ghoul
   iconid: 0
   isPlayer: 0
@@ -733,8 +734,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 199313491040924543, guid: 42cec3da48755f846b850690f8d8bd43, type: 3}
       propertyPath: m_Materials.Array.size
-      value: 14
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 199313491040924543, guid: 42cec3da48755f846b850690f8d8bd43, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8002e37b96875a8488c271769ad8a068, type: 2}
     - target: {fileID: 199313491040924543, guid: 42cec3da48755f846b850690f8d8bd43, type: 3}
       propertyPath: m_Materials.Array.data[14]
       value: 
@@ -805,15 +810,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6344147940028253317, guid: 42cec3da48755f846b850690f8d8bd43, type: 3}
       propertyPath: Color.b
-      value: 0.7075472
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6344147940028253317, guid: 42cec3da48755f846b850690f8d8bd43, type: 3}
       propertyPath: Color.g
-      value: 0.5446561
+      value: 0.7174814
       objectReference: {fileID: 0}
     - target: {fileID: 6344147940028253317, guid: 42cec3da48755f846b850690f8d8bd43, type: 3}
       propertyPath: Color.r
-      value: 0.52398545
+      value: 0.6839622
+      objectReference: {fileID: 0}
+    - target: {fileID: 6344147940028253317, guid: 42cec3da48755f846b850690f8d8bd43, type: 3}
+      propertyPath: Material
+      value: 
+      objectReference: {fileID: 2100000, guid: 459683e483e91c84b9e54f31e0fef25b, type: 2}
+    - target: {fileID: 6344147940028253317, guid: 42cec3da48755f846b850690f8d8bd43, type: 3}
+      propertyPath: CurrentClipIndex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6344147940028253317, guid: 42cec3da48755f846b850690f8d8bd43, type: 3}
+      propertyPath: DiscretizationStep
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 7758341232681664527, guid: 42cec3da48755f846b850690f8d8bd43, type: 3}
       propertyPath: m_Name

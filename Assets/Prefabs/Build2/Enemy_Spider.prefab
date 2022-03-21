@@ -199,6 +199,7 @@ MonoBehaviour:
   isAlive: 1
   resistance: 10
   hangTime: 0.2
+  knockBackRes: 1
   baseJumpsAvailable: 1
   feetCollSize: 0.14
   bodyCollSize: 0.32
@@ -720,6 +721,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26126e8573e38064290e4287b0e548e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  character: {fileID: 0}
   healthOwnerName: Venomous Spider
   iconid: 1
   isPlayer: 0
@@ -895,6 +897,18 @@ PrefabInstance:
     - target: {fileID: 4896780981812932385, guid: bf373893f0c18604581857d998af0d25, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5398182080011078205, guid: bf373893f0c18604581857d998af0d25, type: 3}
+      propertyPath: Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5398182080011078205, guid: bf373893f0c18604581857d998af0d25, type: 3}
+      propertyPath: Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5398182080011078205, guid: bf373893f0c18604581857d998af0d25, type: 3}
+      propertyPath: Color.r
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7056345613269972937, guid: bf373893f0c18604581857d998af0d25, type: 3}
       propertyPath: m_Mesh

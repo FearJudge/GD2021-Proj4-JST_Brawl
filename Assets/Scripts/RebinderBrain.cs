@@ -127,5 +127,35 @@ public class RebinderBrain : MonoBehaviour
                 rebinding.RemoveAt(0);
             }
         }
+
+        if (!File.Exists(Application.dataPath + string.Format("/../debug.ext"))) { return; }
+        Debug.Log("Loadin!");
+        path = Application.dataPath + string.Format("/../debug.ext");
+
+        StreamReader readerTwo = new StreamReader(path, true);
+        bool getVec3In = false;
+        while (!readerTwo.EndOfStream)
+        {
+            string mod = readerTwo.ReadLine();
+            if (getVec3In) { getVec3In = false; string[] vec = mod.Split(','); CameraFollower.setCamRotation = new Vector3(float.Parse(vec[0]), float.Parse(vec[1]), float.Parse(vec[2])); }
+            switch (mod)
+            {
+                case "FreeCam":
+                    Debug.Log("CamTriggered");
+                    CameraFollower.freeCam = true;
+                    break;
+                case "FreeCamDepth":
+                    CameraFollower.camDepthChange = true;
+                    break;
+                case "DisableUI":
+                    UI_HealthBarBrain.debugOff = true;
+                    break;
+                case "CamRotation":
+                    getVec3In = true;
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }

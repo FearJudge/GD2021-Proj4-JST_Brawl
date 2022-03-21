@@ -19,6 +19,7 @@ public class UI_HealthBarBrain : MonoBehaviour
 
     public int maximumEnemyCount = 3;
     public static UI_HealthBarBrain instance;
+    public static bool debugOff = false;
 
     public class LinkedHealth : IComparable<LinkedHealth>
     {
@@ -54,6 +55,11 @@ public class UI_HealthBarBrain : MonoBehaviour
     void Awake()
     {
         instance = this;
+    }
+
+    void Start()
+    {
+        if (debugOff) { gameObject.GetComponent<Canvas>().enabled = false; }
     }
 
     private void OnDestroy()
